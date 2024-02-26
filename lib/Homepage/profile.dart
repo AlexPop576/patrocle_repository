@@ -14,5 +14,6 @@ class _ProfileState extends State<Profile> {
       backgroundColor: const Color.fromARGB(255, 23, 24, 31),
       body: Text("Profile"),
     );
+    
   }
 }
