@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:patrocle/Quizpage/quizpage.dart';
 
 class LevelTile extends StatefulWidget {
   LevelTile({super.key, required this.colorIndex, required this.country});
@@ -140,7 +142,20 @@ class _LevelTileState extends State<LevelTile> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            child: QuizPage(
+                              country: country,
+                              difficulty: 1,
+                              subject: 1,
+                            ),
+                            type: PageTransitionType.bottomToTop,
+                            duration: const Duration(milliseconds: 300),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 63, 255, 38),
                         shape: const RoundedRectangleBorder(
@@ -164,7 +179,20 @@ class _LevelTileState extends State<LevelTile> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            child: QuizPage(
+                              country: country,
+                              difficulty: 2,
+                              subject: 1,
+                            ),
+                            type: PageTransitionType.bottomToTop,
+                            duration: const Duration(milliseconds: 300),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
                             const Color.fromARGB(255, 255, 194, 38),
@@ -189,7 +217,20 @@ class _LevelTileState extends State<LevelTile> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            child: QuizPage(
+                              country: country,
+                              difficulty: 3,
+                              subject: 1,
+                            ),
+                            type: PageTransitionType.bottomToTop,
+                            duration: const Duration(milliseconds: 300),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 55, 55),
                         shape: const RoundedRectangleBorder(
@@ -223,7 +264,20 @@ class _LevelTileState extends State<LevelTile> {
                 children: [
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            child: QuizPage(
+                              country: country,
+                              difficulty: 1,
+                              subject: 2,
+                            ),
+                            type: PageTransitionType.bottomToTop,
+                            duration: const Duration(milliseconds: 300),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 63, 255, 38),
                         shape: const RoundedRectangleBorder(
@@ -247,9 +301,22 @@ class _LevelTileState extends State<LevelTile> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            child: QuizPage(
+                              country: country,
+                              difficulty: 2,
+                              subject: 2,
+                            ),
+                            type: PageTransitionType.bottomToTop,
+                            duration: const Duration(milliseconds: 300),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color.fromARGB(255, 255, 194, 38),
+                        backgroundColor: const Color.fromARGB(255, 255, 194, 38),
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(0),
@@ -271,7 +338,20 @@ class _LevelTileState extends State<LevelTile> {
                   ),
                   Expanded(
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          PageTransition(
+                            child: QuizPage(
+                              country: country,
+                              difficulty: 3,
+                              subject: 2,
+                            ),
+                            type: PageTransitionType.bottomToTop,
+                            duration: const Duration(milliseconds: 300),
+                          ),
+                        );
+                      },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 55, 55),
                         shape: const RoundedRectangleBorder(

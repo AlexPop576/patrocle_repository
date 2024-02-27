@@ -29,25 +29,27 @@ class _LevelsState extends State<Levels> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 23, 24, 31),
-      body: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(child: Text("Levels")),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  color = 0;
-                  color = (index + 1) % 3;
-                  return LevelTile(
-                    country: countryListDB[index].name,
-                    colorIndex: color,
-                  );
-                },
-                childCount: countryListDB.length,
+      backgroundColor: Theme.of(context).colorScheme.background,
+      body: SafeArea(
+        child: CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              const SliverToBoxAdapter(child: Text("Levels")),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                    color = 0;
+                    color = (index + 1) % 3;
+                    return LevelTile(
+                      country: countryListDB[index].name,
+                      colorIndex: color,
+                    );
+                  },
+                  childCount: countryListDB.length,
+                ),
               ),
-            ),
-          ]
+            ]
+        ),
       ),
     );
   }

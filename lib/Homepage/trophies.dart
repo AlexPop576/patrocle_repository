@@ -11,6 +11,7 @@ class _TrophiesState extends State<Trophies> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Text("Trophies"),
     );
   }

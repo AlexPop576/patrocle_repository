@@ -36,7 +36,7 @@ class _TestState extends State<Test> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 23, 24, 31),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: SingleChildScrollView(
             child: Column(
@@ -83,11 +83,9 @@ class _TestState extends State<Test> {
                   return ListTile(
                     leading: Text(
                       '${country.id}',
-                      style: const TextStyle(color: Colors.white),
                     ),
                     title: Text(
                       country.name,
-                      style: const TextStyle(color: Colors.white),
                     ),
                     trailing: IconButton(
                         onPressed: () async {
