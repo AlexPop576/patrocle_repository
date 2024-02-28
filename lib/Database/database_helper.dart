@@ -16,12 +16,12 @@ class DatabaseHelper {
       db.execute(
           ' CREATE TABLE countries (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255))');
     });
-    _geographyCompletedDB =
-        await openDatabase('database.geographyCompletedDB', version: 1, onCreate: (geographyCompletedDB, version) {
-      geographyCompletedDB.execute(
-          ' CREATE TABLE geographyCompleted (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255))'
-      );
-    });
+    // _geographyCompletedDB =
+    //     await openDatabase('database.geographyCompletedDB', version: 1, onCreate: (geographyCompletedDB, version) {
+    //   geographyCompletedDB.execute(
+    //       ' CREATE TABLE geographyCompleted (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255))'
+    //   );
+    // });
   }
 
   Future<void> clearTableAndResetId() async {

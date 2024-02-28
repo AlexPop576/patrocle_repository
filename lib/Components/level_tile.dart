@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Quizpage/quizpage.dart';
 
+// ignore: must_be_immutable
 class LevelTile extends StatefulWidget {
   LevelTile({super.key, required this.colorIndex, required this.country});
   int? colorIndex;
@@ -9,6 +10,7 @@ class LevelTile extends StatefulWidget {
 
   @override
   State<LevelTile> createState() =>
+      // ignore: no_logic_in_create_state
       _LevelTileState(colorIndex: colorIndex, country: country);
 }
 
@@ -47,11 +49,14 @@ class _LevelTileState extends State<LevelTile> {
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Column(
                         children: [
+                          const SizedBox(
+                            height: 10,
+                          ),
                           ClipRRect(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(15)),
                               child: Image.asset(
-                                'assets/flags/Romania.png',
+                                'assets/flags/$country.png',
                                 height: 100,
                               )),
                           const SizedBox(
