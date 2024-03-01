@@ -5,23 +5,23 @@ class DatabaseHelper {
   DatabaseHelper._internal();
   static DatabaseHelper get instance =>
       _databaseHelper ??= DatabaseHelper._internal();
-  Database? _db, _quizDB, _geographyCompletedDB, _historyCompletedDB;
+  Database? _db, _quizDB, _geographyCompletedDB, _historyCompletedDB, _trophies;
   Database get db => _db!;
   Database get quizDB => _quizDB!;
   Database get geographyCompletedDB => _geographyCompletedDB!;
   Database get historyCompletedDB => _historyCompletedDB!;
+  Database get trophies => _trophies!;
   Future<void> init() async {
     _db =
         await openDatabase('database.db', version: 1, onCreate: (db, version) {
       db.execute(
           ' CREATE TABLE countries (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255))');
     });
-    // _geographyCompletedDB =
-    //     await openDatabase('database.geographyCompletedDB', version: 1, onCreate: (geographyCompletedDB, version) {
-    //   geographyCompletedDB.execute(
-    //       ' CREATE TABLE geographyCompleted (id INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255))'
-    //   );
-    // });
+    _trophies =
+        await openDatabase('database_trophies.db', version: 1, onCreate: (trophies, version) {
+      trophies.execute(
+          ' CREATE TABLE trophies (id INTEGER PRIMARY KEY AUTOINCREMENT, index INT)');
+    });
   }
 
   Future<void> clearTableAndResetId() async {

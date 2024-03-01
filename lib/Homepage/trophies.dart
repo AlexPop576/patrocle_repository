@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
+import 'package:patrocle/Database/trophy_crud.dart';
+import 'package:patrocle/Database/trophy_model.dart';
 
 class Trophies extends StatefulWidget {
   const Trophies({super.key});
@@ -10,7 +12,18 @@ class Trophies extends StatefulWidget {
 }
 
 class _TrophiesState extends State<Trophies> {
-  List<int> trophyList = [1, 2, 3, 4, 5, 6, 7, 8];
+  List<TrophyModel> trophyListDB = [];
+  final crud = TrophyCrud();
+
+  @override
+  void initState() {
+    super.initState();
+    crud.readAll().then((value) {
+      setState(() {
+        trophyListDB = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,12 +82,12 @@ class _TrophiesState extends State<Trophies> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TrophyTile(
-                      trophy: newIndex < trophyList.length
-                          ? trophyList[newIndex]
+                      trophy: newIndex < trophyListDB.length
+                          ? trophyListDB[newIndex].index
                           : 9),
                   TrophyTile(
-                      trophy: newIndex + 1 < trophyList.length
-                          ? trophyList[newIndex + 1]
+                      trophy: newIndex + 1 < trophyListDB.length
+                          ? trophyListDB[newIndex + 1].index
                           : 9),
                 ],
               );

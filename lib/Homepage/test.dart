@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:patrocle/Database/country_crud.dart';
+import 'package:patrocle/Database/trophy_crud.dart';
+import 'package:patrocle/Database/trophy_model.dart';
 import '../Database/country_model.dart';
 import '../Database/database_helper.dart';
 
@@ -12,16 +14,23 @@ class Test extends StatefulWidget {
 
 class _TestState extends State<Test> {
   final controllerName = TextEditingController();
-  final controllerID = TextEditingController();
+  final controllerIndex = TextEditingController();
   List<CountryModel> countryListDB = [];
-  final crud = CountryCrud();
+  List<TrophyModel> trophyListDB = [];
+  final crudCountry = CountryCrud();
+  final crudTrophy = TrophyCrud();
 
   @override
   void initState() {
     super.initState();
-    crud.readAll().then((value) {
+    crudCountry.readAll().then((value) {
       setState(() {
         countryListDB = value;
+      });
+    });
+    crudTrophy.readAll().then((value) {
+      setState(() {
+        trophyListDB = value;
       });
     });
   }
@@ -29,7 +38,7 @@ class _TestState extends State<Test> {
   @override
   void dispose() {
     controllerName.dispose();
-    controllerID.dispose();
+    controllerIndex.dispose();
     super.dispose();
   }
 
@@ -54,7 +63,7 @@ class _TestState extends State<Test> {
                       onPressed: () async {
                         final name = controllerName.text;
                         CountryModel country = CountryModel(name: name);
-                        final id = await crud.insert(country);
+                        final id = await crudCountry.insert(country);
                         country = country.copyWith(id: id);
                         controllerName.clear();
                         setState(() {
@@ -62,15 +71,15 @@ class _TestState extends State<Test> {
                         });
                       },
                       child: const Text('Create Country')),
-                      ElevatedButton(
-                        onPressed: () async {
-                          await DatabaseHelper.instance.clearTableAndResetId();
-                          setState(() {
-                            countryListDB.clear();
-                          });
-                        },
-                        child: Text('Delete All'),
-                      )
+                  ElevatedButton(
+                    onPressed: () async {
+                      await DatabaseHelper.instance.clearTableAndResetId();
+                      setState(() {
+                        countryListDB.clear();
+                      });
+                    },
+                    child: Text('Delete All'),
+                  )
                 ],
               ),
             ),
@@ -89,9 +98,9 @@ class _TestState extends State<Test> {
                     ),
                     trailing: IconButton(
                         onPressed: () async {
-                          await crud.delete(country);
-                          if(country.id== countryListDB.last.id){
-                            await DatabaseHelper.instance.decreaseMaxId(); 
+                          await crudCountry.delete(country);
+                          if (country.id == countryListDB.last.id) {
+                            await DatabaseHelper.instance.decreaseMaxId();
                           }
                           setState(() {
                             countryListDB.removeWhere(
@@ -103,7 +112,70 @@ class _TestState extends State<Test> {
                           color: Colors.red,
                         )),
                   );
-                })
+                }),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    controller: controllerIndex,
+                    style: TextStyle(color: Colors.white),
+                  )),
+                  ElevatedButton(
+                      onPressed: () async {
+                        final index = int.parse(controllerIndex.text);
+                        TrophyModel trophy = TrophyModel(index: index);
+                        final id = await crudTrophy.insert(trophy);
+                        trophy = trophy.copyWith(id: id);
+                        controllerIndex.clear();
+                        setState(() {
+                          trophyListDB.add(trophy);
+                        });
+                      },
+                      child: const Text('Add trophy')),
+                  ElevatedButton(
+                    onPressed: () async {
+                      await DatabaseHelper.instance.clearTableAndResetId();
+                      setState(() {
+                        countryListDB.clear();
+                      });
+                    },
+                    child: Text('Delete All'),
+                  ),
+                ],
+              ),
+            ),
+            ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                itemCount: trophyListDB.length,
+                itemBuilder: (ctx, index) {
+                  final trophy = trophyListDB[index];
+                  return ListTile(
+                    leading: Text(
+                      '${trophy.id}',
+                    ),
+                    title: Text(
+                      trophy.index.toString(),
+                    ),
+                    trailing: IconButton(
+                        onPressed: () async {
+                          await crudTrophy.delete(trophy);
+                          if (trophy.index == trophyListDB.last.id) {
+                            await DatabaseHelper.instance.decreaseMaxId();
+                          }
+                          setState(() {
+                            trophyListDB.removeWhere(
+                                (element) => element.id == trophy.id);
+                          });
+                        },
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        )),
+                  );
+                }),
           ],
         )),
       ),
