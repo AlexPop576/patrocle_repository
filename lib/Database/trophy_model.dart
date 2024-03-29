@@ -7,8 +7,11 @@ class TrophyModel{
   factory TrophyModel.fromMap(Map<String, dynamic> map){
     return TrophyModel(index: map['index'], id: map['id']);
   }
-  Map<String, dynamic> toMap()=>{
-    'id': id,
-    'index': index,
-  };
+  Map<String, dynamic> toMap() {
+  final map = {'index': index};
+  if (id != -1) {
+    map['id'] = id;
+  }
+  return map;
+}
 }

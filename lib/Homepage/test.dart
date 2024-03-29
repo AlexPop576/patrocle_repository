@@ -73,7 +73,7 @@ class _TestState extends State<Test> {
                       child: const Text('Create Country')),
                   ElevatedButton(
                     onPressed: () async {
-                      await DatabaseHelper.instance.clearTableAndResetId();
+                      await DatabaseHelper.instance.clearTableAndResetId('country');
                       setState(() {
                         countryListDB.clear();
                       });
@@ -100,7 +100,7 @@ class _TestState extends State<Test> {
                         onPressed: () async {
                           await crudCountry.delete(country);
                           if (country.id == countryListDB.last.id) {
-                            await DatabaseHelper.instance.decreaseMaxId();
+                            await DatabaseHelper.instance.decreaseMaxId('country');
                           }
                           setState(() {
                             countryListDB.removeWhere(
@@ -123,7 +123,8 @@ class _TestState extends State<Test> {
                     style: TextStyle(color: Colors.white),
                   )),
                   ElevatedButton(
-                      onPressed: () async {
+                    onPressed: () async {
+                      try {
                         final index = int.parse(controllerIndex.text);
                         TrophyModel trophy = TrophyModel(index: index);
                         final id = await crudTrophy.insert(trophy);
@@ -132,11 +133,15 @@ class _TestState extends State<Test> {
                         setState(() {
                           trophyListDB.add(trophy);
                         });
-                      },
-                      child: const Text('Add trophy')),
+                      } catch (e) {
+                        print('Failed to add trophy: $e');
+                      }
+                    },
+                    child: const Text('Add trophy'),
+                  ),
                   ElevatedButton(
                     onPressed: () async {
-                      await DatabaseHelper.instance.clearTableAndResetId();
+                      await DatabaseHelper.instance.clearTableAndResetId('trophies');
                       setState(() {
                         countryListDB.clear();
                       });
@@ -163,7 +168,7 @@ class _TestState extends State<Test> {
                         onPressed: () async {
                           await crudTrophy.delete(trophy);
                           if (trophy.index == trophyListDB.last.id) {
-                            await DatabaseHelper.instance.decreaseMaxId();
+                            await DatabaseHelper.instance.decreaseMaxId('trophies');
                           }
                           setState(() {
                             trophyListDB.removeWhere(
