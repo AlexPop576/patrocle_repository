@@ -3,8 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'dart:io' show Platform;
-
+import 'dart:io';//show Platform;
+import 'package:path/path.dart';
 import 'Database/database_helper.dart';
 import 'Homepage/homepage.dart';
 import 'Theme/theme_provider.dart';
@@ -15,9 +15,12 @@ void main() async {
   if (!kIsWeb && (Platform.isMacOS || Platform.isWindows || Platform.isLinux)) {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
-  }  //asta e pentru baza de date
+  }
 
-  await DatabaseHelper.instance.init();
+
+  // Initialize the database
+  //await DatabaseHelper.instance._initDatabase();
+  
   runApp(ChangeNotifierProvider(create: (context) => ThemeProvider(),
   child: const MyApp(),
   ));
