@@ -9,9 +9,9 @@ class Test extends StatefulWidget {
 }
 
 class _TestState extends State<Test> {
+  final _dbHelper = DatabaseHelper.instance;
   final _controller = TextEditingController();
   final _controllerLessonHistory = TextEditingController();
-  final _dbHelper = DatabaseHelper.instance;
   final _controllerLessonGeography = TextEditingController();
   @override
   Widget build(BuildContext context) {

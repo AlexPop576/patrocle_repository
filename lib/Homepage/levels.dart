@@ -180,7 +180,7 @@ class _LevelsState extends State<Levels> {
                                     type: PageTransitionType.bottomToTop,
                                     duration: const Duration(milliseconds: 400),
                                   ),
-                                );
+                                ).then((_) => setState(() {}));
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor:
