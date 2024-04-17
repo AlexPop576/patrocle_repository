@@ -463,7 +463,7 @@ class _AddTestState extends State<AddTest> {
                     child: ElevatedButton(
                       onPressed: () async {
                         Navigator.pop(context);
-                        int i = await _dbHelper.insert(_controllerName.text, _controllerLessonGeography.text, _controllerLessonHistory.text);
+                        int i = await _dbHelper.insertCountry(_controllerName.text, _controllerLessonGeography.text, _controllerLessonHistory.text);
                         setState(() {
                           textus = _controllerGEQ1.text;
                           _controllerName.clear();

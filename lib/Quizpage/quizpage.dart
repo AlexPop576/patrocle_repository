@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Database/database_helper.dart';
+import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
+
+import 'testpage.dart';
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
@@ -32,7 +35,7 @@ class _QuizPageState extends State<QuizPage> {
       required this.lesson});
   String? country, lesson;
   int? difficulty, subject;
-  int pageIndex = 0, givenAnswer = 0, correctAnswers = 0;
+  int pageIndex = 0, givenAnswer = -1, correctAnswers = 0;
   final _dbHelper = DatabaseHelper.instance;
 
   void correct() {
@@ -44,6 +47,12 @@ class _QuizPageState extends State<QuizPage> {
   void wrong() {
     setState(() {
       sections.add(section(Colors.red));
+    });
+  }
+
+  getAnswer(int answer) {
+    setState(() {
+      givenAnswer = answer;
     });
   }
 
@@ -207,8 +216,9 @@ class _QuizPageState extends State<QuizPage> {
           fillColor: Theme.of(context).colorScheme.background,
           child: child,
         ),
-        child: pageIndex == 0 ? Lesson(lesson: lesson) : Lesson(lesson: lesson),
-      ),
+        child: pageIndex == 0 ? Lesson(lesson: lesson) : 
+        pageIndex != 11 ? TestPage(getAnswerFunction: getAnswer, selected: 1, questionText: "Intrebarea $pageIndex", givenAnswer: 0,) :
+        TestPage(getAnswerFunction: getAnswer, selected: 1, givenAnswer: 0,)),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(

@@ -3,9 +3,10 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 13;
+  static final _databaseVersion = 14;
 
   static final table = 'country';
+  static final tableTrophy = 'trophies';
   static final columnLesson = 'lesson';
   static final columnId = '_id';
   static final columnName = 'name';
@@ -13,6 +14,8 @@ class DatabaseHelper {
   static final columnLessonHistory = 'lesson_history';
   static final columnGeographyCompleted = 'geography_completed';
   static final columnHistoryCompleted = 'history_completed';
+  static final columnTrophyId = '_trophy_id';
+  static final columnTrophy = 'trophy';
   // make this a singleton class
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();
@@ -53,25 +56,31 @@ class DatabaseHelper {
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
-          // Create a new table with the new schema
           await db.execute('''
-      CREATE TABLE new_table (
-        $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-        $columnName TEXT NOT NULL,
-        $columnLessonGeography TEXT,
-        $columnLessonHistory TEXT,
-        $columnGeographyCompleted INTEGER,
-        $columnHistoryCompleted INTEGER,
-        questionsGeographyEasy TEXT,
-        questionsGeographyHard TEXT,
-        questionsHistoryEasy TEXT,
-        questionsHistoryHard TEXT,
-        answersGeographyEasy TEXT,
-        answersGeographyHard TEXT,
-        answersHistoryEasy TEXT,
-        answersHistoryHard TEXT
-      )
-    ''');
+            CREATE TABLE trophies (
+              $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
+              $columnTrophy INTEGER
+            )''');
+
+          // Create a new table with the new schema
+          /*await db.execute('''
+          CREATE TABLE new_table (
+            $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+            $columnName TEXT NOT NULL,
+            $columnLessonGeography TEXT,
+            $columnLessonHistory TEXT,
+            $columnGeographyCompleted INTEGER,
+            $columnHistoryCompleted INTEGER,
+            questionsGeographyEasy TEXT,
+            questionsGeographyHard TEXT,
+            questionsHistoryEasy TEXT,
+            questionsHistoryHard TEXT,
+            answersGeographyEasy TEXT,
+            answersGeographyHard TEXT,
+            answersHistoryEasy TEXT,
+            answersHistoryHard TEXT
+          )
+        ''');
 
           // Copy the data from the old table to the new one
 
@@ -81,20 +90,28 @@ class DatabaseHelper {
 
           // Rename the new table to the old one's name
           await db.execute('ALTER TABLE new_table RENAME TO $table');
+          */
         }
       },
     );
   }
 
-  // Helper methods
-
-  Future<int> insert(
+  Future<int> insertCountry(
       String countryName, String lessonGeography, String lessonHistory) async {
     Database db = await database;
     return await db.insert(table, {
       'name': countryName,
       'lesson_geography': lessonGeography,
-      'lesson_history': lessonHistory
+      'lesson_history': lessonHistory,
+      'geography_completed' : 0,
+      'history_completed': 0,
+    });
+  }
+
+  Future<int> insertTrophy(int trophy) async {
+    Database db = await database;
+    return await db.insert(tableTrophy, {
+      'trophy': trophy
     });
   }
 
@@ -103,9 +120,19 @@ class DatabaseHelper {
     return await db.query(table, orderBy: '$columnId ASC');
   }
 
-  Future<int> delete(int id) async {
+  Future<List<Map<String, dynamic>>> queryTrophies() async {
+    Database db = await instance.database;
+    return await db.query(tableTrophy, orderBy: '$columnTrophyId ASC');
+  }
+
+  Future<int> deleteCountry(int id) async {
     Database db = await instance.database;
     return await db.delete(table, where: '$columnId = ?', whereArgs: [id]);
+  }
+
+  Future<int> deleteTrophy(int id) async {
+    Database db = await instance.database;
+    return await db.delete(tableTrophy, where: '$columnTrophyId = ?', whereArgs: [id]);
   }
 
   Future<void> clearTableAndResetId(String tableName) async {

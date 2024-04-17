@@ -81,7 +81,7 @@ class TrophyTile extends StatelessWidget {
                   "assets/trophies/${name[trophy]}.png",
                 )),
             const SizedBox(height: 18),
-            Text(name[trophy] ?? "Trophy",
+            Text("${name[trophy]}" ?? "Trophy",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: MediaQuery.of(context).size.width * 0.054 < 25

@@ -13,6 +13,7 @@ class _TestState extends State<Test> {
   final _controller = TextEditingController();
   final _controllerLessonHistory = TextEditingController();
   final _controllerLessonGeography = TextEditingController();
+  final _controllerTrophy = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,7 +41,7 @@ class _TestState extends State<Test> {
             ElevatedButton(
             child: Text('Insert'),
             onPressed: () async {
-              int i = await _dbHelper.insert(_controller.text, _controllerLessonGeography.text, _controllerLessonHistory.text);
+              int i = await _dbHelper.insertCountry(_controller.text, _controllerLessonGeography.text, _controllerLessonHistory.text);
               print('inserted row: $i');
               setState(() {_controller.clear();});
             },
@@ -54,11 +55,51 @@ class _TestState extends State<Test> {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 return ListTile(
-                                  title: Text('${snapshot.data![index]['_id']}: ${snapshot.data![index]['name']} - ${snapshot.data![index]['lesson_geography']} - ${snapshot.data![index]['lesson_history']}'),
+                                  title: Text('${snapshot.data![index]['_id']}: ${snapshot.data![index]['name']} - ${snapshot.data![index]['lesson_geography']} - ${snapshot.data![index]['lesson_history']} =  ${snapshot.data![index]['geography_completed']}-${snapshot.data![index]['history_completed']}'),
                                   trailing: IconButton(
                                     icon: Icon(Icons.delete),
                                     onPressed: () async {
-                                      int i = await _dbHelper.delete(snapshot.data![index]['_id']);
+                                      int i = await _dbHelper.deleteCountry(snapshot.data![index]['_id']);
+                                      print('deleted row: $i');
+                                      setState(() {});
+                                    },
+                                  ),
+                                );
+                              },
+                            );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return CircularProgressIndicator();
+              },
+            ),
+          ),
+          TextField(
+                  controller: _controllerTrophy,
+                  decoration: InputDecoration(hintText: 'Enter trophy'),
+                ),
+          ElevatedButton(
+            child: Text('Insert'),
+            onPressed: () async {
+              int i = await _dbHelper.insertTrophy(int.parse(_controllerTrophy.text));
+              print('inserted row: $i');
+              setState(() {_controllerTrophy.clear();});
+            },
+          ),
+          Expanded(
+            child: FutureBuilder<List<Map<String, dynamic>>>(
+              future: _dbHelper.queryTrophies(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text('${snapshot.data![index]['_trophy_id']}: ${snapshot.data![index]['trophy']}'),
+                                  trailing: IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () async {
+                                      int i = await _dbHelper.deleteTrophy(snapshot.data![index]['_trophy_id']);
                                       print('deleted row: $i');
                                       setState(() {});
                                     },
