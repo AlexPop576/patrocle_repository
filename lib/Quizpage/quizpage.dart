@@ -5,7 +5,8 @@ import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
 
-import 'testpage.dart';
+import 'testpage1.dart';
+import 'testpage2.dart';
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
@@ -35,7 +36,7 @@ class _QuizPageState extends State<QuizPage> {
       required this.lesson});
   String? country, lesson;
   int? difficulty, subject;
-  int pageIndex = 0, givenAnswer = -1, correctAnswers = 0;
+  int pageIndex = 0, givenAnswer = -1, correctAnswers = 0, bonus = 0;
   final _dbHelper = DatabaseHelper.instance;
 
   void correct() {
@@ -132,9 +133,9 @@ class _QuizPageState extends State<QuizPage> {
                                           ),
                                         ),
                                       ),
-                                      child: Center(
+                                      child: const Center(
                                           child: Text("Continue",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -160,9 +161,9 @@ class _QuizPageState extends State<QuizPage> {
                                           ),
                                         ),
                                       ),
-                                      child: Center(
+                                      child: const Center(
                                           child: Text("Quit",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -193,7 +194,7 @@ class _QuizPageState extends State<QuizPage> {
                             children: [
                               ...sections,
                               Expanded(
-                                flex: 11 - pageIndex!,
+                                flex: 11 - pageIndex! - bonus!,
                                 child: Container(
                                   height: 20,
                                   color: Colors.white,
@@ -207,18 +208,32 @@ class _QuizPageState extends State<QuizPage> {
             )
           : null,
       body: PageTransitionSwitcher(
-        duration: const Duration(seconds: 1),
-        transitionBuilder: (child, animation, secondaryAnimation) =>
-            SharedAxisTransition(
-          animation: animation,
-          secondaryAnimation: secondaryAnimation,
-          transitionType: SharedAxisTransitionType.horizontal,
-          fillColor: Theme.of(context).colorScheme.background,
-          child: child,
-        ),
-        child: pageIndex == 0 ? Lesson(lesson: lesson) : 
-        pageIndex != 11 ? TestPage(getAnswerFunction: getAnswer, selected: 1, questionText: "Intrebarea $pageIndex", givenAnswer: 0,) :
-        TestPage(getAnswerFunction: getAnswer, selected: 1, givenAnswer: 0,)),
+          duration: const Duration(seconds: 1),
+          transitionBuilder: (child, animation, secondaryAnimation) =>
+              SharedAxisTransition(
+                animation: animation,
+                secondaryAnimation: secondaryAnimation,
+                transitionType: SharedAxisTransitionType.horizontal,
+                fillColor: Theme.of(context).colorScheme.background,
+                child: child,
+              ),
+          child: pageIndex == 0
+              ? Lesson(lesson: lesson)
+              : pageIndex != 11 && pageIndex % 2 == 0
+                  ? TestPage1(
+                      getAnswerFunction: getAnswer,
+                      selected: 0,
+                      questionText: "Intrebarea $pageIndex",
+                      givenAnswer: 0,
+                    )
+                  : pageIndex != 11 && pageIndex % 2 == 1
+                      ? TestPage2(
+                          getAnswerFunction: getAnswer,
+                          selected: 0,
+                          questionText: "Intrebarea $pageIndex",
+                          givenAnswer: 0,
+                        )
+                      : FinishPage(correctAnswers: correctAnswers)),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -239,9 +254,11 @@ class _QuizPageState extends State<QuizPage> {
                     onPressed: () async {
                       if (givenAnswer != 0 && pageIndex != 11) {
                         if (pageIndex > 0 && pageIndex < 11) {
-                          if (//answersQuiz[country]?[subject]?[pageIndex - 1] ==
-                              1 ==
-                              givenAnswer) {
+                          setState((){
+                              bonus = 1;
+                            });
+                          if ( //answersQuiz[country]?[subject]?[pageIndex - 1] ==
+                              1 == givenAnswer) {
                             correct();
                             correctAnswers++;
                             showModalBottomSheet(
@@ -282,7 +299,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 const SizedBox(width: 15),
                                                 Text(
-                                                      "Well done!",
+                                                  "Well done!",
                                                   style: const TextStyle(
                                                     color: Colors.green,
                                                     fontWeight: FontWeight.bold,
@@ -302,6 +319,7 @@ class _QuizPageState extends State<QuizPage> {
                                                     if (pageIndex < 11) {
                                                       pageIndex++;
                                                       givenAnswer = 0;
+                                                      bonus = 0;
                                                     }
                                                   });
                                                 },
@@ -317,7 +335,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 child: Center(
                                                   child: Text(
-                                                        "Continue",
+                                                    "Continue",
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
@@ -378,7 +396,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 const SizedBox(width: 15),
                                                 Text(
-                                                      "Wrong!",
+                                                  "Wrong!",
                                                   style: const TextStyle(
                                                     color: Colors.red,
                                                     fontWeight: FontWeight.bold,
@@ -412,6 +430,7 @@ class _QuizPageState extends State<QuizPage> {
                                                     if (pageIndex < 11) {
                                                       pageIndex++;
                                                       givenAnswer = 0;
+                                                      bonus = 0;
                                                     }
                                                   });
                                                 },
@@ -427,7 +446,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 child: Center(
                                                   child: Text(
-                                                        "Continue",
+                                                    "Continue",
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
@@ -454,6 +473,7 @@ class _QuizPageState extends State<QuizPage> {
                           if (pageIndex < 1) {
                             pageIndex++;
                             givenAnswer = 0;
+                            bonus = 0;
                           }
                         });
                       } else if (pageIndex == 11) {
@@ -486,6 +506,243 @@ class _QuizPageState extends State<QuizPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class FinishPage extends StatelessWidget {
+  FinishPage({
+    super.key,
+    required this.correctAnswers,
+  });
+
+  final int correctAnswers;
+  int? selectedLanguage;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 17),
+        child: Column(children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.07,
+          ),
+          SizedBox(
+              height: 220,
+              child: Lottie.asset(
+                  'assets/patrocle.json',
+                  frameRate: FrameRate.max,
+                  fit: BoxFit.contain)),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.06,
+          ),
+          correctAnswers == 0 || correctAnswers == 1 || correctAnswers == 2
+              ? Text(
+                  "Try again",
+                  style: const TextStyle(
+                    fontSize: 45,
+                    fontWeight: FontWeight.w900,
+                    color: Color.fromARGB(255, 219, 64, 64),
+                  ),
+                )
+              : correctAnswers == 3 || correctAnswers == 4
+                  ? Text(
+                      "Almost there!",
+                      style: const TextStyle(
+                        fontSize: 45,
+                        fontWeight: FontWeight.w900,
+                        color: Color.fromARGB(255, 219, 121, 64),
+                      ),
+                    )
+                  : correctAnswers == 5 || correctAnswers == 6
+                      ? Text(
+                          "Good job!",
+                          style: const TextStyle(
+                            fontSize: 45,
+                            fontWeight: FontWeight.w900,
+                            color: Color.fromARGB(255, 216, 219, 64),
+                          ),
+                        )
+                      : correctAnswers == 7 || correctAnswers == 8
+                          ? Text(
+                              "Fantastic!",
+                              style: const TextStyle(
+                                fontSize: 45,
+                                fontWeight: FontWeight.w900,
+                                color: Color.fromARGB(255, 196, 219, 64),
+                              ),
+                            )
+                          : correctAnswers == 9
+                              ? Text(
+                                  "Almost perfect!",
+                                  style: const TextStyle(
+                                    fontSize: 45,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color.fromARGB(255, 131, 219, 64),
+                                  ),
+                                )
+                              : Text(
+                                  "Perfect!",
+                                  style: const TextStyle(
+                                    fontSize: 45,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color.fromARGB(255, 77, 219, 64),
+                                  ),
+                                ),
+          const SizedBox(
+            height: 10,
+          ),
+          Text(
+            correctAnswers != 1
+                ? "You`ve got $correctAnswers correct answers!"
+                : "You`ve got 1 correct answer!",
+            style: const TextStyle(fontSize: 23),
+          ),
+          const SizedBox(
+            height: 50,
+          ),
+          Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: SizedBox(
+                  height: 100,
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 8.3, 0),
+                    //padding: const EdgeInsets.all(2.8),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      color: Color.fromARGB(255, 102, 102, 255),
+                    ),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text("TOTAL IQ",
+                              style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 17)),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Container(
+                                height: 64,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                ),
+                                child: Center(
+                                    child: Text(
+                                  "+${correctAnswers * 10} IQ",
+                                  style: const TextStyle(
+                                      color: Color.fromARGB(255, 102, 102, 255),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 27),
+                                ))),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: SizedBox(
+                  height: 100,
+                  child: Container(
+                    margin: const EdgeInsets.fromLTRB(8.3, 0, 0, 0),
+                    //padding: const EdgeInsets.all(2.8),
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(15)),
+                      color: correctAnswers == 0 ||
+                              correctAnswers == 1 ||
+                              correctAnswers == 2
+                          ? const Color.fromARGB(255, 219, 64, 64)
+                          : correctAnswers == 3 || correctAnswers == 4
+                              ? const Color.fromARGB(255, 219, 121, 64)
+                              : correctAnswers == 5 || correctAnswers == 6
+                                  ? const Color.fromARGB(255, 216, 219, 64)
+                                  : correctAnswers == 7 || correctAnswers == 8
+                                      ? const Color.fromARGB(255, 196, 219, 64)
+                                      : correctAnswers == 9
+                                          ? const Color.fromARGB(
+                                              255, 131, 219, 64)
+                                          : const Color.fromARGB(
+                                              255, 77, 219, 64),
+                    ),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          Text("SCORE",
+                              style: TextStyle(
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 17)),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Container(
+                                height: 64,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  color:
+                                      Theme.of(context).colorScheme.background,
+                                ),
+                                child: Center(
+                                    child: Text(
+                                  "$correctAnswers/10",
+                                  style: TextStyle(
+                                      color: correctAnswers == 0 ||
+                                              correctAnswers == 1 ||
+                                              correctAnswers == 2
+                                          ? const Color.fromARGB(
+                                              255, 219, 64, 64)
+                                          : correctAnswers == 3 ||
+                                                  correctAnswers == 4
+                                              ? const Color.fromARGB(
+                                                  255, 219, 121, 64)
+                                              : correctAnswers == 5 ||
+                                                      correctAnswers == 6
+                                                  ? const Color.fromARGB(
+                                                      255, 216, 219, 64)
+                                                  : correctAnswers == 7 ||
+                                                          correctAnswers == 8
+                                                      ? const Color.fromARGB(
+                                                          255, 196, 219, 64)
+                                                      : correctAnswers == 9
+                                                          ? const Color
+                                                              .fromARGB(
+                                                              255, 131, 219, 64)
+                                                          : const Color
+                                                              .fromARGB(
+                                                              255, 77, 219, 64),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 27),
+                                ))),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ]),
       ),
     );
   }

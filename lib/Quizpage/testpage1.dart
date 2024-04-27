@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
-class TestPage extends StatefulWidget {
+class TestPage1 extends StatefulWidget {
   final Function getAnswerFunction;
   int? selected = 0, givenAnswer;
   String? questionText, answer1, answer2, answer3, answer4;
-  TestPage(
+  TestPage1(
       {super.key,
       required this.getAnswerFunction,
       this.selected,
@@ -19,7 +19,7 @@ class TestPage extends StatefulWidget {
 
   @override
   // ignore: no_logic_in_create_state
-  State<TestPage> createState() => _TestPageState(
+  State<TestPage1> createState() => _TestPage1State(
       getAnswerFunction: getAnswerFunction,
       selected: selected,
       questionText: questionText,
@@ -30,12 +30,12 @@ class TestPage extends StatefulWidget {
       givenAnswer: givenAnswer);
 }
 
-class _TestPageState extends State<TestPage> {
+class _TestPage1State extends State<TestPage1> {
   int? questionAnswer = 1, selected, givenAnswer;
   String? questionText, answer1, answer2, answer3, answer4;
   final Function getAnswerFunction;
 
-  _TestPageState(
+  _TestPage1State(
       {required this.getAnswerFunction,
       this.selected,
       this.questionText,
@@ -44,15 +44,6 @@ class _TestPageState extends State<TestPage> {
       this.answer3,
       this.answer4,
       this.givenAnswer});
-
-      @override
-      void initState() {
-        super.initState();
-        setState(() {
-          
-        });
-        initState();
-      }
 
   @override
   Widget build(BuildContext context) {
@@ -70,8 +61,8 @@ class _TestPageState extends State<TestPage> {
                   Row(
                     children: [
                       const SizedBox(width: 12),
-                      Lottie.network(
-                          'https://lottie.host/491f2840-4c44-425a-924e-4fbc86237dfc/s8x6EccXsD.json',
+                      Lottie.asset(
+                          'assets/patrocle.json',
                           frameRate: FrameRate.max,
                           height: 100),
                       const SizedBox(width: 20),
@@ -88,14 +79,15 @@ class _TestPageState extends State<TestPage> {
                   ),
                   const SizedBox(height: 12),
                   Divider(
-                      color: Theme.of(context).colorScheme.primary, thickness: 3),
+                      color: Theme.of(context).colorScheme.primary,
+                      thickness: 3),
                   const SizedBox(height: 24),
                   Column(children: [
                     SizedBox(
-                      
                       width: double.infinity,
                       child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(15)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
@@ -107,26 +99,28 @@ class _TestPageState extends State<TestPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            backgroundColor: Theme.of(context).colorScheme.primary,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
                             side: selected == 1
                                 ? const BorderSide(
                                     color: Color.fromARGB(255, 102, 102, 255),
                                     width: 3)
                                 : BorderSide(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     width: 3),
                           ),
                           child: Center(
                               child: Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(answer1.toString(),
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30)),
-                                ),
-                              )),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Text(answer1.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30)),
+                            ),
+                          )),
                         ),
                       ),
                     ),
@@ -134,10 +128,10 @@ class _TestPageState extends State<TestPage> {
                       height: 12,
                     ),
                     SizedBox(
-                      
                       width: double.infinity,
                       child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(15)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
@@ -149,26 +143,28 @@ class _TestPageState extends State<TestPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            backgroundColor: Theme.of(context).colorScheme.primary,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
                             side: selected == 2
                                 ? const BorderSide(
                                     color: Color.fromARGB(255, 102, 102, 255),
                                     width: 3)
                                 : BorderSide(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     width: 3),
                           ),
                           child: Center(
                               child: Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(answer2.toString(),
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30)),
-                                ),
-                              )),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Text(answer2.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30)),
+                            ),
+                          )),
                         ),
                       ),
                     ),
@@ -176,10 +172,10 @@ class _TestPageState extends State<TestPage> {
                       height: 12,
                     ),
                     SizedBox(
-                      
                       width: double.infinity,
                       child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(15)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
@@ -191,26 +187,28 @@ class _TestPageState extends State<TestPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            backgroundColor: Theme.of(context).colorScheme.primary,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
                             side: selected == 3
                                 ? const BorderSide(
                                     color: Color.fromARGB(255, 102, 102, 255),
                                     width: 3)
                                 : BorderSide(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     width: 3),
                           ),
                           child: Center(
                               child: Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(answer3.toString(),
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30)),
-                                ),
-                              )),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Text(answer3.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30)),
+                            ),
+                          )),
                         ),
                       ),
                     ),
@@ -220,7 +218,8 @@ class _TestPageState extends State<TestPage> {
                     SizedBox(
                       width: double.infinity,
                       child: ClipRRect(
-                        borderRadius: const BorderRadius.all(Radius.circular(15)),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(15)),
                         child: ElevatedButton(
                           onPressed: () {
                             setState(() {
@@ -232,26 +231,28 @@ class _TestPageState extends State<TestPage> {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            backgroundColor: Theme.of(context).colorScheme.primary,
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
                             side: selected == 4
                                 ? const BorderSide(
                                     color: Color.fromARGB(255, 102, 102, 255),
                                     width: 3)
                                 : BorderSide(
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color:
+                                        Theme.of(context).colorScheme.primary,
                                     width: 3),
                           ),
                           child: Center(
                               child: Expanded(
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 5),
-                                  child: Text(answer4.toString(),
-                                      style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30)),
-                                ),
-                              )),
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Text(answer4.toString(),
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30)),
+                            ),
+                          )),
                         ),
                       ),
                     ),

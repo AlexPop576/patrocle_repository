@@ -4,18 +4,33 @@ import 'package:patrocle/Quizpage/quizpage.dart';
 
 // ignore: must_be_immutable
 class LevelTile extends StatefulWidget {
-  LevelTile({super.key, required this.colorIndex, required this.country, required this.lessonGeography, required this.lessonHistory,});
+  LevelTile({
+    super.key,
+    required this.colorIndex,
+    required this.country,
+    required this.lessonGeography,
+    required this.lessonHistory,
+  });
   int? colorIndex;
   String? country, continent, lessonGeography, lessonHistory;
 
   @override
   State<LevelTile> createState() =>
       // ignore: no_logic_in_create_state
-      _LevelTileState(colorIndex: colorIndex, country: country, lessonGeography: lessonGeography, lessonHistory: lessonHistory);
+      _LevelTileState(
+          colorIndex: colorIndex,
+          country: country,
+          lessonGeography: lessonGeography,
+          lessonHistory: lessonHistory);
 }
 
 class _LevelTileState extends State<LevelTile> {
-  _LevelTileState({required this.colorIndex, required this.country, required this.lessonGeography, required this.lessonHistory,});
+  _LevelTileState({
+    required this.colorIndex,
+    required this.country,
+    required this.lessonGeography,
+    required this.lessonHistory,
+  });
   int? colorIndex = 1, selectedSubject = 0;
   String? country, lessonGeography, lessonHistory;
 
@@ -29,17 +44,37 @@ class _LevelTileState extends State<LevelTile> {
             width: double.infinity,
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: selectedSubject == 0
-                    ? const BorderRadius.all(Radius.circular(15))
-                    : const BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15)),
-                color: colorIndex == 0
-                    ? const Color.fromARGB(255, 253, 40, 40)
-                    : colorIndex == 1
-                        ? const Color.fromARGB(255, 40, 86, 253)
-                        : const Color.fromARGB(255, 253, 161, 40),
-              ),
+                  borderRadius: selectedSubject == 0
+                      ? const BorderRadius.all(Radius.circular(15))
+                      : const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15)),
+                  gradient: colorIndex == 0
+                      ? const LinearGradient(
+                          begin: Alignment.topLeft,
+                          end: Alignment.bottomRight,
+                          colors: [
+                            Color.fromARGB(255, 253, 60, 60),
+                            Color.fromARGB(255, 253, 40, 40),
+                          ],
+                        )
+                      : colorIndex == 1
+                          ? const LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color.fromARGB(255, 80, 126, 253),
+                                Color.fromARGB(255, 40, 86, 253),
+                              ],
+                            )
+                          : const LinearGradient(
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                              colors: [
+                                Color.fromARGB(255, 253, 201, 80),
+                                Color.fromARGB(255, 253, 161, 40),
+                              ],
+                            )),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
@@ -326,7 +361,8 @@ class _LevelTileState extends State<LevelTile> {
                         );
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 255, 194, 38),
+                        backgroundColor:
+                            const Color.fromARGB(255, 255, 194, 38),
                         shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                             bottomRight: Radius.circular(0),

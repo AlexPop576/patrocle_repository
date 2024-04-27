@@ -31,8 +31,8 @@ class _TrophiesState extends State<Trophies> {
                   const SizedBox(
                     width: 12,
                   ),
-                  Lottie.network(
-                      'https://lottie.host/491f2840-4c44-425a-924e-4fbc86237dfc/s8x6EccXsD.json',
+                  Lottie.asset(
+                      'assets/patrocle.json',
                       frameRate: FrameRate.max,
                       height: 120),
                   const SizedBox(
