@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 14;
+  static final _databaseVersion = 15;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -53,6 +53,11 @@ class DatabaseHelper {
         answersHistoryHard TEXT
         )
       ''');
+      await db.execute('''
+            CREATE TABLE trophies (
+              $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
+              $columnTrophy INTEGER
+            )''');
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
@@ -61,7 +66,7 @@ class DatabaseHelper {
               $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
               $columnTrophy INTEGER
             )''');
-
+        
           // Create a new table with the new schema
           /*await db.execute('''
           CREATE TABLE new_table (

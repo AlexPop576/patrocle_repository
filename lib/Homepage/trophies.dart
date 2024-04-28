@@ -18,54 +18,56 @@ class _TrophiesState extends State<Trophies> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 17),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 40,
-                ),
-                Row(children: [
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              child: Column(
+                children: [
                   const SizedBox(
-                    width: 12,
+                    height: 40,
                   ),
-                  Lottie.asset(
-                      'assets/patrocle.json',
-                      frameRate: FrameRate.max,
-                      height: 120),
+                  Row(children: [
+                    const SizedBox(
+                      width: 12,
+                    ),
+                    Lottie.asset(
+                        'assets/patrocle.json',
+                        frameRate: FrameRate.max,
+                        height: 120),
+                    const SizedBox(
+                      width: 20,
+                    ),
+                    Expanded(
+                        child: Text(
+                      "Your trophies",
+                      style: TextStyle(
+                          color: Theme.of(context).colorScheme.tertiary,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40),
+                    ))
+                  ]),
                   const SizedBox(
-                    width: 20,
+                    height: 30,
                   ),
-                  Expanded(
-                      child: Text(
-                    "Your trophies",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.tertiary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40),
-                  ))
-                ]),
-                const SizedBox(
-                  height: 30,
-                ),
-                Divider(
-                  color: Theme.of(context).colorScheme.primary,
-                  thickness: 3,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
+                  Divider(
+                    color: Theme.of(context).colorScheme.primary,
+                    thickness: 3,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                ],
+              ),
             ),
-          ),
-          Expanded(
-            child: FutureBuilder<List<Map<String, dynamic>>>(
+            FutureBuilder<List<Map<String, dynamic>>>(
               future: _dbHelper.queryTrophies(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: 4,
                     itemBuilder: (context, index) {
                       int newIndex = index * 2 + 1;
@@ -90,23 +92,23 @@ class _TrophiesState extends State<Trophies> {
                 return CircularProgressIndicator();
               },
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 17),
-            child: Column(children: [
-              const SizedBox(
-                height: 20,
-              ),
-              Divider(
-                color: Theme.of(context).colorScheme.primary,
-                thickness: 3,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ]),
-          ),
-        ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 17),
+              child: Column(children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                Divider(
+                  color: Theme.of(context).colorScheme.primary,
+                  thickness: 3,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+              ]),
+            ),
+          ],
+        ),
       ),
     );
   }
