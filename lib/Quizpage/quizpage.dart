@@ -54,13 +54,13 @@ class _QuizPageState extends State<QuizPage> {
 void initState() {
   super.initState();
   if (QE != null) {
-    easyQuestions = jsonDecode(QE!);
+    easyQuestions = List<String>.from(jsonDecode(QE!));
   } else {
     easyQuestions = [];
   }
   // Do the same for QH if it's also a JSON string
   if (QH != null) {
-    hardQuestions = jsonDecode(QH!);
+    hardQuestions = List<String>.from(jsonDecode(QH!));
   } else {
     hardQuestions = [];
   }
@@ -250,14 +250,14 @@ void initState() {
                   ? TestPage1(
                       getAnswerFunction: getAnswer,
                       selected: 0,
-                      questionText: easyQuestions[pageIndex-1] ?? "Q1",
+                      questionText: difficulty == 1 ? easyQuestions[pageIndex-1]: difficulty == 2 ? easyQuestions[pageIndex-1]: hardQuestions[pageIndex-1] ,
                       givenAnswer: 0,
                     )
                   : pageIndex != 11 && pageIndex % 2 == 1
                       ? TestPage2(
                           getAnswerFunction: getAnswer,
                           selected: 0,
-                          questionText: easyQuestions[pageIndex-1] ?? "Q2",
+                          questionText: difficulty == 1 ? easyQuestions[pageIndex-1]: difficulty == 2 ? easyQuestions[pageIndex-1]: hardQuestions[pageIndex-1],
                           givenAnswer: 0,
                         )
                       : FinishPage(correctAnswers: correctAnswers)),

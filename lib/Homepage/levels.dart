@@ -79,10 +79,10 @@ class _LevelsState extends State<Levels> {
                               ['lesson_geography'],
                           lessonHistory: snapshot.data![index]
                               ['lesson_history'],
-                          jsonStringEG: snapshot.data![index]['jsonStringEG'],
-                          jsonStringHG: snapshot.data![index]['jsonStringHG'],
-                          jsonStringEH: snapshot.data![index]['jsonStringEH'],
-                          jsonStringHH: snapshot.data![index]['jsonStringHH'],
+                          jsonStringEG: snapshot.data![index]['questionsGeographyEasy'],
+                          jsonStringHG: snapshot.data![index]['questionsGeographyHard'],
+                          jsonStringEH: snapshot.data![index]['questionsHistoryEasy'],
+                          jsonStringHH: snapshot.data![index]['questionsHistoryHard'],
                         );
                       },
                     );

@@ -18,55 +18,12 @@ class _AddTestState extends State<AddTest> {
   List<int> answersHistoryEasy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<int> answersHistoryHard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  List<String> easyGeographyQuestions = [
-    "Q1",
-    "Q2",
-    "Q3",
-    "Q4",
-    "Q5",
-    "Q6",
-    "Q7",
-    "Q8",
-    "Q9",
-    "Q10"
-  ];
-  List<String> hardGeographyQuestions = [
-    "Q1",
-    "Q2",
-    "Q3",
-    "Q4",
-    "Q5",
-    "Q6",
-    "Q7",
-    "Q8",
-    "Q9",
-    "Q10"
-  ];
-  List<String> easyHistoryQuestions = [
-    "Q1",
-    "Q2",
-    "Q3",
-    "Q4",
-    "Q5",
-    "Q6",
-    "Q7",
-    "Q8",
-    "Q9",
-    "Q10"
-  ];
-  List<String> hardHistoryQuestions = [
-    "Q1",
-    "Q2",
-    "Q3",
-    "Q4",
-    "Q5",
-    "Q6",
-    "Q7",
-    "Q8",
-    "Q9",
-    "Q10"
-  ];
-
+  List<String> easyGeographyQuestions = [], hardGeographyQuestions = [], easyHistoryQuestions = [], hardHistoryQuestions = [];
+  List<String> easyGeographyA1 = [], hardGeographyA1 = [], easyHistoryA1 = [], hardHistoryA1 = [];
+  List<String> easyGeographyA2 = [], hardGeographyA2 = [], easyHistoryA2 = [], hardHistoryA2 = [];
+  List<String> easyGeographyA3 = [], hardGeographyA3 = [], easyHistoryA3 = [], hardHistoryA3 = [];
+  List<String> easyGeographyA4 = [], hardGeographyA4 = [], easyHistoryA4 = [], hardHistoryA4 = [];
+  
   String? textus;
   final _controllerName = TextEditingController(),
       _controllerLessonGeography = TextEditingController(),
@@ -111,6 +68,170 @@ class _AddTestState extends State<AddTest> {
       _controllerHHQ8 = TextEditingController(),
       _controllerHHQ9 = TextEditingController(),
       _controllerHHQ10 = TextEditingController();
+
+  final _controllerGEQ1A1 = TextEditingController(),
+      _controllerGEQ2A1 = TextEditingController(),
+      _controllerGEQ3A1 = TextEditingController(),
+      _controllerGEQ4A1 = TextEditingController(),
+      _controllerGEQ5A1 = TextEditingController(),
+      _controllerGEQ6A1 = TextEditingController(),
+      _controllerGEQ7A1 = TextEditingController(),
+      _controllerGEQ8A1 = TextEditingController(),
+      _controllerGEQ9A1 = TextEditingController(),
+      _controllerGEQ10A1 = TextEditingController();
+  final _controllerGHQ1A1 = TextEditingController(),
+      _controllerGHQ2A1 = TextEditingController(),
+      _controllerGHQ3A1 = TextEditingController(),
+      _controllerGHQ4A1 = TextEditingController(),
+      _controllerGHQ5A1 = TextEditingController(),
+      _controllerGHQ6A1 = TextEditingController(),
+      _controllerGHQ7A1 = TextEditingController(),
+      _controllerGHQ8A1 = TextEditingController(),
+      _controllerGHQ9A1 = TextEditingController(),
+      _controllerGHQ10A1 = TextEditingController();
+  final _controllerHEQ1A1 = TextEditingController(),
+      _controllerHEQ2A1 = TextEditingController(),
+      _controllerHEQ3A1 = TextEditingController(),
+      _controllerHEQ4A1 = TextEditingController(),
+      _controllerHEQ5A1 = TextEditingController(),
+      _controllerHEQ6A1 = TextEditingController(),
+      _controllerHEQ7A1 = TextEditingController(),
+      _controllerHEQ8A1 = TextEditingController(),
+      _controllerHEQ9A1 = TextEditingController(),
+      _controllerHEQ10A1 = TextEditingController();
+  final _controllerHHQ1A1 = TextEditingController(),
+      _controllerHHQ2A1 = TextEditingController(),
+      _controllerHHQ3A1 = TextEditingController(),
+      _controllerHHQ4A1 = TextEditingController(),
+      _controllerHHQ5A1 = TextEditingController(),
+      _controllerHHQ6A1 = TextEditingController(),
+      _controllerHHQ7A1 = TextEditingController(),
+      _controllerHHQ8A1 = TextEditingController(),
+      _controllerHHQ9A1 = TextEditingController(),
+      _controllerHHQ10A1 = TextEditingController();
+
+  final _controllerGEQ1A2 = TextEditingController(),
+      _controllerGEQ2A2 = TextEditingController(),
+      _controllerGEQ3A2 = TextEditingController(),
+      _controllerGEQ4A2 = TextEditingController(),
+      _controllerGEQ5A2 = TextEditingController(),
+      _controllerGEQ6A2 = TextEditingController(),
+      _controllerGEQ7A2 = TextEditingController(),
+      _controllerGEQ8A2 = TextEditingController(),
+      _controllerGEQ9A2 = TextEditingController(),
+      _controllerGEQ10A2 = TextEditingController();
+final _controllerGHQ1A2 = TextEditingController(),
+      _controllerGHQ2A2 = TextEditingController(),
+      _controllerGHQ3A2 = TextEditingController(),
+      _controllerGHQ4A2 = TextEditingController(),
+      _controllerGHQ5A2 = TextEditingController(),
+      _controllerGHQ6A2 = TextEditingController(),
+      _controllerGHQ7A2 = TextEditingController(),
+      _controllerGHQ8A2 = TextEditingController(),
+      _controllerGHQ9A2 = TextEditingController(),
+      _controllerGHQ10A2 = TextEditingController();
+final _controllerHEQ1A2 = TextEditingController(),
+      _controllerHEQ2A2 = TextEditingController(),
+      _controllerHEQ3A2 = TextEditingController(),
+      _controllerHEQ4A2 = TextEditingController(),
+      _controllerHEQ5A2 = TextEditingController(),
+      _controllerHEQ6A2 = TextEditingController(),
+      _controllerHEQ7A2 = TextEditingController(),
+      _controllerHEQ8A2 = TextEditingController(),
+      _controllerHEQ9A2 = TextEditingController(),
+      _controllerHEQ10A2 = TextEditingController();
+final _controllerHHQ1A2 = TextEditingController(),
+      _controllerHHQ2A2 = TextEditingController(),
+      _controllerHHQ3A2 = TextEditingController(),
+      _controllerHHQ4A2 = TextEditingController(),
+      _controllerHHQ5A2 = TextEditingController(),
+      _controllerHHQ6A2 = TextEditingController(),
+      _controllerHHQ7A2 = TextEditingController(),
+      _controllerHHQ8A2 = TextEditingController(),
+      _controllerHHQ9A2 = TextEditingController(),
+      _controllerHHQ10A2 = TextEditingController();
+
+  final _controllerGEQ1A3 = TextEditingController(),
+      _controllerGEQ2A3 = TextEditingController(),
+      _controllerGEQ3A3 = TextEditingController(),
+      _controllerGEQ4A3 = TextEditingController(),
+      _controllerGEQ5A3 = TextEditingController(),
+      _controllerGEQ6A3 = TextEditingController(),
+      _controllerGEQ7A3 = TextEditingController(),
+      _controllerGEQ8A3 = TextEditingController(),
+      _controllerGEQ9A3 = TextEditingController(),
+      _controllerGEQ10A3 = TextEditingController();
+final _controllerGHQ1A3 = TextEditingController(),
+      _controllerGHQ2A3 = TextEditingController(),
+      _controllerGHQ3A3 = TextEditingController(),
+      _controllerGHQ4A3 = TextEditingController(),
+      _controllerGHQ5A3 = TextEditingController(),
+      _controllerGHQ6A3 = TextEditingController(),
+      _controllerGHQ7A3 = TextEditingController(),
+      _controllerGHQ8A3 = TextEditingController(),
+      _controllerGHQ9A3 = TextEditingController(),
+      _controllerGHQ10A3 = TextEditingController();
+final _controllerHEQ1A3 = TextEditingController(),
+      _controllerHEQ2A3 = TextEditingController(),
+      _controllerHEQ3A3 = TextEditingController(),
+      _controllerHEQ4A3 = TextEditingController(),
+      _controllerHEQ5A3 = TextEditingController(),
+      _controllerHEQ6A3 = TextEditingController(),
+      _controllerHEQ7A3 = TextEditingController(),
+      _controllerHEQ8A3 = TextEditingController(),
+      _controllerHEQ9A3 = TextEditingController(),
+      _controllerHEQ10A3 = TextEditingController();
+final _controllerHHQ1A3 = TextEditingController(),
+      _controllerHHQ2A3 = TextEditingController(),
+      _controllerHHQ3A3 = TextEditingController(),
+      _controllerHHQ4A3 = TextEditingController(),
+      _controllerHHQ5A3 = TextEditingController(),
+      _controllerHHQ6A3 = TextEditingController(),
+      _controllerHHQ7A3 = TextEditingController(),
+      _controllerHHQ8A3 = TextEditingController(),
+      _controllerHHQ9A3 = TextEditingController(),
+      _controllerHHQ10A3 = TextEditingController();
+
+  final _controllerGEQ1A4 = TextEditingController(),
+      _controllerGEQ2A4 = TextEditingController(),
+      _controllerGEQ3A4 = TextEditingController(),
+      _controllerGEQ4A4 = TextEditingController(),
+      _controllerGEQ5A4 = TextEditingController(),
+      _controllerGEQ6A4 = TextEditingController(),
+      _controllerGEQ7A4 = TextEditingController(),
+      _controllerGEQ8A4 = TextEditingController(),
+      _controllerGEQ9A4 = TextEditingController(),
+      _controllerGEQ10A4 = TextEditingController();
+final _controllerGHQ1A4 = TextEditingController(),
+      _controllerGHQ2A4 = TextEditingController(),
+      _controllerGHQ3A4 = TextEditingController(),
+      _controllerGHQ4A4 = TextEditingController(),
+      _controllerGHQ5A4 = TextEditingController(),
+      _controllerGHQ6A4 = TextEditingController(),
+      _controllerGHQ7A4 = TextEditingController(),
+      _controllerGHQ8A4 = TextEditingController(),
+      _controllerGHQ9A4 = TextEditingController(),
+      _controllerGHQ10A4 = TextEditingController();
+final _controllerHEQ1A4 = TextEditingController(),
+      _controllerHEQ2A4 = TextEditingController(),
+      _controllerHEQ3A4 = TextEditingController(),
+      _controllerHEQ4A4 = TextEditingController(),
+      _controllerHEQ5A4 = TextEditingController(),
+      _controllerHEQ6A4 = TextEditingController(),
+      _controllerHEQ7A4 = TextEditingController(),
+      _controllerHEQ8A4 = TextEditingController(),
+      _controllerHEQ9A4 = TextEditingController(),
+      _controllerHEQ10A4 = TextEditingController();
+final _controllerHHQ1A4 = TextEditingController(),
+      _controllerHHQ2A4 = TextEditingController(),
+      _controllerHHQ3A4 = TextEditingController(),
+      _controllerHHQ4A4 = TextEditingController(),
+      _controllerHHQ5A4 = TextEditingController(),
+      _controllerHHQ6A4 = TextEditingController(),
+      _controllerHHQ7A4 = TextEditingController(),
+      _controllerHHQ8A4 = TextEditingController(),
+      _controllerHHQ9A4 = TextEditingController(),
+      _controllerHHQ10A4 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -553,53 +674,236 @@ class _AddTestState extends State<AddTest> {
                         hardHistoryQuestions[7] = _controllerHHQ8.text;
                         hardHistoryQuestions[8] = _controllerHHQ9.text;
                         hardHistoryQuestions[9] = _controllerHHQ10.text;
-                        print('''1.${easyGeographyQuestions[0]}
-                                2.${easyGeographyQuestions[1]}
-                                3.${easyGeographyQuestions[2]}
-                                4.${easyGeographyQuestions[3]}
-                                5.${easyGeographyQuestions[4]}
-                                6.${easyGeographyQuestions[5]}
-                                7.${easyGeographyQuestions[6]}
-                                8.${easyGeographyQuestions[7]}
-                                9.${easyGeographyQuestions[8]}
-                                10.${easyGeographyQuestions[9]}
-                                1.${hardGeographyQuestions[0]}
-                                2.${hardGeographyQuestions[1]}
-                                3.${hardGeographyQuestions[2]}
-                                4.${hardGeographyQuestions[3]}
-                                5.${hardGeographyQuestions[4]}
-                                6.${hardGeographyQuestions[5]}
-                                7.${hardGeographyQuestions[6]}
-                                8.${hardGeographyQuestions[7]}
-                                9.${hardGeographyQuestions[8]}
-                                10.${hardGeographyQuestions[9]}
-                                1.${easyHistoryQuestions[0]}
-                                2.${easyHistoryQuestions[1]}
-                                3.${easyHistoryQuestions[2]}
-                                4.${easyHistoryQuestions[3]}
-                                5.${easyHistoryQuestions[4]}
-                                6.${easyHistoryQuestions[5]}
-                                7.${easyHistoryQuestions[6]}
-                                8.${easyHistoryQuestions[7]}
-                                9.${easyHistoryQuestions[8]}
-                                10.${easyHistoryQuestions[9]}
-                                1.${hardHistoryQuestions[0]}
-                                2.${hardHistoryQuestions[1]}
-                                3.${hardHistoryQuestions[2]}
-                                4.${hardHistoryQuestions[3]}
-                                5.${hardHistoryQuestions[4]}
-                                6.${hardHistoryQuestions[5]}
-                                7.${hardHistoryQuestions[6]}
-                                8.${hardHistoryQuestions[7]}
-                                9.${hardHistoryQuestions[8]}
-                                10.${hardHistoryQuestions[9]}
-                                ''');
+                        easyGeographyA1[0] = _controllerGEQ1A1.text;
+                        easyGeographyA1[1] = _controllerGEQ2A1.text;
+                        easyGeographyA1[2] = _controllerGEQ3A1.text;
+                        easyGeographyA1[3] = _controllerGEQ4A1.text;
+                        easyGeographyA1[4] = _controllerGEQ5A1.text;
+                        easyGeographyA1[5] = _controllerGEQ6A1.text;
+                        easyGeographyA1[6] = _controllerGEQ7A1.text;
+                        easyGeographyA1[7] = _controllerGEQ8A1.text;
+                        easyGeographyA1[8] = _controllerGEQ9A1.text;
+                        easyGeographyA1[9] = _controllerGEQ10A1.text;
+                        hardGeographyA1[0] = _controllerGHQ1A1.text;
+                        hardGeographyA1[1] = _controllerGHQ2A1.text;
+                        hardGeographyA1[2] = _controllerGHQ3A1.text;
+                        hardGeographyA1[3] = _controllerGHQ4A1.text;
+                        hardGeographyA1[4] = _controllerGHQ5A1.text;
+                        hardGeographyA1[5] = _controllerGHQ6A1.text;
+                        hardGeographyA1[6] = _controllerGHQ7A1.text;
+                        hardGeographyA1[7] = _controllerGHQ8A1.text;
+                        hardGeographyA1[8] = _controllerGHQ9A1.text;
+                        hardGeographyA1[9] = _controllerGHQ10A1.text;
+                        easyHistoryA1[0] = _controllerHEQ1A1.text;
+                        easyHistoryA1[1] = _controllerHEQ2A1.text;
+                        easyHistoryA1[2] = _controllerHEQ3A1.text;
+                        easyHistoryA1[3] = _controllerHEQ4A1.text;
+                        easyHistoryA1[4] = _controllerHEQ5A1.text;
+                        easyHistoryA1[5] = _controllerHEQ6A1.text;
+                        easyHistoryA1[6] = _controllerHEQ7A1.text;
+                        easyHistoryA1[7] = _controllerHEQ8A1.text;
+                        easyHistoryA1[8] = _controllerHEQ9A1.text;
+                        easyHistoryA1[9] = _controllerHEQ10A1.text;
+                        hardHistoryA1[0] = _controllerHHQ1A1.text;
+                        hardHistoryA1[1] = _controllerHHQ2A1.text;
+                        hardHistoryA1[2] = _controllerHHQ3A1.text;
+                        hardHistoryA1[3] = _controllerHHQ4A1.text;
+                        hardHistoryA1[4] = _controllerHHQ5A1.text;
+                        hardHistoryA1[5] = _controllerHHQ6A1.text;
+                        hardHistoryA1[6] = _controllerHHQ7A1.text;
+                        hardHistoryA1[7] = _controllerHHQ8A1.text;
+                        hardHistoryA1[8] = _controllerHHQ9A1.text;
+                        hardHistoryA1[9] = _controllerHHQ10A1.text;
+                        easyGeographyA2[0] = _controllerGEQ1A2.text;
+                        easyGeographyA2[1] = _controllerGEQ2A2.text;
+                        easyGeographyA2[2] = _controllerGEQ3A2.text;
+                        easyGeographyA2[3] = _controllerGEQ4A2.text;
+                        easyGeographyA2[4] = _controllerGEQ5A2.text;
+                        easyGeographyA2[5] = _controllerGEQ6A2.text;
+                        easyGeographyA2[6] = _controllerGEQ7A2.text;
+                        easyGeographyA2[7] = _controllerGEQ8A2.text;
+                        easyGeographyA2[8] = _controllerGEQ9A2.text;
+                        easyGeographyA2[9] = _controllerGEQ10A2.text;
+                        hardGeographyA2[0] = _controllerGHQ1A2.text;
+                        hardGeographyA2[1] = _controllerGHQ2A2.text;
+                        hardGeographyA2[2] = _controllerGHQ3A2.text;
+                        hardGeographyA2[3] = _controllerGHQ4A2.text;
+                        hardGeographyA2[4] = _controllerGHQ5A2.text;
+                        hardGeographyA2[5] = _controllerGHQ6A2.text;
+                        hardGeographyA2[6] = _controllerGHQ7A2.text;
+                        hardGeographyA2[7] = _controllerGHQ8A2.text;
+                        hardGeographyA2[8] = _controllerGHQ9A2.text;
+                        hardGeographyA2[9] = _controllerGHQ10A2.text;
+                        easyHistoryA2[0] = _controllerHEQ1A2.text;
+                        easyHistoryA2[1] = _controllerHEQ2A2.text;
+                        easyHistoryA2[2] = _controllerHEQ3A2.text;
+                        easyHistoryA2[3] = _controllerHEQ4A2.text;
+                        easyHistoryA2[4] = _controllerHEQ5A2.text;
+                        easyHistoryA2[5] = _controllerHEQ6A2.text;
+                        easyHistoryA2[6] = _controllerHEQ7A2.text;
+                        easyHistoryA2[7] = _controllerHEQ8A2.text;
+                        easyHistoryA2[8] = _controllerHEQ9A2.text;
+                        easyHistoryA2[9] = _controllerHEQ10A2.text;
+                        hardHistoryA2[0] = _controllerHHQ1A2.text;
+                        hardHistoryA2[1] = _controllerHHQ2A2.text;
+                        hardHistoryA2[2] = _controllerHHQ3A2.text;
+                        hardHistoryA2[3] = _controllerHHQ4A2.text;
+                        hardHistoryA2[4] = _controllerHHQ5A2.text;
+                        hardHistoryA2[5] = _controllerHHQ6A2.text;
+                        hardHistoryA2[6] = _controllerHHQ7A2.text;
+                        hardHistoryA2[7] = _controllerHHQ8A2.text;
+                        hardHistoryA2[8] = _controllerHHQ9A2.text;
+                        hardHistoryA2[9] = _controllerHHQ10A2.text;
+                        easyGeographyA3[0] = _controllerGEQ1A3.text;
+                        easyGeographyA3[1] = _controllerGEQ2A3.text;
+                        easyGeographyA3[2] = _controllerGEQ3A3.text;
+                        easyGeographyA3[3] = _controllerGEQ4A3.text;
+                        easyGeographyA3[4] = _controllerGEQ5A3.text;
+                        easyGeographyA3[5] = _controllerGEQ6A3.text;
+                        easyGeographyA3[6] = _controllerGEQ7A3.text;
+                        easyGeographyA3[7] = _controllerGEQ8A3.text;
+                        easyGeographyA3[8] = _controllerGEQ9A3.text;
+                        easyGeographyA3[9] = _controllerGEQ10A3.text;
+                        hardGeographyA3[0] = _controllerGHQ1A3.text;
+                        hardGeographyA3[1] = _controllerGHQ2A3.text;
+                        hardGeographyA3[2] = _controllerGHQ3A3.text;
+                        hardGeographyA3[3] = _controllerGHQ4A3.text;
+                        hardGeographyA3[4] = _controllerGHQ5A3.text;
+                        hardGeographyA3[5] = _controllerGHQ6A3.text;
+                        hardGeographyA3[6] = _controllerGHQ7A3.text;
+                        hardGeographyA3[7] = _controllerGHQ8A3.text;
+                        hardGeographyA3[8] = _controllerGHQ9A3.text;
+                        hardGeographyA3[9] = _controllerGHQ10A3.text;
+                        easyHistoryA3[0] = _controllerHEQ1A3.text;
+                        easyHistoryA3[1] = _controllerHEQ2A3.text;
+                        easyHistoryA3[2] = _controllerHEQ3A3.text;
+                        easyHistoryA3[3] = _controllerHEQ4A3.text;
+                        easyHistoryA3[4] = _controllerHEQ5A3.text;
+                        easyHistoryA3[5] = _controllerHEQ6A3.text;
+                        easyHistoryA3[6] = _controllerHEQ7A3.text;
+                        easyHistoryA3[7] = _controllerHEQ8A3.text;
+                        easyHistoryA3[8] = _controllerHEQ9A3.text;
+                        easyHistoryA3[9] = _controllerHEQ10A3.text;
+                        hardHistoryA3[0] = _controllerHHQ1A3.text;
+                        hardHistoryA3[1] = _controllerHHQ2A3.text;
+                        hardHistoryA3[2] = _controllerHHQ3A3.text;
+                        hardHistoryA3[3] = _controllerHHQ4A3.text;
+                        hardHistoryA3[4] = _controllerHHQ5A3.text;
+                        hardHistoryA3[5] = _controllerHHQ6A3.text;
+                        hardHistoryA3[6] = _controllerHHQ7A3.text;
+                        hardHistoryA3[7] = _controllerHHQ8A3.text;
+                        hardHistoryA3[8] = _controllerHHQ9A3.text;
+                        hardHistoryA3[9] = _controllerHHQ10A3.text;
+                        easyGeographyA4[0] = _controllerGEQ1A4.text;
+                        easyGeographyA4[1] = _controllerGEQ2A4.text;
+                        easyGeographyA4[2] = _controllerGEQ3A4.text;
+                        easyGeographyA4[3] = _controllerGEQ4A4.text;
+                        easyGeographyA4[4] = _controllerGEQ5A4.text;
+                        easyGeographyA4[5] = _controllerGEQ6A4.text;
+                        easyGeographyA4[6] = _controllerGEQ7A4.text;
+                        easyGeographyA4[7] = _controllerGEQ8A4.text;
+                        easyGeographyA4[8] = _controllerGEQ9A4.text;
+                        easyGeographyA4[9] = _controllerGEQ10A4.text;
+                        hardGeographyA4[0] = _controllerGHQ1A4.text;
+                        hardGeographyA4[1] = _controllerGHQ2A4.text;
+                        hardGeographyA4[2] = _controllerGHQ3A4.text;
+                        hardGeographyA4[3] = _controllerGHQ4A4.text;
+                        hardGeographyA4[4] = _controllerGHQ5A4.text;
+                        hardGeographyA4[5] = _controllerGHQ6A4.text;
+                        hardGeographyA4[6] = _controllerGHQ7A4.text;
+                        hardGeographyA4[7] = _controllerGHQ8A4.text;
+                        hardGeographyA4[8] = _controllerGHQ9A4.text;
+                        hardGeographyA4[9] = _controllerGHQ10A4.text;
+                        easyHistoryA4[0] = _controllerHEQ1A4.text;
+                        easyHistoryA4[1] = _controllerHEQ2A4.text;
+                        easyHistoryA4[2] = _controllerHEQ3A4.text;
+                        easyHistoryA4[3] = _controllerHEQ4A4.text;
+                        easyHistoryA4[4] = _controllerHEQ5A4.text;
+                        easyHistoryA4[5] = _controllerHEQ6A4.text;
+                        easyHistoryA4[6] = _controllerHEQ7A4.text;
+                        easyHistoryA4[7] = _controllerHEQ8A4.text;
+                        easyHistoryA4[8] = _controllerHEQ9A4.text;
+                        easyHistoryA4[9] = _controllerHEQ10A4.text;
+                        hardHistoryA4[0] = _controllerHHQ1A4.text;
+                        hardHistoryA4[1] = _controllerHHQ2A4.text;
+                        hardHistoryA4[2] = _controllerHHQ3A4.text;
+                        hardHistoryA4[3] = _controllerHHQ4A4.text;
+                        hardHistoryA4[4] = _controllerHHQ5A4.text;
+                        hardHistoryA4[5] = _controllerHHQ6A4.text;
+                        hardHistoryA4[6] = _controllerHHQ7A4.text;
+                        hardHistoryA4[7] = _controllerHHQ8A4.text;
+                        hardHistoryA4[8] = _controllerHHQ9A4.text;
+                        hardHistoryA4[9] = _controllerHHQ10A4.text;
+
+
+                        // print('''1.${easyGeographyQuestions[0]}
+                        //         2.${easyGeographyQuestions[1]}
+                        //         3.${easyGeographyQuestions[2]}
+                        //         4.${easyGeographyQuestions[3]}
+                        //         5.${easyGeographyQuestions[4]}
+                        //         6.${easyGeographyQuestions[5]}
+                        //         7.${easyGeographyQuestions[6]}
+                        //         8.${easyGeographyQuestions[7]}
+                        //         9.${easyGeographyQuestions[8]}
+                        //         10.${easyGeographyQuestions[9]}
+                        //         1.${hardGeographyQuestions[0]}
+                        //         2.${hardGeographyQuestions[1]}
+                        //         3.${hardGeographyQuestions[2]}
+                        //         4.${hardGeographyQuestions[3]}
+                        //         5.${hardGeographyQuestions[4]}
+                        //         6.${hardGeographyQuestions[5]}
+                        //         7.${hardGeographyQuestions[6]}
+                        //         8.${hardGeographyQuestions[7]}
+                        //         9.${hardGeographyQuestions[8]}
+                        //         10.${hardGeographyQuestions[9]}
+                        //         1.${easyHistoryQuestions[0]}
+                        //         2.${easyHistoryQuestions[1]}
+                        //         3.${easyHistoryQuestions[2]}
+                        //         4.${easyHistoryQuestions[3]}
+                        //         5.${easyHistoryQuestions[4]}
+                        //         6.${easyHistoryQuestions[5]}
+                        //         7.${easyHistoryQuestions[6]}
+                        //         8.${easyHistoryQuestions[7]}
+                        //         9.${easyHistoryQuestions[8]}
+                        //         10.${easyHistoryQuestions[9]}
+                        //         1.${hardHistoryQuestions[0]}
+                        //         2.${hardHistoryQuestions[1]}
+                        //         3.${hardHistoryQuestions[2]}
+                        //         4.${hardHistoryQuestions[3]}
+                        //         5.${hardHistoryQuestions[4]}
+                        //         6.${hardHistoryQuestions[5]}
+                        //         7.${hardHistoryQuestions[6]}
+                        //         8.${hardHistoryQuestions[7]}
+                        //         9.${hardHistoryQuestions[8]}
+                        //         10.${hardHistoryQuestions[9]}
+                        //         ''');
                         String jsonStringEG =
                             jsonEncode(easyGeographyQuestions);
                         String jsonStringHG =
                             jsonEncode(hardGeographyQuestions);
                         String jsonStringEH = jsonEncode(easyHistoryQuestions);
                         String jsonStringHH = jsonEncode(hardHistoryQuestions);
+                        String jsonStringEGA1 = jsonEncode(easyGeographyA1);
+                        String jsonStringHGA1 = jsonEncode(hardGeographyA1);
+                        String jsonStringEHA1 = jsonEncode(easyHistoryA1);
+                        String jsonStringHHA1 = jsonEncode(hardHistoryA1);
+                        String jsonStringEGA2 = jsonEncode(easyGeographyA2);
+                        String jsonStringHGA2 = jsonEncode(hardGeographyA2);
+                        String jsonStringEHA2 = jsonEncode(easyHistoryA2);
+                        String jsonStringHHA2 = jsonEncode(hardHistoryA2);
+                        String jsonStringEGA3 = jsonEncode(easyGeographyA3);
+                        String jsonStringHGA3 = jsonEncode(hardGeographyA3);
+                        String jsonStringEHA3 = jsonEncode(easyHistoryA3);
+                        String jsonStringHHA3 = jsonEncode(hardHistoryA3);
+                        String jsonStringEGA4 = jsonEncode(easyGeographyA4);
+                        String jsonStringHGA4 = jsonEncode(hardGeographyA4);
+                        String jsonStringEHA4 = jsonEncode(easyHistoryA4);
+                        String jsonStringHHA4 = jsonEncode(hardHistoryA4);
+                        
+                        //print('jsonStringEG: $jsonStringEG');
+                        //print('jsonStringHG: $jsonStringHG');
+                        //print('jsonStringEH: $jsonStringEH');
+                        //print('jsonStringHH: $jsonStringHH');
                         int i = await _dbHelper.insertCountry(
                             _controllerName.text,
                             _controllerLessonGeography.text,
@@ -608,21 +912,6 @@ class _AddTestState extends State<AddTest> {
                             jsonStringHG,
                             jsonStringEH,
                             jsonStringHH);
-                        setState(() {
-                          _controllerName.clear();
-                          _controllerLessonGeography.clear();
-                          _controllerLessonHistory.clear();
-                          _controllerGEQ1.clear();
-                          _controllerGEQ2.clear();
-                          _controllerGEQ3.clear();
-                          _controllerGEQ4.clear();
-                          _controllerGEQ5.clear();
-                          _controllerGEQ6.clear();
-                          _controllerGEQ7.clear();
-                          _controllerGEQ8.clear();
-                          _controllerGEQ9.clear();
-                          _controllerGEQ10.clear();
-                        });
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor:
