@@ -552,6 +552,47 @@ class _AddTestState extends State<AddTest> {
                         hardHistoryQuestions[7] = _controllerHHQ8.text;
                         hardHistoryQuestions[8] = _controllerHHQ9.text;
                         hardHistoryQuestions[9] = _controllerHHQ10.text;
+                        print('''1.${easyGeographyQuestions[0]}
+                                2.${easyGeographyQuestions[1]}
+                                3.${easyGeographyQuestions[2]}
+                                4.${easyGeographyQuestions[3]}
+                                5.${easyGeographyQuestions[4]}
+                                6.${easyGeographyQuestions[5]}
+                                7.${easyGeographyQuestions[6]}
+                                8.${easyGeographyQuestions[7]}
+                                9.${easyGeographyQuestions[8]}
+                                10.${easyGeographyQuestions[9]}
+                                1.${hardGeographyQuestions[0]}
+                                2.${hardGeographyQuestions[1]}
+                                3.${hardGeographyQuestions[2]}
+                                4.${hardGeographyQuestions[3]}
+                                5.${hardGeographyQuestions[4]}
+                                6.${hardGeographyQuestions[5]}
+                                7.${hardGeographyQuestions[6]}
+                                8.${hardGeographyQuestions[7]}
+                                9.${hardGeographyQuestions[8]}
+                                10.${hardGeographyQuestions[9]}
+                                1.${easyHistoryQuestions[0]}
+                                2.${easyHistoryQuestions[1]}
+                                3.${easyHistoryQuestions[2]}
+                                4.${easyHistoryQuestions[3]}
+                                5.${easyHistoryQuestions[4]}
+                                6.${easyHistoryQuestions[5]}
+                                7.${easyHistoryQuestions[6]}
+                                8.${easyHistoryQuestions[7]}
+                                9.${easyHistoryQuestions[8]}
+                                10.${easyHistoryQuestions[9]}
+                                1.${hardHistoryQuestions[0]}
+                                2.${hardHistoryQuestions[1]}
+                                3.${hardHistoryQuestions[2]}
+                                4.${hardHistoryQuestions[3]}
+                                5.${hardHistoryQuestions[4]}
+                                6.${hardHistoryQuestions[5]}
+                                7.${hardHistoryQuestions[6]}
+                                8.${hardHistoryQuestions[7]}
+                                9.${hardHistoryQuestions[8]}
+                                10.${hardHistoryQuestions[9]}
+                                ''');
                         String jsonStringEG =
                             jsonEncode(easyGeographyQuestions);
                         String jsonStringHG =
@@ -701,9 +742,9 @@ class _NewQuestionState extends State<NewQuestion> {
         Textfield(
             height: 58,
             text: "Question",
-            controller: index == 0
+            controller: index == 1
                 ? q1
-                : index == 1
+                : index == 2
                     ? q2
                     : index == 3
                         ? q3
