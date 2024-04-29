@@ -159,13 +159,14 @@ class _AddTestState extends State<AddTest> {
                                     const SizedBox(
                                       height: 20,
                                     ),
-                                    Lottie.network(
-                                        'https://lottie.host/491f2840-4c44-425a-924e-4fbc86237dfc/s8x6EccXsD.json',
+                                    Lottie.asset(
+                                        'assets/patrocle.json',
                                         frameRate: FrameRate.max,
                                         height: 100),
                                     const SizedBox(
                                       height: 30,
                                     ),
+                                    
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 40),

@@ -51,14 +51,20 @@ class _QuizPageState extends State<QuizPage> {
   late List<String> easyQuestions, hardQuestions;
 
   @override
-  void initState()
-  {
-    super.initState();
+void initState() {
+  super.initState();
+  if (QE != null) {
     easyQuestions = jsonDecode(QE!);
-    hardQuestions = jsonDecode(QH!);
-    if(easyQuestions.isEmpty) print("eq empty");
-    if(hardQuestions.isEmpty) print("hq empty");
+  } else {
+    easyQuestions = [];
   }
+  // Do the same for QH if it's also a JSON string
+  if (QH != null) {
+    hardQuestions = jsonDecode(QH!);
+  } else {
+    hardQuestions = [];
+  }
+}
 
   void correct() {
     setState(() {
