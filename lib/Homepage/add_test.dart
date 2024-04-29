@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -17,51 +18,99 @@ class _AddTestState extends State<AddTest> {
   List<int> answersHistoryEasy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<int> answersHistoryHard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+  List<String> easyGeographyQuestions = [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10"
+  ];
+  List<String> hardGeographyQuestions = [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10"
+  ];
+  List<String> easyHistoryQuestions = [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10"
+  ];
+  List<String> hardHistoryQuestions = [
+    "Q1",
+    "Q2",
+    "Q3",
+    "Q4",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "Q10"
+  ];
 
   String? textus;
-  final _controllerName = TextEditingController();
-  final _controllerLessonGeography = TextEditingController();
-  final _controllerLessonHistory = TextEditingController();
-  final _controllerGEQ1 = TextEditingController();
-  final _controllerGEQ2 = TextEditingController();
-  final _controllerGEQ3 = TextEditingController();
-  final _controllerGEQ4 = TextEditingController();
-  final _controllerGEQ5 = TextEditingController();
-  final _controllerGEQ6 = TextEditingController();
-  final _controllerGEQ7 = TextEditingController();
-  final _controllerGEQ8 = TextEditingController();
-  final _controllerGEQ9 = TextEditingController();
-  final _controllerGEQ10 = TextEditingController();
-  final _controllerGHQ1 = TextEditingController();
-  final _controllerGHQ2 = TextEditingController();
-  final _controllerGHQ3 = TextEditingController();
-  final _controllerGHQ4 = TextEditingController();
-  final _controllerGHQ5 = TextEditingController();
-  final _controllerGHQ6 = TextEditingController();
-  final _controllerGHQ7 = TextEditingController();
-  final _controllerGHQ8 = TextEditingController();
-  final _controllerGHQ9 = TextEditingController();
-  final _controllerGHQ10 = TextEditingController();
-  final _controllerHEQ1 = TextEditingController();
-  final _controllerHEQ2 = TextEditingController();
-  final _controllerHEQ3 = TextEditingController();
-  final _controllerHEQ4 = TextEditingController();
-  final _controllerHEQ5 = TextEditingController();
-  final _controllerHEQ6 = TextEditingController();
-  final _controllerHEQ7 = TextEditingController();
-  final _controllerHEQ8 = TextEditingController();
-  final _controllerHEQ9 = TextEditingController();
-  final _controllerHEQ10 = TextEditingController();
-  final _controllerHHQ1 = TextEditingController();
-  final _controllerHHQ2 = TextEditingController();
-  final _controllerHHQ3 = TextEditingController();
-  final _controllerHHQ4 = TextEditingController();
-  final _controllerHHQ5 = TextEditingController();
-  final _controllerHHQ6 = TextEditingController();
-  final _controllerHHQ7 = TextEditingController();
-  final _controllerHHQ8 = TextEditingController();
-  final _controllerHHQ9 = TextEditingController();
-  final _controllerHHQ10 = TextEditingController();
+  final _controllerName = TextEditingController(),
+      _controllerLessonGeography = TextEditingController(),
+      _controllerLessonHistory = TextEditingController();
+  final _controllerGEQ1 = TextEditingController(),
+      _controllerGEQ2 = TextEditingController(),
+      _controllerGEQ3 = TextEditingController(),
+      _controllerGEQ4 = TextEditingController(),
+      _controllerGEQ5 = TextEditingController(),
+      _controllerGEQ6 = TextEditingController(),
+      _controllerGEQ7 = TextEditingController(),
+      _controllerGEQ8 = TextEditingController(),
+      _controllerGEQ9 = TextEditingController(),
+      _controllerGEQ10 = TextEditingController();
+  final _controllerGHQ1 = TextEditingController(),
+      _controllerGHQ2 = TextEditingController(),
+      _controllerGHQ3 = TextEditingController(),
+      _controllerGHQ4 = TextEditingController(),
+      _controllerGHQ5 = TextEditingController(),
+      _controllerGHQ6 = TextEditingController(),
+      _controllerGHQ7 = TextEditingController(),
+      _controllerGHQ8 = TextEditingController(),
+      _controllerGHQ9 = TextEditingController(),
+      _controllerGHQ10 = TextEditingController();
+  final _controllerHEQ1 = TextEditingController(),
+      _controllerHEQ2 = TextEditingController(),
+      _controllerHEQ3 = TextEditingController(),
+      _controllerHEQ4 = TextEditingController(),
+      _controllerHEQ5 = TextEditingController(),
+      _controllerHEQ6 = TextEditingController(),
+      _controllerHEQ7 = TextEditingController(),
+      _controllerHEQ8 = TextEditingController(),
+      _controllerHEQ9 = TextEditingController(),
+      _controllerHEQ10 = TextEditingController();
+  final _controllerHHQ1 = TextEditingController(),
+      _controllerHHQ2 = TextEditingController(),
+      _controllerHHQ3 = TextEditingController(),
+      _controllerHHQ4 = TextEditingController(),
+      _controllerHHQ5 = TextEditingController(),
+      _controllerHHQ6 = TextEditingController(),
+      _controllerHHQ7 = TextEditingController(),
+      _controllerHHQ8 = TextEditingController(),
+      _controllerHHQ9 = TextEditingController(),
+      _controllerHHQ10 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -463,12 +512,74 @@ class _AddTestState extends State<AddTest> {
                     child: ElevatedButton(
                       onPressed: () async {
                         Navigator.pop(context);
-                        int i = await _dbHelper.insertCountry(_controllerName.text, _controllerLessonGeography.text, _controllerLessonHistory.text);
+                        easyGeographyQuestions[0] = _controllerGEQ1.text;
+                        easyGeographyQuestions[1] = _controllerGEQ2.text;
+                        easyGeographyQuestions[2] = _controllerGEQ3.text;
+                        easyGeographyQuestions[3] = _controllerGEQ4.text;
+                        easyGeographyQuestions[4] = _controllerGEQ5.text;
+                        easyGeographyQuestions[5] = _controllerGEQ6.text;
+                        easyGeographyQuestions[6] = _controllerGEQ7.text;
+                        easyGeographyQuestions[7] = _controllerGEQ8.text;
+                        easyGeographyQuestions[8] = _controllerGEQ9.text;
+                        easyGeographyQuestions[9] = _controllerGEQ10.text;
+                        hardGeographyQuestions[0] = _controllerGHQ1.text;
+                        hardGeographyQuestions[1] = _controllerGHQ2.text;
+                        hardGeographyQuestions[2] = _controllerGHQ3.text;
+                        hardGeographyQuestions[3] = _controllerGHQ4.text;
+                        hardGeographyQuestions[4] = _controllerGHQ5.text;
+                        hardGeographyQuestions[5] = _controllerGHQ6.text;
+                        hardGeographyQuestions[6] = _controllerGHQ7.text;
+                        hardGeographyQuestions[7] = _controllerGHQ8.text;
+                        hardGeographyQuestions[8] = _controllerGHQ9.text;
+                        hardGeographyQuestions[9] = _controllerGHQ10.text;
+                        easyHistoryQuestions[0] = _controllerHEQ1.text;
+                        easyHistoryQuestions[1] = _controllerHEQ2.text;
+                        easyHistoryQuestions[2] = _controllerHEQ3.text;
+                        easyHistoryQuestions[3] = _controllerHEQ4.text;
+                        easyHistoryQuestions[4] = _controllerHEQ5.text;
+                        easyHistoryQuestions[5] = _controllerHEQ6.text;
+                        easyHistoryQuestions[6] = _controllerHEQ7.text;
+                        easyHistoryQuestions[7] = _controllerHEQ8.text;
+                        easyHistoryQuestions[8] = _controllerHEQ9.text;
+                        easyHistoryQuestions[9] = _controllerHEQ10.text;
+                        hardHistoryQuestions[0] = _controllerHHQ1.text;
+                        hardHistoryQuestions[1] = _controllerHHQ2.text;
+                        hardHistoryQuestions[2] = _controllerHHQ3.text;
+                        hardHistoryQuestions[3] = _controllerHHQ4.text;
+                        hardHistoryQuestions[4] = _controllerHHQ5.text;
+                        hardHistoryQuestions[5] = _controllerHHQ6.text;
+                        hardHistoryQuestions[6] = _controllerHHQ7.text;
+                        hardHistoryQuestions[7] = _controllerHHQ8.text;
+                        hardHistoryQuestions[8] = _controllerHHQ9.text;
+                        hardHistoryQuestions[9] = _controllerHHQ10.text;
+                        String jsonStringEG =
+                            jsonEncode(easyGeographyQuestions);
+                        String jsonStringHG =
+                            jsonEncode(hardGeographyQuestions);
+                        String jsonStringEH = jsonEncode(easyHistoryQuestions);
+                        String jsonStringHH = jsonEncode(hardHistoryQuestions);
+                        int i = await _dbHelper.insertCountry(
+                            _controllerName.text,
+                            _controllerLessonGeography.text,
+                            _controllerLessonHistory.text,
+                            jsonStringEG,
+                            jsonStringHG,
+                            jsonStringEH,
+                            jsonStringHH);
                         setState(() {
-                          textus = _controllerGEQ1.text;
                           _controllerName.clear();
                           _controllerLessonGeography.clear();
                           _controllerLessonHistory.clear();
+                          _controllerGEQ1.clear();
+                          _controllerGEQ2.clear();
+                          _controllerGEQ3.clear();
+                          _controllerGEQ4.clear();
+                          _controllerGEQ5.clear();
+                          _controllerGEQ6.clear();
+                          _controllerGEQ7.clear();
+                          _controllerGEQ8.clear();
+                          _controllerGEQ9.clear();
+                          _controllerGEQ10.clear();
                         });
                       },
                       style: ElevatedButton.styleFrom(
@@ -530,8 +641,19 @@ class NewQuestion extends StatefulWidget {
 
   @override
   // ignore: no_logic_in_create_state
-  State<NewQuestion> createState() =>
-      _NewQuestionState(answers: answers, index: index, q1: q1, q2: q2, q3: q3, q4: q4, q5: q5, q6: q6, q7: q7, q8: q8, q9: q9, q10: q10);
+  State<NewQuestion> createState() => _NewQuestionState(
+      answers: answers,
+      index: index,
+      q1: q1,
+      q2: q2,
+      q3: q3,
+      q4: q4,
+      q5: q5,
+      q6: q6,
+      q7: q7,
+      q8: q8,
+      q9: q9,
+      q10: q10);
 }
 
 class _NewQuestionState extends State<NewQuestion> {
@@ -560,7 +682,6 @@ class _NewQuestionState extends State<NewQuestion> {
     required this.q8,
     required this.q9,
     required this.q10,
-
   });
 
   @override
@@ -577,7 +698,28 @@ class _NewQuestionState extends State<NewQuestion> {
           ],
         ),
         const SizedBox(height: 20),
-        Textfield(height: 58, text: "Question", controller: index == 0 ? q1 : index==1 ? q2 : index == 3 ? q3 : index == 4 ? q4 : index == 5 ? q5 : index == 6 ? q6 : index==7 ? q7: index==8 ? q8 : index==9? q9 : q10),
+        Textfield(
+            height: 58,
+            text: "Question",
+            controller: index == 0
+                ? q1
+                : index == 1
+                    ? q2
+                    : index == 3
+                        ? q3
+                        : index == 4
+                            ? q4
+                            : index == 5
+                                ? q5
+                                : index == 6
+                                    ? q6
+                                    : index == 7
+                                        ? q7
+                                        : index == 8
+                                            ? q8
+                                            : index == 9
+                                                ? q9
+                                                : q10),
         const SizedBox(height: 20),
         Textfield(height: 58, text: "Answer 1"),
         const SizedBox(height: 10),
@@ -698,13 +840,8 @@ class _NewQuestionState extends State<NewQuestion> {
 class Textfield extends StatelessWidget {
   double? height;
   String? text;
-  TextEditingController? controller; 
-  Textfield({
-    super.key,
-    this.height,
-    this.text,
-    this.controller
-  });
+  TextEditingController? controller;
+  Textfield({super.key, this.height, this.text, this.controller});
 
   @override
   Widget build(BuildContext context) {

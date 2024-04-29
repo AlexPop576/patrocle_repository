@@ -41,7 +41,7 @@ class _TestState extends State<Test> {
             ElevatedButton(
             child: Text('Insert'),
             onPressed: () async {
-              int i = await _dbHelper.insertCountry(_controller.text, _controllerLessonGeography.text, _controllerLessonHistory.text);
+              int i = await _dbHelper.insertCountry(_controller.text, _controllerLessonGeography.text, _controllerLessonHistory.text, "Q1.test", "Q2.test", "Q3.test", "Q4.test");
               print('inserted row: $i');
               setState(() {_controller.clear();});
             },

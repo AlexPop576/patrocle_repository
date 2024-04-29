@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:lottie/lottie.dart';
@@ -10,13 +12,16 @@ import 'testpage2.dart';
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
-  QuizPage(
-      {super.key,
-      required this.country,
-      required this.difficulty,
-      required this.subject,
-      required this.lesson});
-  String? country, lesson;
+  QuizPage({
+    super.key,
+    required this.country,
+    required this.difficulty,
+    required this.subject,
+    required this.lesson,
+    required this.QE,
+    required this.QH,
+  });
+  String? country, lesson, QE, QH;
   int? difficulty, subject;
 
   @override
@@ -25,19 +30,35 @@ class QuizPage extends StatefulWidget {
       country: country,
       difficulty: difficulty,
       subject: subject,
-      lesson: lesson);
+      lesson: lesson,
+      QE: QE,
+      QH: QH);
 }
 
 class _QuizPageState extends State<QuizPage> {
-  _QuizPageState(
-      {required this.country,
-      required this.difficulty,
-      required this.subject,
-      required this.lesson});
-  String? country, lesson;
+  _QuizPageState({
+    required this.country,
+    required this.difficulty,
+    required this.subject,
+    required this.lesson,
+    required this.QE,
+    required this.QH,
+  });
+  String? country, lesson, QE, QH;
   int? difficulty, subject;
   int pageIndex = 0, givenAnswer = -1, correctAnswers = 0, bonus = 0;
-  final _dbHelper = DatabaseHelper.instance;
+  //final _dbHelper = DatabaseHelper.instance;
+  late List<String> easyQuestions, hardQuestions;
+
+  @override
+  void initState()
+  {
+    super.initState();
+    easyQuestions = jsonDecode(QE!);
+    hardQuestions = jsonDecode(QH!);
+    if(easyQuestions.isEmpty) print("eq empty");
+    if(hardQuestions.isEmpty) print("hq empty");
+  }
 
   void correct() {
     setState(() {
@@ -223,14 +244,14 @@ class _QuizPageState extends State<QuizPage> {
                   ? TestPage1(
                       getAnswerFunction: getAnswer,
                       selected: 0,
-                      questionText: "Intrebarea $pageIndex",
+                      questionText: easyQuestions[pageIndex-1] ?? "Q1",
                       givenAnswer: 0,
                     )
                   : pageIndex != 11 && pageIndex % 2 == 1
                       ? TestPage2(
                           getAnswerFunction: getAnswer,
                           selected: 0,
-                          questionText: "Intrebarea $pageIndex",
+                          questionText: easyQuestions[pageIndex-1] ?? "Q2",
                           givenAnswer: 0,
                         )
                       : FinishPage(correctAnswers: correctAnswers)),
@@ -254,9 +275,9 @@ class _QuizPageState extends State<QuizPage> {
                     onPressed: () async {
                       if (givenAnswer != 0 && pageIndex != 11) {
                         if (pageIndex > 0 && pageIndex < 11) {
-                          setState((){
-                              bonus = 1;
-                            });
+                          setState(() {
+                            bonus = 1;
+                          });
                           if ( //answersQuiz[country]?[subject]?[pageIndex - 1] ==
                               1 == givenAnswer) {
                             correct();
@@ -294,7 +315,7 @@ class _QuizPageState extends State<QuizPage> {
                                             Row(
                                               children: [
                                                 Image.asset(
-                                                  'assets/Correct.png',
+                                                  'assets/icons/Correct.png',
                                                   height: 30,
                                                 ),
                                                 const SizedBox(width: 15),
@@ -391,7 +412,7 @@ class _QuizPageState extends State<QuizPage> {
                                             Row(
                                               children: [
                                                 Image.asset(
-                                                  'assets/Wrong.png',
+                                                  'assets/icons/Wrong.png',
                                                   height: 30,
                                                 ),
                                                 const SizedBox(width: 15),
@@ -531,10 +552,8 @@ class FinishPage extends StatelessWidget {
           ),
           SizedBox(
               height: 220,
-              child: Lottie.asset(
-                  'assets/patrocle.json',
-                  frameRate: FrameRate.max,
-                  fit: BoxFit.contain)),
+              child: Lottie.asset('assets/patrocle.json',
+                  frameRate: FrameRate.max, fit: BoxFit.contain)),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.06,
           ),

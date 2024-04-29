@@ -10,9 +10,20 @@ class LevelTile extends StatefulWidget {
     required this.country,
     required this.lessonGeography,
     required this.lessonHistory,
+    required this.jsonStringEG,
+    required this.jsonStringHG,
+    required this.jsonStringEH,
+    required this.jsonStringHH,
   });
   int? colorIndex;
-  String? country, continent, lessonGeography, lessonHistory;
+  String? country,
+      continent,
+      lessonGeography,
+      lessonHistory,
+      jsonStringEG,
+      jsonStringHG,
+      jsonStringEH,
+      jsonStringHH;
 
   @override
   State<LevelTile> createState() =>
@@ -21,7 +32,11 @@ class LevelTile extends StatefulWidget {
           colorIndex: colorIndex,
           country: country,
           lessonGeography: lessonGeography,
-          lessonHistory: lessonHistory);
+          lessonHistory: lessonHistory,
+          jsonStringEG: jsonStringEG,
+          jsonStringHG: jsonStringHG,
+          jsonStringEH: jsonStringEH,
+          jsonStringHH: jsonStringHH);
 }
 
 class _LevelTileState extends State<LevelTile> {
@@ -30,9 +45,19 @@ class _LevelTileState extends State<LevelTile> {
     required this.country,
     required this.lessonGeography,
     required this.lessonHistory,
+    required this.jsonStringEG,
+    required this.jsonStringHG,
+    required this.jsonStringEH,
+    required this.jsonStringHH,
   });
   int? colorIndex = 1, selectedSubject = 0;
-  String? country, lessonGeography, lessonHistory;
+  String? country,
+      lessonGeography,
+      lessonHistory,
+      jsonStringEG,
+      jsonStringHG,
+      jsonStringEH,
+      jsonStringHH;
 
   @override
   Widget build(BuildContext context) {
@@ -191,6 +216,8 @@ class _LevelTileState extends State<LevelTile> {
                               difficulty: 1,
                               subject: 1,
                               lesson: lessonGeography,
+                              QE: jsonStringEG,
+                              QH: jsonStringHG,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -229,6 +256,8 @@ class _LevelTileState extends State<LevelTile> {
                               difficulty: 2,
                               subject: 1,
                               lesson: lessonGeography,
+                              QE: jsonStringEG,
+                              QH: jsonStringHG,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -268,6 +297,8 @@ class _LevelTileState extends State<LevelTile> {
                               difficulty: 3,
                               subject: 1,
                               lesson: lessonGeography,
+                              QE: jsonStringEG,
+                              QH: jsonStringHG,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -316,6 +347,8 @@ class _LevelTileState extends State<LevelTile> {
                               difficulty: 1,
                               subject: 2,
                               lesson: lessonHistory,
+                              QE: jsonStringEH,
+                              QH: jsonStringHH,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -354,6 +387,8 @@ class _LevelTileState extends State<LevelTile> {
                               difficulty: 2,
                               subject: 2,
                               lesson: lessonHistory,
+                              QE: jsonStringEH,
+                              QH: jsonStringHH,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -393,6 +428,8 @@ class _LevelTileState extends State<LevelTile> {
                               difficulty: 3,
                               subject: 2,
                               lesson: lessonHistory,
+                              QE: jsonStringEH,
+                              QH: jsonStringHH,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
