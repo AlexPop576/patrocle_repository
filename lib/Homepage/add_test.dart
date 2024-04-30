@@ -18,12 +18,27 @@ class _AddTestState extends State<AddTest> {
   List<int> answersHistoryEasy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<int> answersHistoryHard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-  List<String> easyGeographyQuestions = [], hardGeographyQuestions = [], easyHistoryQuestions = [], hardHistoryQuestions = [];
-  List<String> easyGeographyA1 = [], hardGeographyA1 = [], easyHistoryA1 = [], hardHistoryA1 = [];
-  List<String> easyGeographyA2 = [], hardGeographyA2 = [], easyHistoryA2 = [], hardHistoryA2 = [];
-  List<String> easyGeographyA3 = [], hardGeographyA3 = [], easyHistoryA3 = [], hardHistoryA3 = [];
-  List<String> easyGeographyA4 = [], hardGeographyA4 = [], easyHistoryA4 = [], hardHistoryA4 = [];
-  
+  List<String> easyGeographyQuestions = [],
+      hardGeographyQuestions = [],
+      easyHistoryQuestions = [],
+      hardHistoryQuestions = [];
+  List<String> easyGeographyA1 = [],
+      hardGeographyA1 = [],
+      easyHistoryA1 = [],
+      hardHistoryA1 = [];
+  List<String> easyGeographyA2 = [],
+      hardGeographyA2 = [],
+      easyHistoryA2 = [],
+      hardHistoryA2 = [];
+  List<String> easyGeographyA3 = [],
+      hardGeographyA3 = [],
+      easyHistoryA3 = [],
+      hardHistoryA3 = [];
+  List<String> easyGeographyA4 = [],
+      hardGeographyA4 = [],
+      easyHistoryA4 = [],
+      hardHistoryA4 = [];
+
   String? textus;
   final _controllerName = TextEditingController(),
       _controllerLessonGeography = TextEditingController(),
@@ -120,7 +135,7 @@ class _AddTestState extends State<AddTest> {
       _controllerGEQ8A2 = TextEditingController(),
       _controllerGEQ9A2 = TextEditingController(),
       _controllerGEQ10A2 = TextEditingController();
-final _controllerGHQ1A2 = TextEditingController(),
+  final _controllerGHQ1A2 = TextEditingController(),
       _controllerGHQ2A2 = TextEditingController(),
       _controllerGHQ3A2 = TextEditingController(),
       _controllerGHQ4A2 = TextEditingController(),
@@ -130,7 +145,7 @@ final _controllerGHQ1A2 = TextEditingController(),
       _controllerGHQ8A2 = TextEditingController(),
       _controllerGHQ9A2 = TextEditingController(),
       _controllerGHQ10A2 = TextEditingController();
-final _controllerHEQ1A2 = TextEditingController(),
+  final _controllerHEQ1A2 = TextEditingController(),
       _controllerHEQ2A2 = TextEditingController(),
       _controllerHEQ3A2 = TextEditingController(),
       _controllerHEQ4A2 = TextEditingController(),
@@ -140,7 +155,7 @@ final _controllerHEQ1A2 = TextEditingController(),
       _controllerHEQ8A2 = TextEditingController(),
       _controllerHEQ9A2 = TextEditingController(),
       _controllerHEQ10A2 = TextEditingController();
-final _controllerHHQ1A2 = TextEditingController(),
+  final _controllerHHQ1A2 = TextEditingController(),
       _controllerHHQ2A2 = TextEditingController(),
       _controllerHHQ3A2 = TextEditingController(),
       _controllerHHQ4A2 = TextEditingController(),
@@ -161,7 +176,7 @@ final _controllerHHQ1A2 = TextEditingController(),
       _controllerGEQ8A3 = TextEditingController(),
       _controllerGEQ9A3 = TextEditingController(),
       _controllerGEQ10A3 = TextEditingController();
-final _controllerGHQ1A3 = TextEditingController(),
+  final _controllerGHQ1A3 = TextEditingController(),
       _controllerGHQ2A3 = TextEditingController(),
       _controllerGHQ3A3 = TextEditingController(),
       _controllerGHQ4A3 = TextEditingController(),
@@ -171,7 +186,7 @@ final _controllerGHQ1A3 = TextEditingController(),
       _controllerGHQ8A3 = TextEditingController(),
       _controllerGHQ9A3 = TextEditingController(),
       _controllerGHQ10A3 = TextEditingController();
-final _controllerHEQ1A3 = TextEditingController(),
+  final _controllerHEQ1A3 = TextEditingController(),
       _controllerHEQ2A3 = TextEditingController(),
       _controllerHEQ3A3 = TextEditingController(),
       _controllerHEQ4A3 = TextEditingController(),
@@ -181,7 +196,7 @@ final _controllerHEQ1A3 = TextEditingController(),
       _controllerHEQ8A3 = TextEditingController(),
       _controllerHEQ9A3 = TextEditingController(),
       _controllerHEQ10A3 = TextEditingController();
-final _controllerHHQ1A3 = TextEditingController(),
+  final _controllerHHQ1A3 = TextEditingController(),
       _controllerHHQ2A3 = TextEditingController(),
       _controllerHHQ3A3 = TextEditingController(),
       _controllerHHQ4A3 = TextEditingController(),
@@ -202,7 +217,7 @@ final _controllerHHQ1A3 = TextEditingController(),
       _controllerGEQ8A4 = TextEditingController(),
       _controllerGEQ9A4 = TextEditingController(),
       _controllerGEQ10A4 = TextEditingController();
-final _controllerGHQ1A4 = TextEditingController(),
+  final _controllerGHQ1A4 = TextEditingController(),
       _controllerGHQ2A4 = TextEditingController(),
       _controllerGHQ3A4 = TextEditingController(),
       _controllerGHQ4A4 = TextEditingController(),
@@ -212,7 +227,7 @@ final _controllerGHQ1A4 = TextEditingController(),
       _controllerGHQ8A4 = TextEditingController(),
       _controllerGHQ9A4 = TextEditingController(),
       _controllerGHQ10A4 = TextEditingController();
-final _controllerHEQ1A4 = TextEditingController(),
+  final _controllerHEQ1A4 = TextEditingController(),
       _controllerHEQ2A4 = TextEditingController(),
       _controllerHEQ3A4 = TextEditingController(),
       _controllerHEQ4A4 = TextEditingController(),
@@ -222,7 +237,7 @@ final _controllerHEQ1A4 = TextEditingController(),
       _controllerHEQ8A4 = TextEditingController(),
       _controllerHEQ9A4 = TextEditingController(),
       _controllerHEQ10A4 = TextEditingController();
-final _controllerHHQ1A4 = TextEditingController(),
+  final _controllerHHQ1A4 = TextEditingController(),
       _controllerHHQ2A4 = TextEditingController(),
       _controllerHHQ3A4 = TextEditingController(),
       _controllerHHQ4A4 = TextEditingController(),
@@ -280,14 +295,11 @@ final _controllerHHQ1A4 = TextEditingController(),
                                     const SizedBox(
                                       height: 20,
                                     ),
-                                    Lottie.asset(
-                                        'assets/patrocle.json',
-                                        frameRate: FrameRate.max,
-                                        height: 100),
+                                    Lottie.asset('assets/patrocle.json',
+                                        frameRate: FrameRate.max, height: 100),
                                     const SizedBox(
                                       height: 30,
                                     ),
-                                    
                                     Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 40),
@@ -490,6 +502,46 @@ final _controllerHHQ1A4 = TextEditingController(),
                 q8: _controllerGEQ8,
                 q9: _controllerGEQ9,
                 q10: _controllerGEQ10,
+                q1a1: _controllerGEQ1A1,
+                q2a1: _controllerGEQ2A1,
+                q3a1: _controllerGEQ3A1,
+                q4a1: _controllerGEQ4A1,
+                q5a1: _controllerGEQ5A1,
+                q6a1: _controllerGEQ6A1,
+                q7a1: _controllerGEQ7A1,
+                q8a1: _controllerGEQ8A1,
+                q9a1: _controllerGEQ9A1,
+                q10a1: _controllerGEQ10A1,
+                q1a2: _controllerGEQ1A2,
+                q2a2: _controllerGEQ2A2,
+                q3a2: _controllerGEQ3A2,
+                q4a2: _controllerGEQ4A2,
+                q5a2: _controllerGEQ5A2,
+                q6a2: _controllerGEQ6A2,
+                q7a2: _controllerGEQ7A2,
+                q8a2: _controllerGEQ8A2,
+                q9a2: _controllerGEQ9A2,
+                q10a2: _controllerGEQ10A2,
+                q1a3: _controllerGEQ1A3,
+                q2a3: _controllerGEQ2A3,
+                q3a3: _controllerGEQ3A3,
+                q4a3: _controllerGEQ4A3,
+                q5a3: _controllerGEQ5A3,
+                q6a3: _controllerGEQ6A3,
+                q7a3: _controllerGEQ7A3,
+                q8a3: _controllerGEQ8A3,
+                q9a3: _controllerGEQ9A3,
+                q10a3: _controllerGEQ10A3,
+                q1a4: _controllerGEQ1A4,
+                q2a4: _controllerGEQ2A4,
+                q3a4: _controllerGEQ3A4,
+                q4a4: _controllerGEQ4A4,
+                q5a4: _controllerGEQ5A4,
+                q6a4: _controllerGEQ6A4,
+                q7a4: _controllerGEQ7A4,
+                q8a4: _controllerGEQ8A4,
+                q9a4: _controllerGEQ9A4,
+                q10a4: _controllerGEQ10A4,
               );
             }, childCount: 10),
           ),
@@ -518,6 +570,46 @@ final _controllerHHQ1A4 = TextEditingController(),
                 q8: _controllerGHQ8,
                 q9: _controllerGHQ9,
                 q10: _controllerGHQ10,
+                q1a1: _controllerGHQ1A1,
+                q2a1: _controllerGHQ2A1,
+                q3a1: _controllerGHQ3A1,
+                q4a1: _controllerGHQ4A1,
+                q5a1: _controllerGHQ5A1,
+                q6a1: _controllerGHQ6A1,
+                q7a1: _controllerGHQ7A1,
+                q8a1: _controllerGHQ8A1,
+                q9a1: _controllerGHQ9A1,
+                q10a1: _controllerGHQ10A1,
+                q1a2: _controllerGHQ1A2,
+                q2a2: _controllerGHQ2A2,
+                q3a2: _controllerGHQ3A2,
+                q4a2: _controllerGHQ4A2,
+                q5a2: _controllerGHQ5A2,
+                q6a2: _controllerGHQ6A2,
+                q7a2: _controllerGHQ7A2,
+                q8a2: _controllerGHQ8A2,
+                q9a2: _controllerGHQ9A2,
+                q10a2: _controllerGHQ10A2,
+                q1a3: _controllerGHQ1A3,
+                q2a3: _controllerGHQ2A3,
+                q3a3: _controllerGHQ3A3,
+                q4a3: _controllerGHQ4A3,
+                q5a3: _controllerGHQ5A3,
+                q6a3: _controllerGHQ6A3,
+                q7a3: _controllerGHQ7A3,
+                q8a3: _controllerGHQ8A3,
+                q9a3: _controllerGHQ9A3,
+                q10a3: _controllerGHQ10A3,
+                q1a4: _controllerGHQ1A4,
+                q2a4: _controllerGHQ2A4,
+                q3a4: _controllerGHQ3A4,
+                q4a4: _controllerGHQ4A4,
+                q5a4: _controllerGHQ5A4,
+                q6a4: _controllerGHQ6A4,
+                q7a4: _controllerGHQ7A4,
+                q8a4: _controllerGHQ8A4,
+                q9a4: _controllerGHQ9A4,
+                q10a4: _controllerGHQ10A4,
               );
             }, childCount: 10),
           ),
@@ -589,6 +681,46 @@ final _controllerHHQ1A4 = TextEditingController(),
                 q8: _controllerHEQ8,
                 q9: _controllerHEQ9,
                 q10: _controllerHEQ10,
+                q1a1: _controllerHEQ1A1,
+                q2a1: _controllerHEQ2A1,
+                q3a1: _controllerHEQ3A1,
+                q4a1: _controllerHEQ4A1,
+                q5a1: _controllerHEQ5A1,
+                q6a1: _controllerHEQ6A1,
+                q7a1: _controllerHEQ7A1,
+                q8a1: _controllerHEQ8A1,
+                q9a1: _controllerHEQ9A1,
+                q10a1: _controllerHEQ10A1,
+                q1a2: _controllerHEQ1A2,
+                q2a2: _controllerHEQ2A2,
+                q3a2: _controllerHEQ3A2,
+                q4a2: _controllerHEQ4A2,
+                q5a2: _controllerHEQ5A2,
+                q6a2: _controllerHEQ6A2,
+                q7a2: _controllerHEQ7A2,
+                q8a2: _controllerHEQ8A2,
+                q9a2: _controllerHEQ9A2,
+                q10a2: _controllerHEQ10A2,
+                q1a3: _controllerHEQ1A3,
+                q2a3: _controllerHEQ2A3,
+                q3a3: _controllerHEQ3A3,
+                q4a3: _controllerHEQ4A3,
+                q5a3: _controllerHEQ5A3,
+                q6a3: _controllerHEQ6A3,
+                q7a3: _controllerHEQ7A3,
+                q8a3: _controllerHEQ8A3,
+                q9a3: _controllerHEQ9A3,
+                q10a3: _controllerHEQ10A3,
+                q1a4: _controllerHEQ1A4,
+                q2a4: _controllerHEQ2A4,
+                q3a4: _controllerHEQ3A4,
+                q4a4: _controllerHEQ4A4,
+                q5a4: _controllerHEQ5A4,
+                q6a4: _controllerHEQ6A4,
+                q7a4: _controllerHEQ7A4,
+                q8a4: _controllerHEQ8A4,
+                q9a4: _controllerHEQ9A4,
+                q10a4: _controllerHEQ10A4,
               );
             }, childCount: 10),
           ),
@@ -617,6 +749,46 @@ final _controllerHHQ1A4 = TextEditingController(),
                 q8: _controllerHHQ8,
                 q9: _controllerHHQ9,
                 q10: _controllerHHQ10,
+                q1a1: _controllerHHQ1A1,
+                q2a1: _controllerHHQ2A1,
+                q3a1: _controllerHHQ3A1,
+                q4a1: _controllerHHQ4A1,
+                q5a1: _controllerHHQ5A1,
+                q6a1: _controllerHHQ6A1,
+                q7a1: _controllerHHQ7A1,
+                q8a1: _controllerHHQ8A1,
+                q9a1: _controllerHHQ9A1,
+                q10a1: _controllerHHQ10A1,
+                q1a2: _controllerHHQ1A2,
+                q2a2: _controllerHHQ2A2,
+                q3a2: _controllerHHQ3A2,
+                q4a2: _controllerHHQ4A2,
+                q5a2: _controllerHHQ5A2,
+                q6a2: _controllerHHQ6A2,
+                q7a2: _controllerHHQ7A2,
+                q8a2: _controllerHHQ8A2,
+                q9a2: _controllerHHQ9A2,
+                q10a2: _controllerHHQ10A2,
+                q1a3: _controllerHHQ1A3,
+                q2a3: _controllerHHQ2A3,
+                q3a3: _controllerHHQ3A3,
+                q4a3: _controllerHHQ4A3,
+                q5a3: _controllerHHQ5A3,
+                q6a3: _controllerHHQ6A3,
+                q7a3: _controllerHHQ7A3,
+                q8a3: _controllerHHQ8A3,
+                q9a3: _controllerHHQ9A3,
+                q10a3: _controllerHHQ10A3,
+                q1a4: _controllerHHQ1A4,
+                q2a4: _controllerHHQ2A4,
+                q3a4: _controllerHHQ3A4,
+                q4a4: _controllerHHQ4A4,
+                q5a4: _controllerHHQ5A4,
+                q6a4: _controllerHHQ6A4,
+                q7a4: _controllerHHQ7A4,
+                q8a4: _controllerHHQ8A4,
+                q9a4: _controllerHHQ9A4,
+                q10a4: _controllerHHQ10A4,
               );
             }, childCount: 10),
           ),
@@ -634,207 +806,6 @@ final _controllerHHQ1A4 = TextEditingController(),
                     child: ElevatedButton(
                       onPressed: () async {
                         Navigator.pop(context);
-                        easyGeographyQuestions[0] = _controllerGEQ1.text;
-                        easyGeographyQuestions[1] = _controllerGEQ2.text;
-                        easyGeographyQuestions[2] = _controllerGEQ3.text;
-                        easyGeographyQuestions[3] = _controllerGEQ4.text;
-                        easyGeographyQuestions[4] = _controllerGEQ5.text;
-                        easyGeographyQuestions[5] = _controllerGEQ6.text;
-                        easyGeographyQuestions[6] = _controllerGEQ7.text;
-                        easyGeographyQuestions[7] = _controllerGEQ8.text;
-                        easyGeographyQuestions[8] = _controllerGEQ9.text;
-                        easyGeographyQuestions[9] = _controllerGEQ10.text;
-                        hardGeographyQuestions[0] = _controllerGHQ1.text;
-                        hardGeographyQuestions[1] = _controllerGHQ2.text;
-                        hardGeographyQuestions[2] = _controllerGHQ3.text;
-                        hardGeographyQuestions[3] = _controllerGHQ4.text;
-                        hardGeographyQuestions[4] = _controllerGHQ5.text;
-                        hardGeographyQuestions[5] = _controllerGHQ6.text;
-                        hardGeographyQuestions[6] = _controllerGHQ7.text;
-                        hardGeographyQuestions[7] = _controllerGHQ8.text;
-                        hardGeographyQuestions[8] = _controllerGHQ9.text;
-                        hardGeographyQuestions[9] = _controllerGHQ10.text;
-                        easyHistoryQuestions[0] = _controllerHEQ1.text;
-                        easyHistoryQuestions[1] = _controllerHEQ2.text;
-                        easyHistoryQuestions[2] = _controllerHEQ3.text;
-                        easyHistoryQuestions[3] = _controllerHEQ4.text;
-                        easyHistoryQuestions[4] = _controllerHEQ5.text;
-                        easyHistoryQuestions[5] = _controllerHEQ6.text;
-                        easyHistoryQuestions[6] = _controllerHEQ7.text;
-                        easyHistoryQuestions[7] = _controllerHEQ8.text;
-                        easyHistoryQuestions[8] = _controllerHEQ9.text;
-                        easyHistoryQuestions[9] = _controllerHEQ10.text;
-                        hardHistoryQuestions[0] = _controllerHHQ1.text;
-                        hardHistoryQuestions[1] = _controllerHHQ2.text;
-                        hardHistoryQuestions[2] = _controllerHHQ3.text;
-                        hardHistoryQuestions[3] = _controllerHHQ4.text;
-                        hardHistoryQuestions[4] = _controllerHHQ5.text;
-                        hardHistoryQuestions[5] = _controllerHHQ6.text;
-                        hardHistoryQuestions[6] = _controllerHHQ7.text;
-                        hardHistoryQuestions[7] = _controllerHHQ8.text;
-                        hardHistoryQuestions[8] = _controllerHHQ9.text;
-                        hardHistoryQuestions[9] = _controllerHHQ10.text;
-                        easyGeographyA1[0] = _controllerGEQ1A1.text;
-                        easyGeographyA1[1] = _controllerGEQ2A1.text;
-                        easyGeographyA1[2] = _controllerGEQ3A1.text;
-                        easyGeographyA1[3] = _controllerGEQ4A1.text;
-                        easyGeographyA1[4] = _controllerGEQ5A1.text;
-                        easyGeographyA1[5] = _controllerGEQ6A1.text;
-                        easyGeographyA1[6] = _controllerGEQ7A1.text;
-                        easyGeographyA1[7] = _controllerGEQ8A1.text;
-                        easyGeographyA1[8] = _controllerGEQ9A1.text;
-                        easyGeographyA1[9] = _controllerGEQ10A1.text;
-                        hardGeographyA1[0] = _controllerGHQ1A1.text;
-                        hardGeographyA1[1] = _controllerGHQ2A1.text;
-                        hardGeographyA1[2] = _controllerGHQ3A1.text;
-                        hardGeographyA1[3] = _controllerGHQ4A1.text;
-                        hardGeographyA1[4] = _controllerGHQ5A1.text;
-                        hardGeographyA1[5] = _controllerGHQ6A1.text;
-                        hardGeographyA1[6] = _controllerGHQ7A1.text;
-                        hardGeographyA1[7] = _controllerGHQ8A1.text;
-                        hardGeographyA1[8] = _controllerGHQ9A1.text;
-                        hardGeographyA1[9] = _controllerGHQ10A1.text;
-                        easyHistoryA1[0] = _controllerHEQ1A1.text;
-                        easyHistoryA1[1] = _controllerHEQ2A1.text;
-                        easyHistoryA1[2] = _controllerHEQ3A1.text;
-                        easyHistoryA1[3] = _controllerHEQ4A1.text;
-                        easyHistoryA1[4] = _controllerHEQ5A1.text;
-                        easyHistoryA1[5] = _controllerHEQ6A1.text;
-                        easyHistoryA1[6] = _controllerHEQ7A1.text;
-                        easyHistoryA1[7] = _controllerHEQ8A1.text;
-                        easyHistoryA1[8] = _controllerHEQ9A1.text;
-                        easyHistoryA1[9] = _controllerHEQ10A1.text;
-                        hardHistoryA1[0] = _controllerHHQ1A1.text;
-                        hardHistoryA1[1] = _controllerHHQ2A1.text;
-                        hardHistoryA1[2] = _controllerHHQ3A1.text;
-                        hardHistoryA1[3] = _controllerHHQ4A1.text;
-                        hardHistoryA1[4] = _controllerHHQ5A1.text;
-                        hardHistoryA1[5] = _controllerHHQ6A1.text;
-                        hardHistoryA1[6] = _controllerHHQ7A1.text;
-                        hardHistoryA1[7] = _controllerHHQ8A1.text;
-                        hardHistoryA1[8] = _controllerHHQ9A1.text;
-                        hardHistoryA1[9] = _controllerHHQ10A1.text;
-                        easyGeographyA2[0] = _controllerGEQ1A2.text;
-                        easyGeographyA2[1] = _controllerGEQ2A2.text;
-                        easyGeographyA2[2] = _controllerGEQ3A2.text;
-                        easyGeographyA2[3] = _controllerGEQ4A2.text;
-                        easyGeographyA2[4] = _controllerGEQ5A2.text;
-                        easyGeographyA2[5] = _controllerGEQ6A2.text;
-                        easyGeographyA2[6] = _controllerGEQ7A2.text;
-                        easyGeographyA2[7] = _controllerGEQ8A2.text;
-                        easyGeographyA2[8] = _controllerGEQ9A2.text;
-                        easyGeographyA2[9] = _controllerGEQ10A2.text;
-                        hardGeographyA2[0] = _controllerGHQ1A2.text;
-                        hardGeographyA2[1] = _controllerGHQ2A2.text;
-                        hardGeographyA2[2] = _controllerGHQ3A2.text;
-                        hardGeographyA2[3] = _controllerGHQ4A2.text;
-                        hardGeographyA2[4] = _controllerGHQ5A2.text;
-                        hardGeographyA2[5] = _controllerGHQ6A2.text;
-                        hardGeographyA2[6] = _controllerGHQ7A2.text;
-                        hardGeographyA2[7] = _controllerGHQ8A2.text;
-                        hardGeographyA2[8] = _controllerGHQ9A2.text;
-                        hardGeographyA2[9] = _controllerGHQ10A2.text;
-                        easyHistoryA2[0] = _controllerHEQ1A2.text;
-                        easyHistoryA2[1] = _controllerHEQ2A2.text;
-                        easyHistoryA2[2] = _controllerHEQ3A2.text;
-                        easyHistoryA2[3] = _controllerHEQ4A2.text;
-                        easyHistoryA2[4] = _controllerHEQ5A2.text;
-                        easyHistoryA2[5] = _controllerHEQ6A2.text;
-                        easyHistoryA2[6] = _controllerHEQ7A2.text;
-                        easyHistoryA2[7] = _controllerHEQ8A2.text;
-                        easyHistoryA2[8] = _controllerHEQ9A2.text;
-                        easyHistoryA2[9] = _controllerHEQ10A2.text;
-                        hardHistoryA2[0] = _controllerHHQ1A2.text;
-                        hardHistoryA2[1] = _controllerHHQ2A2.text;
-                        hardHistoryA2[2] = _controllerHHQ3A2.text;
-                        hardHistoryA2[3] = _controllerHHQ4A2.text;
-                        hardHistoryA2[4] = _controllerHHQ5A2.text;
-                        hardHistoryA2[5] = _controllerHHQ6A2.text;
-                        hardHistoryA2[6] = _controllerHHQ7A2.text;
-                        hardHistoryA2[7] = _controllerHHQ8A2.text;
-                        hardHistoryA2[8] = _controllerHHQ9A2.text;
-                        hardHistoryA2[9] = _controllerHHQ10A2.text;
-                        easyGeographyA3[0] = _controllerGEQ1A3.text;
-                        easyGeographyA3[1] = _controllerGEQ2A3.text;
-                        easyGeographyA3[2] = _controllerGEQ3A3.text;
-                        easyGeographyA3[3] = _controllerGEQ4A3.text;
-                        easyGeographyA3[4] = _controllerGEQ5A3.text;
-                        easyGeographyA3[5] = _controllerGEQ6A3.text;
-                        easyGeographyA3[6] = _controllerGEQ7A3.text;
-                        easyGeographyA3[7] = _controllerGEQ8A3.text;
-                        easyGeographyA3[8] = _controllerGEQ9A3.text;
-                        easyGeographyA3[9] = _controllerGEQ10A3.text;
-                        hardGeographyA3[0] = _controllerGHQ1A3.text;
-                        hardGeographyA3[1] = _controllerGHQ2A3.text;
-                        hardGeographyA3[2] = _controllerGHQ3A3.text;
-                        hardGeographyA3[3] = _controllerGHQ4A3.text;
-                        hardGeographyA3[4] = _controllerGHQ5A3.text;
-                        hardGeographyA3[5] = _controllerGHQ6A3.text;
-                        hardGeographyA3[6] = _controllerGHQ7A3.text;
-                        hardGeographyA3[7] = _controllerGHQ8A3.text;
-                        hardGeographyA3[8] = _controllerGHQ9A3.text;
-                        hardGeographyA3[9] = _controllerGHQ10A3.text;
-                        easyHistoryA3[0] = _controllerHEQ1A3.text;
-                        easyHistoryA3[1] = _controllerHEQ2A3.text;
-                        easyHistoryA3[2] = _controllerHEQ3A3.text;
-                        easyHistoryA3[3] = _controllerHEQ4A3.text;
-                        easyHistoryA3[4] = _controllerHEQ5A3.text;
-                        easyHistoryA3[5] = _controllerHEQ6A3.text;
-                        easyHistoryA3[6] = _controllerHEQ7A3.text;
-                        easyHistoryA3[7] = _controllerHEQ8A3.text;
-                        easyHistoryA3[8] = _controllerHEQ9A3.text;
-                        easyHistoryA3[9] = _controllerHEQ10A3.text;
-                        hardHistoryA3[0] = _controllerHHQ1A3.text;
-                        hardHistoryA3[1] = _controllerHHQ2A3.text;
-                        hardHistoryA3[2] = _controllerHHQ3A3.text;
-                        hardHistoryA3[3] = _controllerHHQ4A3.text;
-                        hardHistoryA3[4] = _controllerHHQ5A3.text;
-                        hardHistoryA3[5] = _controllerHHQ6A3.text;
-                        hardHistoryA3[6] = _controllerHHQ7A3.text;
-                        hardHistoryA3[7] = _controllerHHQ8A3.text;
-                        hardHistoryA3[8] = _controllerHHQ9A3.text;
-                        hardHistoryA3[9] = _controllerHHQ10A3.text;
-                        easyGeographyA4[0] = _controllerGEQ1A4.text;
-                        easyGeographyA4[1] = _controllerGEQ2A4.text;
-                        easyGeographyA4[2] = _controllerGEQ3A4.text;
-                        easyGeographyA4[3] = _controllerGEQ4A4.text;
-                        easyGeographyA4[4] = _controllerGEQ5A4.text;
-                        easyGeographyA4[5] = _controllerGEQ6A4.text;
-                        easyGeographyA4[6] = _controllerGEQ7A4.text;
-                        easyGeographyA4[7] = _controllerGEQ8A4.text;
-                        easyGeographyA4[8] = _controllerGEQ9A4.text;
-                        easyGeographyA4[9] = _controllerGEQ10A4.text;
-                        hardGeographyA4[0] = _controllerGHQ1A4.text;
-                        hardGeographyA4[1] = _controllerGHQ2A4.text;
-                        hardGeographyA4[2] = _controllerGHQ3A4.text;
-                        hardGeographyA4[3] = _controllerGHQ4A4.text;
-                        hardGeographyA4[4] = _controllerGHQ5A4.text;
-                        hardGeographyA4[5] = _controllerGHQ6A4.text;
-                        hardGeographyA4[6] = _controllerGHQ7A4.text;
-                        hardGeographyA4[7] = _controllerGHQ8A4.text;
-                        hardGeographyA4[8] = _controllerGHQ9A4.text;
-                        hardGeographyA4[9] = _controllerGHQ10A4.text;
-                        easyHistoryA4[0] = _controllerHEQ1A4.text;
-                        easyHistoryA4[1] = _controllerHEQ2A4.text;
-                        easyHistoryA4[2] = _controllerHEQ3A4.text;
-                        easyHistoryA4[3] = _controllerHEQ4A4.text;
-                        easyHistoryA4[4] = _controllerHEQ5A4.text;
-                        easyHistoryA4[5] = _controllerHEQ6A4.text;
-                        easyHistoryA4[6] = _controllerHEQ7A4.text;
-                        easyHistoryA4[7] = _controllerHEQ8A4.text;
-                        easyHistoryA4[8] = _controllerHEQ9A4.text;
-                        easyHistoryA4[9] = _controllerHEQ10A4.text;
-                        hardHistoryA4[0] = _controllerHHQ1A4.text;
-                        hardHistoryA4[1] = _controllerHHQ2A4.text;
-                        hardHistoryA4[2] = _controllerHHQ3A4.text;
-                        hardHistoryA4[3] = _controllerHHQ4A4.text;
-                        hardHistoryA4[4] = _controllerHHQ5A4.text;
-                        hardHistoryA4[5] = _controllerHHQ6A4.text;
-                        hardHistoryA4[6] = _controllerHHQ7A4.text;
-                        hardHistoryA4[7] = _controllerHHQ8A4.text;
-                        hardHistoryA4[8] = _controllerHHQ9A4.text;
-                        hardHistoryA4[9] = _controllerHHQ10A4.text;
-
 
                         // print('''1.${easyGeographyQuestions[0]}
                         //         2.${easyGeographyQuestions[1]}
@@ -877,41 +848,271 @@ final _controllerHHQ1A4 = TextEditingController(),
                         //         9.${hardHistoryQuestions[8]}
                         //         10.${hardHistoryQuestions[9]}
                         //         ''');
-                        String jsonStringEG =
-                            jsonEncode(easyGeographyQuestions);
-                        String jsonStringHG =
-                            jsonEncode(hardGeographyQuestions);
-                        String jsonStringEH = jsonEncode(easyHistoryQuestions);
-                        String jsonStringHH = jsonEncode(hardHistoryQuestions);
-                        String jsonStringEGA1 = jsonEncode(easyGeographyA1);
-                        String jsonStringHGA1 = jsonEncode(hardGeographyA1);
-                        String jsonStringEHA1 = jsonEncode(easyHistoryA1);
-                        String jsonStringHHA1 = jsonEncode(hardHistoryA1);
-                        String jsonStringEGA2 = jsonEncode(easyGeographyA2);
-                        String jsonStringHGA2 = jsonEncode(hardGeographyA2);
-                        String jsonStringEHA2 = jsonEncode(easyHistoryA2);
-                        String jsonStringHHA2 = jsonEncode(hardHistoryA2);
-                        String jsonStringEGA3 = jsonEncode(easyGeographyA3);
-                        String jsonStringHGA3 = jsonEncode(hardGeographyA3);
-                        String jsonStringEHA3 = jsonEncode(easyHistoryA3);
-                        String jsonStringHHA3 = jsonEncode(hardHistoryA3);
-                        String jsonStringEGA4 = jsonEncode(easyGeographyA4);
-                        String jsonStringHGA4 = jsonEncode(hardGeographyA4);
-                        String jsonStringEHA4 = jsonEncode(easyHistoryA4);
-                        String jsonStringHHA4 = jsonEncode(hardHistoryA4);
-                        
-                        //print('jsonStringEG: $jsonStringEG');
-                        //print('jsonStringHG: $jsonStringHG');
-                        //print('jsonStringEH: $jsonStringEH');
-                        //print('jsonStringHH: $jsonStringHH');
+                        String jsonStringEG = jsonEncode([
+                          _controllerGEQ1.text,
+                          _controllerGEQ2.text,
+                          _controllerGEQ3.text,
+                          _controllerGEQ4.text,
+                          _controllerGEQ5.text,
+                          _controllerGEQ6.text,
+                          _controllerGEQ7.text,
+                          _controllerGEQ8.text,
+                          _controllerGEQ9.text,
+                          _controllerGEQ10.text
+                        ]);
+                        String jsonStringHG = jsonEncode([
+                          _controllerGHQ1.text,
+                          _controllerGHQ2.text,
+                          _controllerGHQ3.text,
+                          _controllerGHQ4.text,
+                          _controllerGHQ5.text,
+                          _controllerGHQ6.text,
+                          _controllerGHQ7.text,
+                          _controllerGHQ8.text,
+                          _controllerGHQ9.text,
+                          _controllerGHQ10.text
+                        ]);
+                        String jsonStringEH = jsonEncode([
+                          _controllerHEQ1.text,
+                          _controllerHEQ2.text,
+                          _controllerHEQ3.text,
+                          _controllerHEQ4.text,
+                          _controllerHEQ5.text,
+                          _controllerHEQ6.text,
+                          _controllerHEQ7.text,
+                          _controllerHEQ8.text,
+                          _controllerHEQ9.text,
+                          _controllerHEQ10.text
+                        ]);
+                        String jsonStringHH = jsonEncode([
+                          _controllerHHQ1.text,
+                          _controllerHHQ2.text,
+                          _controllerHHQ3.text,
+                          _controllerHHQ4.text,
+                          _controllerHHQ5.text,
+                          _controllerHHQ6.text,
+                          _controllerHHQ7.text,
+                          _controllerHHQ8.text,
+                          _controllerHHQ9.text,
+                          _controllerHHQ10.text
+                        ]);
+                        String jsonStringEGA1 = jsonEncode([
+                          _controllerGEQ1A1.text,
+                          _controllerGEQ2A1.text,
+                          _controllerGEQ3A1.text,
+                          _controllerGEQ4A1.text,
+                          _controllerGEQ5A1.text,
+                          _controllerGEQ6A1.text,
+                          _controllerGEQ7A1.text,
+                          _controllerGEQ8A1.text,
+                          _controllerGEQ9A1.text,
+                          _controllerGEQ10A1.text
+                        ]);
+                        String jsonStringHGA1 = jsonEncode([
+                          _controllerGHQ1A1.text,
+                          _controllerGHQ2A1.text,
+                          _controllerGHQ3A1.text,
+                          _controllerGHQ4A1.text,
+                          _controllerGHQ5A1.text,
+                          _controllerGHQ6A1.text,
+                          _controllerGHQ7A1.text,
+                          _controllerGHQ8A1.text,
+                          _controllerGHQ9A1.text,
+                          _controllerGHQ10A1.text
+                        ]);
+                        String jsonStringEHA1 = jsonEncode([
+                          _controllerHEQ1A1.text,
+                          _controllerHEQ2A1.text,
+                          _controllerHEQ3A1.text,
+                          _controllerHEQ4A1.text,
+                          _controllerHEQ5A1.text,
+                          _controllerHEQ6A1.text,
+                          _controllerHEQ7A1.text,
+                          _controllerHEQ8A1.text,
+                          _controllerHEQ9A1.text,
+                          _controllerHEQ10A1.text
+                        ]);
+                        String jsonStringHHA1 = jsonEncode([
+                          _controllerHHQ1A1.text,
+                          _controllerHHQ2A1.text,
+                          _controllerHHQ3A1.text,
+                          _controllerHHQ4A1.text,
+                          _controllerHHQ5A1.text,
+                          _controllerHHQ6A1.text,
+                          _controllerHHQ7A1.text,
+                          _controllerHHQ8A1.text,
+                          _controllerHHQ9A1.text,
+                          _controllerHHQ10A1.text
+                        ]);
+                        String jsonStringEGA2 = jsonEncode([
+                          _controllerGEQ1A2.text,
+                          _controllerGEQ2A2.text,
+                          _controllerGEQ3A2.text,
+                          _controllerGEQ4A2.text,
+                          _controllerGEQ5A2.text,
+                          _controllerGEQ6A2.text,
+                          _controllerGEQ7A2.text,
+                          _controllerGEQ8A2.text,
+                          _controllerGEQ9A2.text,
+                          _controllerGEQ10A2.text
+                        ]);
+                        String jsonStringHGA2 = jsonEncode([
+                          _controllerGHQ1A2.text,
+                          _controllerGHQ2A2.text,
+                          _controllerGHQ3A2.text,
+                          _controllerGHQ4A2.text,
+                          _controllerGHQ5A2.text,
+                          _controllerGHQ6A2.text,
+                          _controllerGHQ7A2.text,
+                          _controllerGHQ8A2.text,
+                          _controllerGHQ9A2.text,
+                          _controllerGHQ10A2.text
+                        ]);
+                        String jsonStringEHA2 = jsonEncode([
+                          _controllerHEQ1A2.text,
+                          _controllerHEQ2A2.text,
+                          _controllerHEQ3A2.text,
+                          _controllerHEQ4A2.text,
+                          _controllerHEQ5A2.text,
+                          _controllerHEQ6A2.text,
+                          _controllerHEQ7A2.text,
+                          _controllerHEQ8A2.text,
+                          _controllerHEQ9A2.text,
+                          _controllerHEQ10A2.text
+                        ]);
+                        String jsonStringHHA2 = jsonEncode([
+                          _controllerHHQ1A2.text,
+                          _controllerHHQ2A2.text,
+                          _controllerHHQ3A2.text,
+                          _controllerHHQ4A2.text,
+                          _controllerHHQ5A2.text,
+                          _controllerHHQ6A2.text,
+                          _controllerHHQ7A2.text,
+                          _controllerHHQ8A2.text,
+                          _controllerHHQ9A2.text,
+                          _controllerHHQ10A2.text
+                        ]);
+                        String jsonStringEGA3 = jsonEncode([
+                          _controllerGEQ1A3.text,
+                          _controllerGEQ2A3.text,
+                          _controllerGEQ3A3.text,
+                          _controllerGEQ4A3.text,
+                          _controllerGEQ5A3.text,
+                          _controllerGEQ6A3.text,
+                          _controllerGEQ7A3.text,
+                          _controllerGEQ8A3.text,
+                          _controllerGEQ9A3.text,
+                          _controllerGEQ10A3.text
+                        ]);
+                        String jsonStringHGA3 = jsonEncode([
+                          _controllerGHQ1A3.text,
+                          _controllerGHQ2A3.text,
+                          _controllerGHQ3A3.text,
+                          _controllerGHQ4A3.text,
+                          _controllerGHQ5A3.text,
+                          _controllerGHQ6A3.text,
+                          _controllerGHQ7A3.text,
+                          _controllerGHQ8A3.text,
+                          _controllerGHQ9A3.text,
+                          _controllerGHQ10A3.text
+                        ]);
+                        String jsonStringEHA3 = jsonEncode([
+                          _controllerHEQ1A3.text,
+                          _controllerHEQ2A3.text,
+                          _controllerHEQ3A3.text,
+                          _controllerHEQ4A3.text,
+                          _controllerHEQ5A3.text,
+                          _controllerHEQ6A3.text,
+                          _controllerHEQ7A3.text,
+                          _controllerHEQ8A3.text,
+                          _controllerHEQ9A3.text,
+                          _controllerHEQ10A3.text
+                        ]);
+                        String jsonStringHHA3 = jsonEncode([
+                          _controllerHHQ1A3.text,
+                          _controllerHHQ2A3.text,
+                          _controllerHHQ3A3.text,
+                          _controllerHHQ4A3.text,
+                          _controllerHHQ5A3.text,
+                          _controllerHHQ6A3.text,
+                          _controllerHHQ7A3.text,
+                          _controllerHHQ8A3.text,
+                          _controllerHHQ9A3.text,
+                          _controllerHHQ10A3.text
+                        ]);
+                        String jsonStringEGA4 = jsonEncode([
+                          _controllerGEQ1A4.text,
+                          _controllerGEQ2A4.text,
+                          _controllerGEQ3A4.text,
+                          _controllerGEQ4A4.text,
+                          _controllerGEQ5A4.text,
+                          _controllerGEQ6A4.text,
+                          _controllerGEQ7A4.text,
+                          _controllerGEQ8A4.text,
+                          _controllerGEQ9A4.text,
+                          _controllerGEQ10A4.text
+                        ]);
+                        String jsonStringHGA4 = jsonEncode([
+                          _controllerGHQ1A4.text,
+                          _controllerGHQ2A4.text,
+                          _controllerGHQ3A4.text,
+                          _controllerGHQ4A4.text,
+                          _controllerGHQ5A4.text,
+                          _controllerGHQ6A4.text,
+                          _controllerGHQ7A4.text,
+                          _controllerGHQ8A4.text,
+                          _controllerGHQ9A4.text,
+                          _controllerGHQ10A4.text
+                        ]);
+                        String jsonStringEHA4 = jsonEncode([
+                          _controllerHEQ1A4.text,
+                          _controllerHEQ2A4.text,
+                          _controllerHEQ3A4.text,
+                          _controllerHEQ4A4.text,
+                          _controllerHEQ5A4.text,
+                          _controllerHEQ6A4.text,
+                          _controllerHEQ7A4.text,
+                          _controllerHEQ8A4.text,
+                          _controllerHEQ9A4.text,
+                          _controllerHEQ10A4.text
+                        ]);
+                        String jsonStringHHA4 = jsonEncode([
+                          _controllerHHQ1A4.text,
+                          _controllerHHQ2A4.text,
+                          _controllerHHQ3A4.text,
+                          _controllerHHQ4A4.text,
+                          _controllerHHQ5A4.text,
+                          _controllerHHQ6A4.text,
+                          _controllerHHQ7A4.text,
+                          _controllerHHQ8A4.text,
+                          _controllerHHQ9A4.text,
+                          _controllerHHQ10A4.text
+                        ]);
                         int i = await _dbHelper.insertCountry(
-                            _controllerName.text,
-                            _controllerLessonGeography.text,
-                            _controllerLessonHistory.text,
-                            jsonStringEG,
-                            jsonStringHG,
-                            jsonStringEH,
-                            jsonStringHH);
+                          _controllerName.text,
+                          _controllerLessonGeography.text,
+                          _controllerLessonHistory.text,
+                          jsonStringEG,
+                          jsonStringHG,
+                          jsonStringEH,
+                          jsonStringHH,
+                          jsonStringEGA1,
+                          jsonStringEGA2,
+                          jsonStringEGA3,
+                          jsonStringEGA4,
+                          jsonStringHGA1,
+                          jsonStringHGA2,
+                          jsonStringHGA3,
+                          jsonStringHGA4,
+                          jsonStringEHA1,
+                          jsonStringEHA2,
+                          jsonStringEHA3,
+                          jsonStringEHA4,
+                          jsonStringHHA1,
+                          jsonStringHHA2,
+                          jsonStringHHA3,
+                          jsonStringHHA4,
+                        );
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor:
@@ -953,6 +1154,46 @@ class NewQuestion extends StatefulWidget {
   var q8 = TextEditingController();
   var q9 = TextEditingController();
   var q10 = TextEditingController();
+  var q1a1 = TextEditingController();
+  var q2a1 = TextEditingController();
+  var q3a1 = TextEditingController();
+  var q4a1 = TextEditingController();
+  var q5a1 = TextEditingController();
+  var q6a1 = TextEditingController();
+  var q7a1 = TextEditingController();
+  var q8a1 = TextEditingController();
+  var q9a1 = TextEditingController();
+  var q10a1 = TextEditingController();
+  var q1a2 = TextEditingController();
+  var q2a2 = TextEditingController();
+  var q3a2 = TextEditingController();
+  var q4a2 = TextEditingController();
+  var q5a2 = TextEditingController();
+  var q6a2 = TextEditingController();
+  var q7a2 = TextEditingController();
+  var q8a2 = TextEditingController();
+  var q9a2 = TextEditingController();
+  var q10a2 = TextEditingController();
+  var q1a3 = TextEditingController();
+  var q2a3 = TextEditingController();
+  var q3a3 = TextEditingController();
+  var q4a3 = TextEditingController();
+  var q5a3 = TextEditingController();
+  var q6a3 = TextEditingController();
+  var q7a3 = TextEditingController();
+  var q8a3 = TextEditingController();
+  var q9a3 = TextEditingController();
+  var q10a3 = TextEditingController();
+  var q1a4 = TextEditingController();
+  var q2a4 = TextEditingController();
+  var q3a4 = TextEditingController();
+  var q4a4 = TextEditingController();
+  var q5a4 = TextEditingController();
+  var q6a4 = TextEditingController();
+  var q7a4 = TextEditingController();
+  var q8a4 = TextEditingController();
+  var q9a4 = TextEditingController();
+  var q10a4 = TextEditingController();
 
   NewQuestion({
     super.key,
@@ -968,23 +1209,104 @@ class NewQuestion extends StatefulWidget {
     required this.q8,
     required this.q9,
     required this.q10,
+    required this.q1a1,
+    required this.q2a1,
+    required this.q3a1,
+    required this.q4a1,
+    required this.q5a1,
+    required this.q6a1,
+    required this.q7a1,
+    required this.q8a1,
+    required this.q9a1,
+    required this.q10a1,
+    required this.q1a2,
+    required this.q2a2,
+    required this.q3a2,
+    required this.q4a2,
+    required this.q5a2,
+    required this.q6a2,
+    required this.q7a2,
+    required this.q8a2,
+    required this.q9a2,
+    required this.q10a2,
+    required this.q1a3,
+    required this.q2a3,
+    required this.q3a3,
+    required this.q4a3,
+    required this.q5a3,
+    required this.q6a3,
+    required this.q7a3,
+    required this.q8a3,
+    required this.q9a3,
+    required this.q10a3,
+    required this.q1a4,
+    required this.q2a4,
+    required this.q3a4,
+    required this.q4a4,
+    required this.q5a4,
+    required this.q6a4,
+    required this.q7a4,
+    required this.q8a4,
+    required this.q9a4,
+    required this.q10a4,
   });
 
   @override
   // ignore: no_logic_in_create_state
   State<NewQuestion> createState() => _NewQuestionState(
-      answers: answers,
-      index: index,
-      q1: q1,
-      q2: q2,
-      q3: q3,
-      q4: q4,
-      q5: q5,
-      q6: q6,
-      q7: q7,
-      q8: q8,
-      q9: q9,
-      q10: q10);
+        answers: answers,
+        index: index,
+        q1: q1,
+        q2: q2,
+        q3: q3,
+        q4: q4,
+        q5: q5,
+        q6: q6,
+        q7: q7,
+        q8: q8,
+        q9: q9,
+        q10: q10,
+        q1a1: q1a1,
+        q2a1: q2a1,
+        q3a1: q3a1,
+        q4a1: q4a1,
+        q5a1: q5a1,
+        q6a1: q6a1,
+        q7a1: q7a1,
+        q8a1: q8a1,
+        q9a1: q9a1,
+        q10a1: q10a1,
+        q1a2: q1a2,
+        q2a2: q2a2,
+        q3a2: q3a2,
+        q4a2: q4a2,
+        q5a2: q5a2,
+        q6a2: q6a2,
+        q7a2: q7a2,
+        q8a2: q8a2,
+        q9a2: q9a2,
+        q10a2: q10a2,
+        q1a3: q1a3,
+        q2a3: q2a3,
+        q3a3: q3a3,
+        q4a3: q4a3,
+        q5a3: q5a3,
+        q6a3: q6a3,
+        q7a3: q7a3,
+        q8a3: q8a3,
+        q9a3: q9a3,
+        q10a3: q10a3,
+        q1a4: q1a4,
+        q2a4: q2a4,
+        q3a4: q3a4,
+        q4a4: q4a4,
+        q5a4: q5a4,
+        q6a4: q6a4,
+        q7a4: q7a4,
+        q8a4: q8a4,
+        q9a4: q9a4,
+        q10a4: q10a4,
+      );
 }
 
 class _NewQuestionState extends State<NewQuestion> {
@@ -999,6 +1321,46 @@ class _NewQuestionState extends State<NewQuestion> {
   var q8 = TextEditingController();
   var q9 = TextEditingController();
   var q10 = TextEditingController();
+  var q1a1 = TextEditingController();
+  var q2a1 = TextEditingController();
+  var q3a1 = TextEditingController();
+  var q4a1 = TextEditingController();
+  var q5a1 = TextEditingController();
+  var q6a1 = TextEditingController();
+  var q7a1 = TextEditingController();
+  var q8a1 = TextEditingController();
+  var q9a1 = TextEditingController();
+  var q10a1 = TextEditingController();
+  var q1a2 = TextEditingController();
+  var q2a2 = TextEditingController();
+  var q3a2 = TextEditingController();
+  var q4a2 = TextEditingController();
+  var q5a2 = TextEditingController();
+  var q6a2 = TextEditingController();
+  var q7a2 = TextEditingController();
+  var q8a2 = TextEditingController();
+  var q9a2 = TextEditingController();
+  var q10a2 = TextEditingController();
+  var q1a3 = TextEditingController();
+  var q2a3 = TextEditingController();
+  var q3a3 = TextEditingController();
+  var q4a3 = TextEditingController();
+  var q5a3 = TextEditingController();
+  var q6a3 = TextEditingController();
+  var q7a3 = TextEditingController();
+  var q8a3 = TextEditingController();
+  var q9a3 = TextEditingController();
+  var q10a3 = TextEditingController();
+  var q1a4 = TextEditingController();
+  var q2a4 = TextEditingController();
+  var q3a4 = TextEditingController();
+  var q4a4 = TextEditingController();
+  var q5a4 = TextEditingController();
+  var q6a4 = TextEditingController();
+  var q7a4 = TextEditingController();
+  var q8a4 = TextEditingController();
+  var q9a4 = TextEditingController();
+  var q10a4 = TextEditingController();
   List<int> answers;
   _NewQuestionState({
     required this.answers,
@@ -1013,6 +1375,46 @@ class _NewQuestionState extends State<NewQuestion> {
     required this.q8,
     required this.q9,
     required this.q10,
+    required this.q1a1,
+    required this.q2a1,
+    required this.q3a1,
+    required this.q4a1,
+    required this.q5a1,
+    required this.q6a1,
+    required this.q7a1,
+    required this.q8a1,
+    required this.q9a1,
+    required this.q10a1,
+    required this.q1a2,
+    required this.q2a2,
+    required this.q3a2,
+    required this.q4a2,
+    required this.q5a2,
+    required this.q6a2,
+    required this.q7a2,
+    required this.q8a2,
+    required this.q9a2,
+    required this.q10a2,
+    required this.q1a3,
+    required this.q2a3,
+    required this.q3a3,
+    required this.q4a3,
+    required this.q5a3,
+    required this.q6a3,
+    required this.q7a3,
+    required this.q8a3,
+    required this.q9a3,
+    required this.q10a3,
+    required this.q1a4,
+    required this.q2a4,
+    required this.q3a4,
+    required this.q4a4,
+    required this.q5a4,
+    required this.q6a4,
+    required this.q7a4,
+    required this.q8a4,
+    required this.q9a4,
+    required this.q10a4,
   });
 
   @override
@@ -1052,13 +1454,101 @@ class _NewQuestionState extends State<NewQuestion> {
                                                 ? q9
                                                 : q10),
         const SizedBox(height: 20),
-        Textfield(height: 58, text: "Answer 1"),
+        Textfield(
+          height: 58,
+          text: "Answer 1",
+          controller: index == 1
+              ? q1a1
+              : index == 2
+                  ? q2a1
+                  : index == 3
+                      ? q3a1
+                      : index == 4
+                          ? q4a1
+                          : index == 5
+                              ? q5a1
+                              : index == 6
+                                  ? q6a1
+                                  : index == 7
+                                      ? q7a1
+                                      : index == 8
+                                          ? q8a1
+                                          : index == 9
+                                              ? q9a1
+                                              : q10a1,
+        ),
         const SizedBox(height: 10),
-        Textfield(height: 58, text: "Answer 2"),
+        Textfield(
+          height: 58,
+          text: "Answer 2",
+          controller: index == 1
+              ? q1a2
+              : index == 2
+                  ? q2a2
+                  : index == 3
+                      ? q3a2
+                      : index == 4
+                          ? q4a2
+                          : index == 5
+                              ? q5a2
+                              : index == 6
+                                  ? q6a2
+                                  : index == 7
+                                      ? q7a2
+                                      : index == 8
+                                          ? q8a2
+                                          : index == 9
+                                              ? q9a2
+                                              : q10a2,
+        ),
         const SizedBox(height: 10),
-        Textfield(height: 58, text: "Answer 3"),
+        Textfield(
+          height: 58,
+          text: "Answer 3",
+          controller: index == 1
+              ? q1a3
+              : index == 2
+                  ? q2a3
+                  : index == 3
+                      ? q3a3
+                      : index == 4
+                          ? q4a3
+                          : index == 5
+                              ? q5a3
+                              : index == 6
+                                  ? q6a3
+                                  : index == 7
+                                      ? q7a3
+                                      : index == 8
+                                          ? q8a3
+                                          : index == 9
+                                              ? q9a3
+                                              : q10a3,
+        ),
         const SizedBox(height: 10),
-        Textfield(height: 58, text: "Answer 4"),
+        Textfield(
+          height: 58,
+          text: "Answer 4",
+          controller: index == 1
+              ? q1a4
+              : index == 2
+                  ? q2a4
+                  : index == 3
+                      ? q3a4
+                      : index == 4
+                          ? q4a4
+                          : index == 5
+                              ? q5a4
+                              : index == 6
+                                  ? q6a4
+                                  : index == 7
+                                      ? q7a4
+                                      : index == 8
+                                          ? q8a4
+                                          : index == 9
+                                              ? q9a4
+                                              : q10a4,
+        ),
         const SizedBox(height: 15),
         SizedBox(
           height: 60,
@@ -1181,7 +1671,7 @@ class Textfield extends StatelessWidget {
       child: TextField(
         controller: controller,
         cursorColor: Colors.white,
-        maxLength: 50,
+        maxLength: 150,
         decoration: InputDecoration(
           focusedBorder: const OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(15)),

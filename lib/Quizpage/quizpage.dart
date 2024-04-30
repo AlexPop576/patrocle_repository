@@ -20,8 +20,16 @@ class QuizPage extends StatefulWidget {
     required this.lesson,
     required this.QE,
     required this.QH,
+    required this.QEA1,
+    required this.QEA2,
+    required this.QEA3,
+    required this.QEA4,
+    required this.QHA1,
+    required this.QHA2,
+    required this.QHA3,
+    required this.QHA4,
   });
-  String? country, lesson, QE, QH;
+  String? country, lesson, QE, QH, QEA1, QEA2, QEA3, QEA4, QHA1, QHA2, QHA3, QHA4;
   int? difficulty, subject;
 
   @override
@@ -32,7 +40,16 @@ class QuizPage extends StatefulWidget {
       subject: subject,
       lesson: lesson,
       QE: QE,
-      QH: QH);
+      QH: QH,
+      QEA1: QEA1,
+      QEA2: QEA2,
+      QEA3: QEA3,
+      QEA4: QEA4,
+      QHA1: QHA1,
+      QHA2: QHA2,
+      QHA3: QHA3,
+      QHA4: QHA4,
+      );
 }
 
 class _QuizPageState extends State<QuizPage> {
@@ -43,12 +60,20 @@ class _QuizPageState extends State<QuizPage> {
     required this.lesson,
     required this.QE,
     required this.QH,
+    required this.QEA1,
+    required this.QEA2,
+    required this.QEA3,
+    required this.QEA4,
+    required this.QHA1,
+    required this.QHA2,
+    required this.QHA3,
+    required this.QHA4,
   });
-  String? country, lesson, QE, QH;
+  String? country, lesson, QE, QH, QEA1, QEA2, QEA3, QEA4, QHA1, QHA2, QHA3, QHA4;
   int? difficulty, subject;
   int pageIndex = 0, givenAnswer = -1, correctAnswers = 0, bonus = 0;
   //final _dbHelper = DatabaseHelper.instance;
-  late List<String> easyQuestions, hardQuestions;
+  late List<String> easyQuestions, hardQuestions, easyQuestionsA1, easyQuestionsA2, easyQuestionsA3, easyQuestionsA4, hardQuestionsA1, hardQuestionsA2, hardQuestionsA3, hardQuestionsA4;
 
   @override
 void initState() {
@@ -63,6 +88,54 @@ void initState() {
     hardQuestions = List<String>.from(jsonDecode(QH!));
   } else {
     hardQuestions = [];
+  }
+  if (QEA1 != null) {
+    easyQuestionsA1 = List<String>.from(jsonDecode(QEA1!));
+    print(easyQuestionsA1);
+  } else {
+    easyQuestionsA1 = [];
+  }
+  if (QEA2 != null) {
+    easyQuestionsA2 = List<String>.from(jsonDecode(QEA2!));
+    print(easyQuestionsA2);
+  } else {
+    easyQuestionsA2 = [];
+  }
+  if (QEA3 != null) {
+    easyQuestionsA3 = List<String>.from(jsonDecode(QEA3!));
+    print(easyQuestionsA3);
+  } else {
+    easyQuestionsA3 = [];
+  }
+  if (QEA4 != null) {
+    easyQuestionsA4 = List<String>.from(jsonDecode(QEA4!));
+    print(easyQuestionsA4);
+  } else {
+    easyQuestionsA4 = [];
+  }
+  if (QHA1 != null) {
+    hardQuestionsA1 = List<String>.from(jsonDecode(QHA1!));
+    print(hardQuestionsA1);
+  } else {
+    hardQuestionsA1 = [];
+  }
+  if (QHA2 != null) {
+    hardQuestionsA2 = List<String>.from(jsonDecode(QHA2!));
+    print(hardQuestionsA2);
+  } else {
+    hardQuestionsA2 = [];
+  }
+  if (QHA3 != null) {
+    hardQuestionsA3 = List<String>.from(jsonDecode(QHA3!));
+    print(hardQuestionsA3);
+  } else {
+    hardQuestionsA3 = [];
+  }
+  if (QHA4 != null) {
+    hardQuestionsA4 = List<String>.from(jsonDecode(QHA4!));
+    print(hardQuestionsA4);
+  } else {
+    hardQuestionsA4 = [];
   }
 }
 
@@ -119,8 +192,8 @@ void initState() {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Lottie.network(
-                                      'https://lottie.host/491f2840-4c44-425a-924e-4fbc86237dfc/s8x6EccXsD.json',
+                                  Lottie.asset(
+                                      'assets/patrocle.json',
                                       frameRate: FrameRate.max,
                                       height: 100),
                                   const SizedBox(
@@ -251,6 +324,10 @@ void initState() {
                       getAnswerFunction: getAnswer,
                       selected: 0,
                       questionText: difficulty == 1 ? easyQuestions[pageIndex-1]: difficulty == 2 ? easyQuestions[pageIndex-1]: hardQuestions[pageIndex-1] ,
+                      answer1: difficulty == 1 ? easyQuestionsA1[pageIndex-1] : difficulty == 2 ? easyQuestionsA1[pageIndex-1] : hardQuestionsA1[pageIndex-1],
+                      answer2: difficulty == 1 ? easyQuestionsA2[pageIndex-1] : difficulty == 2 ? easyQuestionsA2[pageIndex-1] : hardQuestionsA2[pageIndex-1],
+                      answer3: difficulty == 1 ? easyQuestionsA3[pageIndex-1] : difficulty == 2 ? easyQuestionsA3[pageIndex-1] : hardQuestionsA3[pageIndex-1],
+                      answer4: difficulty == 1 ? easyQuestionsA4[pageIndex-1] : difficulty == 2 ? easyQuestionsA4[pageIndex-1] : hardQuestionsA4[pageIndex-1],
                       givenAnswer: 0,
                     )
                   : pageIndex != 11 && pageIndex % 2 == 1
@@ -258,6 +335,10 @@ void initState() {
                           getAnswerFunction: getAnswer,
                           selected: 0,
                           questionText: difficulty == 1 ? easyQuestions[pageIndex-1]: difficulty == 2 ? easyQuestions[pageIndex-1]: hardQuestions[pageIndex-1],
+                          answer1: difficulty == 1 ? easyQuestionsA1[pageIndex-1] : difficulty == 2 ? easyQuestionsA1[pageIndex-1] : hardQuestionsA1[pageIndex-1],
+                          answer2: difficulty == 1 ? easyQuestionsA2[pageIndex-1] : difficulty == 2 ? easyQuestionsA2[pageIndex-1] : hardQuestionsA2[pageIndex-1],
+                          answer3: difficulty == 1 ? easyQuestionsA3[pageIndex-1] : difficulty == 2 ? easyQuestionsA3[pageIndex-1] : hardQuestionsA3[pageIndex-1],
+                          answer4: difficulty == 1 ? easyQuestionsA4[pageIndex-1] : difficulty == 2 ? easyQuestionsA4[pageIndex-1] : hardQuestionsA4[pageIndex-1],
                           givenAnswer: 0,
                         )
                       : FinishPage(correctAnswers: correctAnswers)),

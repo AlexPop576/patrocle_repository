@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 16;
+  static final _databaseVersion = 17;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -37,7 +37,7 @@ class DatabaseHelper {
       onCreate: (Database db, int version) async {
         await db.execute('''
         CREATE TABLE $table (
-          $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+        $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
         $columnName TEXT NOT NULL,
         $columnLessonGeography TEXT,
         $columnLessonHistory TEXT,
@@ -47,10 +47,26 @@ class DatabaseHelper {
         questionsGeographyHard TEXT,
         questionsHistoryEasy TEXT,
         questionsHistoryHard TEXT,
-        answersGeographyEasy TEXT,
-        answersGeographyHard TEXT,
-        answersHistoryEasy TEXT,
-        answersHistoryHard TEXT
+        answersGeographyEasyQ1 TEXT,
+        answersGeographyEasyQ2 TEXT,
+        answersGeographyEasyQ3 TEXT,
+        answersGeographyEasyQ4 TEXT,
+        answersGeographyHardQ1 TEXT,
+        answersGeographyHardQ2 TEXT,
+        answersGeographyHardQ3 TEXT,
+        answersGeographyHardQ4 TEXT,
+        answersHistoryEasyQ1 TEXT,
+        answersHistoryEasyQ2 TEXT,
+        answersHistoryEasyQ3 TEXT,
+        answersHistoryEasyQ4 TEXT,
+        answersHistoryHardQ1 TEXT,
+        answersHistoryHardQ2 TEXT,
+        answersHistoryHardQ3 TEXT,
+        answersHistoryHardQ4 TEXT,
+        answersGeographyEasyCorrect INTEGER,
+        answersGeographyHardCorrect INTEGER,
+        answersHistoryEasyCorrect INTEGER,
+        answersHistoryHardCorrect INTEGER
         )
       ''');
         await db.execute('''
@@ -62,10 +78,10 @@ class DatabaseHelper {
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
           await db.execute('DROP TABLE $table');
-          await db.execute('DROP TABLE $tableTrophy');
+          //await db.execute('DROP TABLE $tableTrophy');
           await db.execute('''
         CREATE TABLE $table (
-          $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+        $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
         $columnName TEXT NOT NULL,
         $columnLessonGeography TEXT,
         $columnLessonHistory TEXT,
@@ -75,17 +91,28 @@ class DatabaseHelper {
         questionsGeographyHard TEXT,
         questionsHistoryEasy TEXT,
         questionsHistoryHard TEXT,
-        answersGeographyEasy TEXT,
-        answersGeographyHard TEXT,
-        answersHistoryEasy TEXT,
-        answersHistoryHard TEXT
+        answersGeographyEasyQ1 TEXT,
+        answersGeographyEasyQ2 TEXT,
+        answersGeographyEasyQ3 TEXT,
+        answersGeographyEasyQ4 TEXT,
+        answersGeographyHardQ1 TEXT,
+        answersGeographyHardQ2 TEXT,
+        answersGeographyHardQ3 TEXT,
+        answersGeographyHardQ4 TEXT,
+        answersHistoryEasyQ1 TEXT,
+        answersHistoryEasyQ2 TEXT,
+        answersHistoryEasyQ3 TEXT,
+        answersHistoryEasyQ4 TEXT,
+        answersHistoryHardQ1 TEXT,
+        answersHistoryHardQ2 TEXT,
+        answersHistoryHardQ3 TEXT,
+        answersHistoryHardQ4 TEXT
+        answersGeographyEasyCorrect INTEGER,
+        answersGeographyHardCorrect INTEGER,
+        answersHistoryEasyCorrect INTEGER,
+        answersHistoryHardCorrect INTEGER
         )
       ''');
-          await db.execute('''
-            CREATE TABLE trophies (
-              $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
-              $columnTrophy INTEGER
-            )''');
 
           // Copy the data from the old table to the new one
 
@@ -102,7 +129,29 @@ class DatabaseHelper {
   }
 
   Future<int> insertCountry(
-      String countryName, String lessonGeography, String lessonHistory, String easyGeographyQuestions, String hardGeographyQuestions, String easyHistoryQuestions, String hardHistoryQuestions) async {
+      String countryName,
+      String lessonGeography,
+      String lessonHistory,
+      String easyGeographyQuestions,
+      String hardGeographyQuestions,
+      String easyHistoryQuestions,
+      String hardHistoryQuestions,
+      String EGA1,
+      String EGA2,
+      String EGA3,
+      String EGA4,
+      String HGA1,
+      String HGA2,
+      String HGA3,
+      String HGA4,
+      String EHA1,
+      String EHA2,
+      String EHA3,
+      String EHA4,
+      String HHA1,
+      String HHA2,
+      String HHA3,
+      String HHA4,) async {
     Database db = await database;
     return await db.insert(table, {
       'name': countryName,
@@ -110,10 +159,26 @@ class DatabaseHelper {
       'lesson_history': lessonHistory,
       'geography_completed': 0,
       'history_completed': 0,
-      'questionsGeographyEasy' : easyGeographyQuestions,
-      'questionsGeographyHard' : hardGeographyQuestions,
-      'questionsHistoryEasy' : easyHistoryQuestions,
-      'questionsHistoryHard' : hardHistoryQuestions,
+      'questionsGeographyEasy': easyGeographyQuestions,
+      'questionsGeographyHard': hardGeographyQuestions,
+      'questionsHistoryEasy': easyHistoryQuestions,
+      'questionsHistoryHard': hardHistoryQuestions,
+      'answersGeographyEasyQ1': EGA1,
+      'answersGeographyEasyQ2': EGA2,
+      'answersGeographyEasyQ3': EGA3,
+      'answersGeographyEasyQ4': EGA4,
+      'answersGeographyHardQ1': HGA1,
+      'answersGeographyHardQ2': HGA2,
+      'answersGeographyHardQ3': HGA3,
+      'answersGeographyHardQ4': HGA4,
+      'answersHistoryEasyQ1': EHA1,
+      'answersHistoryEasyQ2': EHA2,
+      'answersHistoryEasyQ3': EHA3,
+      'answersHistoryEasyQ4': EHA4,
+      'answersHistoryHardQ1': HHA1,
+      'answersHistoryHardQ2': HHA2,
+      'answersHistoryHardQ3': HHA3,
+      'answersHistoryHardQ4': HHA4,
     });
   }
 
