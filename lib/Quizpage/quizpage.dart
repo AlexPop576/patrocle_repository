@@ -1,12 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
-
+import 'dart:math';
 import 'testpage1.dart';
 import 'testpage2.dart';
 
@@ -28,27 +27,44 @@ class QuizPage extends StatefulWidget {
     required this.QHA2,
     required this.QHA3,
     required this.QHA4,
+    required this.EA,
+    required this.HA,
   });
-  String? country, lesson, QE, QH, QEA1, QEA2, QEA3, QEA4, QHA1, QHA2, QHA3, QHA4;
+  String? country,
+      lesson,
+      QE,
+      QH,
+      QEA1,
+      QEA2,
+      QEA3,
+      QEA4,
+      QHA1,
+      QHA2,
+      QHA3,
+      QHA4,
+      EA,
+      HA;
   int? difficulty, subject;
 
   @override
   // ignore: no_logic_in_create_state
   State<QuizPage> createState() => _QuizPageState(
-      country: country,
-      difficulty: difficulty,
-      subject: subject,
-      lesson: lesson,
-      QE: QE,
-      QH: QH,
-      QEA1: QEA1,
-      QEA2: QEA2,
-      QEA3: QEA3,
-      QEA4: QEA4,
-      QHA1: QHA1,
-      QHA2: QHA2,
-      QHA3: QHA3,
-      QHA4: QHA4,
+        country: country,
+        difficulty: difficulty,
+        subject: subject,
+        lesson: lesson,
+        QE: QE,
+        QH: QH,
+        QEA1: QEA1,
+        QEA2: QEA2,
+        QEA3: QEA3,
+        QEA4: QEA4,
+        QHA1: QHA1,
+        QHA2: QHA2,
+        QHA3: QHA3,
+        QHA4: QHA4,
+        EA: EA,
+        HA: HA,
       );
 }
 
@@ -68,76 +84,117 @@ class _QuizPageState extends State<QuizPage> {
     required this.QHA2,
     required this.QHA3,
     required this.QHA4,
+    required this.EA,
+    required this.HA,
   });
-  String? country, lesson, QE, QH, QEA1, QEA2, QEA3, QEA4, QHA1, QHA2, QHA3, QHA4;
+  String? country,
+      lesson,
+      QE,
+      QH,
+      QEA1,
+      QEA2,
+      QEA3,
+      QEA4,
+      QHA1,
+      QHA2,
+      QHA3,
+      QHA4,
+      EA,
+      HA;
   int? difficulty, subject;
   int pageIndex = 0, givenAnswer = -1, correctAnswers = 0, bonus = 0;
-  //final _dbHelper = DatabaseHelper.instance;
-  late List<String> easyQuestions, hardQuestions, easyQuestionsA1, easyQuestionsA2, easyQuestionsA3, easyQuestionsA4, hardQuestionsA1, hardQuestionsA2, hardQuestionsA3, hardQuestionsA4;
+  late List<String> easyQuestions,
+      hardQuestions,
+      easyQuestionsA1,
+      easyQuestionsA2,
+      easyQuestionsA3,
+      easyQuestionsA4,
+      hardQuestionsA1,
+      hardQuestionsA2,
+      hardQuestionsA3,
+      hardQuestionsA4;
+  List<int> questionNumber = [], easyAnswers = [], hardAnswers = [];
+  final _dbHelper = DatabaseHelper.instance;
 
   @override
-void initState() {
-  super.initState();
-  if (QE != null) {
-    easyQuestions = List<String>.from(jsonDecode(QE!));
-  } else {
-    easyQuestions = [];
+  void initState() {
+    super.initState();
+    if (QE != null) {
+      easyQuestions = List<String>.from(jsonDecode(QE!));
+    } else {
+      easyQuestions = [];
+    }
+    // Do the same for QH if it's also a JSON string
+    if (QH != null) {
+      hardQuestions = List<String>.from(jsonDecode(QH!));
+    } else {
+      hardQuestions = [];
+    }
+    if (QEA1 != null) {
+      easyQuestionsA1 = List<String>.from(jsonDecode(QEA1!));
+      print(easyQuestionsA1);
+    } else {
+      easyQuestionsA1 = [];
+    }
+    if (QEA2 != null) {
+      easyQuestionsA2 = List<String>.from(jsonDecode(QEA2!));
+      print(easyQuestionsA2);
+    } else {
+      easyQuestionsA2 = [];
+    }
+    if (QEA3 != null) {
+      easyQuestionsA3 = List<String>.from(jsonDecode(QEA3!));
+      print(easyQuestionsA3);
+    } else {
+      easyQuestionsA3 = [];
+    }
+    if (QEA4 != null) {
+      easyQuestionsA4 = List<String>.from(jsonDecode(QEA4!));
+      print(easyQuestionsA4);
+    } else {
+      easyQuestionsA4 = [];
+    }
+    if (QHA1 != null) {
+      hardQuestionsA1 = List<String>.from(jsonDecode(QHA1!));
+      print(hardQuestionsA1);
+    } else {
+      hardQuestionsA1 = [];
+    }
+    if (QHA2 != null) {
+      hardQuestionsA2 = List<String>.from(jsonDecode(QHA2!));
+      print(hardQuestionsA2);
+    } else {
+      hardQuestionsA2 = [];
+    }
+    if (QHA3 != null) {
+      hardQuestionsA3 = List<String>.from(jsonDecode(QHA3!));
+      print(hardQuestionsA3);
+    } else {
+      hardQuestionsA3 = [];
+    }
+    if (QHA4 != null) {
+      hardQuestionsA4 = List<String>.from(jsonDecode(QHA4!));
+      print(hardQuestionsA4);
+    } else {
+      hardQuestionsA4 = [];
+    }
+    if (EA != null) {
+      easyAnswers = List<int>.from(jsonDecode(EA!));
+      print(easyAnswers);
+    } else {
+      easyAnswers = [];
+    }
+    if (HA != null) {
+      hardAnswers = List<int>.from(jsonDecode(HA!));
+      print(hardAnswers);
+    } else {
+      hardAnswers = [];
+    }
+    var rng = new Random();
+    var numbers = new List<int>.generate(10, (index) => index)..shuffle(rng);
+    questionNumber = numbers.take(10).toList();
+    print(questionNumber);
   }
-  // Do the same for QH if it's also a JSON string
-  if (QH != null) {
-    hardQuestions = List<String>.from(jsonDecode(QH!));
-  } else {
-    hardQuestions = [];
-  }
-  if (QEA1 != null) {
-    easyQuestionsA1 = List<String>.from(jsonDecode(QEA1!));
-    print(easyQuestionsA1);
-  } else {
-    easyQuestionsA1 = [];
-  }
-  if (QEA2 != null) {
-    easyQuestionsA2 = List<String>.from(jsonDecode(QEA2!));
-    print(easyQuestionsA2);
-  } else {
-    easyQuestionsA2 = [];
-  }
-  if (QEA3 != null) {
-    easyQuestionsA3 = List<String>.from(jsonDecode(QEA3!));
-    print(easyQuestionsA3);
-  } else {
-    easyQuestionsA3 = [];
-  }
-  if (QEA4 != null) {
-    easyQuestionsA4 = List<String>.from(jsonDecode(QEA4!));
-    print(easyQuestionsA4);
-  } else {
-    easyQuestionsA4 = [];
-  }
-  if (QHA1 != null) {
-    hardQuestionsA1 = List<String>.from(jsonDecode(QHA1!));
-    print(hardQuestionsA1);
-  } else {
-    hardQuestionsA1 = [];
-  }
-  if (QHA2 != null) {
-    hardQuestionsA2 = List<String>.from(jsonDecode(QHA2!));
-    print(hardQuestionsA2);
-  } else {
-    hardQuestionsA2 = [];
-  }
-  if (QHA3 != null) {
-    hardQuestionsA3 = List<String>.from(jsonDecode(QHA3!));
-    print(hardQuestionsA3);
-  } else {
-    hardQuestionsA3 = [];
-  }
-  if (QHA4 != null) {
-    hardQuestionsA4 = List<String>.from(jsonDecode(QHA4!));
-    print(hardQuestionsA4);
-  } else {
-    hardQuestionsA4 = [];
-  }
-}
 
   void correct() {
     setState(() {
@@ -192,10 +249,8 @@ void initState() {
                                   const SizedBox(
                                     height: 20,
                                   ),
-                                  Lottie.asset(
-                                      'assets/patrocle.json',
-                                      frameRate: FrameRate.max,
-                                      height: 100),
+                                  Lottie.asset('assets/patrocle.json',
+                                      frameRate: FrameRate.max, height: 100),
                                   const SizedBox(
                                     height: 30,
                                   ),
@@ -323,22 +378,71 @@ void initState() {
                   ? TestPage1(
                       getAnswerFunction: getAnswer,
                       selected: 0,
-                      questionText: difficulty == 1 ? easyQuestions[pageIndex-1]: difficulty == 2 ? easyQuestions[pageIndex-1]: hardQuestions[pageIndex-1] ,
-                      answer1: difficulty == 1 ? easyQuestionsA1[pageIndex-1] : difficulty == 2 ? easyQuestionsA1[pageIndex-1] : hardQuestionsA1[pageIndex-1],
-                      answer2: difficulty == 1 ? easyQuestionsA2[pageIndex-1] : difficulty == 2 ? easyQuestionsA2[pageIndex-1] : hardQuestionsA2[pageIndex-1],
-                      answer3: difficulty == 1 ? easyQuestionsA3[pageIndex-1] : difficulty == 2 ? easyQuestionsA3[pageIndex-1] : hardQuestionsA3[pageIndex-1],
-                      answer4: difficulty == 1 ? easyQuestionsA4[pageIndex-1] : difficulty == 2 ? easyQuestionsA4[pageIndex-1] : hardQuestionsA4[pageIndex-1],
+                      questionText: difficulty == 1
+                          ? easyQuestions[questionNumber[pageIndex-1]]
+                          : difficulty == 2
+                              ? easyQuestions[questionNumber[pageIndex-1]]
+                              : hardQuestions[questionNumber[pageIndex-1]],
+                      answer1: difficulty == 1
+                          ? easyQuestionsA1[questionNumber[pageIndex - 1]]
+                          : difficulty == 2
+                              ? easyQuestionsA1[questionNumber[pageIndex - 1]]
+                              : hardQuestionsA1[questionNumber[pageIndex - 1]],
+                      answer2: difficulty == 1
+                          ? easyQuestionsA2[questionNumber[pageIndex - 1]]
+                          : difficulty == 2
+                              ? easyQuestionsA2[questionNumber[pageIndex - 1]]
+                              : hardQuestionsA2[questionNumber[pageIndex - 1]],
+                      answer3: difficulty == 1
+                          ? easyQuestionsA3[questionNumber[pageIndex - 1]]
+                          : difficulty == 2
+                              ? easyQuestionsA3[questionNumber[pageIndex - 1]]
+                              : hardQuestionsA3[questionNumber[pageIndex - 1]],
+                      answer4: difficulty == 1
+                          ? easyQuestionsA4[questionNumber[pageIndex - 1]]
+                          : difficulty == 2
+                              ? easyQuestionsA4[questionNumber[pageIndex - 1]]
+                              : hardQuestionsA4[questionNumber[pageIndex - 1]],
                       givenAnswer: 0,
                     )
                   : pageIndex != 11 && pageIndex % 2 == 1
                       ? TestPage2(
                           getAnswerFunction: getAnswer,
                           selected: 0,
-                          questionText: difficulty == 1 ? easyQuestions[pageIndex-1]: difficulty == 2 ? easyQuestions[pageIndex-1]: hardQuestions[pageIndex-1],
-                          answer1: difficulty == 1 ? easyQuestionsA1[pageIndex-1] : difficulty == 2 ? easyQuestionsA1[pageIndex-1] : hardQuestionsA1[pageIndex-1],
-                          answer2: difficulty == 1 ? easyQuestionsA2[pageIndex-1] : difficulty == 2 ? easyQuestionsA2[pageIndex-1] : hardQuestionsA2[pageIndex-1],
-                          answer3: difficulty == 1 ? easyQuestionsA3[pageIndex-1] : difficulty == 2 ? easyQuestionsA3[pageIndex-1] : hardQuestionsA3[pageIndex-1],
-                          answer4: difficulty == 1 ? easyQuestionsA4[pageIndex-1] : difficulty == 2 ? easyQuestionsA4[pageIndex-1] : hardQuestionsA4[pageIndex-1],
+                          questionText: difficulty == 1
+                              ? easyQuestions[questionNumber[pageIndex - 1]]
+                              : difficulty == 2
+                                  ? hardQuestions[questionNumber[pageIndex - 1]]
+                                  : hardQuestions[
+                                      questionNumber[pageIndex - 1]],
+                          answer1: difficulty == 1
+                              ? easyQuestionsA1[questionNumber[pageIndex - 1]]
+                              : difficulty == 2
+                                  ? hardQuestionsA1[
+                                      questionNumber[pageIndex - 1]]
+                                  : hardQuestionsA1[
+                                      questionNumber[pageIndex - 1]],
+                          answer2: difficulty == 1
+                              ? easyQuestionsA2[questionNumber[pageIndex - 1]]
+                              : difficulty == 2
+                                  ? hardQuestionsA2[
+                                      questionNumber[pageIndex - 1]]
+                                  : hardQuestionsA2[
+                                      questionNumber[pageIndex - 1]],
+                          answer3: difficulty == 1
+                              ? easyQuestionsA3[questionNumber[pageIndex - 1]]
+                              : difficulty == 2
+                                  ? hardQuestionsA3[
+                                      questionNumber[pageIndex - 1]]
+                                  : hardQuestionsA3[
+                                      questionNumber[pageIndex - 1]],
+                          answer4: difficulty == 1
+                              ? easyQuestionsA4[questionNumber[pageIndex - 1]]
+                              : difficulty == 2
+                                  ? hardQuestionsA4[
+                                      questionNumber[pageIndex - 1]]
+                                  : hardQuestionsA4[
+                                      questionNumber[pageIndex - 1]],
                           givenAnswer: 0,
                         )
                       : FinishPage(correctAnswers: correctAnswers)),
@@ -365,8 +469,15 @@ void initState() {
                           setState(() {
                             bonus = 1;
                           });
-                          if ( //answersQuiz[country]?[subject]?[pageIndex - 1] ==
-                              1 == givenAnswer) {
+                          if (difficulty == 1
+                              ? easyAnswers[questionNumber[pageIndex - 1]+1] == givenAnswer
+                              : difficulty == 3
+                                  ? hardAnswers[questionNumber[pageIndex - 1]+1] == givenAnswer
+                                  : difficulty == 2 && pageIndex % 2 == 0
+                                      ? easyAnswers[questionNumber[pageIndex - 1]+1] ==
+                                          givenAnswer
+                                      : hardAnswers[questionNumber[pageIndex - 1]+1] ==
+                                          givenAnswer) {
                             correct();
                             correctAnswers++;
                             showModalBottomSheet(
@@ -586,7 +697,7 @@ void initState() {
                         });
                       } else if (pageIndex == 11) {
                         Navigator.pop(context);
-                        //trophy
+                        _dbHelper.updateLessonDone(subject!,country!);
                       }
                     },
                     style: ElevatedButton.styleFrom(

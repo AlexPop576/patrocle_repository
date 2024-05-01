@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patrocle/Database/database_helper.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
 import '../Theme/theme_provider.dart';
@@ -14,6 +15,7 @@ class _ProfileState extends State<Profile> {
   int? iq = 0, trophies = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   //translation[2]!["Profile"]! ?? ""
+  final _dbHelper = DatabaseHelper.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +37,7 @@ class _ProfileState extends State<Profile> {
                             height: 280,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                              child: Image.asset('assets/Face.png',
+                              child: Image.asset('assets/icons/Face.png',
                                   fit: BoxFit.contain),
                             ),
                           ),
@@ -253,6 +255,108 @@ class _ProfileState extends State<Profile> {
                                     fontSize: 30,
                                     fontWeight: FontWeight.w500),
                               )),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: [
+                              Center(
+                                child:
+                                    FutureBuilder<List<Map<String, dynamic>>>(
+                                  future: _dbHelper.queryAllRows(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return ListView.builder(
+                                        shrinkWrap: true,
+                                        physics: NeverScrollableScrollPhysics(),
+                                        itemCount: snapshot.data!.length,
+                                        itemBuilder: (context, index) {
+                                          if (snapshot.data![index]
+                                                  ['geography_completed'] ==
+                                              1) {
+                                            return Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 15,
+                                                ),
+                                                ClipRRect(
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                15)),
+                                                    child: Image.asset(
+                                                      'assets/flags/${snapshot.data![index]['name']}.png',
+                                                      height: 70,
+                                                    )),
+                                              ],
+                                            );
+                                          }else{
+                                            return Container();
+                                          }
+                                        },
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Text("${snapshot.error}");
+                                    }
+                                    return const CircularProgressIndicator();
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: [
+                              Center(
+                                child:
+                                    FutureBuilder<List<Map<String, dynamic>>>(
+                                  future: _dbHelper.queryAllRows(),
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      return ListView.builder(
+                                        shrinkWrap: true,
+                                        physics: const NeverScrollableScrollPhysics(),
+                                        itemCount: snapshot.data!.length,
+                                        itemBuilder: (context, index) {
+                                          if (snapshot.data![index]
+                                                  ['history_completed'] ==
+                                              1) {
+                                            return Column(
+                                              children: [
+                                                const SizedBox(
+                                                  height: 15,
+                                                ),
+                                                ClipRRect(
+                                                    borderRadius:
+                                                        const BorderRadius.all(
+                                                            Radius.circular(
+                                                                15)),
+                                                    child: Image.asset(
+                                                      'assets/flags/${snapshot.data![index]['name']}.png',
+                                                      height: 70,
+                                                    )),
+                                              ],
+                                            );
+                                          }else{
+                                            return Container();
+                                          }
+                                        },
+                                      );
+                                    } else if (snapshot.hasError) {
+                                      return Text("${snapshot.error}");
+                                    }
+                                    return const CircularProgressIndicator();
+                                  },
+                                ),
+                              ),
                             ],
                           ),
                         ),

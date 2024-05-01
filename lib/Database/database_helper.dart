@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 17;
+  static final _databaseVersion = 21;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -36,84 +36,107 @@ class DatabaseHelper {
       version: _databaseVersion,
       onCreate: (Database db, int version) async {
         await db.execute('''
-        CREATE TABLE $table (
-        $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-        $columnName TEXT NOT NULL,
-        $columnLessonGeography TEXT,
-        $columnLessonHistory TEXT,
-        $columnGeographyCompleted INTEGER,
-        $columnHistoryCompleted INTEGER,
-        questionsGeographyEasy TEXT,
-        questionsGeographyHard TEXT,
-        questionsHistoryEasy TEXT,
-        questionsHistoryHard TEXT,
-        answersGeographyEasyQ1 TEXT,
-        answersGeographyEasyQ2 TEXT,
-        answersGeographyEasyQ3 TEXT,
-        answersGeographyEasyQ4 TEXT,
-        answersGeographyHardQ1 TEXT,
-        answersGeographyHardQ2 TEXT,
-        answersGeographyHardQ3 TEXT,
-        answersGeographyHardQ4 TEXT,
-        answersHistoryEasyQ1 TEXT,
-        answersHistoryEasyQ2 TEXT,
-        answersHistoryEasyQ3 TEXT,
-        answersHistoryEasyQ4 TEXT,
-        answersHistoryHardQ1 TEXT,
-        answersHistoryHardQ2 TEXT,
-        answersHistoryHardQ3 TEXT,
-        answersHistoryHardQ4 TEXT,
-        answersGeographyEasyCorrect INTEGER,
-        answersGeographyHardCorrect INTEGER,
-        answersHistoryEasyCorrect INTEGER,
-        answersHistoryHardCorrect INTEGER
-        )
-      ''');
+      CREATE TABLE $table (
+      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $columnName TEXT NOT NULL,
+      $columnLessonGeography TEXT,
+      $columnLessonHistory TEXT,
+      $columnGeographyCompleted INTEGER,
+      $columnHistoryCompleted INTEGER,
+      questionsGeographyEasy TEXT,
+      questionsGeographyHard TEXT,
+      questionsHistoryEasy TEXT,
+      questionsHistoryHard TEXT,
+      answersGeographyEasyQ1 TEXT,
+      answersGeographyEasyQ2 TEXT,
+      answersGeographyEasyQ3 TEXT,
+      answersGeographyEasyQ4 TEXT,
+      answersGeographyHardQ1 TEXT,
+      answersGeographyHardQ2 TEXT,
+      answersGeographyHardQ3 TEXT,
+      answersGeographyHardQ4 TEXT,
+      answersHistoryEasyQ1 TEXT,
+      answersHistoryEasyQ2 TEXT,
+      answersHistoryEasyQ3 TEXT,
+      answersHistoryEasyQ4 TEXT,
+      answersHistoryHardQ1 TEXT,
+      answersHistoryHardQ2 TEXT,
+      answersHistoryHardQ3 TEXT,
+      answersHistoryHardQ4 TEXT,
+      answersGeographyEasyCorrect TEXT,
+      answersGeographyHardCorrect TEXT,
+      answersHistoryEasyCorrect TEXT,
+      answersHistoryHardCorrect TEXT
+      )
+    ''');
         await db.execute('''
-            CREATE TABLE trophies (
-              $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
-              $columnTrophy INTEGER
-            )''');
+          CREATE TABLE trophies (
+            $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
+            $columnTrophy INTEGER
+          )''');
+
+        await db.execute('''
+          CREATE TABLE profile (
+            profileID INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT,
+            picture INTEGER,
+            iq INTEGER,
+            trophies INTEGER,
+            geography_lessons INTEGER,
+            history_lessons INTEGER,
+            dark_mode INTEGER,
+            admin INTEGER
+          )''');
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
           await db.execute('DROP TABLE $table');
-          //await db.execute('DROP TABLE $tableTrophy');
           await db.execute('''
-        CREATE TABLE $table (
-        $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-        $columnName TEXT NOT NULL,
-        $columnLessonGeography TEXT,
-        $columnLessonHistory TEXT,
-        $columnGeographyCompleted INTEGER,
-        $columnHistoryCompleted INTEGER,
-        questionsGeographyEasy TEXT,
-        questionsGeographyHard TEXT,
-        questionsHistoryEasy TEXT,
-        questionsHistoryHard TEXT,
-        answersGeographyEasyQ1 TEXT,
-        answersGeographyEasyQ2 TEXT,
-        answersGeographyEasyQ3 TEXT,
-        answersGeographyEasyQ4 TEXT,
-        answersGeographyHardQ1 TEXT,
-        answersGeographyHardQ2 TEXT,
-        answersGeographyHardQ3 TEXT,
-        answersGeographyHardQ4 TEXT,
-        answersHistoryEasyQ1 TEXT,
-        answersHistoryEasyQ2 TEXT,
-        answersHistoryEasyQ3 TEXT,
-        answersHistoryEasyQ4 TEXT,
-        answersHistoryHardQ1 TEXT,
-        answersHistoryHardQ2 TEXT,
-        answersHistoryHardQ3 TEXT,
-        answersHistoryHardQ4 TEXT
-        answersGeographyEasyCorrect INTEGER,
-        answersGeographyHardCorrect INTEGER,
-        answersHistoryEasyCorrect INTEGER,
-        answersHistoryHardCorrect INTEGER
-        )
-      ''');
-
+      CREATE TABLE $table (
+      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $columnName TEXT NOT NULL,
+      $columnLessonGeography TEXT,
+      $columnLessonHistory TEXT,
+      $columnGeographyCompleted INTEGER,
+      $columnHistoryCompleted INTEGER,
+      questionsGeographyEasy TEXT,
+      questionsGeographyHard TEXT,
+      questionsHistoryEasy TEXT,
+      questionsHistoryHard TEXT,
+      answersGeographyEasyQ1 TEXT,
+      answersGeographyEasyQ2 TEXT,
+      answersGeographyEasyQ3 TEXT,
+      answersGeographyEasyQ4 TEXT,
+      answersGeographyHardQ1 TEXT,
+      answersGeographyHardQ2 TEXT,
+      answersGeographyHardQ3 TEXT,
+      answersGeographyHardQ4 TEXT,
+      answersHistoryEasyQ1 TEXT,
+      answersHistoryEasyQ2 TEXT,
+      answersHistoryEasyQ3 TEXT,
+      answersHistoryEasyQ4 TEXT,
+      answersHistoryHardQ1 TEXT,
+      answersHistoryHardQ2 TEXT,
+      answersHistoryHardQ3 TEXT,
+      answersHistoryHardQ4 TEXT,
+      answersGeographyEasyCorrect TEXT,
+      answersGeographyHardCorrect TEXT,
+      answersHistoryEasyCorrect TEXT,
+      answersHistoryHardCorrect TEXT
+      )
+    ''');
+          await db.execute('''
+          CREATE TABLE profile (
+            profileID INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT,
+            picture INTEGER,
+            iq INTEGER,
+            trophies INTEGER,
+            geography_lessons INTEGER,
+            history_lessons INTEGER,
+            dark_mode INTEGER,
+            admin INTEGER
+          )''');
           // Copy the data from the old table to the new one
 
           // Delete the old table
@@ -129,29 +152,34 @@ class DatabaseHelper {
   }
 
   Future<int> insertCountry(
-      String countryName,
-      String lessonGeography,
-      String lessonHistory,
-      String easyGeographyQuestions,
-      String hardGeographyQuestions,
-      String easyHistoryQuestions,
-      String hardHistoryQuestions,
-      String EGA1,
-      String EGA2,
-      String EGA3,
-      String EGA4,
-      String HGA1,
-      String HGA2,
-      String HGA3,
-      String HGA4,
-      String EHA1,
-      String EHA2,
-      String EHA3,
-      String EHA4,
-      String HHA1,
-      String HHA2,
-      String HHA3,
-      String HHA4,) async {
+    String countryName,
+    String lessonGeography,
+    String lessonHistory,
+    String easyGeographyQuestions,
+    String hardGeographyQuestions,
+    String easyHistoryQuestions,
+    String hardHistoryQuestions,
+    String EGA1,
+    String EGA2,
+    String EGA3,
+    String EGA4,
+    String HGA1,
+    String HGA2,
+    String HGA3,
+    String HGA4,
+    String EHA1,
+    String EHA2,
+    String EHA3,
+    String EHA4,
+    String HHA1,
+    String HHA2,
+    String HHA3,
+    String HHA4,
+    String answersGeographyEasyCorrect,
+    String answersGeographyHardCorrect,
+    String answersHistoryEasyCorrect,
+    String answersHistoryHardCorrect,
+  ) async {
     Database db = await database;
     return await db.insert(table, {
       'name': countryName,
@@ -179,6 +207,10 @@ class DatabaseHelper {
       'answersHistoryHardQ2': HHA2,
       'answersHistoryHardQ3': HHA3,
       'answersHistoryHardQ4': HHA4,
+      'answersGeographyEasyCorrect': answersGeographyEasyCorrect,
+      'answersGeographyHardCorrect': answersGeographyHardCorrect,
+      'answersHistoryEasyCorrect': answersHistoryEasyCorrect,
+      'answersHistoryHardCorrect': answersHistoryHardCorrect,
     });
   }
 
@@ -232,5 +264,18 @@ class DatabaseHelper {
       await db.rawUpdate('UPDATE sqlite_sequence SET seq = ? WHERE name = ?',
           [maxId - 1, tableName]);*/
     }
+  }
+
+  Future<int> updateLessonDone(int subject, String countryName) async {
+    Database db = await database;
+    String field = subject == 1 ? 'geography_completed' : 'history_completed';
+    return await db.update(
+      table,
+      {
+        field: 1,
+      },
+      where: 'name = ?',
+      whereArgs: [countryName],
+    );
   }
 }

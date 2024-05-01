@@ -206,7 +206,6 @@ class _AddTestState extends State<AddTest> {
       _controllerHHQ8A3 = TextEditingController(),
       _controllerHHQ9A3 = TextEditingController(),
       _controllerHHQ10A3 = TextEditingController();
-
   final _controllerGEQ1A4 = TextEditingController(),
       _controllerGEQ2A4 = TextEditingController(),
       _controllerGEQ3A4 = TextEditingController(),
@@ -477,13 +476,13 @@ class _AddTestState extends State<AddTest> {
               ),
             ]),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(children: [
               Text(
                 "Easy geography questions",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
             ]),
           ),
           SliverList(
@@ -545,13 +544,13 @@ class _AddTestState extends State<AddTest> {
               );
             }, childCount: 10),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(children: [
               Text(
                 "Hard geography questions",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
             ]),
           ),
           SliverList(
@@ -656,13 +655,13 @@ class _AddTestState extends State<AddTest> {
               ),
             ]),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(children: [
               Text(
                 "Easy history questions",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
             ]),
           ),
           SliverList(
@@ -724,13 +723,13 @@ class _AddTestState extends State<AddTest> {
               );
             }, childCount: 10),
           ),
-          SliverToBoxAdapter(
+          const SliverToBoxAdapter(
             child: Column(children: [
               Text(
                 "Hard history questions",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
             ]),
           ),
           SliverList(
@@ -806,48 +805,6 @@ class _AddTestState extends State<AddTest> {
                     child: ElevatedButton(
                       onPressed: () async {
                         Navigator.pop(context);
-
-                        // print('''1.${easyGeographyQuestions[0]}
-                        //         2.${easyGeographyQuestions[1]}
-                        //         3.${easyGeographyQuestions[2]}
-                        //         4.${easyGeographyQuestions[3]}
-                        //         5.${easyGeographyQuestions[4]}
-                        //         6.${easyGeographyQuestions[5]}
-                        //         7.${easyGeographyQuestions[6]}
-                        //         8.${easyGeographyQuestions[7]}
-                        //         9.${easyGeographyQuestions[8]}
-                        //         10.${easyGeographyQuestions[9]}
-                        //         1.${hardGeographyQuestions[0]}
-                        //         2.${hardGeographyQuestions[1]}
-                        //         3.${hardGeographyQuestions[2]}
-                        //         4.${hardGeographyQuestions[3]}
-                        //         5.${hardGeographyQuestions[4]}
-                        //         6.${hardGeographyQuestions[5]}
-                        //         7.${hardGeographyQuestions[6]}
-                        //         8.${hardGeographyQuestions[7]}
-                        //         9.${hardGeographyQuestions[8]}
-                        //         10.${hardGeographyQuestions[9]}
-                        //         1.${easyHistoryQuestions[0]}
-                        //         2.${easyHistoryQuestions[1]}
-                        //         3.${easyHistoryQuestions[2]}
-                        //         4.${easyHistoryQuestions[3]}
-                        //         5.${easyHistoryQuestions[4]}
-                        //         6.${easyHistoryQuestions[5]}
-                        //         7.${easyHistoryQuestions[6]}
-                        //         8.${easyHistoryQuestions[7]}
-                        //         9.${easyHistoryQuestions[8]}
-                        //         10.${easyHistoryQuestions[9]}
-                        //         1.${hardHistoryQuestions[0]}
-                        //         2.${hardHistoryQuestions[1]}
-                        //         3.${hardHistoryQuestions[2]}
-                        //         4.${hardHistoryQuestions[3]}
-                        //         5.${hardHistoryQuestions[4]}
-                        //         6.${hardHistoryQuestions[5]}
-                        //         7.${hardHistoryQuestions[6]}
-                        //         8.${hardHistoryQuestions[7]}
-                        //         9.${hardHistoryQuestions[8]}
-                        //         10.${hardHistoryQuestions[9]}
-                        //         ''');
                         String jsonStringEG = jsonEncode([
                           _controllerGEQ1.text,
                           _controllerGEQ2.text,
@@ -1088,6 +1045,10 @@ class _AddTestState extends State<AddTest> {
                           _controllerHHQ9A4.text,
                           _controllerHHQ10A4.text
                         ]);
+                        String answersGeographyEasyCorrect = jsonEncode(answersGeographyEasy);
+                        String answersGeographyHardCorrect = jsonEncode(answersGeographyHard);
+                        String answersHistoryEasyCorrect = jsonEncode(answersHistoryEasy);
+                        String answersHistoryHardCorrect = jsonEncode(answersHistoryHard);
                         int i = await _dbHelper.insertCountry(
                           _controllerName.text,
                           _controllerLessonGeography.text,
@@ -1112,6 +1073,10 @@ class _AddTestState extends State<AddTest> {
                           jsonStringHHA2,
                           jsonStringHHA3,
                           jsonStringHHA4,
+                          answersGeographyEasyCorrect,
+                          answersGeographyHardCorrect,
+                          answersHistoryEasyCorrect,
+                          answersHistoryHardCorrect,
                         );
                       },
                       style: ElevatedButton.styleFrom(
@@ -1573,6 +1538,7 @@ class _NewQuestionState extends State<NewQuestion> {
                   onPressed: () {
                     setState(() {
                       answers[widget.index] = 1;
+
                     });
                   },
                 ),

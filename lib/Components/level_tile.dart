@@ -30,8 +30,14 @@ class LevelTile extends StatefulWidget {
     required this.HHA2,
     required this.HHA3,
     required this.HHA4,
+    required this.EGA,
+    required this.HGA,
+    required this.EHA,
+    required this.HHA,
+    required this.geography_completed,
+    required this.history_completed,
   });
-  int? colorIndex;
+  int? colorIndex, geography_completed, history_completed;
   String? country,
       continent,
       lessonGeography,
@@ -40,7 +46,7 @@ class LevelTile extends StatefulWidget {
       jsonStringHG,
       jsonStringEH,
       jsonStringHH,
-      EGA1, EGA2, EGA3, EGA4, HGA1, HGA2, HGA3, HGA4, EHA1, EHA2, EHA3, EHA4, HHA1, HHA2, HHA3, HHA4;
+      EGA1, EGA2, EGA3, EGA4, HGA1, HGA2, HGA3, HGA4, EHA1, EHA2, EHA3, EHA4, HHA1, HHA2, HHA3, HHA4, EGA, HGA, EHA, HHA;
 
   @override
   State<LevelTile> createState() =>
@@ -70,6 +76,12 @@ class LevelTile extends StatefulWidget {
           HHA2: HHA2,
           HHA3: HHA3,
           HHA4: HHA4,
+          EGA: EGA,
+          HGA: HGA,
+          EHA: EHA,
+          HHA: HHA,
+          geography_completed: geography_completed,
+          history_completed: history_completed,
           );
 }
 
@@ -99,8 +111,14 @@ class _LevelTileState extends State<LevelTile> {
     required this.HHA2,
     required this.HHA3,
     required this.HHA4,
+    required this.EGA,
+    required this.HGA,
+    required this.EHA,
+    required this.HHA,
+    required this.geography_completed,
+    required this.history_completed,
   });
-  int? colorIndex = 1, selectedSubject = 0;
+  int? colorIndex = 1, selectedSubject = 0, geography_completed, history_completed;
   String? country,
       lessonGeography,
       lessonHistory,
@@ -108,7 +126,7 @@ class _LevelTileState extends State<LevelTile> {
       jsonStringHG,
       jsonStringEH,
       jsonStringHH,
-      EGA1, EGA2, EGA3, EGA4, HGA1, HGA2, HGA3, HGA4, EHA1, EHA2, EHA3, EHA4, HHA1, HHA2, HHA3, HHA4;
+      EGA1, EGA2, EGA3, EGA4, HGA1, HGA2, HGA3, HGA4, EHA1, EHA2, EHA3, EHA4, HHA1, HHA2, HHA3, HHA4, EGA, HGA, EHA, HHA;
 
   @override
   Widget build(BuildContext context) {
@@ -224,8 +242,8 @@ class _LevelTileState extends State<LevelTile> {
                                   });
                                 },
                                 child: Image.asset(selectedSubject != 1
-                                    ? 'assets/icons/Geography.png'
-                                    : 'assets/icons/GeographySelected.png'))),
+                                    ? geography_completed!=1 ? 'assets/icons/Geography.png' : 'assets/icons/Tick.png'
+                                    : geography_completed!=1 ? 'assets/icons/GeographySelected.png' : 'assets/icons/TickOutlined.png'))),
                         const SizedBox(height: 5),
                         SizedBox(
                             height: 78,
@@ -241,8 +259,8 @@ class _LevelTileState extends State<LevelTile> {
                                   });
                                 },
                                 child: Image.asset(selectedSubject != 2
-                                    ? 'assets/icons/History.png'
-                                    : 'assets/icons/HistorySelected.png'))),
+                                    ? history_completed!=1 ? 'assets/icons/History.png' : 'assets/icons/Tick.png'
+                                    : history_completed!=1 ? 'assets/icons/HistorySelected.png' : 'assets/icons/TickOutlined.png'))),
                       ],
                     ),
                   )
@@ -277,6 +295,8 @@ class _LevelTileState extends State<LevelTile> {
                               QHA2: HGA2,
                               QHA3: HGA3,
                               QHA4: HGA4,
+                              EA: EGA,
+                              HA: HGA,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -325,6 +345,8 @@ class _LevelTileState extends State<LevelTile> {
                               QHA2: HGA2,
                               QHA3: HGA3,
                               QHA4: HGA4,
+                              EA: EGA,
+                              HA: HGA,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -374,6 +396,8 @@ class _LevelTileState extends State<LevelTile> {
                               QHA2: HGA2,
                               QHA3: HGA3,
                               QHA4: HGA4,
+                              EA: EGA,
+                              HA: HGA,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -432,6 +456,8 @@ class _LevelTileState extends State<LevelTile> {
                               QHA2: HHA2,
                               QHA3: HHA3,
                               QHA4: HHA4,
+                              EA: EHA,
+                              HA: HHA,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -480,6 +506,8 @@ class _LevelTileState extends State<LevelTile> {
                               QHA2: HHA2,
                               QHA3: HHA3,
                               QHA4: HHA4,
+                              EA: EHA,
+                              HA: HHA,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -529,6 +557,8 @@ class _LevelTileState extends State<LevelTile> {
                               QHA2: HHA2,
                               QHA3: HHA3,
                               QHA4: HHA4,
+                              EA: EHA,
+                              HA: HHA,
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),

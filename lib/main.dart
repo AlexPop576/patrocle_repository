@@ -3,9 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'dart:io';//show Platform;
-import 'package:path/path.dart';
-import 'Database/database_helper.dart';
+import 'dart:io';
 import 'Homepage/homepage.dart';
 import 'Theme/theme_provider.dart';
 

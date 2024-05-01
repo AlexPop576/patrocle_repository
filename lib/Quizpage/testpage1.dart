@@ -83,177 +83,165 @@ class _TestPage1State extends State<TestPage1> {
                       thickness: 3),
                   const SizedBox(height: 24),
                   Column(children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              getAnswerFunction(1);
-                              selected = 1;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            side: selected == 1
-                                ? const BorderSide(
-                                    color: Color.fromARGB(255, 102, 102, 255),
-                                    width: 3)
-                                : BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    width: 3),
+                    ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            getAnswerFunction(1);
+                            selected = 1;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Center(
-                              child: Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer1.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30)),
-                            ),
-                          )),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: selected == 1
+                              ? const BorderSide(
+                                  color: Color.fromARGB(255, 102, 102, 255),
+                                  width: 3)
+                              : BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.primary,
+                                  width: 3),
                         ),
+                        child: Center(
+                            child: Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Text(answer1.toString(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30)),
+                          ),
+                        )),
                       ),
                     ),
                     const SizedBox(
                       height: 12,
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              getAnswerFunction(2);
-                              selected = 2;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            side: selected == 2
-                                ? const BorderSide(
-                                    color: Color.fromARGB(255, 102, 102, 255),
-                                    width: 3)
-                                : BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    width: 3),
+                    ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            getAnswerFunction(2);
+                            selected = 2;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Center(
-                              child: Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer2.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30)),
-                            ),
-                          )),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: selected == 2
+                              ? const BorderSide(
+                                  color: Color.fromARGB(255, 102, 102, 255),
+                                  width: 3)
+                              : BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.primary,
+                                  width: 3),
                         ),
+                        child: Center(
+                            child: Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Text(answer2.toString(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30)),
+                          ),
+                        )),
                       ),
                     ),
                     const SizedBox(
                       height: 12,
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              getAnswerFunction(3);
-                              selected = 3;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            side: selected == 3
-                                ? const BorderSide(
-                                    color: Color.fromARGB(255, 102, 102, 255),
-                                    width: 3)
-                                : BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    width: 3),
+                    ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            getAnswerFunction(3);
+                            selected = 3;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Center(
-                              child: Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer3.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30)),
-                            ),
-                          )),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: selected == 3
+                              ? const BorderSide(
+                                  color: Color.fromARGB(255, 102, 102, 255),
+                                  width: 3)
+                              : BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.primary,
+                                  width: 3),
                         ),
+                        child: Center(
+                            child: Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Text(answer3.toString(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30)),
+                          ),
+                        )),
                       ),
                     ),
                     const SizedBox(
                       height: 12,
                     ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(15)),
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              getAnswerFunction(4);
-                              selected = 4;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            side: selected == 4
-                                ? const BorderSide(
-                                    color: Color.fromARGB(255, 102, 102, 255),
-                                    width: 3)
-                                : BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    width: 3),
+                    ClipRRect(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(15)),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            getAnswerFunction(4);
+                            selected = 4;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Center(
-                              child: Expanded(
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer4.toString(),
-                                  style: const TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 30)),
-                            ),
-                          )),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: selected == 4
+                              ? const BorderSide(
+                                  color: Color.fromARGB(255, 102, 102, 255),
+                                  width: 3)
+                              : BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.primary,
+                                  width: 3),
                         ),
+                        child: Center(
+                            child: Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 5),
+                            child: Text(answer4.toString(),
+                                style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30)),
+                          ),
+                        )),
                       ),
                     ),
                     const SizedBox(

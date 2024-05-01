@@ -99,6 +99,12 @@ class _LevelsState extends State<Levels> {
                           HHA2: snapshot.data![index]['answersHistoryHardQ2'],
                           HHA3: snapshot.data![index]['answersHistoryHardQ3'],
                           HHA4: snapshot.data![index]['answersHistoryHardQ4'],
+                          EGA: snapshot.data![index]['answersGeographyEasyCorrect'],
+                          HGA: snapshot.data![index]['answersGeographyHardCorrect'],
+                          EHA: snapshot.data![index]['answersHistoryEasyCorrect'],
+                          HHA: snapshot.data![index]['answersHistoryHardCorrect'],
+                          geography_completed: snapshot.data![index]['geography_completed'],
+                          history_completed: snapshot.data![index]['history_completed'],
                         );
                       },
                     );
