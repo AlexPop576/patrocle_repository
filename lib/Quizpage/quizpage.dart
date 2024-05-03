@@ -102,7 +102,7 @@ class _QuizPageState extends State<QuizPage> {
       EA,
       HA;
   int? difficulty, subject;
-  int pageIndex = 0, givenAnswer = -1, correctAnswers = 0, bonus = 0;
+  int pageIndex = 0, givenAnswer = -1, correctAnswersHard = 0, correctAnswersEasy = 0, bonus = 0;
   late List<String> easyQuestions,
       hardQuestions,
       easyQuestionsA1,
@@ -445,7 +445,7 @@ class _QuizPageState extends State<QuizPage> {
                                       questionNumber[pageIndex - 1]],
                           givenAnswer: 0,
                         )
-                      : FinishPage(correctAnswers: correctAnswers)),
+                      : FinishPage(correctAnswersEasy: correctAnswersEasy, correctAnswersHard: correctAnswersHard, correctAnswers: correctAnswersEasy+correctAnswersHard,)),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -471,15 +471,13 @@ class _QuizPageState extends State<QuizPage> {
                           });
                           if (difficulty == 1
                               ? easyAnswers[questionNumber[pageIndex - 1]+1] == givenAnswer
-                              : difficulty == 3
-                                  ? hardAnswers[questionNumber[pageIndex - 1]+1] == givenAnswer
-                                  : difficulty == 2 && pageIndex % 2 == 0
+                              : difficulty == 2 && pageIndex % 2 == 0
                                       ? easyAnswers[questionNumber[pageIndex - 1]+1] ==
                                           givenAnswer
                                       : hardAnswers[questionNumber[pageIndex - 1]+1] ==
                                           givenAnswer) {
                             correct();
-                            correctAnswers++;
+                            difficulty == 1 ? correctAnswersEasy++ : difficulty == 2 && pageIndex % 2 == 0 ? correctAnswersEasy++ : correctAnswersHard++;
                             showModalBottomSheet(
                               backgroundColor: Colors.transparent,
                               context: context,
@@ -697,7 +695,9 @@ class _QuizPageState extends State<QuizPage> {
                         });
                       } else if (pageIndex == 11) {
                         Navigator.pop(context);
-                        _dbHelper.updateLessonDone(subject!,country!);
+                        await _dbHelper.updateLessonDone(subject!,country!);
+                        await _dbHelper.updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
+                        //trophies here
                       }
                     },
                     style: ElevatedButton.styleFrom(
@@ -733,10 +733,12 @@ class _QuizPageState extends State<QuizPage> {
 class FinishPage extends StatelessWidget {
   FinishPage({
     super.key,
+    required this.correctAnswersEasy,
+    required this.correctAnswersHard,
     required this.correctAnswers,
   });
 
-  final int correctAnswers;
+  final int correctAnswersEasy, correctAnswersHard, correctAnswers;
   int? selectedLanguage;
 
   @override
@@ -858,7 +860,7 @@ class FinishPage extends StatelessWidget {
                                 ),
                                 child: Center(
                                     child: Text(
-                                  "+${correctAnswers * 10} IQ",
+                                  "+${correctAnswersEasy * 5 + correctAnswersHard * 10} IQ",
                                   style: const TextStyle(
                                       color: Color.fromARGB(255, 102, 102, 255),
                                       fontWeight: FontWeight.bold,

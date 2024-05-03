@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
+import 'package:patrocle/Homepage/editprofile.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
 import '../Theme/theme_provider.dart';
@@ -14,8 +16,30 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   int? iq = 0, trophies = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  //translation[2]!["Profile"]! ?? ""
+  int profileIndex = 0;
+  List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
   final _dbHelper = DatabaseHelper.instance;
+  String username = "user";
+  //translation[2]!["Profile"]! ?? ""
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData(){
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          username = results.first['username'];
+          iq = results.first['iq'];
+          trophies = results.first['trophies'];
+          profileIndex = results.first['picture'];
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +56,7 @@ class _ProfileState extends State<Profile> {
                       child: Column(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: Colors.blue),
+                            decoration: BoxDecoration(color: profileColor[profileIndex]),
                             width: double.infinity,
                             height: 280,
                             child: Padding(
@@ -59,7 +83,7 @@ class _ProfileState extends State<Profile> {
                           Row(
                             children: [
                               Text(
-                                "Username",
+                                username,
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -76,7 +100,17 @@ class _ProfileState extends State<Profile> {
                                       fontSize: 20,
                                       fontWeight: FontWeight.w400),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          child: const EditProfile(),
+                                          type: PageTransitionType.bottomToTop,
+                                          duration:
+                                              const Duration(milliseconds: 250),
+                                        ),
+                                      ).then((_) {fetchData();});
+                                },
                               ),
                             ],
                           ),

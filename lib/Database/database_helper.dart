@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 21;
+  static final _databaseVersion = 22;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -87,6 +87,16 @@ class DatabaseHelper {
             dark_mode INTEGER,
             admin INTEGER
           )''');
+        db.insert('profile', {
+          'username': 'username',
+          'picture': 0,
+          'iq': 0,
+          'trophies': 0,
+          'geography_lessons': 0,
+          'history_lessons': 0,
+          'dark_mode': 1,
+          'admin': 0
+        });
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
@@ -125,18 +135,28 @@ class DatabaseHelper {
       answersHistoryHardCorrect TEXT
       )
     ''');
-          await db.execute('''
-          CREATE TABLE profile (
-            profileID INTEGER PRIMARY KEY AUTOINCREMENT,
-            username TEXT,
-            picture INTEGER,
-            iq INTEGER,
-            trophies INTEGER,
-            geography_lessons INTEGER,
-            history_lessons INTEGER,
-            dark_mode INTEGER,
-            admin INTEGER
-          )''');
+          // await db.execute('''
+          // CREATE TABLE profile (
+          //   profileID INTEGER PRIMARY KEY AUTOINCREMENT,
+          //   username TEXT,
+          //   picture INTEGER,
+          //   iq INTEGER,
+          //   trophies INTEGER,
+          //   geography_lessons INTEGER,
+          //   history_lessons INTEGER,
+          //   dark_mode INTEGER,
+          //   admin INTEGER
+          // )''');
+          db.insert('profile', {
+            'username': 'username',
+            'picture': 0,
+            'iq': 0,
+            'trophies': 0,
+            'geography_lessons': 0,
+            'history_lessons': 0,
+            'dark_mode': 1,
+            'admin': 0
+          });
           // Copy the data from the old table to the new one
 
           // Delete the old table
@@ -277,5 +297,61 @@ class DatabaseHelper {
       where: 'name = ?',
       whereArgs: [countryName],
     );
+  }
+
+  Future<int> updatePicture(int profileIndex) async {
+    Database db = await database;
+    int profileID = 1;
+    // Execute the update statement
+    return await db.update(
+      'profile',
+      {'picture': profileIndex},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<int> updateUserame(String newUsername) async {
+    Database db = await database;
+    int profileID = 1;
+    // Execute the update statement
+    return await db.update(
+      'profile',
+      {'username': newUsername},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<int> updateProfileIQ(int IQ) async {
+    Database db = await database;
+    int profileID = 1;
+    Map<String, dynamic> profileData = (await db.query('profile',
+        where: 'profileID = ?', whereArgs: [profileID])).first;
+    int currentIQ = profileData['iq'] as int;
+    IQ = currentIQ + IQ;
+    return await db.update(
+      'profile',
+      {'iq': IQ},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<int> updateProfileTrophies(int trophies) async {
+    Database db = await database;
+    int profileID = 1;
+    // Execute the update statement
+    return await db.update(
+      'profile',
+      {'trophies': trophies},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<List<Map<String, dynamic>>> queryProfile() async {
+    Database db = await instance.database;
+    return await db.query('profile', orderBy: 'profileID ASC');
   }
 }

@@ -114,6 +114,34 @@ class _TestState extends State<Test> {
               },
             ),
           ),
+          Expanded(
+            child: FutureBuilder<List<Map<String, dynamic>>>(
+              future: _dbHelper.queryProfile(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                              itemCount: snapshot.data!.length,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text('${snapshot.data![index]['profileID']}: ${snapshot.data![index]['username']}'),
+                                  trailing: IconButton(
+                                    icon: Icon(Icons.delete),
+                                    onPressed: () async {
+                                      int i = await _dbHelper.deleteTrophy(snapshot.data![index]['_trophy_id']);
+                                      print('deleted row: $i');
+                                      setState(() {});
+                                    },
+                                  ),
+                                );
+                              },
+                            );
+                } else if (snapshot.hasError) {
+                  return Text("${snapshot.error}");
+                }
+                return CircularProgressIndicator();
+              },
+            ),
+          ),
         ],
       ),
     );

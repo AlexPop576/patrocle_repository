@@ -22,7 +22,7 @@ class _LevelsState extends State<Levels> {
         backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: SingleChildScrollView(
-            //physics: const BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             child: Column(children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),

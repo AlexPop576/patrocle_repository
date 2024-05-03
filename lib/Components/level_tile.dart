@@ -301,7 +301,7 @@ class _LevelTileState extends State<LevelTile> {
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        );
+                        ).then((_) => setState(() {selectedSubject = 0;}));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 63, 255, 38),
@@ -351,7 +351,7 @@ class _LevelTileState extends State<LevelTile> {
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        );
+                        ).then((_) => setState(() {selectedSubject = 0;}));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -402,7 +402,7 @@ class _LevelTileState extends State<LevelTile> {
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        );
+                        ).then((_) => setState(() {selectedSubject = 0;}));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 55, 55),
@@ -462,7 +462,7 @@ class _LevelTileState extends State<LevelTile> {
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        );
+                        ).then((_) => setState(() {selectedSubject = 0;}));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 63, 255, 38),
@@ -512,7 +512,7 @@ class _LevelTileState extends State<LevelTile> {
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        );
+                        ).then((_) => setState(() {selectedSubject = 0;}));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -563,7 +563,7 @@ class _LevelTileState extends State<LevelTile> {
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        );
+                        ).then((_) => setState(() {selectedSubject = 0;}));
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 55, 55),
