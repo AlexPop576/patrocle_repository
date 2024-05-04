@@ -208,6 +208,60 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  void updateLessonStatus() async {
+    await _dbHelper.updateLessonDone(subject!,country!);
+    await _dbHelper.updateProfileLesson(subject!);
+  }
+
+  void updateIQ() async {
+    await _dbHelper.updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
+  }
+  
+  void updateTrophies() async {
+    int iq = 0, geography_lessons = 0, history_lessons = 0;
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          iq = results.first['iq'] + correctAnswersEasy * 5 + correctAnswersHard * 10;
+          geography_lessons = subject==1 ? results.first['geography_lessons']+1 : results.first['geography_lessons'];
+          history_lessons = subject==2 ? results.first['history_lessons']+1 : results.first['history_lessons'];
+          if(geography_lessons == 5){
+            _dbHelper.insertTrophy(1);
+            _dbHelper.updateProfileTrophies();
+          }
+          else if(history_lessons == 5){
+            _dbHelper.insertTrophy(2);
+            _dbHelper.updateProfileTrophies();
+          }
+          if(geography_lessons+history_lessons == 20){
+            _dbHelper.insertTrophy(3);
+            _dbHelper.updateProfileTrophies();
+          }
+          else if(geography_lessons+history_lessons == 50){
+            _dbHelper.insertTrophy(5);
+            _dbHelper.updateProfileTrophies();
+          }
+          else if(geography_lessons+history_lessons == 100){
+            _dbHelper.insertTrophy(6);
+            _dbHelper.updateProfileTrophies();
+          }
+          if(iq==500){
+            _dbHelper.insertTrophy(4);
+            _dbHelper.updateProfileTrophies();
+          }else if(iq==5000){
+            _dbHelper.insertTrophy(7);
+            _dbHelper.updateProfileTrophies();
+          }else if(iq==10000){
+            _dbHelper.insertTrophy(8);
+            _dbHelper.updateProfileTrophies();
+          }
+        });
+        print("$iq $geography_lessons $history_lessons");
+      }
+    });
+    
+  }
+
   getAnswer(int answer) {
     setState(() {
       givenAnswer = answer;
@@ -694,10 +748,10 @@ class _QuizPageState extends State<QuizPage> {
                           }
                         });
                       } else if (pageIndex == 11) {
+                        updateLessonStatus();
+                        updateIQ();
+                        updateTrophies();
                         Navigator.pop(context);
-                        await _dbHelper.updateLessonDone(subject!,country!);
-                        await _dbHelper.updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
-                        //trophies here
                       }
                     },
                     style: ElevatedButton.styleFrom(

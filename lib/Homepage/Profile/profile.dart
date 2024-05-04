@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
-import 'package:patrocle/Homepage/editprofile.dart';
+import 'package:patrocle/Homepage/Profile/admin.dart';
+import 'package:patrocle/Homepage/Profile/editprofile.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
-import '../Theme/theme_provider.dart';
+import '../../Theme/theme_provider.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -489,6 +490,55 @@ class _ProfileState extends State<Profile> {
                           ),
                           const SizedBox(
                             height: 10,
+                          ),
+                          SizedBox(
+                            height: 58,
+                            width: double.infinity,
+                            child: ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          child: const AdminPage(),
+                                          type: PageTransitionType.bottomToTop,
+                                          duration:
+                                              const Duration(milliseconds: 250),
+                                        ),
+                                      );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                child: const Center(
+                                    child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                        "Admin mode",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                        )),
+                                    SizedBox(width: 10),
+                                    Icon(
+                                      Icons.admin_panel_settings,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                )),
+                              ),
+                            ),
                           ),
                           const SizedBox(
                             height: 90,

@@ -13,8 +13,24 @@ class Levels extends StatefulWidget {
 }
 
 class _LevelsState extends State<Levels> {
-  int color = 0;
+  int color = 0, admin = 0;
   final _dbHelper = DatabaseHelper.instance;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData(){
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          admin = results.first['admin'];
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +130,7 @@ class _LevelsState extends State<Levels> {
                   return CircularProgressIndicator();
                 },
               ),
-              Padding(
+              admin == 1 ? Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),
                 child: Column(children: [
                   const SizedBox(
@@ -127,11 +143,7 @@ class _LevelsState extends State<Levels> {
                   const SizedBox(
                     height: 20,
                   ),
-                ]),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 17),
-                child: SizedBox(
+                  SizedBox(
                   height: 190,
                   width: double.infinity,
                   child: Container(
@@ -233,7 +245,8 @@ class _LevelsState extends State<Levels> {
                     ),
                   ),
                 ),
-              ),
+                ]),
+              ) : Container(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),
                 child: Column(children: [

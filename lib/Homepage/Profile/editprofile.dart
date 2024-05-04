@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../Database/database_helper.dart';
+import '../../Database/database_helper.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -85,7 +85,7 @@ class _EditProfileState extends State<EditProfile> {
                                   ),
                                 ),
                                 child: const Center(
-                                    child: Text("Continue",
+                                    child: Text("Save",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -246,7 +246,7 @@ class _EditProfileState extends State<EditProfile> {
                   child: ElevatedButton(
                     onPressed: () async {
                       await _dbHelper.updatePicture(profileIndex);
-                      await _dbHelper.updateUserame(usernameController.text);
+                      if(usernameController.text.isNotEmpty)await _dbHelper.updateUserame(usernameController.text);
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(

@@ -260,32 +260,6 @@ class DatabaseHelper {
         .delete(tableTrophy, where: '$columnTrophyId = ?', whereArgs: [id]);
   }
 
-  Future<void> clearTableAndResetId(String tableName) async {
-    final db = _databaseName;
-    if (db != null) {
-      /*await db.transaction((txn) async {
-        // Delete ALL
-        await txn.rawDelete('DELETE FROM $tableName');
-        // Reset  :)
-        await txn.rawUpdate(
-            'DELETE FROM sqlite_sequence WHERE name = ?', [tableName]);
-      });*/
-    }
-  }
-
-  Future<void> decreaseMaxId(String tableName) async {
-    final db = _databaseName;
-    if (db != null) {
-      /*// Get the maximum ID
-      final maxIdResult =
-          await db.rawQuery('SELECT MAX(id) as max_id FROM $tableName');
-      final maxId = maxIdResult.first['max_id'] as int? ?? 1;
-      // Set the ID to maxId - 1
-      await db.rawUpdate('UPDATE sqlite_sequence SET seq = ? WHERE name = ?',
-          [maxId - 1, tableName]);*/
-    }
-  }
-
   Future<int> updateLessonDone(int subject, String countryName) async {
     Database db = await database;
     String field = subject == 1 ? 'geography_completed' : 'history_completed';
@@ -338,13 +312,49 @@ class DatabaseHelper {
     );
   }
 
-  Future<int> updateProfileTrophies(int trophies) async {
+  Future<int> updateProfileTrophies() async {
     Database db = await database;
     int profileID = 1;
-    // Execute the update statement
+    Map<String, dynamic> profileData = (await db.query('profile',
+        where: 'profileID = ?', whereArgs: [profileID])).first;
+    int currentTrophies = profileData['trophies'] as int;
+    currentTrophies += 1;
     return await db.update(
       'profile',
-      {'trophies': trophies},
+      {'trophies': currentTrophies},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<int> updateProfileLesson(int subject) async {
+    Database db = await database;
+    int profileID = 1, currentLessons = 0;
+    String field = subject == 1 ? 'geography_lessons' : 'history_lessons';
+    Map<String, dynamic> profileData = (await db.query('profile',
+        where: 'profileID = ?', whereArgs: [profileID])).first;
+    currentLessons = profileData[field] as int;
+    currentLessons += 1;
+    return await db.update(
+      'profile',
+      {
+        field: currentLessons,
+      },
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<int> updateAdmin() async {
+    Database db = await database;
+    int profileID = 1;
+    Map<String, dynamic> profileData = (await db.query('profile',
+        where: 'profileID = ?', whereArgs: [profileID])).first;
+    int admin = profileData['admin'] as int;
+    if(admin == 1) admin = 0; else admin = 1;
+    return await db.update(
+      'profile',
+      {'admin': admin},
       where: 'profileID = ?',
       whereArgs: [profileID],
     );
@@ -354,4 +364,30 @@ class DatabaseHelper {
     Database db = await instance.database;
     return await db.query('profile', orderBy: 'profileID ASC');
   }
+
+  // Future<void> clearTableAndResetId(String tableName) async {
+  //   final db = _databaseName;
+  //   if (db != null) {
+  //     /*await db.transaction((txn) async {
+  //       // Delete ALL
+  //       await txn.rawDelete('DELETE FROM $tableName');
+  //       // Reset  :)
+  //       await txn.rawUpdate(
+  //           'DELETE FROM sqlite_sequence WHERE name = ?', [tableName]);
+  //     });*/
+  //   }
+  // }
+
+  // Future<void> decreaseMaxId(String tableName) async {
+  //   final db = _databaseName;
+  //   if (db != null) {
+  //     /*// Get the maximum ID
+  //     final maxIdResult =
+  //         await db.rawQuery('SELECT MAX(id) as max_id FROM $tableName');
+  //     final maxId = maxIdResult.first['max_id'] as int? ?? 1;
+  //     // Set the ID to maxId - 1
+  //     await db.rawUpdate('UPDATE sqlite_sequence SET seq = ? WHERE name = ?',
+  //         [maxId - 1, tableName]);*/
+  //   }
+  // }
 }
