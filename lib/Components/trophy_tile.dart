@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:patrocle/Theme/translations.dart';
 
 class TrophyTile extends StatelessWidget {
   TrophyTile({super.key, required this.trophy});
-  int? trophy;
+  int? trophy, language = 2;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   Map<int, String> name = {
     1: "Geographer",
@@ -81,7 +83,7 @@ class TrophyTile extends StatelessWidget {
                   "assets/trophies/${name[trophy]}.png",
                 )),
             const SizedBox(height: 18),
-            Text("${name[trophy]}" ?? "Trophy",
+            Text("${translation[language]![name[trophy]]}" ?? "Trophy",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: MediaQuery.of(context).size.width * 0.054 < 25

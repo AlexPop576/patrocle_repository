@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
 
 import '../Database/database_helper.dart';
+import '../Theme/translations.dart';
 
 class Trophies extends StatefulWidget {
   const Trophies({super.key});
@@ -13,6 +14,8 @@ class Trophies extends StatefulWidget {
 
 class _TrophiesState extends State<Trophies> {
   final _dbHelper = DatabaseHelper.instance;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
+  int? language = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class _TrophiesState extends State<Trophies> {
                     ),
                     Expanded(
                         child: Text(
-                      "Your trophies",
+                      "${translation[language]!["Your trophies"]}",
                       style: TextStyle(
                           color: Theme.of(context).colorScheme.tertiary,
                           fontWeight: FontWeight.bold,

@@ -6,6 +6,8 @@ import 'package:patrocle/Homepage/Profile/profile.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Homepage/trophies.dart';
 
+import '../Theme/translations.dart';
+
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -14,8 +16,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-
-  int _selectedIndex = 1;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
+  int _selectedIndex = 1, language = 2;
 
   static const List<Widget> _pages = <Widget>[
     Trophies(),
@@ -40,11 +42,11 @@ class _HomepageState extends State<Homepage> {
           gap: 12,
           haptic: true,
           padding: const EdgeInsets.all(18),
-          tabs: const [
-            GButton(icon: Icons.star, text: "Trophies",),
-            GButton(icon: Icons.gamepad, text: "Levels",),
-            GButton(icon: Icons.map, text: "Map",),
-            GButton(icon: Icons.person, text: "Profile",),
+          tabs: [
+            GButton(icon: Icons.star, text: "${translation[language]!["Trophies"]}"),
+            GButton(icon: Icons.gamepad, text: "${translation[language]!["Levels"]}"),
+            GButton(icon: Icons.map, text: "${translation[language]!["Map"]}",),
+            GButton(icon: Icons.person, text: "${translation[language]!["Profile"]}"),
           ],
           selectedIndex: _selectedIndex,
           onTabChange: (index) {

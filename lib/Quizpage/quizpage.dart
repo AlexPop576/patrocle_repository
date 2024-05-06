@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
 import 'package:lottie/lottie.dart';
+import 'package:patrocle/Components/trophy_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
 import 'dart:math';
+import '../Theme/translations.dart';
 import 'testpage1.dart';
 import 'testpage2.dart';
 
@@ -101,8 +103,12 @@ class _QuizPageState extends State<QuizPage> {
       QHA4,
       EA,
       HA;
-  int? difficulty, subject;
-  int pageIndex = 0, givenAnswer = -1, correctAnswersHard = 0, correctAnswersEasy = 0, bonus = 0;
+  int? difficulty, subject, language = 2;
+  int pageIndex = 0,
+      givenAnswer = -1,
+      correctAnswersHard = 0,
+      correctAnswersEasy = 0,
+      bonus = 0;
   late List<String> easyQuestions,
       hardQuestions,
       easyQuestionsA1,
@@ -114,6 +120,7 @@ class _QuizPageState extends State<QuizPage> {
       hardQuestionsA3,
       hardQuestionsA4;
   List<int> questionNumber = [], easyAnswers = [], hardAnswers = [];
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
 
   @override
@@ -209,57 +216,116 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   void updateLessonStatus() async {
-    await _dbHelper.updateLessonDone(subject!,country!);
+    await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
   }
 
   void updateIQ() async {
-    await _dbHelper.updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
+    await _dbHelper
+        .updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
   }
-  
+
   void updateTrophies() async {
     int iq = 0, geography_lessons = 0, history_lessons = 0;
     _dbHelper.queryProfile().then((results) {
       if (results.isNotEmpty) {
         setState(() {
-          iq = results.first['iq'] + correctAnswersEasy * 5 + correctAnswersHard * 10;
-          geography_lessons = subject==1 ? results.first['geography_lessons']+1 : results.first['geography_lessons'];
-          history_lessons = subject==2 ? results.first['history_lessons']+1 : results.first['history_lessons'];
-          if(geography_lessons == 5){
+          iq = results.first['iq'];
+          geography_lessons = subject == 1
+              ? results.first['geography_lessons'] + 1
+              : results.first['geography_lessons'];
+          history_lessons = subject == 2
+              ? results.first['history_lessons'] + 1
+              : results.first['history_lessons'];
+          if (geography_lessons == 5) {
             _dbHelper.insertTrophy(1);
             _dbHelper.updateProfileTrophies();
-          }
-          else if(history_lessons == 5){
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 1)),
+                elevation: 24,
+              ),);
+          } else if (history_lessons == 5) {
             _dbHelper.insertTrophy(2);
             _dbHelper.updateProfileTrophies();
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 2)),
+                elevation: 24,
+              ),);
           }
-          if(geography_lessons+history_lessons == 20){
+          if (geography_lessons + history_lessons == 20) {
             _dbHelper.insertTrophy(3);
             _dbHelper.updateProfileTrophies();
-          }
-          else if(geography_lessons+history_lessons == 50){
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 3)),
+                elevation: 24,
+              ),);
+          } else if (geography_lessons + history_lessons == 50) {
             _dbHelper.insertTrophy(5);
             _dbHelper.updateProfileTrophies();
-          }
-          else if(geography_lessons+history_lessons == 100){
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 5)),
+                elevation: 24,
+              ),);
+          } else if (geography_lessons + history_lessons == 100) {
             _dbHelper.insertTrophy(6);
             _dbHelper.updateProfileTrophies();
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 6)),
+                elevation: 24,
+              ),);
           }
-          if(iq==500){
+          if (iq < 500 && iq+correctAnswersEasy * 5 +
+              correctAnswersHard * 10 >=500) {
             _dbHelper.insertTrophy(4);
             _dbHelper.updateProfileTrophies();
-          }else if(iq==5000){
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 4)),
+                elevation: 24,
+              ),);
+          } else if (iq < 5000 && iq+correctAnswersEasy * 5 +
+              correctAnswersHard * 10>= 5000) {
             _dbHelper.insertTrophy(7);
             _dbHelper.updateProfileTrophies();
-          }else if(iq==10000){
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 7)),
+                elevation: 24,
+              ),);
+          } else if (iq < 10000 && iq + correctAnswersEasy * 5 +
+              correctAnswersHard * 10>=10000) {
             _dbHelper.insertTrophy(8);
             _dbHelper.updateProfileTrophies();
+            showDialog(
+              context: context,
+              builder: (_) => AlertDialog(
+                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100,child: TrophyTile(trophy: 8)),
+                elevation: 24,
+              ),);
           }
         });
-        print("$iq $geography_lessons $history_lessons");
       }
     });
-    
   }
 
   getAnswer(int answer) {
@@ -312,7 +378,7 @@ class _QuizPageState extends State<QuizPage> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 40),
                                     child: Text(
-                                      "Do you want to end your learning session? If you quit, you`ll lose your progress.",
+                                      "${translation[language]!["QP_QMSG"]}",
                                       style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -342,9 +408,10 @@ class _QuizPageState extends State<QuizPage> {
                                           ),
                                         ),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text(
+                                              "${translation[language]!["Continue"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -370,9 +437,10 @@ class _QuizPageState extends State<QuizPage> {
                                           ),
                                         ),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text(
+                                              "${translation[language]!["Quit"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -433,10 +501,10 @@ class _QuizPageState extends State<QuizPage> {
                       getAnswerFunction: getAnswer,
                       selected: 0,
                       questionText: difficulty == 1
-                          ? easyQuestions[questionNumber[pageIndex-1]]
+                          ? easyQuestions[questionNumber[pageIndex - 1]]
                           : difficulty == 2
-                              ? easyQuestions[questionNumber[pageIndex-1]]
-                              : hardQuestions[questionNumber[pageIndex-1]],
+                              ? easyQuestions[questionNumber[pageIndex - 1]]
+                              : hardQuestions[questionNumber[pageIndex - 1]],
                       answer1: difficulty == 1
                           ? easyQuestionsA1[questionNumber[pageIndex - 1]]
                           : difficulty == 2
@@ -499,7 +567,12 @@ class _QuizPageState extends State<QuizPage> {
                                       questionNumber[pageIndex - 1]],
                           givenAnswer: 0,
                         )
-                      : FinishPage(correctAnswersEasy: correctAnswersEasy, correctAnswersHard: correctAnswersHard, correctAnswers: correctAnswersEasy+correctAnswersHard,)),
+                      : FinishPage(
+                          correctAnswersEasy: correctAnswersEasy,
+                          correctAnswersHard: correctAnswersHard,
+                          correctAnswers:
+                              correctAnswersEasy + correctAnswersHard,
+                        )),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -524,14 +597,22 @@ class _QuizPageState extends State<QuizPage> {
                             bonus = 1;
                           });
                           if (difficulty == 1
-                              ? easyAnswers[questionNumber[pageIndex - 1]+1] == givenAnswer
+                              ? easyAnswers[
+                                      questionNumber[pageIndex - 1] + 1] ==
+                                  givenAnswer
                               : difficulty == 2 && pageIndex % 2 == 0
-                                      ? easyAnswers[questionNumber[pageIndex - 1]+1] ==
-                                          givenAnswer
-                                      : hardAnswers[questionNumber[pageIndex - 1]+1] ==
-                                          givenAnswer) {
+                                  ? easyAnswers[
+                                          questionNumber[pageIndex - 1] + 1] ==
+                                      givenAnswer
+                                  : hardAnswers[
+                                          questionNumber[pageIndex - 1] + 1] ==
+                                      givenAnswer) {
                             correct();
-                            difficulty == 1 ? correctAnswersEasy++ : difficulty == 2 && pageIndex % 2 == 0 ? correctAnswersEasy++ : correctAnswersHard++;
+                            difficulty == 1
+                                ? correctAnswersEasy++
+                                : difficulty == 2 && pageIndex % 2 == 0
+                                    ? correctAnswersEasy++
+                                    : correctAnswersHard++;
                             showModalBottomSheet(
                               backgroundColor: Colors.transparent,
                               context: context,
@@ -570,7 +651,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 const SizedBox(width: 15),
                                                 Text(
-                                                  "Well done!",
+                                                  "${translation[language]!["Well done!"]}",
                                                   style: const TextStyle(
                                                     color: Colors.green,
                                                     fontWeight: FontWeight.bold,
@@ -606,7 +687,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 child: Center(
                                                   child: Text(
-                                                    "Continue",
+                                                    "${translation[language]!["Continue"]}",
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
@@ -667,7 +748,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 const SizedBox(width: 15),
                                                 Text(
-                                                  "Wrong!",
+                                                  "${translation[language]!["Wrong!"]}",
                                                   style: const TextStyle(
                                                     color: Colors.red,
                                                     fontWeight: FontWeight.bold,
@@ -681,8 +762,7 @@ class _QuizPageState extends State<QuizPage> {
                                               children: [
                                                 Expanded(
                                                   child: Text(
-                                                    "Correct answer: to be done",
-                                                    //"Correct answer: ${allAnswersQuiz[country]![subject]!["Answer$pageIndex${answersQuiz[country]![subject]![pageIndex - 1]}"]}",
+                                                    "${translation[language]!["Correct answer"]}: ${difficulty == 1 ? easyAnswers[questionNumber[pageIndex - 1] + 1] == 1 ? easyQuestionsA1[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 2 ? easyQuestionsA2[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 3 ? easyQuestionsA3[questionNumber[pageIndex - 1]] : easyQuestionsA4[questionNumber[pageIndex - 1]] : difficulty == 2 && pageIndex % 2 == 0 ? easyAnswers[questionNumber[pageIndex - 1] + 1] == 1 ? easyQuestionsA1[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 2 ? easyQuestionsA2[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 3 ? easyQuestionsA3[questionNumber[pageIndex - 1]] : easyQuestionsA4[questionNumber[pageIndex - 1]] : hardAnswers[questionNumber[pageIndex - 1] + 1] == 1 ? hardQuestionsA1[questionNumber[pageIndex - 1]] : hardAnswers[questionNumber[pageIndex - 1] + 1] == 2 ? hardQuestionsA2[questionNumber[pageIndex - 1]] : hardAnswers[questionNumber[pageIndex - 1] + 1] == 3 ? hardQuestionsA3[questionNumber[pageIndex - 1]] : hardQuestionsA4[questionNumber[pageIndex - 1]]}",
                                                     style: const TextStyle(
                                                       fontSize: 20,
                                                     ),
@@ -717,7 +797,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 ),
                                                 child: Center(
                                                   child: Text(
-                                                    "Continue",
+                                                    "${translation[language]!["Continue"]}",
                                                     style: const TextStyle(
                                                       color: Colors.white,
                                                       fontWeight:
@@ -766,8 +846,8 @@ class _QuizPageState extends State<QuizPage> {
                     ),
                     child: Text(
                         pageIndex == 0 || pageIndex == 11
-                            ? "Continue"
-                            : "Check",
+                            ? "${translation[language]!["Continue"]}"
+                            : "${translation[language]!["Check"]}",
                         style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -791,9 +871,9 @@ class FinishPage extends StatelessWidget {
     required this.correctAnswersHard,
     required this.correctAnswers,
   });
-
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
   final int correctAnswersEasy, correctAnswersHard, correctAnswers;
-  int? selectedLanguage;
+  int? language = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -813,7 +893,7 @@ class FinishPage extends StatelessWidget {
           ),
           correctAnswers == 0 || correctAnswers == 1 || correctAnswers == 2
               ? Text(
-                  "Try again",
+                  "${translation[language]!["Try again"]}",
                   style: const TextStyle(
                     fontSize: 45,
                     fontWeight: FontWeight.w900,
@@ -822,7 +902,7 @@ class FinishPage extends StatelessWidget {
                 )
               : correctAnswers == 3 || correctAnswers == 4
                   ? Text(
-                      "Almost there!",
+                      "${translation[language]!["Almost there!"]}",
                       style: const TextStyle(
                         fontSize: 45,
                         fontWeight: FontWeight.w900,
@@ -831,7 +911,7 @@ class FinishPage extends StatelessWidget {
                     )
                   : correctAnswers == 5 || correctAnswers == 6
                       ? Text(
-                          "Good job!",
+                          "${translation[language]!["Good job!"]}",
                           style: const TextStyle(
                             fontSize: 45,
                             fontWeight: FontWeight.w900,
@@ -840,7 +920,7 @@ class FinishPage extends StatelessWidget {
                         )
                       : correctAnswers == 7 || correctAnswers == 8
                           ? Text(
-                              "Fantastic!",
+                              "${translation[language]!["Fantastic!"]}",
                               style: const TextStyle(
                                 fontSize: 45,
                                 fontWeight: FontWeight.w900,
@@ -849,7 +929,7 @@ class FinishPage extends StatelessWidget {
                             )
                           : correctAnswers == 9
                               ? Text(
-                                  "Almost perfect!",
+                                  "${translation[language]!["Almost perfect!"]}",
                                   style: const TextStyle(
                                     fontSize: 45,
                                     fontWeight: FontWeight.w900,
@@ -857,7 +937,7 @@ class FinishPage extends StatelessWidget {
                                   ),
                                 )
                               : Text(
-                                  "Perfect!",
+                                  "${translation[language]!["Perfect!"]}",
                                   style: const TextStyle(
                                     fontSize: 45,
                                     fontWeight: FontWeight.w900,
@@ -869,8 +949,8 @@ class FinishPage extends StatelessWidget {
           ),
           Text(
             correctAnswers != 1
-                ? "You`ve got $correctAnswers correct answers!"
-                : "You`ve got 1 correct answer!",
+                ? "${translation[language]!["You`ve got"]} $correctAnswers ${translation[language]!["correct answers!"]}"
+                : "${translation[language]!["You`ve got 1 correct answer!"]}",
             style: const TextStyle(fontSize: 23),
           ),
           const SizedBox(
@@ -895,7 +975,9 @@ class FinishPage extends StatelessWidget {
                           const SizedBox(
                             height: 4,
                           ),
-                          Text("TOTAL IQ",
+                          Text(
+                              "${translation[language]!["Total IQ"]}"
+                                  .toUpperCase(),
                               style: TextStyle(
                                   color:
                                       Theme.of(context).colorScheme.background,
@@ -958,7 +1040,7 @@ class FinishPage extends StatelessWidget {
                           const SizedBox(
                             height: 4,
                           ),
-                          Text("SCORE",
+                          Text("${translation[language]!["Score"]}",
                               style: TextStyle(
                                   color:
                                       Theme.of(context).colorScheme.background,

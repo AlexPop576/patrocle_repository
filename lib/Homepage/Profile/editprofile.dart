@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../Database/database_helper.dart';
+import '../../Theme/translations.dart';
 
 class EditProfile extends StatefulWidget {
   const EditProfile({super.key});
@@ -11,8 +11,9 @@ class EditProfile extends StatefulWidget {
 }
 
 class _EditProfileState extends State<EditProfile> {
-  int profileIndex = 0, maxIndex = 3;
+  int profileIndex = 0, maxIndex = 3, language = 2;
   List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
   final usernameController = TextEditingController();
 
@@ -56,7 +57,7 @@ class _EditProfileState extends State<EditProfile> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 40),
                               child: Text(
-                                "Do you want to stop editing your profile? If you quit, you`ll lose your progress.",
+                                "${translation[language]!["EP_QMSG"]}",
                                 style: TextStyle(
                                   color: Theme.of(context).colorScheme.tertiary,
                                   fontWeight: FontWeight.bold,
@@ -84,9 +85,9 @@ class _EditProfileState extends State<EditProfile> {
                                     ),
                                   ),
                                 ),
-                                child: const Center(
-                                    child: Text("Save",
-                                        style: TextStyle(
+                                child: Center(
+                                    child: Text("${translation[language]!["Continue"]}",
+                                        style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 30))),
@@ -112,9 +113,9 @@ class _EditProfileState extends State<EditProfile> {
                                     ),
                                   ),
                                 ),
-                                child: const Center(
-                                    child: Text("Quit",
-                                        style: TextStyle(
+                                child: Center(
+                                    child: Text("${translation[language]!["Quit"]}",
+                                        style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
                                             fontSize: 30))),
@@ -129,9 +130,9 @@ class _EditProfileState extends State<EditProfile> {
                     );
                   });
             }),
-        title: const Text(
-          "Edit Profile",
-          style: TextStyle(
+        title: Text(
+          "${translation[language]!["Edit profile"]}",
+          style: const TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 35),
         ),
         centerTitle: true,
@@ -146,10 +147,10 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(
                 height: 20,
               ),
-              const Center( 
+              Center( 
                 child: Text(
-                  "Profile Picture",
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  "${translation[language]!["Profile picture"]}",
+                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 15),
@@ -175,7 +176,7 @@ class _EditProfileState extends State<EditProfile> {
                               }
                             });
                           }),
-                          icon: Icon(Icons.arrow_back)),
+                          icon: const Icon(Icons.arrow_back)),
                       Image.asset('assets/icons/Face.png'),
                       IconButton(
                           onPressed: (() {
@@ -187,7 +188,7 @@ class _EditProfileState extends State<EditProfile> {
                               }
                             });
                           }),
-                          icon: Icon(Icons.arrow_forward)),
+                          icon: const Icon(Icons.arrow_forward)),
                     ]),
                   )),
               const SizedBox(height: 15),
@@ -211,7 +212,7 @@ class _EditProfileState extends State<EditProfile> {
                         color: Theme.of(context).colorScheme.tertiary,
                         width: 1.0),
                   ),
-                  labelText: "Username",
+                  labelText: "${translation[language]!["Username"]}",
                   labelStyle:
                       TextStyle(color: Theme.of(context).colorScheme.tertiary),
                   counterText: '',
@@ -252,9 +253,9 @@ class _EditProfileState extends State<EditProfile> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
                             const Color.fromARGB(255, 102, 102, 255)),
-                    child: const Center(
-                      child: Text("Continue",
-                          style: TextStyle(
+                    child: Center(
+                      child: Text("${translation[language]!["Save"]}",
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 30,

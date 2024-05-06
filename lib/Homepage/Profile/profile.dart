@@ -5,6 +5,7 @@ import 'package:patrocle/Homepage/Profile/admin.dart';
 import 'package:patrocle/Homepage/Profile/editprofile.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
+import '../../Components/trophy_tile.dart';
 import '../../Theme/theme_provider.dart';
 
 class Profile extends StatefulWidget {
@@ -15,13 +16,11 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int? iq = 0, trophies = 0;
+  int? iq = 0, trophies = 0, language = 2, profileIndex = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int profileIndex = 0;
   List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
   final _dbHelper = DatabaseHelper.instance;
   String username = "user";
-  //translation[2]!["Profile"]! ?? ""
 
   @override
   void initState() {
@@ -57,12 +56,12 @@ class _ProfileState extends State<Profile> {
                       child: Column(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: profileColor[profileIndex]),
+                            decoration: BoxDecoration(color: profileColor[profileIndex!]),
                             width: double.infinity,
                             height: 280,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                              child: Image.asset('assets/icons/Face.png',
+                              child: Image.asset('assets/icons/Face.png', height: 100,
                                   fit: BoxFit.contain),
                             ),
                           ),
@@ -94,7 +93,7 @@ class _ProfileState extends State<Profile> {
                               const Spacer(),
                               TextButton(
                                 child: Text(
-                                  "Edit profile",
+                                  "${translation[language]!["Edit profile"]}",
                                   style: TextStyle(
                                       color:
                                           Theme.of(context).colorScheme.primary,
@@ -128,7 +127,7 @@ class _ProfileState extends State<Profile> {
                           Row(
                             children: [
                               Text(
-                                "Statistics",
+                                "${translation[language]!["Statistics"]}",
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -174,7 +173,7 @@ class _ProfileState extends State<Profile> {
                                                   fontSize: 27),
                                             ),
                                             Text(
-                                              'Total IQ',
+                                              "${translation[language]!["Total IQ"]}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -223,7 +222,7 @@ class _ProfileState extends State<Profile> {
                                                   fontSize: 27),
                                             ),
                                             Text(
-                                              'Trophies',
+                                              "${translation[language]!["Trophies"]}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -267,7 +266,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Center(
                                   child: Text(
-                                "Geography",
+                                "${translation[language]!["Geography"]}",
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -283,7 +282,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Center(
                                   child: Text(
-                                "History",
+                                "${translation[language]!["History"]}",
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -309,7 +308,7 @@ class _ProfileState extends State<Profile> {
                                     if (snapshot.hasData) {
                                       return ListView.builder(
                                         shrinkWrap: true,
-                                        physics: NeverScrollableScrollPhysics(),
+                                        physics: const NeverScrollableScrollPhysics(),
                                         itemCount: snapshot.data!.length,
                                         itemBuilder: (context, index) {
                                           if (snapshot.data![index]
@@ -423,7 +422,7 @@ class _ProfileState extends State<Profile> {
                           Row(
                             children: [
                               Text(
-                                "Settings",
+                                "${translation[language]!["Settings"]}",
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -465,8 +464,8 @@ class _ProfileState extends State<Profile> {
                                                         listen: false)
                                                     .getTheme() ==
                                                 1
-                                            ? "Light mode"
-                                            : "Dark mode",
+                                            ? "${translation[language]!["Light mode"]}"
+                                            : "${translation[language]!["Dark mode"]}",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
@@ -518,19 +517,19 @@ class _ProfileState extends State<Profile> {
                                     ),
                                   ),
                                 ),
-                                child: const Center(
+                                child: Center(
                                     child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                        "Admin mode",
-                                        style: TextStyle(
+                                        "${translation[language]!["Admin mode"]}",
+                                        style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 30,
                                         )),
-                                    SizedBox(width: 10),
-                                    Icon(
+                                    const SizedBox(width: 10),
+                                    const Icon(
                                       Icons.admin_panel_settings,
                                       size: 30,
                                       color: Colors.white,

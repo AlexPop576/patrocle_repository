@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:patrocle/Database/database_helper.dart';
 
+import '../../Theme/translations.dart';
+
 class AdminPage extends StatefulWidget {
   const AdminPage({super.key});
 
@@ -10,7 +12,9 @@ class AdminPage extends StatefulWidget {
 
 class _AdminPageState extends State<AdminPage> {
   final _dbHelper = DatabaseHelper.instance;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
   final pinController = TextEditingController();
+  int? language = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +30,9 @@ class _AdminPageState extends State<AdminPage> {
             onPressed: () {
               Navigator.pop(context);
             }),
-        title: const Text(
-          "Admin",
-          style: TextStyle(
+        title: Text(
+          "${translation[language]!["Admin"]}",
+          style: const TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 35),
         ),
         centerTitle: true,
@@ -41,10 +45,10 @@ class _AdminPageState extends State<AdminPage> {
             const SizedBox(
               height: 200,
             ),
-            const Center(
+            Center(
               child: Text(
-                "Input admin pin",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                "${translation[language]!["Input admin pin"]}",
+                style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
             ),
             const SizedBox(height: 15),
@@ -69,7 +73,7 @@ class _AdminPageState extends State<AdminPage> {
                       color: Theme.of(context).colorScheme.tertiary,
                       width: 1.0),
                 ),
-                labelText: "PIN",
+                labelText: "${translation[language]!["PIN"]}",
                 labelStyle:
                     TextStyle(color: Theme.of(context).colorScheme.tertiary),
                 counterText: '',
@@ -112,7 +116,7 @@ class _AdminPageState extends State<AdminPage> {
                                 ),
                                 const SizedBox(width: 15),
                                 Text(
-                                  "Wrong!",
+                                  "${translation[language]!["Wrong!"]}",
                                   style: const TextStyle(
                                     color: Colors.red,
                                     fontWeight: FontWeight.bold,
@@ -124,19 +128,19 @@ class _AdminPageState extends State<AdminPage> {
                             ),
                             actions: [
                               TextButton(
-                                child: Text("Try again",
-                                    style: TextStyle(color: Colors.white)),
                                 onPressed: (() {
                                   Navigator.pop(context);
                                 }),
+                                child: Text("${translation[language]!["Try again"]}",
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                               TextButton(
-                                child: Text("Quit",
-                                    style: TextStyle(color: Colors.white)),
                                 onPressed: (() {
                                   Navigator.pop(context);
                                   Navigator.pop(context);
                                 }),
+                                child: Text("${translation[language]!["Quit"]}",
+                                    style: const TextStyle(color: Colors.white)),
                               ),
                             ],
                             elevation: 24,
@@ -147,9 +151,9 @@ class _AdminPageState extends State<AdminPage> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
                             const Color.fromARGB(255, 102, 102, 255)),
-                    child: const Center(
-                      child: Text("Continue",
-                          style: TextStyle(
+                    child: Center(
+                      child: Text("${translation[language]!["Continue"]}",
+                          style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                             fontSize: 30,

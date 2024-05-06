@@ -123,7 +123,7 @@ class _TestState extends State<Test> {
                               itemCount: snapshot.data!.length,
                               itemBuilder: (context, index) {
                                 return ListTile(
-                                  title: Text('${snapshot.data![index]['profileID']}: ${snapshot.data![index]['username']} + ${snapshot.data![index]['geography_lessons']}'),
+                                  title: Text('${snapshot.data![index]['profileID']}: ${snapshot.data![index]['username']} + ${snapshot.data![index]['geography_lessons']}+ ${snapshot.data![index]['history_lessons']}'),
                                   trailing: IconButton(
                                     icon: Icon(Icons.delete),
                                     onPressed: () async {

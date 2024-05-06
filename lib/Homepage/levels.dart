@@ -3,6 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import '../Components/level_tile.dart';
+import '../Theme/translations.dart';
 import 'add_test.dart';
 
 class Levels extends StatefulWidget {
@@ -13,8 +14,9 @@ class Levels extends StatefulWidget {
 }
 
 class _LevelsState extends State<Levels> {
-  int color = 0, admin = 0;
+  int color = 0, admin = 0, language = 2;
   final _dbHelper = DatabaseHelper.instance;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   @override
   void initState() {
@@ -58,7 +60,7 @@ class _LevelsState extends State<Levels> {
                       ),
                       Expanded(
                           child: Text(
-                        "Levels",
+                        "${translation[language]!["Levels"]}",
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.tertiary,
                             fontWeight: FontWeight.bold,
@@ -84,7 +86,7 @@ class _LevelsState extends State<Levels> {
                   if (snapshot.hasData) {
                     return ListView.builder(
                       shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         color = (index + 1) % 3;
@@ -127,7 +129,7 @@ class _LevelsState extends State<Levels> {
                   } else if (snapshot.hasError) {
                     return Text("${snapshot.error}");
                   }
-                  return CircularProgressIndicator();
+                  return const CircularProgressIndicator();
                 },
               ),
               admin == 1 ? Padding(
@@ -173,7 +175,7 @@ class _LevelsState extends State<Levels> {
                                   ),
                                   Expanded(
                                     child: Text(
-                                      "Create your test!",
+                                      "${translation[language]!["Create your test!"]}",
                                       style: const TextStyle(
                                           shadows: <Shadow>[
                                             Shadow(
