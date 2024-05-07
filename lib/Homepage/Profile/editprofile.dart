@@ -4,18 +4,29 @@ import '../../Database/database_helper.dart';
 import '../../Theme/translations.dart';
 
 class EditProfile extends StatefulWidget {
-  const EditProfile({super.key});
+  EditProfile({super.key, required this.username});
+  String? username;
 
   @override
-  State<EditProfile> createState() => _EditProfileState();
+  State<EditProfile> createState() => _EditProfileState(username: username);
 }
 
 class _EditProfileState extends State<EditProfile> {
+  _EditProfileState({required this.username});
+  String? username;
   int profileIndex = 0, maxIndex = 3, language = 2;
   List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
   final usernameController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      usernameController.text = username!;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

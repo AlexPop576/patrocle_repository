@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:patrocle/Theme/theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import '../Database/database_helper.dart';
 
 class ThemeProvider with ChangeNotifier {
   String? mode = 'dark';
+  int? modeInt;
+  final _dbHelper = DatabaseHelper.instance;
 
   void getThemeData() async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    mode = pref.getString('name');
+    await _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        modeInt = results.first['dark_mode'];
+        if(modeInt==1){
+          mode = 'dark';
+        }else{
+          mode = 'light';
+        }
+      }
+    });
   }
 
   ThemeData _themeData = darkMode;
@@ -19,9 +29,8 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> saveMode(mode) async {
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    pref.setString('mode', mode);
+  Future<void> saveMode(modeInt) async {
+    await _dbHelper.updateMode(modeInt!);
   }
 
   int getTheme() {
@@ -35,10 +44,10 @@ class ThemeProvider with ChangeNotifier {
   void toggleTheme() {
     if (_themeData == lightMode) {
       themeData = darkMode;
-      saveMode("dark");
+      saveMode(1);
     } else {
       themeData = lightMode;
-      saveMode("light");
+      saveMode(0);
     }
   }
 }

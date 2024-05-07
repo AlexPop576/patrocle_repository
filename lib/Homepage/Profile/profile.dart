@@ -16,7 +16,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int? iq = 0, trophies = 0, language = 2, profileIndex = 0;
+  int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0, lig;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
   final _dbHelper = DatabaseHelper.instance;
@@ -36,6 +36,8 @@ class _ProfileState extends State<Profile> {
           iq = results.first['iq'];
           trophies = results.first['trophies'];
           profileIndex = results.first['picture'];
+          admin = results.first['admin'];
+          lig = results.first['dark_mode'];
         });
       }
     });
@@ -83,7 +85,7 @@ class _ProfileState extends State<Profile> {
                           Row(
                             children: [
                               Text(
-                                username,
+                                "$username $lig",
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -104,7 +106,7 @@ class _ProfileState extends State<Profile> {
                                   Navigator.push(
                                         context,
                                         PageTransition(
-                                          child: const EditProfile(),
+                                          child: EditProfile(username: username,),
                                           type: PageTransitionType.bottomToTop,
                                           duration:
                                               const Duration(milliseconds: 250),
@@ -497,8 +499,8 @@ class _ProfileState extends State<Profile> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               child: ElevatedButton(
-                                onPressed: () {
-                                  Navigator.push(
+                                onPressed: () async {
+                                  admin == 0 ? {Navigator.push(
                                         context,
                                         PageTransition(
                                           child: const AdminPage(),
@@ -506,7 +508,11 @@ class _ProfileState extends State<Profile> {
                                           duration:
                                               const Duration(milliseconds: 250),
                                         ),
-                                      );
+                                      ),
+                                      setState((){admin = 1;})
+                                      } : {await _dbHelper.updateAdmin(),
+                                        setState((){admin = 0;})
+                                      };
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
@@ -518,7 +524,7 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                                 child: Center(
-                                    child: Row(
+                                  child: admin == 0 ? Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
@@ -531,6 +537,24 @@ class _ProfileState extends State<Profile> {
                                     const SizedBox(width: 10),
                                     const Icon(
                                       Icons.admin_panel_settings,
+                                      size: 30,
+                                      color: Colors.white,
+                                    ),
+                                  ],
+                                ) :
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                        "${translation[language]!["User mode"]}",
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 30,
+                                        )),
+                                    const SizedBox(width: 10),
+                                    const Icon(
+                                      Icons.person,
                                       size: 30,
                                       color: Colors.white,
                                     ),

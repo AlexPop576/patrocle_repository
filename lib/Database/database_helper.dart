@@ -3,7 +3,7 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 22;
+  static final _databaseVersion = 23;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -85,6 +85,7 @@ class DatabaseHelper {
             geography_lessons INTEGER,
             history_lessons INTEGER,
             dark_mode INTEGER,
+            language INTEGER,
             admin INTEGER
           )''');
         db.insert('profile', {
@@ -95,46 +96,38 @@ class DatabaseHelper {
           'geography_lessons': 0,
           'history_lessons': 0,
           'dark_mode': 1,
+          'language': 1,
           'admin': 0
         });
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
-          await db.execute('DROP TABLE $table');
+          await db.execute('DROP TABLE profile');
           await db.execute('''
-      CREATE TABLE $table (
-      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-      $columnName TEXT NOT NULL,
-      $columnLessonGeography TEXT,
-      $columnLessonHistory TEXT,
-      $columnGeographyCompleted INTEGER,
-      $columnHistoryCompleted INTEGER,
-      questionsGeographyEasy TEXT,
-      questionsGeographyHard TEXT,
-      questionsHistoryEasy TEXT,
-      questionsHistoryHard TEXT,
-      answersGeographyEasyQ1 TEXT,
-      answersGeographyEasyQ2 TEXT,
-      answersGeographyEasyQ3 TEXT,
-      answersGeographyEasyQ4 TEXT,
-      answersGeographyHardQ1 TEXT,
-      answersGeographyHardQ2 TEXT,
-      answersGeographyHardQ3 TEXT,
-      answersGeographyHardQ4 TEXT,
-      answersHistoryEasyQ1 TEXT,
-      answersHistoryEasyQ2 TEXT,
-      answersHistoryEasyQ3 TEXT,
-      answersHistoryEasyQ4 TEXT,
-      answersHistoryHardQ1 TEXT,
-      answersHistoryHardQ2 TEXT,
-      answersHistoryHardQ3 TEXT,
-      answersHistoryHardQ4 TEXT,
-      answersGeographyEasyCorrect TEXT,
-      answersGeographyHardCorrect TEXT,
-      answersHistoryEasyCorrect TEXT,
-      answersHistoryHardCorrect TEXT
-      )
-    ''');
+          CREATE TABLE profile (
+            profileID INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT,
+            picture INTEGER,
+            iq INTEGER,
+            trophies INTEGER,
+            geography_lessons INTEGER,
+            history_lessons INTEGER,
+            dark_mode INTEGER,
+            language INTEGER,
+            admin INTEGER
+          )''');
+          db.insert('profile', {
+            'username': 'username',
+            'picture': 0,
+            'iq': 0,
+            'trophies': 0,
+            'geography_lessons': 0,
+            'history_lessons': 0,
+            'dark_mode': 1,
+            'language': 1,
+            'admin': 0
+          });
+
           // await db.execute('''
           // CREATE TABLE profile (
           //   profileID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -147,16 +140,7 @@ class DatabaseHelper {
           //   dark_mode INTEGER,
           //   admin INTEGER
           // )''');
-          db.insert('profile', {
-            'username': 'username',
-            'picture': 0,
-            'iq': 0,
-            'trophies': 0,
-            'geography_lessons': 0,
-            'history_lessons': 0,
-            'dark_mode': 1,
-            'admin': 0
-          });
+
           // Copy the data from the old table to the new one
 
           // Delete the old table
@@ -300,8 +284,9 @@ class DatabaseHelper {
   Future<int> updateProfileIQ(int IQ) async {
     Database db = await database;
     int profileID = 1;
-    Map<String, dynamic> profileData = (await db.query('profile',
-        where: 'profileID = ?', whereArgs: [profileID])).first;
+    Map<String, dynamic> profileData = (await db
+            .query('profile', where: 'profileID = ?', whereArgs: [profileID]))
+        .first;
     int currentIQ = profileData['iq'] as int;
     IQ = currentIQ + IQ;
     return await db.update(
@@ -315,8 +300,9 @@ class DatabaseHelper {
   Future<int> updateProfileTrophies() async {
     Database db = await database;
     int profileID = 1;
-    Map<String, dynamic> profileData = (await db.query('profile',
-        where: 'profileID = ?', whereArgs: [profileID])).first;
+    Map<String, dynamic> profileData = (await db
+            .query('profile', where: 'profileID = ?', whereArgs: [profileID]))
+        .first;
     int currentTrophies = profileData['trophies'] as int;
     currentTrophies += 1;
     return await db.update(
@@ -327,12 +313,35 @@ class DatabaseHelper {
     );
   }
 
+  Future<int> updateMode(int modeInt) async {
+    Database db = await database;
+    int profileID = 1;
+    return await db.update(
+      'profile',
+      {'dark_mode': modeInt},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
+  Future<int> updateLanguge(int language) async {
+    Database db = await database;
+    int profileID = 1;
+    return await db.update(
+      'profile',
+      {'language': language},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
+
   Future<int> updateProfileLesson(int subject) async {
     Database db = await database;
     int profileID = 1, currentLessons = 0;
     String field = subject == 1 ? 'geography_lessons' : 'history_lessons';
-    Map<String, dynamic> profileData = (await db.query('profile',
-        where: 'profileID = ?', whereArgs: [profileID])).first;
+    Map<String, dynamic> profileData = (await db
+            .query('profile', where: 'profileID = ?', whereArgs: [profileID]))
+        .first;
     currentLessons = profileData[field] as int;
     currentLessons += 1;
     return await db.update(
@@ -348,10 +357,14 @@ class DatabaseHelper {
   Future<int> updateAdmin() async {
     Database db = await database;
     int profileID = 1;
-    Map<String, dynamic> profileData = (await db.query('profile',
-        where: 'profileID = ?', whereArgs: [profileID])).first;
+    Map<String, dynamic> profileData = (await db
+            .query('profile', where: 'profileID = ?', whereArgs: [profileID]))
+        .first;
     int admin = profileData['admin'] as int;
-    if(admin == 1) admin = 0; else admin = 1;
+    if (admin == 1)
+      admin = 0;
+    else
+      admin = 1;
     return await db.update(
       'profile',
       {'admin': admin},

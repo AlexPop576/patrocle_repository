@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
-
 import 'package:patrocle/Homepage/levels.dart';
 import 'package:patrocle/Homepage/Profile/profile.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Homepage/trophies.dart';
-
+import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
 
 class Homepage extends StatefulWidget {
@@ -18,6 +17,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   int _selectedIndex = 1, language = 2;
+  final _dbHelper = DatabaseHelper.instance;
 
   static const List<Widget> _pages = <Widget>[
     Trophies(),
@@ -25,6 +25,22 @@ class _HomepageState extends State<Homepage> {
     Test(),
     Profile(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData(){
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          language = results.first['language'];
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -7,6 +7,8 @@ import 'dart:io';
 import 'Homepage/homepage.dart';
 import 'Theme/theme_provider.dart';
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
@@ -14,7 +16,6 @@ void main() async {
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
   }
-
 
   // Initialize the database
   //await DatabaseHelper.instance._initDatabase();
