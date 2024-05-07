@@ -17,26 +17,26 @@ void main() async {
     databaseFactory = databaseFactoryFfi;
   }
 
-  // Initialize the database
-  //await DatabaseHelper.instance._initDatabase();
-  
-  runApp(ChangeNotifierProvider(create: (context) => ThemeProvider(),
-  child: const MyApp(),
-  ));
+  // Initialize the theme provider and load the theme
+  ThemeProvider themeProvider = ThemeProvider();
+  await themeProvider.loadTheme();
+
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => themeProvider,
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    ]);
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const Homepage(),
-      theme: Provider.of<ThemeProvider>(context).themeData,
+      theme: themeProvider.themeData,
     );
   }
 }
