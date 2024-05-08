@@ -43,7 +43,7 @@ class _AdminPageState extends State<AdminPage> {
         child: Column(
           children: [
             const SizedBox(
-              height: 200,
+              height: 120,
             ),
             Center(
               child: Text(

@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:patrocle/Theme/general_info.dart';
+
+import '../Theme/translations.dart';
 
 // ignore: must_be_immutable
 class Lesson extends StatefulWidget {
-  String? lesson;
-  Lesson({super.key, this.lesson});
+  String? lesson, country;
+  Lesson({super.key, this.lesson, required this.country});
 
   @override
   // ignore: no_logic_in_create_state
-  State<Lesson> createState() => _LessonState(lesson: lesson);
+  State<Lesson> createState() => _LessonState(lesson: lesson, country: country);
 }
 
 class _LessonState extends State<Lesson> {
-  String? lesson;
-  _LessonState({this.lesson});
+  String? lesson, country;
+  int? language =2;
+  _LessonState({this.lesson, required this.country});
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
+  Map<String?, Map<int?, String?>> info = Info().info;
 
   @override
   Widget build(BuildContext context) {
@@ -33,10 +39,8 @@ class _LessonState extends State<Lesson> {
                   const SizedBox(
                     width: 12,
                   ),
-                  Lottie.asset(
-                      'assets/patrocle.json',
-                      frameRate: FrameRate.max,
-                      height: 100),
+                  Lottie.asset('assets/patrocle.json',
+                      frameRate: FrameRate.max, height: 100),
                   const SizedBox(
                     width: 20,
                   ),
@@ -48,6 +52,49 @@ class _LessonState extends State<Lesson> {
                         fontSize: 40),
                   )
                 ]),
+                const SizedBox(
+                  height: 12,
+                ),
+                Divider(
+                  color: Theme.of(context).colorScheme.primary,
+                  thickness: 3,
+                ),
+                const SizedBox(
+                  height: 12,
+                ),
+                ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    child: Container(
+                      color: Theme.of(context).colorScheme.primary,
+                      height: 350,
+                      width: double.infinity,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                            child: ClipRRect(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(15)),
+                                child: Image.asset(
+                                  'assets/flags/$country.png',
+                                  height: 150,
+                                )),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("${translation[language]!["Capital"]}: ${info[country]![1]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                                Text("${translation[language]!["Surface"]}: ${info[country]![2]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                                Text("${translation[language]!["Population"]}: ${info[country]![3]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    )),
                 const SizedBox(
                   height: 12,
                 ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/Profile/admin.dart';
-import 'package:patrocle/Homepage/Profile/editprofile.dart';
+import 'package:patrocle/Homepage/Profile/edit_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
 import '../../Components/trophy_tile.dart';
@@ -16,9 +16,14 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0, lig;
+  int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
+  List<Color> profileColor = [
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+    Colors.yellow
+  ];
   final _dbHelper = DatabaseHelper.instance;
   String username = "user";
 
@@ -28,7 +33,7 @@ class _ProfileState extends State<Profile> {
     fetchData();
   }
 
-  void fetchData(){
+  void fetchData() {
     _dbHelper.queryProfile().then((results) {
       if (results.isNotEmpty) {
         setState(() {
@@ -37,8 +42,19 @@ class _ProfileState extends State<Profile> {
           trophies = results.first['trophies'];
           profileIndex = results.first['picture'];
           admin = results.first['admin'];
-          lig = results.first['dark_mode'];
         });
+      }
+    });
+  }
+
+  Future<void> setAdmin() async {
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        if (results.first['admin'] == 1) {
+          setState(() {
+            admin = 1;
+          });
+        }
       }
     });
   }
@@ -58,13 +74,14 @@ class _ProfileState extends State<Profile> {
                       child: Column(
                         children: [
                           Container(
-                            decoration: BoxDecoration(color: profileColor[profileIndex!]),
+                            decoration: BoxDecoration(
+                                color: profileColor[profileIndex!]),
                             width: double.infinity,
                             height: 280,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                              child: Image.asset('assets/icons/Face.png', height: 100,
-                                  fit: BoxFit.contain),
+                              child: Image.asset('assets/icons/Face.png',
+                                  height: 100, fit: BoxFit.contain),
                             ),
                           ),
                           Divider(
@@ -85,7 +102,7 @@ class _ProfileState extends State<Profile> {
                           Row(
                             children: [
                               Text(
-                                "$username $lig",
+                                username,
                                 style: TextStyle(
                                     color:
                                         Theme.of(context).colorScheme.tertiary,
@@ -104,14 +121,18 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 onPressed: () {
                                   Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          child: EditProfile(username: username,),
-                                          type: PageTransitionType.bottomToTop,
-                                          duration:
-                                              const Duration(milliseconds: 250),
-                                        ),
-                                      ).then((_) {fetchData();});
+                                    context,
+                                    PageTransition(
+                                      child: EditProfile(
+                                        username: username,
+                                      ),
+                                      type: PageTransitionType.bottomToTop,
+                                      duration:
+                                          const Duration(milliseconds: 250),
+                                    ),
+                                  ).then((_) {
+                                    fetchData();
+                                  });
                                 },
                               ),
                             ],
@@ -310,7 +331,8 @@ class _ProfileState extends State<Profile> {
                                     if (snapshot.hasData) {
                                       return ListView.builder(
                                         shrinkWrap: true,
-                                        physics: const NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         itemCount: snapshot.data!.length,
                                         itemBuilder: (context, index) {
                                           if (snapshot.data![index]
@@ -332,7 +354,7 @@ class _ProfileState extends State<Profile> {
                                                     )),
                                               ],
                                             );
-                                          }else{
+                                          } else {
                                             return Container();
                                           }
                                         },
@@ -359,7 +381,8 @@ class _ProfileState extends State<Profile> {
                                     if (snapshot.hasData) {
                                       return ListView.builder(
                                         shrinkWrap: true,
-                                        physics: const NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         itemCount: snapshot.data!.length,
                                         itemBuilder: (context, index) {
                                           if (snapshot.data![index]
@@ -381,7 +404,7 @@ class _ProfileState extends State<Profile> {
                                                     )),
                                               ],
                                             );
-                                          }else{
+                                          } else {
                                             return Container();
                                           }
                                         },
@@ -500,19 +523,25 @@ class _ProfileState extends State<Profile> {
                                   const BorderRadius.all(Radius.circular(10)),
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  admin == 0 ? {Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          child: const AdminPage(),
-                                          type: PageTransitionType.bottomToTop,
-                                          duration:
-                                              const Duration(milliseconds: 250),
-                                        ),
-                                      ),
-                                      setState((){admin = 1;})
-                                      } : {await _dbHelper.updateAdmin(),
-                                        setState((){admin = 0;})
-                                      };
+                                  admin == 0
+                                      ? {
+                                          Navigator.push(
+                                            context,
+                                            PageTransition(
+                                              child: const AdminPage(),
+                                              type: PageTransitionType
+                                                  .bottomToTop,
+                                              duration: const Duration(
+                                                  milliseconds: 250),
+                                            ),
+                                          ).then((_) => setAdmin()),
+                                        }
+                                      : {
+                                          await _dbHelper.updateAdmin(),
+                                          setState(() {
+                                            admin = 0;
+                                          })
+                                        };
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
@@ -524,42 +553,45 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                                 child: Center(
-                                  child: admin == 0 ? Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                        "${translation[language]!["Admin mode"]}",
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30,
-                                        )),
-                                    const SizedBox(width: 10),
-                                    const Icon(
-                                      Icons.admin_panel_settings,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                ) :
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                        "${translation[language]!["User mode"]}",
-                                        style: const TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 30,
-                                        )),
-                                    const SizedBox(width: 10),
-                                    const Icon(
-                                      Icons.person,
-                                      size: 30,
-                                      color: Colors.white,
-                                    ),
-                                  ],
-                                )),
+                                    child: admin == 0
+                                        ? Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                  "${translation[language]!["Admin mode"]}",
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 30,
+                                                  )),
+                                              const SizedBox(width: 10),
+                                              const Icon(
+                                                Icons.admin_panel_settings,
+                                                size: 30,
+                                                color: Colors.white,
+                                              ),
+                                            ],
+                                          )
+                                        : Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                  "${translation[language]!["User mode"]}",
+                                                  style: const TextStyle(
+                                                    color: Colors.white,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 30,
+                                                  )),
+                                              const SizedBox(width: 10),
+                                              const Icon(
+                                                Icons.person,
+                                                size: 30,
+                                                color: Colors.white,
+                                              ),
+                                            ],
+                                          )),
                               ),
                             ),
                           ),

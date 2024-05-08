@@ -6,6 +6,7 @@ import 'package:patrocle/Components/trophy_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
+import 'package:patrocle/Quizpage/testpage3.dart';
 import 'dart:math';
 import '../Theme/translations.dart';
 import 'testpage1.dart';
@@ -103,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
       QHA4,
       EA,
       HA;
-  int? difficulty, subject, language = 2;
+  int? difficulty, subject, language = 2, randomNumber;
   int pageIndex = 0,
       givenAnswer = -1,
       correctAnswersHard = 0,
@@ -197,10 +198,11 @@ class _QuizPageState extends State<QuizPage> {
     } else {
       hardAnswers = [];
     }
-    var rng = new Random();
-    var numbers = new List<int>.generate(10, (index) => index)..shuffle(rng);
+    var random = new Random();
+    var numbers = new List<int>.generate(10, (index) => index)..shuffle(random);
     questionNumber = numbers.take(10).toList();
     print(questionNumber);
+    randomNumber = random.nextInt(5) + 1;
   }
 
   void correct() {
@@ -495,7 +497,7 @@ class _QuizPageState extends State<QuizPage> {
                 child: child,
               ),
           child: pageIndex == 0
-              ? Lesson(lesson: lesson)
+              ? Lesson(lesson: lesson, country: country,)
               : pageIndex != 11 && pageIndex % 2 == 0
                   ? TestPage1(
                       getAnswerFunction: getAnswer,
@@ -528,7 +530,14 @@ class _QuizPageState extends State<QuizPage> {
                       givenAnswer: 0,
                     )
                   : pageIndex != 11 && pageIndex % 2 == 1
-                      ? TestPage2(
+                      ? /*TestPage3(getAnswerFunction: getAnswer,
+                        selected: 0,
+                        subject: subject,
+                        country: country,
+                        randomNumber: randomNumber,
+                      )*/
+                      
+                      TestPage2(
                           getAnswerFunction: getAnswer,
                           selected: 0,
                           questionText: difficulty == 1
@@ -621,9 +630,7 @@ class _QuizPageState extends State<QuizPage> {
                               enableDrag: false, // Disable dragging
                               builder: (BuildContext context) {
                                 return GestureDetector(
-                                  onTap: () {
-                                    // Do nothing on tap outside
-                                  },
+                                  onTap: () {},
                                   child: Container(
                                     height: 170,
                                     decoration: BoxDecoration(

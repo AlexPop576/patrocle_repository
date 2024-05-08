@@ -24,7 +24,7 @@ class _LevelsState extends State<Levels> {
     fetchData();
   }
 
-  void fetchData(){
+  void fetchData() {
     _dbHelper.queryProfile().then((results) {
       if (results.isNotEmpty) {
         setState(() {
@@ -97,10 +97,14 @@ class _LevelsState extends State<Levels> {
                               ['lesson_geography'],
                           lessonHistory: snapshot.data![index]
                               ['lesson_history'],
-                          jsonStringEG: snapshot.data![index]['questionsGeographyEasy'],
-                          jsonStringHG: snapshot.data![index]['questionsGeographyHard'],
-                          jsonStringEH: snapshot.data![index]['questionsHistoryEasy'],
-                          jsonStringHH: snapshot.data![index]['questionsHistoryHard'],
+                          jsonStringEG: snapshot.data![index]
+                              ['questionsGeographyEasy'],
+                          jsonStringHG: snapshot.data![index]
+                              ['questionsGeographyHard'],
+                          jsonStringEH: snapshot.data![index]
+                              ['questionsHistoryEasy'],
+                          jsonStringHH: snapshot.data![index]
+                              ['questionsHistoryHard'],
                           EGA1: snapshot.data![index]['answersGeographyEasyQ1'],
                           EGA2: snapshot.data![index]['answersGeographyEasyQ2'],
                           EGA3: snapshot.data![index]['answersGeographyEasyQ3'],
@@ -117,12 +121,18 @@ class _LevelsState extends State<Levels> {
                           HHA2: snapshot.data![index]['answersHistoryHardQ2'],
                           HHA3: snapshot.data![index]['answersHistoryHardQ3'],
                           HHA4: snapshot.data![index]['answersHistoryHardQ4'],
-                          EGA: snapshot.data![index]['answersGeographyEasyCorrect'],
-                          HGA: snapshot.data![index]['answersGeographyHardCorrect'],
-                          EHA: snapshot.data![index]['answersHistoryEasyCorrect'],
-                          HHA: snapshot.data![index]['answersHistoryHardCorrect'],
-                          geography_completed: snapshot.data![index]['geography_completed'],
-                          history_completed: snapshot.data![index]['history_completed'],
+                          EGA: snapshot.data![index]
+                              ['answersGeographyEasyCorrect'],
+                          HGA: snapshot.data![index]
+                              ['answersGeographyHardCorrect'],
+                          EHA: snapshot.data![index]
+                              ['answersHistoryEasyCorrect'],
+                          HHA: snapshot.data![index]
+                              ['answersHistoryHardCorrect'],
+                          geography_completed: snapshot.data![index]
+                              ['geography_completed'],
+                          history_completed: snapshot.data![index]
+                              ['history_completed'],
                         );
                       },
                     );
@@ -132,88 +142,94 @@ class _LevelsState extends State<Levels> {
                   return const CircularProgressIndicator();
                 },
               ),
-              admin == 1 ? Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 17),
-                child: Column(children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Divider(
-                    color: Theme.of(context).colorScheme.primary,
-                    thickness: 3,
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                  height: 190,
-                  width: double.infinity,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 79, 79, 79),
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 10),
-                              child: Column(
-                                children: [
-                                  ClipRRect(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(15)),
-                                      child: Image.asset(
-                                        'assets/flags/addFlag.png',
-                                        height: 100,
-                                      )),
-                                  const SizedBox(
-                                    height: 20,
+              admin == 1
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 17),
+                      child: Column(children: [
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Divider(
+                          color: Theme.of(context).colorScheme.primary,
+                          thickness: 3,
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Column(
+                          children: [
+                            SizedBox(
+                              height: 190,
+                              width: double.infinity,
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  color: Color.fromARGB(255, 79, 79, 79),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(15),
+                                    topLeft: Radius.circular(15),
                                   ),
-                                  Expanded(
-                                    child: Text(
-                                      "${translation[language]!["Create your test!"]}",
-                                      style: const TextStyle(
-                                          shadows: <Shadow>[
-                                            Shadow(
-                                              offset: Offset(3.0, 3.0),
-                                              blurRadius: 3.0,
-                                              color:
-                                                  Color.fromARGB(125, 0, 0, 0),
-                                            ),
-                                            Shadow(
-                                              offset: Offset(3.0, 3.0),
-                                              blurRadius: 3.0,
-                                              color:
-                                                  Color.fromARGB(0, 0, 0, 255),
-                                            ),
-                                          ],
-                                          color: Colors.white,
-                                          fontSize: 25,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: Column(
+                                    children: [
+                                      Expanded(
+                                        flex: 2,
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          child: Column(
+                                            children: [
+                                              ClipRRect(
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                          Radius.circular(15)),
+                                                  child: Image.asset(
+                                                    'assets/flags/addFlag.png',
+                                                    height: 100,
+                                                  )),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                  "${translation[language]!["Create your test!"]}",
+                                                  style: const TextStyle(
+                                                      shadows: <Shadow>[
+                                                        Shadow(
+                                                          offset:
+                                                              Offset(3.0, 3.0),
+                                                          blurRadius: 3.0,
+                                                          color: Color.fromARGB(
+                                                              125, 0, 0, 0),
+                                                        ),
+                                                        Shadow(
+                                                          offset:
+                                                              Offset(3.0, 3.0),
+                                                          blurRadius: 3.0,
+                                                          color: Color.fromARGB(
+                                                              0, 0, 0, 255),
+                                                        ),
+                                                      ],
+                                                      color: Colors.white,
+                                                      fontSize: 25,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ],
+                                ),
                               ),
                             ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
-                            child: VerticalDivider(
-                                thickness: 3, color: Colors.white),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Padding(
-                              padding: const EdgeInsets.all(6.0),
-                              child: SizedBox(
-                                height: 160,
-                                child: ClipRRect(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(10)),
+                            Row(
+                              children: [
+                                Expanded(
                                   child: ElevatedButton(
                                     onPressed: () {
                                       Navigator.push(
@@ -228,27 +244,106 @@ class _LevelsState extends State<Levels> {
                                     },
                                     style: ElevatedButton.styleFrom(
                                       backgroundColor: const Color.fromARGB(
-                                          255, 102, 102, 255),
+                                          255, 63, 255, 38),
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(0),
+                                          bottomLeft: Radius.circular(15),
+                                        ),
+                                      ),
                                     ),
-                                    child: const Center(
-                                      child: Icon(
-                                        Icons.add,
-                                        size: 50,
-                                        color: Colors.white,
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.symmetric(vertical: 20.0),
+                                      child: Text(
+                                        "${translation[language]!["Add"]}",
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                ]),
-              ) : Container(),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          child: const AddTest(),
+                                          type: PageTransitionType.bottomToTop,
+                                          duration:
+                                              const Duration(milliseconds: 400),
+                                        ),
+                                      ).then((_) => setState(() {}));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 255, 194, 38),
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(0),
+                                          bottomLeft: Radius.circular(0),
+                                        ),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.symmetric(vertical: 20.0),
+                                      child: Text(
+                                        "${translation[language]!["Update"]}",
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          child: const AddTest(),
+                                          type: PageTransitionType.bottomToTop,
+                                          duration:
+                                              const Duration(milliseconds: 400),
+                                        ),
+                                      ).then((_) => setState(() {}));
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 255, 55, 55),
+                                      shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomRight: Radius.circular(15),
+                                          bottomLeft: Radius.circular(0),
+                                        ),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding:
+                                          const EdgeInsets.symmetric(vertical: 20.0),
+                                      child: Text(
+                                        "${translation[language]!["Delete"]}",
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 17),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ]),
+                    )
+                  : Container(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),
                 child: Column(children: [

@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Theme/theme.dart';
-
+import '../Database/database_helper.dart';
 
 class ThemeProvider with ChangeNotifier {
   String? mode = 'dark';
   int? modeInt;
   final _dbHelper = DatabaseHelper.instance;
+
   void getThemeData() async {
-     await _dbHelper.queryProfile().then((results){
-      if(results.isNotEmpty){
+    await _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
         modeInt = results.first['dark_mode'];
-        if(modeInt == 1)
+        if(modeInt==1){
           mode = 'dark';
-        else
+        }else{
           mode = 'light';
+        }
       }
     });
   }
@@ -29,7 +30,7 @@ class ThemeProvider with ChangeNotifier {
   }
 
   Future<void> saveMode(modeInt) async {
-   await _dbHelper.updateMode(modeInt!);
+    await _dbHelper.updateMode(modeInt!);
   }
 
   int getTheme() {
@@ -39,20 +40,21 @@ class ThemeProvider with ChangeNotifier {
       return 1;
     }
   }
+
   Future<void> loadTheme() async {
-  await _dbHelper.queryProfile().then((results) {
-    if (results.isNotEmpty) {
-      modeInt = results.first['dark_mode'];
+    await _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        modeInt = results.first['dark_mode'];
+      }
+    });
+    int themeMode = modeInt!; // Default to light mode
+    if (themeMode == 0) {
+      themeData = lightMode;
+    } else {
+      themeData = darkMode;
     }
-  });
-  int themeMode = modeInt!; // Default to light mode
-  if (themeMode == 0) {
-    themeData = lightMode;
-  } else {
-    themeData = darkMode;
+    notifyListeners();
   }
-  notifyListeners();
-}
 
   void toggleTheme() {
     if (_themeData == lightMode) {

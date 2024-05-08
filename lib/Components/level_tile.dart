@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Quizpage/quizpage.dart';
 
+import '../Theme/translations.dart';
+
 // ignore: must_be_immutable
 class LevelTile extends StatefulWidget {
   LevelTile({
@@ -118,7 +120,7 @@ class _LevelTileState extends State<LevelTile> {
     required this.geography_completed,
     required this.history_completed,
   });
-  int? colorIndex = 1, selectedSubject = 0, geography_completed, history_completed;
+  int? colorIndex = 1, selectedSubject = 0, geography_completed, history_completed, language = 2;
   String? country,
       lessonGeography,
       lessonHistory,
@@ -127,6 +129,7 @@ class _LevelTileState extends State<LevelTile> {
       jsonStringEH,
       jsonStringHH,
       EGA1, EGA2, EGA3, EGA4, HGA1, HGA2, HGA3, HGA4, EHA1, EHA2, EHA3, EHA4, HHA1, HHA2, HHA3, HHA4, EGA, HGA, EHA, HHA;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   @override
   Widget build(BuildContext context) {
@@ -312,14 +315,13 @@ class _LevelTileState extends State<LevelTile> {
                           ), // Set the radius to 0 for a square shape
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
                         child: Text(
-                          "Easy",
-                          style: TextStyle(
+                          "${translation[language]!["Easy"]}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 22),
+                              fontSize: 19),
                         ),
                       ),
                     ),
@@ -363,14 +365,13 @@ class _LevelTileState extends State<LevelTile> {
                           ), // Set the radius to 0 for a square shape
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
                         child: Text(
-                          "Medium",
-                          style: TextStyle(
+                          "${translation[language]!["Medium"]}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 22),
+                              fontSize: 19),
                         ),
                       ),
                     ),
@@ -413,14 +414,13 @@ class _LevelTileState extends State<LevelTile> {
                           ), // Set the radius to 0 for a square shape
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
                         child: Text(
-                          "Hard",
-                          style: TextStyle(
+                          "${translation[language]!["Hard"]}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 22),
+                              fontSize: 19),
                         ),
                       ),
                     ),
@@ -473,14 +473,13 @@ class _LevelTileState extends State<LevelTile> {
                           ), // Set the radius to 0 for a square shape
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
                         child: Text(
-                          "Easy",
-                          style: TextStyle(
+                          "${translation[language]!["Easy"]}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 22),
+                              fontSize: 19),
                         ),
                       ),
                     ),
@@ -524,14 +523,13 @@ class _LevelTileState extends State<LevelTile> {
                           ), // Set the radius to 0 for a square shape
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
                         child: Text(
-                          "Medium",
-                          style: TextStyle(
+                          "${translation[language]!["Medium"]}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 22),
+                              fontSize: 19),
                         ),
                       ),
                     ),
@@ -574,14 +572,13 @@ class _LevelTileState extends State<LevelTile> {
                           ), // Set the radius to 0 for a square shape
                         ),
                       ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20.0),
+                      child: Center(
                         child: Text(
-                          "Hard",
-                          style: TextStyle(
+                          "${translation[language]!["Hard"]}",
+                          style: const TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 22),
+                              fontSize: 19),
                         ),
                       ),
                     ),

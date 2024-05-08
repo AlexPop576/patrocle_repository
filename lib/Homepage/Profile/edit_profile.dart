@@ -15,7 +15,12 @@ class _EditProfileState extends State<EditProfile> {
   _EditProfileState({required this.username});
   String? username;
   int profileIndex = 0, maxIndex = 3, language = 2;
-  List<Color> profileColor = [Colors.red, Colors.green, Colors.blue, Colors.yellow];
+  List<Color> profileColor = [
+    Colors.red,
+    Colors.green,
+    Colors.blue,
+    Colors.yellow
+  ];
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
   final usernameController = TextEditingController();
@@ -97,7 +102,8 @@ class _EditProfileState extends State<EditProfile> {
                                   ),
                                 ),
                                 child: Center(
-                                    child: Text("${translation[language]!["Continue"]}",
+                                    child: Text(
+                                        "${translation[language]!["Continue"]}",
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -125,7 +131,8 @@ class _EditProfileState extends State<EditProfile> {
                                   ),
                                 ),
                                 child: Center(
-                                    child: Text("${translation[language]!["Quit"]}",
+                                    child: Text(
+                                        "${translation[language]!["Quit"]}",
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,
@@ -158,10 +165,11 @@ class _EditProfileState extends State<EditProfile> {
               const SizedBox(
                 height: 20,
               ),
-              Center( 
+              Center(
                 child: Text(
                   "${translation[language]!["Profile picture"]}",
-                  style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                      fontSize: 30, fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 15),
@@ -176,31 +184,43 @@ class _EditProfileState extends State<EditProfile> {
                     color: profileColor[profileIndex],
                     height: 300,
                     width: double.infinity,
-                    child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      IconButton(
-                          onPressed: (() {
-                            setState(() {
-                              if (profileIndex < maxIndex) {
-                                profileIndex++;
-                              } else {
-                                profileIndex = 0;
-                              }
-                            });
-                          }),
-                          icon: const Icon(Icons.arrow_back)),
-                      Image.asset('assets/icons/Face.png'),
-                      IconButton(
-                          onPressed: (() {
-                            setState(() {
-                              if (profileIndex > 0) {
-                                profileIndex--;
-                              } else {
-                                profileIndex = maxIndex;
-                              }
-                            });
-                          }),
-                          icon: const Icon(Icons.arrow_forward)),
-                    ]),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          IconButton(
+                              onPressed: (() {
+                                setState(() {
+                                  if (profileIndex < maxIndex) {
+                                    profileIndex++;
+                                  } else {
+                                    profileIndex = 0;
+                                  }
+                                });
+                              }),
+                            icon: const Icon(Icons.arrow_back)
+                          ),
+                          Expanded(
+                            child: SizedBox(
+                              height: 2,
+                              width: 2,
+                              child: Image.asset(
+                                'assets/icons/Face.png',
+                              ),
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: (() {
+                                setState(() {
+                                  if (profileIndex > 0) {
+                                    profileIndex--;
+                                  } else {
+                                    profileIndex = maxIndex;
+                                  }
+                                });
+                              }),
+                            icon: const Icon(Icons.arrow_forward)
+                          ),
+                        ]),
                   )),
               const SizedBox(height: 15),
               Divider(
@@ -258,7 +278,8 @@ class _EditProfileState extends State<EditProfile> {
                   child: ElevatedButton(
                     onPressed: () async {
                       await _dbHelper.updatePicture(profileIndex);
-                      if(usernameController.text.isNotEmpty)await _dbHelper.updateUserame(usernameController.text);
+                      if (usernameController.text.isNotEmpty)
+                        await _dbHelper.updateUserame(usernameController.text);
                       Navigator.pop(context);
                     },
                     style: ElevatedButton.styleFrom(
