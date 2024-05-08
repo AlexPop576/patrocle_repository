@@ -4,10 +4,10 @@ import 'package:animations/animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
-import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
 import 'package:patrocle/Quizpage/testpage3.dart';
 import 'dart:math';
+import '../Theme/general_info.dart';
 import '../Theme/translations.dart';
 import 'testpage1.dart';
 import 'testpage2.dart';
@@ -104,7 +104,7 @@ class _QuizPageState extends State<QuizPage> {
       QHA4,
       EA,
       HA;
-  int? difficulty, subject, language = 2, randomNumber;
+  int? difficulty, subject, language = 2, randomNumber, digits;
   int pageIndex = 0,
       givenAnswer = -1,
       correctAnswersHard = 0,
@@ -120,8 +120,10 @@ class _QuizPageState extends State<QuizPage> {
       hardQuestionsA2,
       hardQuestionsA3,
       hardQuestionsA4;
-  List<int> questionNumber = [], easyAnswers = [], hardAnswers = [];
+  List<int> questionNumber = [], easyAnswers = [], hardAnswers = [], specialQuestionAnswers = [9, 9, 9, 9, 9, 9, 9];
   Map<int?, Map<String?, String?>> translation = Translations().translation;
+  Map<String?, Map<int?, String?>> info = Info().info;
+  double population = 0;
   final _dbHelper = DatabaseHelper.instance;
 
   @override
@@ -132,7 +134,6 @@ class _QuizPageState extends State<QuizPage> {
     } else {
       easyQuestions = [];
     }
-    // Do the same for QH if it's also a JSON string
     if (QH != null) {
       hardQuestions = List<String>.from(jsonDecode(QH!));
     } else {
@@ -140,69 +141,63 @@ class _QuizPageState extends State<QuizPage> {
     }
     if (QEA1 != null) {
       easyQuestionsA1 = List<String>.from(jsonDecode(QEA1!));
-      print(easyQuestionsA1);
     } else {
       easyQuestionsA1 = [];
     }
     if (QEA2 != null) {
       easyQuestionsA2 = List<String>.from(jsonDecode(QEA2!));
-      print(easyQuestionsA2);
     } else {
       easyQuestionsA2 = [];
     }
     if (QEA3 != null) {
       easyQuestionsA3 = List<String>.from(jsonDecode(QEA3!));
-      print(easyQuestionsA3);
     } else {
       easyQuestionsA3 = [];
     }
     if (QEA4 != null) {
       easyQuestionsA4 = List<String>.from(jsonDecode(QEA4!));
-      print(easyQuestionsA4);
     } else {
       easyQuestionsA4 = [];
     }
     if (QHA1 != null) {
       hardQuestionsA1 = List<String>.from(jsonDecode(QHA1!));
-      print(hardQuestionsA1);
     } else {
       hardQuestionsA1 = [];
     }
     if (QHA2 != null) {
       hardQuestionsA2 = List<String>.from(jsonDecode(QHA2!));
-      print(hardQuestionsA2);
     } else {
       hardQuestionsA2 = [];
     }
     if (QHA3 != null) {
       hardQuestionsA3 = List<String>.from(jsonDecode(QHA3!));
-      print(hardQuestionsA3);
     } else {
       hardQuestionsA3 = [];
     }
     if (QHA4 != null) {
       hardQuestionsA4 = List<String>.from(jsonDecode(QHA4!));
-      print(hardQuestionsA4);
     } else {
       hardQuestionsA4 = [];
     }
     if (EA != null) {
       easyAnswers = List<int>.from(jsonDecode(EA!));
-      print(easyAnswers);
     } else {
       easyAnswers = [];
     }
     if (HA != null) {
       hardAnswers = List<int>.from(jsonDecode(HA!));
-      print(hardAnswers);
     } else {
       hardAnswers = [];
     }
-    var random = new Random();
-    var numbers = new List<int>.generate(10, (index) => index)..shuffle(random);
+    var random = Random();
+    var numbers = List<int>.generate(10, (index) => index)..shuffle(random);
     questionNumber = numbers.take(10).toList();
-    print(questionNumber);
+    String populationString = info[country]![3]!.replaceAll(',', '');
+    digits = populationString.length;
+    population = double.parse(populationString);
+    specialQuestionAnswers[1] = (digits!>6 ? population/1000000 : population/100000).toInt();
     randomNumber = random.nextInt(5) + 1;
+    print("$specialQuestionAnswers[1] $population");
   }
 
   void correct() {
@@ -245,20 +240,30 @@ class _QuizPageState extends State<QuizPage> {
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 1)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 1)),
                 elevation: 24,
-              ),);
+              ),
+            );
           } else if (history_lessons == 5) {
             _dbHelper.insertTrophy(2);
             _dbHelper.updateProfileTrophies();
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 2)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 2)),
                 elevation: 24,
-              ),);
+              ),
+            );
           }
           if (geography_lessons + history_lessons == 20) {
             _dbHelper.insertTrophy(3);
@@ -266,64 +271,94 @@ class _QuizPageState extends State<QuizPage> {
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 3)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 3)),
                 elevation: 24,
-              ),);
+              ),
+            );
           } else if (geography_lessons + history_lessons == 50) {
             _dbHelper.insertTrophy(5);
             _dbHelper.updateProfileTrophies();
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 5)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 5)),
                 elevation: 24,
-              ),);
+              ),
+            );
           } else if (geography_lessons + history_lessons == 100) {
             _dbHelper.insertTrophy(6);
             _dbHelper.updateProfileTrophies();
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 6)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 6)),
                 elevation: 24,
-              ),);
+              ),
+            );
           }
-          if (iq < 500 && iq+correctAnswersEasy * 5 +
-              correctAnswersHard * 10 >=500) {
+          if (iq < 500 &&
+              iq + correctAnswersEasy * 5 + correctAnswersHard * 10 >= 500) {
             _dbHelper.insertTrophy(4);
             _dbHelper.updateProfileTrophies();
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 4)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 4)),
                 elevation: 24,
-              ),);
-          } else if (iq < 5000 && iq+correctAnswersEasy * 5 +
-              correctAnswersHard * 10>= 5000) {
+              ),
+            );
+          } else if (iq < 5000 &&
+              iq + correctAnswersEasy * 5 + correctAnswersHard * 10 >= 5000) {
             _dbHelper.insertTrophy(7);
             _dbHelper.updateProfileTrophies();
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 7)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 7)),
                 elevation: 24,
-              ),);
-          } else if (iq < 10000 && iq + correctAnswersEasy * 5 +
-              correctAnswersHard * 10>=10000) {
+              ),
+            );
+          } else if (iq < 10000 &&
+              iq + correctAnswersEasy * 5 + correctAnswersHard * 10 >= 10000) {
             _dbHelper.insertTrophy(8);
             _dbHelper.updateProfileTrophies();
             showDialog(
               context: context,
               builder: (_) => AlertDialog(
-                title: Center(child: Text("${translation[language]!["New trophy unlocked!"]}", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100,child: TrophyTile(trophy: 8)),
+                title: Center(
+                    child: Text(
+                        "${translation[language]!["New trophy unlocked!"]}",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 25))),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 8)),
                 elevation: 24,
-              ),);
+              ),
+            );
           }
         });
       }
@@ -473,7 +508,7 @@ class _QuizPageState extends State<QuizPage> {
                             children: [
                               ...sections,
                               Expanded(
-                                flex: 11 - pageIndex! - bonus!,
+                                flex: 11 - pageIndex - bonus,
                                 child: Container(
                                   height: 20,
                                   color: Colors.white,
@@ -497,91 +532,139 @@ class _QuizPageState extends State<QuizPage> {
                 child: child,
               ),
           child: pageIndex == 0
-              ? Lesson(lesson: lesson, country: country,)
-              : pageIndex != 11 && pageIndex % 2 == 0
-                  ? TestPage1(
+              ? Lesson(
+                  lesson: lesson,
+                  country: country,
+                  subject: subject,
+                )
+              : pageIndex == 3
+                  ? TestPage3(
                       getAnswerFunction: getAnswer,
                       selected: 0,
-                      questionText: difficulty == 1
-                          ? easyQuestions[questionNumber[pageIndex - 1]]
-                          : difficulty == 2
-                              ? easyQuestions[questionNumber[pageIndex - 1]]
-                              : hardQuestions[questionNumber[pageIndex - 1]],
-                      answer1: difficulty == 1
-                          ? easyQuestionsA1[questionNumber[pageIndex - 1]]
-                          : difficulty == 2
-                              ? easyQuestionsA1[questionNumber[pageIndex - 1]]
-                              : hardQuestionsA1[questionNumber[pageIndex - 1]],
-                      answer2: difficulty == 1
-                          ? easyQuestionsA2[questionNumber[pageIndex - 1]]
-                          : difficulty == 2
-                              ? easyQuestionsA2[questionNumber[pageIndex - 1]]
-                              : hardQuestionsA2[questionNumber[pageIndex - 1]],
-                      answer3: difficulty == 1
-                          ? easyQuestionsA3[questionNumber[pageIndex - 1]]
-                          : difficulty == 2
-                              ? easyQuestionsA3[questionNumber[pageIndex - 1]]
-                              : hardQuestionsA3[questionNumber[pageIndex - 1]],
-                      answer4: difficulty == 1
-                          ? easyQuestionsA4[questionNumber[pageIndex - 1]]
-                          : difficulty == 2
-                              ? easyQuestionsA4[questionNumber[pageIndex - 1]]
-                              : hardQuestionsA4[questionNumber[pageIndex - 1]],
-                      givenAnswer: 0,
+                      subject: subject,
+                      country: country,
+                      randomNumber: randomNumber,
+                      population: population,
+                      digits: digits,
                     )
-                  : pageIndex != 11 && pageIndex % 2 == 1
-                      ? /*TestPage3(getAnswerFunction: getAnswer,
-                        selected: 0,
-                        subject: subject,
-                        country: country,
-                        randomNumber: randomNumber,
-                      )*/
-                      
-                      TestPage2(
+                  : pageIndex == 6
+                      ? TestPage3(
                           getAnswerFunction: getAnswer,
                           selected: 0,
-                          questionText: difficulty == 1
-                              ? easyQuestions[questionNumber[pageIndex - 1]]
-                              : difficulty == 2
-                                  ? hardQuestions[questionNumber[pageIndex - 1]]
-                                  : hardQuestions[
-                                      questionNumber[pageIndex - 1]],
-                          answer1: difficulty == 1
-                              ? easyQuestionsA1[questionNumber[pageIndex - 1]]
-                              : difficulty == 2
-                                  ? hardQuestionsA1[
-                                      questionNumber[pageIndex - 1]]
-                                  : hardQuestionsA1[
-                                      questionNumber[pageIndex - 1]],
-                          answer2: difficulty == 1
-                              ? easyQuestionsA2[questionNumber[pageIndex - 1]]
-                              : difficulty == 2
-                                  ? hardQuestionsA2[
-                                      questionNumber[pageIndex - 1]]
-                                  : hardQuestionsA2[
-                                      questionNumber[pageIndex - 1]],
-                          answer3: difficulty == 1
-                              ? easyQuestionsA3[questionNumber[pageIndex - 1]]
-                              : difficulty == 2
-                                  ? hardQuestionsA3[
-                                      questionNumber[pageIndex - 1]]
-                                  : hardQuestionsA3[
-                                      questionNumber[pageIndex - 1]],
-                          answer4: difficulty == 1
-                              ? easyQuestionsA4[questionNumber[pageIndex - 1]]
-                              : difficulty == 2
-                                  ? hardQuestionsA4[
-                                      questionNumber[pageIndex - 1]]
-                                  : hardQuestionsA4[
-                                      questionNumber[pageIndex - 1]],
-                          givenAnswer: 0,
+                          subject: subject,
+                          country: country,
+                          randomNumber: randomNumber,
+                          population: population,
+                          digits: digits,
                         )
-                      : FinishPage(
-                          correctAnswersEasy: correctAnswersEasy,
-                          correctAnswersHard: correctAnswersHard,
-                          correctAnswers:
-                              correctAnswersEasy + correctAnswersHard,
-                        )),
+                      : pageIndex == 9
+                          ? TestPage3(
+                              getAnswerFunction: getAnswer,
+                              selected: 0,
+                              subject: subject,
+                              country: country,
+                              randomNumber: randomNumber,
+                              population: population,
+                              digits: digits,
+                            )
+                          : pageIndex != 11 && pageIndex % 2 == 0
+                              ? TestPage1(
+                                  getAnswerFunction: getAnswer,
+                                  selected: 0,
+                                  questionText: difficulty == 1
+                                      ? easyQuestions[
+                                          questionNumber[pageIndex - 1]]
+                                      : difficulty == 2
+                                          ? easyQuestions[
+                                              questionNumber[pageIndex - 1]]
+                                          : hardQuestions[
+                                              questionNumber[pageIndex - 1]],
+                                  answer1: difficulty == 1
+                                      ? easyQuestionsA1[
+                                          questionNumber[pageIndex - 1]]
+                                      : difficulty == 2
+                                          ? easyQuestionsA1[
+                                              questionNumber[pageIndex - 1]]
+                                          : hardQuestionsA1[
+                                              questionNumber[pageIndex - 1]],
+                                  answer2: difficulty == 1
+                                      ? easyQuestionsA2[
+                                          questionNumber[pageIndex - 1]]
+                                      : difficulty == 2
+                                          ? easyQuestionsA2[
+                                              questionNumber[pageIndex - 1]]
+                                          : hardQuestionsA2[
+                                              questionNumber[pageIndex - 1]],
+                                  answer3: difficulty == 1
+                                      ? easyQuestionsA3[
+                                          questionNumber[pageIndex - 1]]
+                                      : difficulty == 2
+                                          ? easyQuestionsA3[
+                                              questionNumber[pageIndex - 1]]
+                                          : hardQuestionsA3[
+                                              questionNumber[pageIndex - 1]],
+                                  answer4: difficulty == 1
+                                      ? easyQuestionsA4[
+                                          questionNumber[pageIndex - 1]]
+                                      : difficulty == 2
+                                          ? easyQuestionsA4[
+                                              questionNumber[pageIndex - 1]]
+                                          : hardQuestionsA4[
+                                              questionNumber[pageIndex - 1]],
+                                  givenAnswer: 0,
+                                )
+                              : pageIndex != 11 && pageIndex % 2 == 1
+                                  ? TestPage2(
+                                      getAnswerFunction: getAnswer,
+                                      selected: 0,
+                                      questionText: difficulty == 1
+                                          ? easyQuestions[
+                                              questionNumber[pageIndex - 1]]
+                                          : difficulty == 2
+                                              ? hardQuestions[
+                                                  questionNumber[pageIndex - 1]]
+                                              : hardQuestions[questionNumber[
+                                                  pageIndex - 1]],
+                                      answer1: difficulty == 1
+                                          ? easyQuestionsA1[
+                                              questionNumber[pageIndex - 1]]
+                                          : difficulty == 2
+                                              ? hardQuestionsA1[
+                                                  questionNumber[pageIndex - 1]]
+                                              : hardQuestionsA1[questionNumber[
+                                                  pageIndex - 1]],
+                                      answer2: difficulty == 1
+                                          ? easyQuestionsA2[
+                                              questionNumber[pageIndex - 1]]
+                                          : difficulty == 2
+                                              ? hardQuestionsA2[
+                                                  questionNumber[pageIndex - 1]]
+                                              : hardQuestionsA2[questionNumber[
+                                                  pageIndex - 1]],
+                                      answer3: difficulty == 1
+                                          ? easyQuestionsA3[
+                                              questionNumber[pageIndex - 1]]
+                                          : difficulty == 2
+                                              ? hardQuestionsA3[
+                                                  questionNumber[pageIndex - 1]]
+                                              : hardQuestionsA3[questionNumber[
+                                                  pageIndex - 1]],
+                                      answer4: difficulty == 1
+                                          ? easyQuestionsA4[
+                                              questionNumber[pageIndex - 1]]
+                                          : difficulty == 2
+                                              ? hardQuestionsA4[
+                                                  questionNumber[pageIndex - 1]]
+                                              : hardQuestionsA4[questionNumber[
+                                                  pageIndex - 1]],
+                                      givenAnswer: 0,
+                                    )
+                                  : FinishPage(
+                                      correctAnswersEasy: correctAnswersEasy,
+                                      correctAnswersHard: correctAnswersHard,
+                                      correctAnswers: correctAnswersEasy +
+                                          correctAnswersHard,
+                                    )),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -605,17 +688,27 @@ class _QuizPageState extends State<QuizPage> {
                           setState(() {
                             bonus = 1;
                           });
-                          if (difficulty == 1
-                              ? easyAnswers[
-                                      questionNumber[pageIndex - 1] + 1] ==
-                                  givenAnswer
-                              : difficulty == 2 && pageIndex % 2 == 0
-                                  ? easyAnswers[
-                                          questionNumber[pageIndex - 1] + 1] ==
-                                      givenAnswer
-                                  : hardAnswers[
-                                          questionNumber[pageIndex - 1] + 1] ==
-                                      givenAnswer) {
+                          if (pageIndex == 3
+                              ? specialQuestionAnswers[1] == givenAnswer
+                              : pageIndex == 6
+                                  ? specialQuestionAnswers[2] == givenAnswer
+                                  : pageIndex == 9
+                                      ? specialQuestionAnswers[3] == givenAnswer
+                                      : difficulty == 1
+                                          ? easyAnswers[questionNumber[
+                                                      pageIndex - 1] +
+                                                  1] ==
+                                              givenAnswer
+                                          : difficulty == 2 &&
+                                                  pageIndex % 2 == 0
+                                              ? easyAnswers[questionNumber[
+                                                          pageIndex - 1] +
+                                                      1] ==
+                                                  givenAnswer
+                                              : hardAnswers[questionNumber[
+                                                          pageIndex - 1] +
+                                                      1] ==
+                                                  givenAnswer) {
                             correct();
                             difficulty == 1
                                 ? correctAnswersEasy++
@@ -871,6 +964,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 }
 
+// ignore: must_be_immutable
 class FinishPage extends StatelessWidget {
   FinishPage({
     super.key,
@@ -892,15 +986,16 @@ class FinishPage extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.07,
           ),
           SizedBox(
-              height: 220,
+              height: 200,
               child: Lottie.asset('assets/patrocle.json',
                   frameRate: FrameRate.max, fit: BoxFit.contain)),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.06,
+          const SizedBox(
+            height: 20,
           ),
           correctAnswers == 0 || correctAnswers == 1 || correctAnswers == 2
               ? Text(
                   "${translation[language]!["Try again"]}",
+                  textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontSize: 45,
                     fontWeight: FontWeight.w900,
@@ -910,6 +1005,7 @@ class FinishPage extends StatelessWidget {
               : correctAnswers == 3 || correctAnswers == 4
                   ? Text(
                       "${translation[language]!["Almost there!"]}",
+                      textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 45,
                         fontWeight: FontWeight.w900,
@@ -919,6 +1015,7 @@ class FinishPage extends StatelessWidget {
                   : correctAnswers == 5 || correctAnswers == 6
                       ? Text(
                           "${translation[language]!["Good job!"]}",
+                          textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 45,
                             fontWeight: FontWeight.w900,
@@ -928,6 +1025,7 @@ class FinishPage extends StatelessWidget {
                       : correctAnswers == 7 || correctAnswers == 8
                           ? Text(
                               "${translation[language]!["Fantastic!"]}",
+                              textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 45,
                                 fontWeight: FontWeight.w900,
@@ -937,6 +1035,7 @@ class FinishPage extends StatelessWidget {
                           : correctAnswers == 9
                               ? Text(
                                   "${translation[language]!["Almost perfect!"]}",
+                                  textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontSize: 45,
                                     fontWeight: FontWeight.w900,
@@ -945,6 +1044,7 @@ class FinishPage extends StatelessWidget {
                                 )
                               : Text(
                                   "${translation[language]!["Perfect!"]}",
+                                  textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontSize: 45,
                                     fontWeight: FontWeight.w900,
@@ -961,7 +1061,7 @@ class FinishPage extends StatelessWidget {
             style: const TextStyle(fontSize: 23),
           ),
           const SizedBox(
-            height: 50,
+            height: 40,
           ),
           Row(
             children: [

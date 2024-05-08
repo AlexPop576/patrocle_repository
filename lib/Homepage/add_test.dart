@@ -250,8 +250,6 @@ class _AddTestState extends State<AddTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: PreferredSize(
         preferredSize: Size(MediaQuery.of(context).size.width, 60),
@@ -400,7 +398,7 @@ class _AddTestState extends State<AddTest> {
             CustomScrollView(physics: const BouncingScrollPhysics(), slivers: [
           SliverToBoxAdapter(
             child: Column(children: [
-              const SizedBox(height: 80),
+              const SizedBox(height: 20),
               const Text(
                 "Country name",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),

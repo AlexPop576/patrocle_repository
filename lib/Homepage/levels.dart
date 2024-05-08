@@ -265,42 +265,7 @@ class _LevelsState extends State<Levels> {
                                     ),
                                   ),
                                 ),
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        PageTransition(
-                                          child: const AddTest(),
-                                          type: PageTransitionType.bottomToTop,
-                                          duration:
-                                              const Duration(milliseconds: 400),
-                                        ),
-                                      ).then((_) => setState(() {}));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 255, 194, 38),
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(0),
-                                          bottomLeft: Radius.circular(0),
-                                        ),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(vertical: 20.0),
-                                      child: Text(
-                                        "${translation[language]!["Update"]}",
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                
                                 Expanded(
                                   child: ElevatedButton(
                                     onPressed: () {
@@ -328,7 +293,7 @@ class _LevelsState extends State<Levels> {
                                       padding:
                                           const EdgeInsets.symmetric(vertical: 20.0),
                                       child: Text(
-                                        "${translation[language]!["Delete"]}",
+                                        "${translation[language]!["Update"]}",
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,

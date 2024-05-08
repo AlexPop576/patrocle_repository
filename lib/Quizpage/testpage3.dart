@@ -1,14 +1,12 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
-import '../Theme/general_info.dart';
 
 // ignore: must_be_immutable
 class TestPage3 extends StatefulWidget {
   final Function getAnswerFunction;
-  int? selected = 0, givenAnswer, subject, randomNumber;
+  int? selected = 0, givenAnswer, subject, randomNumber, digits;
+  double? population;
   String? country;
   TestPage3(
       {super.key,
@@ -17,6 +15,8 @@ class TestPage3 extends StatefulWidget {
       this.subject,
       this.country,
       this.randomNumber,
+      this.digits,
+      this.population,
       this.givenAnswer});
 
   @override
@@ -27,15 +27,17 @@ class TestPage3 extends StatefulWidget {
       subject: subject,
       country: country,
       randomNumber: randomNumber,
+      digits: digits,
+      population: population,
       givenAnswer: givenAnswer);
 }
 
 class _TestPage3State extends State<TestPage3> {
   int? questionAnswer = 1, selected, givenAnswer, randomNumber, subject, digits;
-  double _currentSliderValue = 0, value = 0, maxNumber=0, population=0;
+  double _currentSliderValue = 0, value = 0, maxNumber=0;
+  double? population=0;
   String? country;
   final Function getAnswerFunction;
-  Map<String?, Map<int?, String?>> info = Info().info;
 
   _TestPage3State(
       {required this.getAnswerFunction,
@@ -43,17 +45,15 @@ class _TestPage3State extends State<TestPage3> {
       this.subject,
       this.country,
       this.randomNumber,
+      this.digits,
+      this.population,
       this.givenAnswer});
 
   @override
   void initState() {
     super.initState();
-    String populationString = info[country]![3]!.replaceAll(',', '');
-    digits = populationString.length;
-    print(digits);
-    population = double.parse(populationString);
-    population = digits!>6 ? population/1000000 : population/1000;
-    maxNumber = (population/randomNumber!)*6;
+    population = digits!>6 ? population!/1000000 : population!/1000;
+    maxNumber = (population!/randomNumber!)*6;
     print("$randomNumber $population $maxNumber");
   }
 
@@ -100,8 +100,8 @@ class _TestPage3State extends State<TestPage3> {
                     label: _currentSliderValue.round().toString(),
                     onChanged: (double value) {
                       setState(() {
+                        getAnswerFunction(value.toInt());
                         _currentSliderValue = value;
-                        //getAnswerFunction();
                       });
                     },
                   ),

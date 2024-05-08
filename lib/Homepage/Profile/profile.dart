@@ -523,6 +523,48 @@ class _ProfileState extends State<Profile> {
                                   const BorderRadius.all(Radius.circular(10)),
                               child: ElevatedButton(
                                 onPressed: () async {
+                                  if(language!<4)
+                                  {
+                                    setState(() {
+                                      language=language!+1;
+                                    });
+                                  }else{
+                                    setState(() {
+                                      language=1;
+                                    });
+                                  }
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.primary,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(language == 1 ? "English" : language == 2 ? "Română" : language == 3 ? "Magyar" : "Español",
+                                      style: const TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30,
+                                      )),
+                                ),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            height: 58,
+                            width: double.infinity,
+                            child: ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              child: ElevatedButton(
+                                onPressed: () async {
                                   admin == 0
                                       ? {
                                           Navigator.push(

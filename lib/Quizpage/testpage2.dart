@@ -82,42 +82,42 @@ class _TestPage2State extends State<TestPage2> {
                       color: Theme.of(context).colorScheme.primary,
                       thickness: 3),
                   const SizedBox(height: 24),
-                  
-                    ClipRRect(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(15)),
-                      child: Expanded(
-                        child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              getAnswerFunction(1);
-                              selected = 1;
-                            });
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                            ),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            side: selected == 1
-                                ? const BorderSide(
-                                    color: Color.fromARGB(255, 102, 102, 255),
-                                    width: 3)
-                                : BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary,
-                                    width: 3),
+                  ClipRRect(
+                    borderRadius:
+                        const BorderRadius.all(Radius.circular(15)),
+                    child: Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            getAnswerFunction(1);
+                            selected = 1;
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(15),
                           ),
-                          child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
-                                child: Text(answer1.toString(),
-                                    style: TextStyle(
-                                        color: Theme.of(context).colorScheme.tertiary,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 30)),
-                              )),
+                          backgroundColor:
+                              Theme.of(context).colorScheme.primary,
+                          side: selected == 1
+                              ? const BorderSide(
+                                  color: Color.fromARGB(255, 102, 102, 255),
+                                  width: 3)
+                              : BorderSide(
+                                  color:
+                                      Theme.of(context).colorScheme.primary,
+                                  width: 3),
+                        ),
+                        child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              child: Text(answer1.toString(),
+                                  style: TextStyle(
+                                      color: Theme.of(context).colorScheme.tertiary,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30)),
+                            )
+                          ),
                         ),
                       ),
                     ),

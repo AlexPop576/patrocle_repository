@@ -200,11 +200,14 @@ class _EditProfileState extends State<EditProfile> {
                             icon: const Icon(Icons.arrow_back)
                           ),
                           Expanded(
-                            child: SizedBox(
-                              height: 2,
-                              width: 2,
-                              child: Image.asset(
-                                'assets/icons/Face.png',
+                            child: Align(
+                              alignment: Alignment.bottomCenter,
+                              child: SizedBox(
+                                height: 250,
+                                width: 250,
+                                child: Image.asset(
+                                  'assets/icons/Face.png',
+                                ),
                               ),
                             ),
                           ),
