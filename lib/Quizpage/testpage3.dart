@@ -5,56 +5,42 @@ import 'package:lottie/lottie.dart';
 // ignore: must_be_immutable
 class TestPage3 extends StatefulWidget {
   final Function getAnswerFunction;
-  int? selected = 0, givenAnswer, subject, randomNumber, digits;
-  double? population;
-  String? country;
+  String? question;
+  int? answer;
+
   TestPage3(
       {super.key,
       required this.getAnswerFunction,
-      this.selected,
-      this.subject,
-      this.country,
-      this.randomNumber,
-      this.digits,
-      this.population,
-      this.givenAnswer});
+      this.answer,
+      this.question});
 
   @override
   // ignore: no_logic_in_create_state
   State<TestPage3> createState() => _TestPage3State(
       getAnswerFunction: getAnswerFunction,
-      selected: selected,
-      subject: subject,
-      country: country,
-      randomNumber: randomNumber,
-      digits: digits,
-      population: population,
-      givenAnswer: givenAnswer);
+      answer: answer,
+      question: question,
+      );
 }
 
 class _TestPage3State extends State<TestPage3> {
-  int? questionAnswer = 1, selected, givenAnswer, randomNumber, subject, digits;
-  double _currentSliderValue = 0, value = 0, maxNumber=0;
-  double? population=0;
-  String? country;
   final Function getAnswerFunction;
+  String? question;
+  int? questionAnswer = 1, selected, givenAnswer, answer;
+  int randomNumber = 3;
+  double _currentSliderValue = 0, value = 0;
 
   _TestPage3State(
       {required this.getAnswerFunction,
-      this.selected,
-      this.subject,
-      this.country,
-      this.randomNumber,
-      this.digits,
-      this.population,
-      this.givenAnswer});
+      this.answer,
+      this.question,
+      });
 
   @override
   void initState() {
     super.initState();
-    population = digits!>6 ? population!/1000000 : population!/1000;
-    maxNumber = (population!/randomNumber!)*6;
-    print("$randomNumber $population $maxNumber");
+    var random = Random();
+    randomNumber = random.nextInt(6) + 1;
   }
 
   @override
@@ -78,11 +64,11 @@ class _TestPage3State extends State<TestPage3> {
                       const SizedBox(width: 20),
                       Expanded(
                         child: Text(
-                          subject == 1 ? digits!>6 ? "Care este populatia tarii (milioane)?" : "Care este populatia tarii (mii)?" : "In ce an?",
+                          "Patrocle:",
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.tertiary,
                               fontWeight: FontWeight.bold,
-                              fontSize: 28),
+                              fontSize: 50),
                         ),
                       ),
                     ],
@@ -91,26 +77,54 @@ class _TestPage3State extends State<TestPage3> {
                   Divider(
                       color: Theme.of(context).colorScheme.primary,
                       thickness: 3),
-                  const SizedBox(height: 24),
-                  Slider(
-                    value: _currentSliderValue,
-                    max: maxNumber.toDouble(),
-                    activeColor: const Color.fromARGB(255, 102, 102, 255),
-                    divisions: 6,
-                    label: _currentSliderValue.round().toString(),
-                    onChanged: (double value) {
-                      setState(() {
-                        getAnswerFunction(value.toInt());
-                        _currentSliderValue = value;
-                      });
-                    },
+                  const SizedBox(height: 12),
+                  Text(
+                    question ?? "Question",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 27),
                   ),
+                  const SizedBox(height: 40),
+                  CustomSlider(answer ?? 1, randomNumber),
                   const SizedBox(height: 12,),
                 ],
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget CustomSlider(int answer, int random) {
+    double max = answer/random * 6;
+
+    return SliderTheme(
+      data: const SliderThemeData(
+        trackHeight: 25,
+        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 17),
+        inactiveTrackColor: Color.fromARGB(255, 210, 210, 210),
+        activeTrackColor: Colors.green,
+        thumbColor: Colors.green,
+        valueIndicatorColor: Colors.green,
+        activeTickMarkColor: Colors.transparent,
+        inactiveTickMarkColor: Colors.transparent,
+        valueIndicatorTextStyle: TextStyle(color: Colors.white),
+      ),
+      child: Slider(
+        value: _currentSliderValue,
+        min: 0,
+        max: max,
+        divisions: 6,
+        label: _currentSliderValue.round().toString(),
+        onChanged: (double value) {
+          setState(() {
+            getAnswerFunction(value.toInt());
+            _currentSliderValue = value;
+          });
+        },
       ),
     );
   }

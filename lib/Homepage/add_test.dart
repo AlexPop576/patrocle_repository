@@ -1047,35 +1047,7 @@ class _AddTestState extends State<AddTest> {
                         String answersGeographyHardCorrect = jsonEncode(answersGeographyHard);
                         String answersHistoryEasyCorrect = jsonEncode(answersHistoryEasy);
                         String answersHistoryHardCorrect = jsonEncode(answersHistoryHard);
-                        int i = await _dbHelper.insertCountry(
-                          _controllerName.text,
-                          _controllerLessonGeography.text,
-                          _controllerLessonHistory.text,
-                          jsonStringEG,
-                          jsonStringHG,
-                          jsonStringEH,
-                          jsonStringHH,
-                          jsonStringEGA1,
-                          jsonStringEGA2,
-                          jsonStringEGA3,
-                          jsonStringEGA4,
-                          jsonStringHGA1,
-                          jsonStringHGA2,
-                          jsonStringHGA3,
-                          jsonStringHGA4,
-                          jsonStringEHA1,
-                          jsonStringEHA2,
-                          jsonStringEHA3,
-                          jsonStringEHA4,
-                          jsonStringHHA1,
-                          jsonStringHHA2,
-                          jsonStringHHA3,
-                          jsonStringHHA4,
-                          answersGeographyEasyCorrect,
-                          answersGeographyHardCorrect,
-                          answersHistoryEasyCorrect,
-                          answersHistoryHardCorrect,
-                        );
+                        
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor:

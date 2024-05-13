@@ -11,6 +11,8 @@ import '../Theme/general_info.dart';
 import '../Theme/translations.dart';
 import 'testpage1.dart';
 import 'testpage2.dart';
+import 'testpage4.dart';
+import 'testpage5.dart';
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
@@ -120,7 +122,10 @@ class _QuizPageState extends State<QuizPage> {
       hardQuestionsA2,
       hardQuestionsA3,
       hardQuestionsA4;
-  List<int> questionNumber = [], easyAnswers = [], hardAnswers = [], specialQuestionAnswers = [9, 9, 9, 9, 9, 9, 9];
+  List<int> questionNumber = [],
+      easyAnswers = [],
+      hardAnswers = [],
+      specialQuestionAnswers = [9, 9, 9, 9, 9, 9, 9];
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   Map<String?, Map<int?, String?>> info = Info().info;
   double population = 0;
@@ -195,7 +200,8 @@ class _QuizPageState extends State<QuizPage> {
     String populationString = info[country]![3]!.replaceAll(',', '');
     digits = populationString.length;
     population = double.parse(populationString);
-    specialQuestionAnswers[1] = (digits!>6 ? population/1000000 : population/100000).toInt();
+    specialQuestionAnswers[1] =
+        (digits! > 6 ? population / 1000000 : population / 100000).toInt();
     randomNumber = random.nextInt(5) + 1;
     print("$specialQuestionAnswers[1] $population");
   }
@@ -540,32 +546,20 @@ class _QuizPageState extends State<QuizPage> {
               : pageIndex == 3
                   ? TestPage3(
                       getAnswerFunction: getAnswer,
-                      selected: 0,
-                      subject: subject,
-                      country: country,
-                      randomNumber: randomNumber,
-                      population: population,
-                      digits: digits,
+                      question: "Antrebare",
+                      answer: 2,
                     )
                   : pageIndex == 6
-                      ? TestPage3(
+                      ? TestPage4(
                           getAnswerFunction: getAnswer,
-                          selected: 0,
-                          subject: subject,
-                          country: country,
-                          randomNumber: randomNumber,
-                          population: population,
-                          digits: digits,
+                          firstColumn: QE,
+                          secondColumn: QH,
                         )
                       : pageIndex == 9
-                          ? TestPage3(
+                          ? TestPage5(
                               getAnswerFunction: getAnswer,
-                              selected: 0,
-                              subject: subject,
-                              country: country,
-                              randomNumber: randomNumber,
-                              population: population,
-                              digits: digits,
+                              question: "Adevarat sau fals?",
+                              answer: 2,
                             )
                           : pageIndex != 11 && pageIndex % 2 == 0
                               ? TestPage1(

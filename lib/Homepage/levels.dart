@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
+import 'package:patrocle/Homepage/add_test_page.dart';
 import '../Components/level_tile.dart';
 import '../Theme/translations.dart';
 import 'add_test.dart';
@@ -90,7 +91,9 @@ class _LevelsState extends State<Levels> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
                         color = (index + 1) % 3;
-                        return LevelTile(
+                        if(snapshot.data![index]
+                              ['doesExist']==0) {
+                          return LevelTile(
                           colorIndex: color,
                           country: snapshot.data![index]['name'],
                           lessonGeography: snapshot.data![index]
@@ -134,6 +137,7 @@ class _LevelsState extends State<Levels> {
                           history_completed: snapshot.data![index]
                               ['history_completed'],
                         );
+                        }
                       },
                     );
                   } else if (snapshot.hasError) {
@@ -272,7 +276,7 @@ class _LevelsState extends State<Levels> {
                                       Navigator.push(
                                         context,
                                         PageTransition(
-                                          child: const AddTest(),
+                                          child: const AddTestPage(),
                                           type: PageTransitionType.bottomToTop,
                                           duration:
                                               const Duration(milliseconds: 400),

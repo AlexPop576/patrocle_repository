@@ -2,8 +2,11 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseHelper {
+  List<String> countries = [
+    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "CAR", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "North Korea", "South Korea", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "UAE", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+  ];
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 23;
+  static final _databaseVersion = 25;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -103,6 +106,7 @@ class DatabaseHelper {
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
           await db.execute('DROP TABLE profile');
+          await db.execute('DROP TABLE $table');
           await db.execute('''
           CREATE TABLE profile (
             profileID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -127,6 +131,19 @@ class DatabaseHelper {
             'language': 1,
             'admin': 0
           });
+          await db.execute('''
+          CREATE TABLE country (
+            countryID INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            geographyLesson TEXT,
+            historyLesson TEXT,
+            geography_completed INTEGER,
+            history_completed INTEGER,
+            doesExist INTEGER
+          )''');
+          for (String country in countries) {
+            insertCountry(country);
+          }
 
           // await db.execute('''
           // CREATE TABLE profile (
@@ -156,6 +173,20 @@ class DatabaseHelper {
   }
 
   Future<int> insertCountry(
+    String countryName,
+  ) async {
+    Database db = await database;
+    return await db.insert(table, {
+      'name': countryName,
+      'geographyLesson': "",
+      'historyLesson': "",
+      'geography_completed': 0,
+      'history_completed': 0,
+      'doesExist': 0
+    });
+  }
+
+  /*Future<int> insertCountry(
     String countryName,
     String lessonGeography,
     String lessonHistory,
@@ -216,7 +247,7 @@ class DatabaseHelper {
       'answersHistoryEasyCorrect': answersHistoryEasyCorrect,
       'answersHistoryHardCorrect': answersHistoryHardCorrect,
     });
-  }
+  }*/
 
   Future<int> insertTrophy(int trophy) async {
     Database db = await database;
@@ -225,7 +256,7 @@ class DatabaseHelper {
 
   Future<List<Map<String, dynamic>>> queryAllRows() async {
     Database db = await instance.database;
-    return await db.query(table, orderBy: '$columnId ASC');
+    return await db.query(table, orderBy: 'countryID ASC');
   }
 
   Future<List<Map<String, dynamic>>> queryTrophies() async {
