@@ -234,44 +234,36 @@ class DatabaseHelper {
       version: _databaseVersion,
       onCreate: (Database db, int version) async {
         await db.execute('''
-      CREATE TABLE $table (
-      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
-      $columnName TEXT NOT NULL,
-      $columnLessonGeography TEXT,
-      $columnLessonHistory TEXT,
-      $columnGeographyCompleted INTEGER,
-      $columnHistoryCompleted INTEGER,
-      questionsGeographyEasy TEXT,
-      questionsGeographyHard TEXT,
-      questionsHistoryEasy TEXT,
-      questionsHistoryHard TEXT,
-      answersGeographyEasyQ1 TEXT,
-      answersGeographyEasyQ2 TEXT,
-      answersGeographyEasyQ3 TEXT,
-      answersGeographyEasyQ4 TEXT,
-      answersGeographyHardQ1 TEXT,
-      answersGeographyHardQ2 TEXT,
-      answersGeographyHardQ3 TEXT,
-      answersGeographyHardQ4 TEXT,
-      answersHistoryEasyQ1 TEXT,
-      answersHistoryEasyQ2 TEXT,
-      answersHistoryEasyQ3 TEXT,
-      answersHistoryEasyQ4 TEXT,
-      answersHistoryHardQ1 TEXT,
-      answersHistoryHardQ2 TEXT,
-      answersHistoryHardQ3 TEXT,
-      answersHistoryHardQ4 TEXT,
-      answersGeographyEasyCorrect TEXT,
-      answersGeographyHardCorrect TEXT,
-      answersHistoryEasyCorrect TEXT,
-      answersHistoryHardCorrect TEXT
-      )
-    ''');
-        await db.execute('''
           CREATE TABLE trophies (
             $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
             $columnTrophy INTEGER
           )''');
+
+        await db.execute('''
+          CREATE TABLE country (
+            countryID INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT,
+            geographyLesson TEXT,
+            historyLesson TEXT,
+            geography_completed INTEGER,
+            history_completed INTEGER,
+            doesExist INTEGER
+          )''');
+
+          await db.execute('''
+          CREATE TABLE question (
+            questionID INTEGER PRIMARY KEY AUTOINCREMENT,
+            country TEXT,
+            subject INTEGER,
+            question_text TEXT,
+            answer TEXT,
+            correct_answer INTEGER,
+            type INTEGER
+          )''');
+
+          for (String country in countries) {
+            insertCountry(country);
+          }
 
         await db.execute('''
           CREATE TABLE profile (
@@ -285,7 +277,8 @@ class DatabaseHelper {
             dark_mode INTEGER,
             language INTEGER,
             admin INTEGER
-          )''');
+          )''');  
+          
         db.insert('profile', {
           'username': 'username',
           'picture': 0,
