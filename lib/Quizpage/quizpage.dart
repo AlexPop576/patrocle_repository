@@ -21,34 +21,8 @@ class QuizPage extends StatefulWidget {
     required this.country,
     required this.difficulty,
     required this.subject,
-    required this.lesson,
-    required this.QE,
-    required this.QH,
-    required this.QEA1,
-    required this.QEA2,
-    required this.QEA3,
-    required this.QEA4,
-    required this.QHA1,
-    required this.QHA2,
-    required this.QHA3,
-    required this.QHA4,
-    required this.EA,
-    required this.HA,
   });
-  String? country,
-      lesson,
-      QE,
-      QH,
-      QEA1,
-      QEA2,
-      QEA3,
-      QEA4,
-      QHA1,
-      QHA2,
-      QHA3,
-      QHA4,
-      EA,
-      HA;
+  String? country;
   int? difficulty, subject;
 
   @override
@@ -57,19 +31,6 @@ class QuizPage extends StatefulWidget {
         country: country,
         difficulty: difficulty,
         subject: subject,
-        lesson: lesson,
-        QE: QE,
-        QH: QH,
-        QEA1: QEA1,
-        QEA2: QEA2,
-        QEA3: QEA3,
-        QEA4: QEA4,
-        QHA1: QHA1,
-        QHA2: QHA2,
-        QHA3: QHA3,
-        QHA4: QHA4,
-        EA: EA,
-        HA: HA,
       );
 }
 
@@ -78,132 +39,49 @@ class _QuizPageState extends State<QuizPage> {
     required this.country,
     required this.difficulty,
     required this.subject,
-    required this.lesson,
-    required this.QE,
-    required this.QH,
-    required this.QEA1,
-    required this.QEA2,
-    required this.QEA3,
-    required this.QEA4,
-    required this.QHA1,
-    required this.QHA2,
-    required this.QHA3,
-    required this.QHA4,
-    required this.EA,
-    required this.HA,
   });
-  String? country,
-      lesson,
-      QE,
-      QH,
-      QEA1,
-      QEA2,
-      QEA3,
-      QEA4,
-      QHA1,
-      QHA2,
-      QHA3,
-      QHA4,
-      EA,
-      HA;
+  String? country;
   int? difficulty, subject, language = 2, randomNumber, digits;
   int pageIndex = 0,
       givenAnswer = -1,
       correctAnswersHard = 0,
       correctAnswersEasy = 0,
-      bonus = 0;
-  late List<String> easyQuestions,
-      hardQuestions,
-      easyQuestionsA1,
-      easyQuestionsA2,
-      easyQuestionsA3,
-      easyQuestionsA4,
-      hardQuestionsA1,
-      hardQuestionsA2,
-      hardQuestionsA3,
-      hardQuestionsA4;
+      bonus = 0,
+      pageMax = 11;
   List<int> questionNumber = [],
       easyAnswers = [],
       hardAnswers = [],
       specialQuestionAnswers = [9, 9, 9, 9, 9, 9, 9];
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   Map<String?, Map<int?, String?>> info = Info().info;
+  List<Map<String, dynamic>> questions = [];
   double population = 0;
   final _dbHelper = DatabaseHelper.instance;
 
   @override
   void initState() {
     super.initState();
-    if (QE != null) {
-      easyQuestions = List<String>.from(jsonDecode(QE!));
-    } else {
-      easyQuestions = [];
-    }
-    if (QH != null) {
-      hardQuestions = List<String>.from(jsonDecode(QH!));
-    } else {
-      hardQuestions = [];
-    }
-    if (QEA1 != null) {
-      easyQuestionsA1 = List<String>.from(jsonDecode(QEA1!));
-    } else {
-      easyQuestionsA1 = [];
-    }
-    if (QEA2 != null) {
-      easyQuestionsA2 = List<String>.from(jsonDecode(QEA2!));
-    } else {
-      easyQuestionsA2 = [];
-    }
-    if (QEA3 != null) {
-      easyQuestionsA3 = List<String>.from(jsonDecode(QEA3!));
-    } else {
-      easyQuestionsA3 = [];
-    }
-    if (QEA4 != null) {
-      easyQuestionsA4 = List<String>.from(jsonDecode(QEA4!));
-    } else {
-      easyQuestionsA4 = [];
-    }
-    if (QHA1 != null) {
-      hardQuestionsA1 = List<String>.from(jsonDecode(QHA1!));
-    } else {
-      hardQuestionsA1 = [];
-    }
-    if (QHA2 != null) {
-      hardQuestionsA2 = List<String>.from(jsonDecode(QHA2!));
-    } else {
-      hardQuestionsA2 = [];
-    }
-    if (QHA3 != null) {
-      hardQuestionsA3 = List<String>.from(jsonDecode(QHA3!));
-    } else {
-      hardQuestionsA3 = [];
-    }
-    if (QHA4 != null) {
-      hardQuestionsA4 = List<String>.from(jsonDecode(QHA4!));
-    } else {
-      hardQuestionsA4 = [];
-    }
-    if (EA != null) {
-      easyAnswers = List<int>.from(jsonDecode(EA!));
-    } else {
-      easyAnswers = [];
-    }
-    if (HA != null) {
-      hardAnswers = List<int>.from(jsonDecode(HA!));
-    } else {
-      hardAnswers = [];
-    }
+    fetchData(country.toString(), subject.toString());
+
     var random = Random();
     var numbers = List<int>.generate(10, (index) => index)..shuffle(random);
     questionNumber = numbers.take(10).toList();
+
     String populationString = info[country]![3]!.replaceAll(',', '');
     digits = populationString.length;
     population = double.parse(populationString);
     specialQuestionAnswers[1] =
         (digits! > 6 ? population / 1000000 : population / 100000).toInt();
     randomNumber = random.nextInt(5) + 1;
-    print("$specialQuestionAnswers[1] $population");
+    //print("$specialQuestionAnswers[1] $population");
+  }
+
+  void fetchData(String country, String subject) async {
+    questions = await _dbHelper.queryQuestions(country, subject);
+    setState(() {
+      pageMax = questions.length;
+    });
+    print('questions: $questions');
   }
 
   void correct() {
@@ -375,6 +253,7 @@ class _QuizPageState extends State<QuizPage> {
     setState(() {
       givenAnswer = answer;
     });
+    print('update: $givenAnswer');
   }
 
   List<Widget> sections = [];
@@ -382,7 +261,7 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: pageIndex != 11
+      appBar: pageIndex != pageMax+1
           ? AppBar(
               backgroundColor: Theme.of(context).colorScheme.primary,
               leading: IconButton(
@@ -514,7 +393,7 @@ class _QuizPageState extends State<QuizPage> {
                             children: [
                               ...sections,
                               Expanded(
-                                flex: 11 - pageIndex - bonus,
+                                flex: pageMax + 1 - pageIndex - bonus,
                                 child: Container(
                                   height: 20,
                                   color: Colors.white,
@@ -537,128 +416,7 @@ class _QuizPageState extends State<QuizPage> {
                 fillColor: Theme.of(context).colorScheme.background,
                 child: child,
               ),
-          child: pageIndex == 0
-              ? Lesson(
-                  lesson: lesson,
-                  country: country,
-                  subject: subject,
-                )
-              : pageIndex == 3
-                  ? TestPage3(
-                      getAnswerFunction: getAnswer,
-                      question: "Antrebare",
-                      answer: 2,
-                    )
-                  : pageIndex == 6
-                      ? TestPage4(
-                          getAnswerFunction: getAnswer,
-                          firstColumn: QE,
-                          secondColumn: QH,
-                        )
-                      : pageIndex == 9
-                          ? TestPage5(
-                              getAnswerFunction: getAnswer,
-                              question: "Adevarat sau fals?",
-                              answer: 2,
-                            )
-                          : pageIndex != 11 && pageIndex % 2 == 0
-                              ? TestPage1(
-                                  getAnswerFunction: getAnswer,
-                                  selected: 0,
-                                  questionText: difficulty == 1
-                                      ? easyQuestions[
-                                          questionNumber[pageIndex - 1]]
-                                      : difficulty == 2
-                                          ? easyQuestions[
-                                              questionNumber[pageIndex - 1]]
-                                          : hardQuestions[
-                                              questionNumber[pageIndex - 1]],
-                                  answer1: difficulty == 1
-                                      ? easyQuestionsA1[
-                                          questionNumber[pageIndex - 1]]
-                                      : difficulty == 2
-                                          ? easyQuestionsA1[
-                                              questionNumber[pageIndex - 1]]
-                                          : hardQuestionsA1[
-                                              questionNumber[pageIndex - 1]],
-                                  answer2: difficulty == 1
-                                      ? easyQuestionsA2[
-                                          questionNumber[pageIndex - 1]]
-                                      : difficulty == 2
-                                          ? easyQuestionsA2[
-                                              questionNumber[pageIndex - 1]]
-                                          : hardQuestionsA2[
-                                              questionNumber[pageIndex - 1]],
-                                  answer3: difficulty == 1
-                                      ? easyQuestionsA3[
-                                          questionNumber[pageIndex - 1]]
-                                      : difficulty == 2
-                                          ? easyQuestionsA3[
-                                              questionNumber[pageIndex - 1]]
-                                          : hardQuestionsA3[
-                                              questionNumber[pageIndex - 1]],
-                                  answer4: difficulty == 1
-                                      ? easyQuestionsA4[
-                                          questionNumber[pageIndex - 1]]
-                                      : difficulty == 2
-                                          ? easyQuestionsA4[
-                                              questionNumber[pageIndex - 1]]
-                                          : hardQuestionsA4[
-                                              questionNumber[pageIndex - 1]],
-                                  givenAnswer: 0,
-                                )
-                              : pageIndex != 11 && pageIndex % 2 == 1
-                                  ? TestPage2(
-                                      getAnswerFunction: getAnswer,
-                                      selected: 0,
-                                      questionText: difficulty == 1
-                                          ? easyQuestions[
-                                              questionNumber[pageIndex - 1]]
-                                          : difficulty == 2
-                                              ? hardQuestions[
-                                                  questionNumber[pageIndex - 1]]
-                                              : hardQuestions[questionNumber[
-                                                  pageIndex - 1]],
-                                      answer1: difficulty == 1
-                                          ? easyQuestionsA1[
-                                              questionNumber[pageIndex - 1]]
-                                          : difficulty == 2
-                                              ? hardQuestionsA1[
-                                                  questionNumber[pageIndex - 1]]
-                                              : hardQuestionsA1[questionNumber[
-                                                  pageIndex - 1]],
-                                      answer2: difficulty == 1
-                                          ? easyQuestionsA2[
-                                              questionNumber[pageIndex - 1]]
-                                          : difficulty == 2
-                                              ? hardQuestionsA2[
-                                                  questionNumber[pageIndex - 1]]
-                                              : hardQuestionsA2[questionNumber[
-                                                  pageIndex - 1]],
-                                      answer3: difficulty == 1
-                                          ? easyQuestionsA3[
-                                              questionNumber[pageIndex - 1]]
-                                          : difficulty == 2
-                                              ? hardQuestionsA3[
-                                                  questionNumber[pageIndex - 1]]
-                                              : hardQuestionsA3[questionNumber[
-                                                  pageIndex - 1]],
-                                      answer4: difficulty == 1
-                                          ? easyQuestionsA4[
-                                              questionNumber[pageIndex - 1]]
-                                          : difficulty == 2
-                                              ? hardQuestionsA4[
-                                                  questionNumber[pageIndex - 1]]
-                                              : hardQuestionsA4[questionNumber[
-                                                  pageIndex - 1]],
-                                      givenAnswer: 0,
-                                    )
-                                  : FinishPage(
-                                      correctAnswersEasy: correctAnswersEasy,
-                                      correctAnswersHard: correctAnswersHard,
-                                      correctAnswers: correctAnswersEasy +
-                                          correctAnswersHard,
-                                    )),
+          child: getPage()),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -677,32 +435,14 @@ class _QuizPageState extends State<QuizPage> {
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: ElevatedButton(
                     onPressed: () async {
-                      if (givenAnswer != 0 && pageIndex != 11) {
-                        if (pageIndex > 0 && pageIndex < 11) {
+                      if (givenAnswer != 0 && pageIndex != pageMax+1) {
+                        if (pageIndex > 0 && pageIndex < pageMax+1) {
                           setState(() {
                             bonus = 1;
                           });
-                          if (pageIndex == 3
-                              ? specialQuestionAnswers[1] == givenAnswer
-                              : pageIndex == 6
-                                  ? specialQuestionAnswers[2] == givenAnswer
-                                  : pageIndex == 9
-                                      ? specialQuestionAnswers[3] == givenAnswer
-                                      : difficulty == 1
-                                          ? easyAnswers[questionNumber[
-                                                      pageIndex - 1] +
-                                                  1] ==
-                                              givenAnswer
-                                          : difficulty == 2 &&
-                                                  pageIndex % 2 == 0
-                                              ? easyAnswers[questionNumber[
-                                                          pageIndex - 1] +
-                                                      1] ==
-                                                  givenAnswer
-                                              : hardAnswers[questionNumber[
-                                                          pageIndex - 1] +
-                                                      1] ==
-                                                  givenAnswer) {
+                          if (int.parse(
+                                  questions[pageIndex - 1]['correct_answer']) ==
+                              givenAnswer) {
                             correct();
                             difficulty == 1
                                 ? correctAnswersEasy++
@@ -762,7 +502,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                   setState(() {
-                                                    if (pageIndex < 11) {
+                                                    if (pageIndex < pageMax+1) {
                                                       pageIndex++;
                                                       givenAnswer = 0;
                                                       bonus = 0;
@@ -856,7 +596,7 @@ class _QuizPageState extends State<QuizPage> {
                                               children: [
                                                 Expanded(
                                                   child: Text(
-                                                    "${translation[language]!["Correct answer"]}: ${difficulty == 1 ? easyAnswers[questionNumber[pageIndex - 1] + 1] == 1 ? easyQuestionsA1[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 2 ? easyQuestionsA2[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 3 ? easyQuestionsA3[questionNumber[pageIndex - 1]] : easyQuestionsA4[questionNumber[pageIndex - 1]] : difficulty == 2 && pageIndex % 2 == 0 ? easyAnswers[questionNumber[pageIndex - 1] + 1] == 1 ? easyQuestionsA1[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 2 ? easyQuestionsA2[questionNumber[pageIndex - 1]] : easyAnswers[questionNumber[pageIndex - 1] + 1] == 3 ? easyQuestionsA3[questionNumber[pageIndex - 1]] : easyQuestionsA4[questionNumber[pageIndex - 1]] : hardAnswers[questionNumber[pageIndex - 1] + 1] == 1 ? hardQuestionsA1[questionNumber[pageIndex - 1]] : hardAnswers[questionNumber[pageIndex - 1] + 1] == 2 ? hardQuestionsA2[questionNumber[pageIndex - 1]] : hardAnswers[questionNumber[pageIndex - 1] + 1] == 3 ? hardQuestionsA3[questionNumber[pageIndex - 1]] : hardQuestionsA4[questionNumber[pageIndex - 1]]}",
+                                                    "${translation[language]!["Correct answer"]}: ${questions[pageIndex - 1]['type']!=4 ? questions[pageIndex - 1]['correct_answer'] : questions[pageIndex - 1]['correct_answer']==1 ? 'True' : 'False'}",
                                                     style: const TextStyle(
                                                       fontSize: 20,
                                                     ),
@@ -872,7 +612,7 @@ class _QuizPageState extends State<QuizPage> {
                                                 onPressed: () {
                                                   Navigator.pop(context);
                                                   setState(() {
-                                                    if (pageIndex < 11) {
+                                                    if (pageIndex < pageMax+1) {
                                                       pageIndex++;
                                                       givenAnswer = 0;
                                                       bonus = 0;
@@ -921,7 +661,7 @@ class _QuizPageState extends State<QuizPage> {
                             bonus = 0;
                           }
                         });
-                      } else if (pageIndex == 11) {
+                      } else if (pageIndex == pageMax+1) {
                         updateLessonStatus();
                         updateIQ();
                         updateTrophies();
@@ -929,7 +669,7 @@ class _QuizPageState extends State<QuizPage> {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: givenAnswer == 0 && pageIndex != 11
+                      backgroundColor: givenAnswer == 0 && pageIndex != pageMax+1
                           ? const Color.fromARGB(255, 59, 59, 73)
                           : const Color.fromARGB(255, 102, 102, 255),
                       shape: const RoundedRectangleBorder(
@@ -939,7 +679,7 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     ),
                     child: Text(
-                        pageIndex == 0 || pageIndex == 11
+                        pageIndex == 0 || pageIndex == pageMax+1
                             ? "${translation[language]!["Continue"]}"
                             : "${translation[language]!["Check"]}",
                         style: const TextStyle(
@@ -956,6 +696,67 @@ class _QuizPageState extends State<QuizPage> {
       ),
     );
   }
+
+  Widget getPage() {
+  if (pageIndex == 0) {
+    return Lesson(
+      country: country,
+      subject: subject,
+    );
+  } else if (pageIndex != pageMax+1) {
+    final question = questions[pageIndex - 1];
+
+    // Adaugă declarații print pentru debugging
+    print('Question Type: ${question['type']}');
+    print('Question Data: $question');
+
+    // Convertirea valorii la int, dacă este necesar
+    final int questionType = int.parse(question['type'].toString());
+
+    if (questionType == 1) {
+      return TestPage1(
+        key: ValueKey('TestPage1-${pageIndex}'),
+        getAnswerFunction: getAnswer,
+        selected: 0,
+        questionText: question['question_text'].toString(),
+        answersJSON: question['answer'].toString(),
+        correct_answer: question['correct_answer'].toString(),
+        givenAnswer: 0,
+      );
+    } else if (questionType == 2) {
+      return TestPage3(
+        key: ValueKey('TestPage3-${pageIndex}'),
+        getAnswerFunction: getAnswer,
+        question: question['question_text'].toString(),
+        answer: question['correct_answer'].toString(),
+      );
+    } else if (questionType == 3) {
+      return TestPage4(
+        key: ValueKey('TestPage4-${pageIndex}'),
+        getAnswerFunction: getAnswer,
+        answers: question['answer'].toString(),
+      );
+    } else if (questionType == 4) {
+      return TestPage5(
+        key: ValueKey('TestPage5-${pageIndex}'),
+        getAnswerFunction: getAnswer,
+        answer: int.parse(question['correct_answer']),
+        question: question['question_text'].toString(),
+      );
+    } else {
+      print('Unexpected Question Type: $questionType');
+      return Scaffold();
+    }
+  } else {
+    return FinishPage(
+      correctAnswersEasy: correctAnswersEasy,
+      correctAnswersHard: correctAnswersHard,
+      correctAnswers: correctAnswersEasy + correctAnswersHard,
+      pageMax: pageMax,
+    );
+  }
+}
+
 }
 
 // ignore: must_be_immutable
@@ -965,10 +766,11 @@ class FinishPage extends StatelessWidget {
     required this.correctAnswersEasy,
     required this.correctAnswersHard,
     required this.correctAnswers,
+    required this.pageMax,
   });
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final int correctAnswersEasy, correctAnswersHard, correctAnswers;
-  int? language = 2;
+  int? language = 2, pageMax;
 
   @override
   Widget build(BuildContext context) {
@@ -986,7 +788,7 @@ class FinishPage extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          correctAnswers == 0 || correctAnswers == 1 || correctAnswers == 2
+          correctAnswers == 0 || correctAnswers == (0.1*pageMax!).round() || correctAnswers == (0.2*pageMax!).round()
               ? Text(
                   "${translation[language]!["Try again"]}",
                   textAlign: TextAlign.center,
@@ -996,7 +798,7 @@ class FinishPage extends StatelessWidget {
                     color: Color.fromARGB(255, 219, 64, 64),
                   ),
                 )
-              : correctAnswers == 3 || correctAnswers == 4
+              : correctAnswers == (0.3*pageMax!).round() || correctAnswers == (0.4*pageMax!).round()
                   ? Text(
                       "${translation[language]!["Almost there!"]}",
                       textAlign: TextAlign.center,
@@ -1006,7 +808,7 @@ class FinishPage extends StatelessWidget {
                         color: Color.fromARGB(255, 219, 121, 64),
                       ),
                     )
-                  : correctAnswers == 5 || correctAnswers == 6
+                  : correctAnswers == (0.5*pageMax!).round() || correctAnswers == (0.6*pageMax!).round()
                       ? Text(
                           "${translation[language]!["Good job!"]}",
                           textAlign: TextAlign.center,
@@ -1016,7 +818,7 @@ class FinishPage extends StatelessWidget {
                             color: Color.fromARGB(255, 216, 219, 64),
                           ),
                         )
-                      : correctAnswers == 7 || correctAnswers == 8
+                      : correctAnswers == (0.7*pageMax!).round() || correctAnswers == (0.8*pageMax!).round()
                           ? Text(
                               "${translation[language]!["Fantastic!"]}",
                               textAlign: TextAlign.center,
@@ -1026,7 +828,7 @@ class FinishPage extends StatelessWidget {
                                 color: Color.fromARGB(255, 196, 219, 64),
                               ),
                             )
-                          : correctAnswers == 9
+                          : correctAnswers == (0.9*pageMax!).round()
                               ? Text(
                                   "${translation[language]!["Almost perfect!"]}",
                                   textAlign: TextAlign.center,
@@ -1160,7 +962,7 @@ class FinishPage extends StatelessWidget {
                                 ),
                                 child: Center(
                                     child: Text(
-                                  "$correctAnswers/10",
+                                  "$correctAnswers/$pageMax",
                                   style: TextStyle(
                                       color: correctAnswers == 0 ||
                                               correctAnswers == 1 ||

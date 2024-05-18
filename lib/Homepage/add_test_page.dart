@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -147,7 +148,7 @@ class _AddTestPageState extends State<AddTestPage> {
             ),
           ),
         ),
-        body: pageIndex == 2 ? addQuestion() : addCountry());
+        body: addCountry());
   }
 }
 
@@ -177,47 +178,71 @@ class _addCountryState extends State<addCountry> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (context, index) {
-                      int color = index%2;
+                      int color = index % 2;
                       return ListTile(
-                          tileColor: color == 1 ? Color.fromARGB(80, 0, 0, 0) : Colors.transparent,
+                          tileColor: color == 1
+                              ? const Color.fromARGB(80, 0, 0, 0)
+                              : Colors.transparent,
                           title: Row(
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.all(Radius.circular(5)),
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(5)),
                                 child: Image.asset(
-                                    'assets/flags/${snapshot.data![index]['name']}.png', height: 20,),
+                                  'assets/flags/${snapshot.data![index]['name']}.png',
+                                  height: 20,
+                                ),
                               ),
-                              SizedBox(width: 10,),
+                              const SizedBox(
+                                width: 10,
+                              ),
                               Text('${snapshot.data![index]['name']}'),
                             ],
                           ),
-                          trailing: snapshot.data![index]['doesExist'] == 1
+                          trailing: snapshot.data![index]['doesExist'] == 0
                               ? IconButton(
-                                  icon: const CircleAvatar(backgroundColor: Colors.green, child: const Icon(Icons.add, color: Colors.white),),
+                                  icon: const CircleAvatar(
+                                      backgroundColor: Colors.green,
+                                      radius: 18,
+                                      child:
+                                          Icon(Icons.add, color: Colors.white)),
                                   onPressed: () async {
-                                    int i = await _dbHelper.deleteTrophy(
-                                        snapshot.data![index]['_trophy_id']);
-                                    print('deleted row: $i');
+                                    Navigator.push(
+                                      context,
+                                      PageTransition(
+                                        child: addLesson(
+                                            country: snapshot.data![index]
+                                                ['name']),
+                                        type: PageTransitionType
+                                            .rightToLeftWithFade,
+                                        duration:
+                                            const Duration(milliseconds: 250),
+                                      ),
+                                    );
                                     setState(() {});
                                   },
                                 )
-                              : Row(
+                              : Wrap(
                                   children: [
                                     IconButton(
-                                      icon: const CircleAvatar(backgroundColor: Colors.yellow, child: const Icon(Icons.edit, color: Colors.white),),
+                                      icon: const CircleAvatar(
+                                          backgroundColor:
+                                              Color.fromARGB(255, 255, 203, 59),
+                                          radius: 18,
+                                          child: Icon(Icons.edit,
+                                              color: Colors.white)),
                                       onPressed: () async {
-                                        int i = await _dbHelper.deleteTrophy(
-                                            snapshot.data![index]['_trophy_id']);
-                                        print('deleted row: $i');
                                         setState(() {});
                                       },
                                     ),
                                     IconButton(
-                                      icon: const CircleAvatar(backgroundColor: Colors.red, child: const Icon(Icons.delete, color: Colors.white),),
+                                      icon: const CircleAvatar(
+                                        backgroundColor: Colors.red,
+                                        radius: 18,
+                                        child: Icon(Icons.delete,
+                                            color: Colors.white),
+                                      ),
                                       onPressed: () async {
-                                        int i = await _dbHelper.deleteTrophy(
-                                            snapshot.data![index]['_trophy_id']);
-                                        print('deleted row: $i');
                                         setState(() {});
                                       },
                                     )
@@ -239,16 +264,148 @@ class _addCountryState extends State<addCountry> {
 }
 
 class addQuestion extends StatefulWidget {
-  const addQuestion({super.key});
+  addQuestion({super.key, required this.country});
+  String? country;
 
   @override
-  State<addQuestion> createState() => _addQuestionState();
+  State<addQuestion> createState() => _addQuestionState(country: country);
 }
 
 class _addQuestionState extends State<addQuestion> {
+  _addQuestionState({required this.country});
+  String? country;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width, 60),
+        child: ClipRect(
+          child: AppBar(
+            //flexibleSpace: Container(color: Colors.transparent),
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            leading: IconButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: Colors.white,
+                  size: 29,
+                ),
+                onPressed: () {
+                  showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.background,
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  topRight: Radius.circular(25))),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 17),
+                            child: SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Column(children: [
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Lottie.asset('assets/patrocle.json',
+                                    frameRate: FrameRate.max, height: 100),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 40),
+                                  child: Text(
+                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
+                                SizedBox(
+                                  height: 58,
+                                  width: double.infinity,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 102, 102, 255),
+                                      ),
+                                      child: const Center(
+                                          child: Text("Continue",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30))),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                SizedBox(
+                                  height: 58,
+                                  width: double.infinity,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 219, 64, 64),
+                                      ),
+                                      child: const Center(
+                                          child: Text("Quit",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30))),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ]),
+                            ),
+                          ),
+                        );
+                      });
+                }),
+            title: Text(
+              country.toString(),
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35),
+            ),
+            centerTitle: true,
+            elevation: 0,
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 17),
         child: Column(
@@ -270,7 +427,7 @@ class _addQuestionState extends State<addQuestion> {
                     Navigator.push(
                       context,
                       PageTransition(
-                        child: addQuiz(language: 2),
+                        child: addQuiz(language: 2, country: country),
                         type: PageTransitionType.rightToLeftWithFade,
                         duration: const Duration(milliseconds: 250),
                       ),
@@ -303,7 +460,7 @@ class _addQuestionState extends State<addQuestion> {
                     Navigator.push(
                       context,
                       PageTransition(
-                        child: addSlider(language: 2),
+                        child: addSlider(country: country, language: 2),
                         type: PageTransitionType.rightToLeftWithFade,
                         duration: const Duration(milliseconds: 250),
                       ),
@@ -336,7 +493,7 @@ class _addQuestionState extends State<addQuestion> {
                     Navigator.push(
                       context,
                       PageTransition(
-                        child: addMatch(language: 2),
+                        child: addMatch(country: country, language: 2),
                         type: PageTransitionType.rightToLeftWithFade,
                         duration: const Duration(milliseconds: 250),
                       ),
@@ -369,7 +526,7 @@ class _addQuestionState extends State<addQuestion> {
                     Navigator.push(
                       context,
                       PageTransition(
-                        child: addTrueFalse(language: 2),
+                        child: addTrueFalse(country: country, language: 2),
                         type: PageTransitionType.rightToLeftWithFade,
                         duration: const Duration(milliseconds: 250),
                       ),
@@ -398,18 +555,303 @@ class _addQuestionState extends State<addQuestion> {
   }
 }
 
-class addQuiz extends StatefulWidget {
-  addQuiz({super.key, this.language});
-  int? language;
+class addLesson extends StatefulWidget {
+  addLesson({super.key, required this.country});
+  String? country;
 
   @override
-  State<addQuiz> createState() => _addQuizState(language: language);
+  State<addLesson> createState() => _addLessonState(country: country);
+}
+
+class _addLessonState extends State<addLesson> {
+  _addLessonState({required this.country});
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
+  String? country;
+  int? language = 1;
+  final _dbHelper = DatabaseHelper.instance;
+  final _controllerLessonGeography = TextEditingController();
+  final _controllerLessonHistory = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: Size(MediaQuery.of(context).size.width, 60),
+        child: ClipRect(
+          child: AppBar(
+            //flexibleSpace: Container(color: Colors.transparent),
+            backgroundColor: Theme.of(context).colorScheme.primary,
+            leading: IconButton(
+                icon: const Icon(
+                  Icons.close,
+                  color: Colors.white,
+                  size: 29,
+                ),
+                onPressed: () {
+                  showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      context: context,
+                      builder: (BuildContext context) {
+                        return Container(
+                          height: double.infinity,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.background,
+                              borderRadius: const BorderRadius.only(
+                                  topLeft: Radius.circular(25),
+                                  topRight: Radius.circular(25))),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 17),
+                            child: SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Column(children: [
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Lottie.asset('assets/patrocle.json',
+                                    frameRate: FrameRate.max, height: 100),
+                                const SizedBox(
+                                  height: 30,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 40),
+                                  child: Text(
+                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    style: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .tertiary,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 20,
+                                    ),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 40,
+                                ),
+                                SizedBox(
+                                  height: 58,
+                                  width: double.infinity,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 102, 102, 255),
+                                      ),
+                                      child: const Center(
+                                          child: Text("Continue",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30))),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 12,
+                                ),
+                                SizedBox(
+                                  height: 58,
+                                  width: double.infinity,
+                                  child: ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(15)),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 219, 64, 64),
+                                      ),
+                                      child: const Center(
+                                          child: Text("Quit",
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30))),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                              ]),
+                            ),
+                          ),
+                        );
+                      });
+                }),
+            title: const Text(
+              "Lessons",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 35),
+            ),
+            centerTitle: true,
+            elevation: 0,
+          ),
+        ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 17),
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(children: [
+            const SizedBox(height: 20),
+            const Text(
+              "Geography lesson",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 25),
+            SizedBox(
+              height: 350,
+              child: TextField(
+                controller: _controllerLessonGeography,
+                cursorColor: Colors.white,
+                maxLines: null,
+                expands: true,
+                maxLength: 2000,
+                decoration: InputDecoration(
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        width: 1.0),
+                  ),
+                  labelText: 'Geography lesson',
+                  labelStyle:
+                      TextStyle(color: Theme.of(context).colorScheme.tertiary),
+                  counterText: '',
+                ),
+              ),
+            ),
+            const SizedBox(height: 20),
+            Divider(
+              color: Theme.of(context).colorScheme.primary,
+              thickness: 3,
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              "History lesson",
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 25),
+            SizedBox(
+              height: 350,
+              child: TextField(
+                controller: _controllerLessonHistory,
+                cursorColor: Colors.white,
+                maxLines: null,
+                expands: true,
+                maxLength: 2000,
+                decoration: InputDecoration(
+                  focusedBorder: const OutlineInputBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
+                    borderSide: BorderSide(color: Colors.white, width: 2.0),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.tertiary,
+                        width: 1.0),
+                  ),
+                  labelText: 'History lesson',
+                  labelStyle:
+                      TextStyle(color: Theme.of(context).colorScheme.tertiary),
+                  counterText: '',
+                ),
+              ),
+            ),
+            const SizedBox(height: 350),
+          ]),
+        ),
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 100,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 17),
+          child: Column(
+            children: [
+              Divider(
+                color: Theme.of(context).colorScheme.primary,
+                thickness: 3,
+              ),
+              const SizedBox(height: 10),
+              SizedBox(
+                height: 58,
+                width: double.infinity,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  child: ElevatedButton(
+                    onPressed: () async {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: addQuestion(country: country),
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: const Duration(milliseconds: 250),
+                        ),
+                      );
+                      await _dbHelper.setCountry(country.toString());
+                      await _dbHelper.setLesson(country.toString(),
+                          _controllerLessonGeography.text, 1);
+                      await _dbHelper.setLesson(
+                          country.toString(), _controllerLessonHistory.text, 2);
+                    },
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor:
+                            const Color.fromARGB(255, 102, 102, 255)),
+                    child: Center(
+                      child: Text("${translation[language]!["Save"]}",
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          )),
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 15,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class addQuiz extends StatefulWidget {
+  addQuiz({super.key, this.language, required this.country});
+  int? language;
+  String? country;
+
+  @override
+  State<addQuiz> createState() =>
+      _addQuizState(language: language, country: country);
 }
 
 class _addQuizState extends State<addQuiz> {
-  _addQuizState({this.language});
+  _addQuizState({this.language, required this.country});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? language = 1;
+  final _dbHelper = DatabaseHelper.instance;
+  int? language = 1, subject = 1;
+  String? country;
   final _controllerQuestion = TextEditingController(),
       _controllerAnswer1 = TextEditingController(),
       _controllerAnswer2 = TextEditingController(),
@@ -678,7 +1120,6 @@ class _addQuizState extends State<addQuiz> {
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
-              BackButton(),
             ],
           ),
         ),
@@ -702,6 +1143,20 @@ class _addQuizState extends State<addQuiz> {
                   child: ElevatedButton(
                     onPressed: () async {
                       Navigator.pop(context);
+                      //await _dbHelper.setCountry(country.toString());
+                      String answersText = jsonEncode([
+                        _controllerAnswer1.text,
+                        _controllerAnswer2.text,
+                        _controllerAnswer3.text,
+                        _controllerAnswer4.text
+                      ]);
+                      await _dbHelper.insertQuestion(
+                          country.toString(),
+                          _controllerQuestion.text,
+                          answersText,
+                          answer,
+                          1,
+                          subject!);
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -729,17 +1184,21 @@ class _addQuizState extends State<addQuiz> {
 }
 
 class addSlider extends StatefulWidget {
-  addSlider({super.key, this.language});
+  addSlider({super.key, required this.country, this.language});
   int? language;
+  String? country;
 
   @override
-  State<addSlider> createState() => _addSliderState(language: language);
+  State<addSlider> createState() =>
+      _addSliderState(country: country, language: language);
 }
 
 class _addSliderState extends State<addSlider> {
-  _addSliderState({this.language});
+  _addSliderState({required this.country, this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? language = 1;
+  int? language = 1, subject = 1;
+  String? country;
+  final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController(),
       _controllerAnswer = TextEditingController();
 
@@ -898,7 +1357,6 @@ class _addSliderState extends State<addSlider> {
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
-              BackButton(),
             ],
           ),
         ),
@@ -922,6 +1380,14 @@ class _addSliderState extends State<addSlider> {
                   child: ElevatedButton(
                     onPressed: () async {
                       Navigator.pop(context);
+                      await _dbHelper.insertQuestion(
+                          country.toString(),
+                          _controllerQuestion.text,
+                          "",
+                          int.parse(_controllerAnswer.text),
+                          2,
+                          subject!);
+                      //await _dbHelper.setCountry(country.toString());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -949,18 +1415,30 @@ class _addSliderState extends State<addSlider> {
 }
 
 class addMatch extends StatefulWidget {
-  addMatch({super.key, this.language});
+  addMatch({super.key, required this.country, this.language});
   int? language;
+  String? country;
 
   @override
-  State<addMatch> createState() => _addMatchState(language: language);
+  State<addMatch> createState() =>
+      _addMatchState(country: country, language: language);
 }
 
 class _addMatchState extends State<addMatch> {
-  _addMatchState({this.language});
+  _addMatchState({required this.country, this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? language = 1;
+  int? language = 1, subject = 1;
+  String? country;
+  final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController(),
+      _controllerW1C1 = TextEditingController(),
+      _controllerW1C2 = TextEditingController(),
+      _controllerW2C1 = TextEditingController(),
+      _controllerW2C2 = TextEditingController(),
+      _controllerW3C1 = TextEditingController(),
+      _controllerW3C2 = TextEditingController(),
+      _controllerW4C1 = TextEditingController(),
+      _controllerW4C2 = TextEditingController(),
       _controllerAnswer = TextEditingController();
 
   @override
@@ -1104,42 +1582,65 @@ class _addMatchState extends State<addMatch> {
                 thickness: 3,
               ),
               const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 1, Column 1"),
+              Textfield(
+                  height: 58,
+                  text: "Word 1, Column 1",
+                  controller: _controllerW1C1),
               const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 1, Column 2"),
-              const SizedBox(height: 15),
-              Divider(
-                color: Theme.of(context).colorScheme.primary,
-                thickness: 3,
-              ),
-              const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 2, Column 1"),
-              const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 2, Column 2"),
+              Textfield(
+                  height: 58,
+                  text: "Word 1, Column 2",
+                  controller: _controllerW1C2),
               const SizedBox(height: 15),
               Divider(
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
               const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 3, Column 1"),
+              Textfield(
+                  height: 58,
+                  text: "Word 2, Column 1",
+                  controller: _controllerW2C1),
               const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 3, Column 2"),
+              Textfield(
+                  height: 58,
+                  text: "Word 2, Column 2",
+                  controller: _controllerW2C2),
+              const SizedBox(height: 15),
+              Divider(
+                color: Theme.of(context).colorScheme.primary,
+                thickness: 3,
+              ),
+              const SizedBox(height: 15),
+              Textfield(
+                  height: 58,
+                  text: "Word 3, Column 1",
+                  controller: _controllerW3C1),
+              const SizedBox(height: 15),
+              Textfield(
+                  height: 58,
+                  text: "Word 3, Column 2",
+                  controller: _controllerW3C2),
               const SizedBox(height: 15),
               Divider(
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
               const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 4, Column 1"),
+              Textfield(
+                  height: 58,
+                  text: "Word 4, Column 1",
+                  controller: _controllerW4C1),
               const SizedBox(height: 15),
-              Textfield(height: 58, text: "Word 4, Column 2"),
+              Textfield(
+                  height: 58,
+                  text: "Word 4, Column 2",
+                  controller: _controllerW4C2),
               const SizedBox(height: 15),
               Divider(
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
-              BackButton(),
             ],
           ),
         ),
@@ -1163,6 +1664,19 @@ class _addMatchState extends State<addMatch> {
                   child: ElevatedButton(
                     onPressed: () async {
                       Navigator.pop(context);
+                      String answersText = jsonEncode([
+                        _controllerW1C1.text,
+                        _controllerW2C1.text,
+                        _controllerW3C1.text,
+                        _controllerW4C1.text,
+                        _controllerW1C2.text,
+                        _controllerW2C2.text,
+                        _controllerW3C2.text,
+                        _controllerW4C2.text,
+                      ]);
+                      await _dbHelper.insertQuestion(country.toString(),
+                          _controllerQuestion.text, answersText, 1, 3, subject!);
+                      //await _dbHelper.setCountry(country.toString());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -1190,17 +1704,21 @@ class _addMatchState extends State<addMatch> {
 }
 
 class addTrueFalse extends StatefulWidget {
-  addTrueFalse({super.key, this.language});
+  addTrueFalse({super.key, required this.country, this.language});
   int? language;
+  String? country;
 
   @override
-  State<addTrueFalse> createState() => _addTrueFalseState(language: language);
+  State<addTrueFalse> createState() =>
+      _addTrueFalseState(country: country, language: language);
 }
 
 class _addTrueFalseState extends State<addTrueFalse> {
-  _addTrueFalseState({this.language});
+  _addTrueFalseState({required this.country, this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? language = 1;
+  int? language = 1, subject = 1;
+  String? country;
+  final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController();
   int selected = 0;
 
@@ -1435,7 +1953,6 @@ class _addTrueFalseState extends State<addTrueFalse> {
                 thickness: 3,
               ),
               const SizedBox(height: 15),
-              BackButton(),
             ],
           ),
         ),
@@ -1459,6 +1976,9 @@ class _addTrueFalseState extends State<addTrueFalse> {
                   child: ElevatedButton(
                     onPressed: () async {
                       Navigator.pop(context);
+                      await _dbHelper.insertQuestion(country.toString(),
+                          _controllerQuestion.text, "", selected, 4, subject!);
+                      //await _dbHelper.setCountry(country.toString());
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:

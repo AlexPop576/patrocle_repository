@@ -6,28 +6,27 @@ import 'package:lottie/lottie.dart';
 // ignore: must_be_immutable
 class TestPage4 extends StatefulWidget {
   final Function getAnswerFunction;
-  String? firstColumn, secondColumn;
+  String? answers;
 
-  TestPage4({super.key, required this.getAnswerFunction, required this.firstColumn, required this.secondColumn});
+  TestPage4({super.key, required this.getAnswerFunction, required this.answers});
 
   @override
   // ignore: no_logic_in_create_state
   State<TestPage4> createState() => _TestPage4State(
         getAnswerFunction: getAnswerFunction,
-        firstColumnJSON: firstColumn,
-        secondColumnJSON: secondColumn,
+        answers: answers,
       );
 }
 
 class _TestPage4State extends State<TestPage4> {
   final Function getAnswerFunction;
-  String? firstColumnJSON, secondColumnJSON;
-  List<String> firstColumn = [], secondColumn = [];
+  String? answers;
+  List<String> answersColumn = [];
   List<int> randomNumbers = [];
   int selected1 = 0, selected2 = 0, selected3 = 0, selected4 = 0, givenAnswer=0;
 
   _TestPage4State({
-    required this.getAnswerFunction, required this.firstColumnJSON, required this.secondColumnJSON
+    required this.getAnswerFunction, required this.answers
   });
 
   @override
@@ -35,8 +34,7 @@ class _TestPage4State extends State<TestPage4> {
     super.initState();
     var random = Random();
     randomNumbers = List<int>.generate(4, (index) => index)..shuffle(random);
-    firstColumn = List<String>.from(jsonDecode(firstColumnJSON!));
-    secondColumn = List<String>.from(jsonDecode(secondColumnJSON!));
+    answersColumn = List<String>.from(jsonDecode(answers!));
   }
 
   @override
@@ -112,7 +110,7 @@ class _TestPage4State extends State<TestPage4> {
                                         child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
-                                      child: Text(firstColumn[0],
+                                      child: Text(answersColumn[0],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -144,7 +142,7 @@ class _TestPage4State extends State<TestPage4> {
                                         child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
-                                      child: Text(firstColumn[1],
+                                      child: Text(answersColumn[1],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -176,7 +174,7 @@ class _TestPage4State extends State<TestPage4> {
                                         child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
-                                      child: Text(firstColumn[2],
+                                      child: Text(answersColumn[2],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -208,7 +206,7 @@ class _TestPage4State extends State<TestPage4> {
                                         child: Padding(
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
-                                      child: Text(firstColumn[3],
+                                      child: Text(answersColumn[3],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -283,7 +281,7 @@ class _TestPage4State extends State<TestPage4> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
                                       child: Text(
-                                          secondColumn[randomNumbers[0]],
+                                          answersColumn[randomNumbers[0]+4],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -349,7 +347,7 @@ class _TestPage4State extends State<TestPage4> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
                                       child: Text(
-                                          secondColumn[randomNumbers[1]],
+                                          answersColumn[randomNumbers[1]+4],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -415,7 +413,7 @@ class _TestPage4State extends State<TestPage4> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
                                       child: Text(
-                                          secondColumn[randomNumbers[2]],
+                                          answersColumn[randomNumbers[2]+4],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme
@@ -481,7 +479,7 @@ class _TestPage4State extends State<TestPage4> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 5),
                                       child: Text(
-                                          secondColumn[randomNumbers[3]],
+                                          answersColumn[randomNumbers[3]+4],
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme

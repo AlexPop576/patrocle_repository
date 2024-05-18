@@ -5,36 +5,32 @@ import 'package:lottie/lottie.dart';
 // ignore: must_be_immutable
 class TestPage3 extends StatefulWidget {
   final Function getAnswerFunction;
-  String? question;
-  int? answer;
+  String? question, answer;
 
   TestPage3(
-      {super.key,
-      required this.getAnswerFunction,
-      this.answer,
-      this.question});
+      {super.key, required this.getAnswerFunction, this.answer, this.question});
 
   @override
   // ignore: no_logic_in_create_state
   State<TestPage3> createState() => _TestPage3State(
-      getAnswerFunction: getAnswerFunction,
-      answer: answer,
-      question: question,
+        getAnswerFunction: getAnswerFunction,
+        answer: answer,
+        question: question,
       );
 }
 
 class _TestPage3State extends State<TestPage3> {
   final Function getAnswerFunction;
-  String? question;
-  int? questionAnswer = 1, selected, givenAnswer, answer;
+  String? question, answer;
+  int? questionAnswer = 1, selected, givenAnswer;
   int randomNumber = 3;
   double _currentSliderValue = 0, value = 0;
 
-  _TestPage3State(
-      {required this.getAnswerFunction,
-      this.answer,
-      this.question,
-      });
+  _TestPage3State({
+    required this.getAnswerFunction,
+    this.answer,
+    this.question,
+  });
 
   @override
   void initState() {
@@ -87,44 +83,40 @@ class _TestPage3State extends State<TestPage3> {
                         fontSize: 27),
                   ),
                   const SizedBox(height: 40),
-                  CustomSlider(answer ?? 1, randomNumber),
-                  const SizedBox(height: 12,),
+                  SliderTheme(
+                    data: const SliderThemeData(
+                      trackHeight: 25,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 17),
+                      inactiveTrackColor: Color.fromARGB(255, 210, 210, 210),
+                      activeTrackColor: Colors.green,
+                      thumbColor: Colors.green,
+                      valueIndicatorColor: Colors.green,
+                      activeTickMarkColor: Colors.transparent,
+                      inactiveTickMarkColor: Colors.transparent,
+                      valueIndicatorTextStyle: TextStyle(color: Colors.white),
+                    ),
+                    child: Slider(
+                      value: _currentSliderValue,
+                      min: 0,
+                      max: int.parse(answer.toString()) / randomNumber * 6,
+                      divisions: 6,
+                      label: _currentSliderValue.round().toString(),
+                      onChanged: (double value) {
+                        setState(() {
+                          getAnswerFunction(value.toInt());
+                          _currentSliderValue = value;
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 12,
+                  ),
                 ],
               ),
             ),
           ),
         ),
-      ),
-    );
-  }
-
-  Widget CustomSlider(int answer, int random) {
-    double max = answer/random * 6;
-
-    return SliderTheme(
-      data: const SliderThemeData(
-        trackHeight: 25,
-        thumbShape: RoundSliderThumbShape(enabledThumbRadius: 17),
-        inactiveTrackColor: Color.fromARGB(255, 210, 210, 210),
-        activeTrackColor: Colors.green,
-        thumbColor: Colors.green,
-        valueIndicatorColor: Colors.green,
-        activeTickMarkColor: Colors.transparent,
-        inactiveTickMarkColor: Colors.transparent,
-        valueIndicatorTextStyle: TextStyle(color: Colors.white),
-      ),
-      child: Slider(
-        value: _currentSliderValue,
-        min: 0,
-        max: max,
-        divisions: 6,
-        label: _currentSliderValue.round().toString(),
-        onChanged: (double value) {
-          setState(() {
-            getAnswerFunction(value.toInt());
-            _currentSliderValue = value;
-          });
-        },
       ),
     );
   }

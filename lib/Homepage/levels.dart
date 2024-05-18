@@ -15,7 +15,7 @@ class Levels extends StatefulWidget {
 }
 
 class _LevelsState extends State<Levels> {
-  int color = 0, admin = 0, language = 2;
+  int color = 0, admin = 0, language = 2, indexColor = 1;
   final _dbHelper = DatabaseHelper.instance;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
 
@@ -90,54 +90,19 @@ class _LevelsState extends State<Levels> {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                        color = (index + 1) % 3;
-                        if(snapshot.data![index]
-                              ['doesExist']==0) {
+                        color = (indexColor + 1) % 3;
+                        if (snapshot.data![index]['doesExist'] == 1) {
+                          indexColor++;
                           return LevelTile(
-                          colorIndex: color,
-                          country: snapshot.data![index]['name'],
-                          lessonGeography: snapshot.data![index]
-                              ['lesson_geography'],
-                          lessonHistory: snapshot.data![index]
-                              ['lesson_history'],
-                          jsonStringEG: snapshot.data![index]
-                              ['questionsGeographyEasy'],
-                          jsonStringHG: snapshot.data![index]
-                              ['questionsGeographyHard'],
-                          jsonStringEH: snapshot.data![index]
-                              ['questionsHistoryEasy'],
-                          jsonStringHH: snapshot.data![index]
-                              ['questionsHistoryHard'],
-                          EGA1: snapshot.data![index]['answersGeographyEasyQ1'],
-                          EGA2: snapshot.data![index]['answersGeographyEasyQ2'],
-                          EGA3: snapshot.data![index]['answersGeographyEasyQ3'],
-                          EGA4: snapshot.data![index]['answersGeographyEasyQ4'],
-                          HGA1: snapshot.data![index]['answersGeographyHardQ1'],
-                          HGA2: snapshot.data![index]['answersGeographyHardQ2'],
-                          HGA3: snapshot.data![index]['answersGeographyHardQ3'],
-                          HGA4: snapshot.data![index]['answersGeographyHardQ4'],
-                          EHA1: snapshot.data![index]['answersHistoryEasyQ1'],
-                          EHA2: snapshot.data![index]['answersHistoryEasyQ2'],
-                          EHA3: snapshot.data![index]['answersHistoryEasyQ3'],
-                          EHA4: snapshot.data![index]['answersHistoryEasyQ4'],
-                          HHA1: snapshot.data![index]['answersHistoryHardQ1'],
-                          HHA2: snapshot.data![index]['answersHistoryHardQ2'],
-                          HHA3: snapshot.data![index]['answersHistoryHardQ3'],
-                          HHA4: snapshot.data![index]['answersHistoryHardQ4'],
-                          EGA: snapshot.data![index]
-                              ['answersGeographyEasyCorrect'],
-                          HGA: snapshot.data![index]
-                              ['answersGeographyHardCorrect'],
-                          EHA: snapshot.data![index]
-                              ['answersHistoryEasyCorrect'],
-                          HHA: snapshot.data![index]
-                              ['answersHistoryHardCorrect'],
-                          geography_completed: snapshot.data![index]
-                              ['geography_completed'],
-                          history_completed: snapshot.data![index]
-                              ['history_completed'],
-                        );
+                            colorIndex: color,
+                            country: snapshot.data![index]['name'],
+                            geography_completed: snapshot.data![index]
+                                ['geography_completed'],
+                            history_completed: snapshot.data![index]
+                                ['history_completed'],
+                          );
                         }
+                        return Container();
                       },
                     );
                   } else if (snapshot.hasError) {
@@ -257,8 +222,8 @@ class _LevelsState extends State<Levels> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(vertical: 20.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20.0),
                                       child: Text(
                                         "${translation[language]!["Add"]}",
                                         style: const TextStyle(
@@ -269,7 +234,6 @@ class _LevelsState extends State<Levels> {
                                     ),
                                   ),
                                 ),
-                                
                                 Expanded(
                                   child: ElevatedButton(
                                     onPressed: () {
@@ -294,8 +258,8 @@ class _LevelsState extends State<Levels> {
                                       ),
                                     ),
                                     child: Padding(
-                                      padding:
-                                          const EdgeInsets.symmetric(vertical: 20.0),
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 20.0),
                                       child: Text(
                                         "${translation[language]!["Update"]}",
                                         style: const TextStyle(

@@ -38,12 +38,14 @@ class _TestState extends State<Test> {
               ],
             ),
           ),
-            ElevatedButton(
+          ElevatedButton(
             child: Text('Insert'),
             onPressed: () async {
               //int i = await _dbHelper.insertCountry(_controller.text, _controllerLessonGeography.text, _controllerLessonHistory.text, "Q1.test", "Q2.test", "Q3.test", "Q4.test");
               //print('inserted row: $i');
-              setState(() {_controller.clear();});
+              setState(() {
+                _controller.clear();
+              });
             },
           ),
           Expanded(
@@ -52,21 +54,23 @@ class _TestState extends State<Test> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text('${snapshot.data![index]['_id']}: ${snapshot.data![index]['name']} - ${snapshot.data![index]['lesson_geography']} - ${snapshot.data![index]['lesson_history']} =  ${snapshot.data![index]['geography_completed']}-${snapshot.data![index]['history_completed']}'),
-                                  trailing: IconButton(
-                                    icon: Icon(Icons.delete),
-                                    onPressed: () async {
-                                      int i = await _dbHelper.deleteCountry(snapshot.data![index]['_id']);
-                                      print('deleted row: $i');
-                                      setState(() {});
-                                    },
-                                  ),
-                                );
-                              },
-                            );
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                            '${snapshot.data![index]['_id']}: ${snapshot.data![index]['name']} - ${snapshot.data![index]['lesson_geography']} - ${snapshot.data![index]['lesson_history']} =  ${snapshot.data![index]['geography_completed']}-${snapshot.data![index]['history_completed']}'),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () async {
+                            int i = await _dbHelper
+                                .deleteCountry(snapshot.data![index]['_id']);
+                            print('deleted row: $i');
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  );
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
                 }
@@ -75,15 +79,18 @@ class _TestState extends State<Test> {
             ),
           ),
           TextField(
-                  controller: _controllerTrophy,
-                  decoration: InputDecoration(hintText: 'Enter trophy'),
-                ),
+            controller: _controllerTrophy,
+            decoration: InputDecoration(hintText: 'Enter trophy'),
+          ),
           ElevatedButton(
             child: Text('Insert'),
             onPressed: () async {
-              int i = await _dbHelper.insertTrophy(int.parse(_controllerTrophy.text));
+              int i = await _dbHelper
+                  .insertTrophy(int.parse(_controllerTrophy.text));
               print('inserted row: $i');
-              setState(() {_controllerTrophy.clear();});
+              setState(() {
+                _controllerTrophy.clear();
+              });
             },
           ),
           Expanded(
@@ -92,21 +99,23 @@ class _TestState extends State<Test> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text('${snapshot.data![index]['_trophy_id']}: ${snapshot.data![index]['trophy']}'),
-                                  trailing: IconButton(
-                                    icon: Icon(Icons.delete),
-                                    onPressed: () async {
-                                      int i = await _dbHelper.deleteTrophy(snapshot.data![index]['_trophy_id']);
-                                      print('deleted row: $i');
-                                      setState(() {});
-                                    },
-                                  ),
-                                );
-                              },
-                            );
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                            '${snapshot.data![index]['_trophy_id']}: ${snapshot.data![index]['trophy']}'),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () async {
+                            int i = await _dbHelper.deleteTrophy(
+                                snapshot.data![index]['_trophy_id']);
+                            print('deleted row: $i');
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  );
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
                 }
@@ -116,25 +125,27 @@ class _TestState extends State<Test> {
           ),
           Expanded(
             child: FutureBuilder<List<Map<String, dynamic>>>(
-              future: _dbHelper.queryProfile(),
+              future: _dbHelper.queryQuestions("Belgium", "2"),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(
-                              itemCount: snapshot.data!.length,
-                              itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text('${snapshot.data![index]['profileID']}: ${snapshot.data![index]['username']} + ${snapshot.data![index]['geography_lessons']}+ ${snapshot.data![index]['history_lessons']}'),
-                                  trailing: IconButton(
-                                    icon: Icon(Icons.delete),
-                                    onPressed: () async {
-                                      int i = await _dbHelper.deleteTrophy(snapshot.data![index]['_trophy_id']);
-                                      print('deleted row: $i');
-                                      setState(() {});
-                                    },
-                                  ),
-                                );
-                              },
-                            );
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(
+                            '${snapshot.data![index]['question_text']}: ${snapshot.data![index]['answer']} + ${snapshot.data![index]['correct_answer']}+ ${snapshot.data![index]['type']}'),
+                        trailing: IconButton(
+                          icon: Icon(Icons.delete),
+                          onPressed: () async {
+                            int i = await _dbHelper.deleteTrophy(
+                                snapshot.data![index]['_trophy_id']);
+                            print('deleted row: $i');
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  );
                 } else if (snapshot.hasError) {
                   return Text("${snapshot.error}");
                 }

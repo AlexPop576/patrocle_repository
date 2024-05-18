@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -5,16 +7,14 @@ import 'package:lottie/lottie.dart';
 class TestPage1 extends StatefulWidget {
   final Function getAnswerFunction;
   int? selected = 0, givenAnswer;
-  String? questionText, answer1, answer2, answer3, answer4;
+  String? questionText, answersJSON, correct_answer;
   TestPage1(
       {super.key,
       required this.getAnswerFunction,
       this.selected,
-      this.questionText,
-      this.answer1,
-      this.answer2,
-      this.answer3,
-      this.answer4,
+      required this.questionText,
+      required this.answersJSON,
+      required this.correct_answer,
       this.givenAnswer});
 
   @override
@@ -23,27 +23,35 @@ class TestPage1 extends StatefulWidget {
       getAnswerFunction: getAnswerFunction,
       selected: selected,
       questionText: questionText,
-      answer1: answer1,
-      answer2: answer2,
-      answer3: answer3,
-      answer4: answer4,
+      answersJSON: answersJSON,
+      correct_answer: correct_answer,
       givenAnswer: givenAnswer);
 }
 
 class _TestPage1State extends State<TestPage1> {
-  int? questionAnswer = 1, selected, givenAnswer;
-  String? questionText, answer1, answer2, answer3, answer4;
+  int? questionAnswer = 1, selected, givenAnswer, correct_anwerINT;
+  String? questionText, answersJSON, correct_answer;
+  List<String> answers = ["","","","",""];
   final Function getAnswerFunction;
 
   _TestPage1State(
       {required this.getAnswerFunction,
       this.selected,
-      this.questionText,
-      this.answer1,
-      this.answer2,
-      this.answer3,
-      this.answer4,
+      required this.questionText,
+      required this.answersJSON,
+      required this.correct_answer,
       this.givenAnswer});
+
+  @override
+  void initState()
+  {
+    super.initState();
+    if (answersJSON != null) {
+      answers = List<String>.from(jsonDecode(answersJSON!));
+    }
+    correct_anwerINT = int.parse(correct_answer.toString());
+    print("Decoded answers: $answers");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,7 +127,7 @@ class _TestPage1State extends State<TestPage1> {
                         child: Center(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer1.toString(),
+                              child: Text(answers[0].toString(),
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary, 
                                       fontWeight: FontWeight.bold,
@@ -158,7 +166,7 @@ class _TestPage1State extends State<TestPage1> {
                         child: Center(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer2.toString(),
+                              child: Text(answers[1].toString(),
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary,
                                       fontWeight: FontWeight.bold,
@@ -197,7 +205,7 @@ class _TestPage1State extends State<TestPage1> {
                         child: Center(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer3.toString(),
+                              child: Text(answers[2].toString(),
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary,
                                       fontWeight: FontWeight.bold,
@@ -236,7 +244,7 @@ class _TestPage1State extends State<TestPage1> {
                         child: Center(
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
-                              child: Text(answer4.toString(),
+                              child: Text(answers[3].toString(),
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary,
                                       fontWeight: FontWeight.bold,

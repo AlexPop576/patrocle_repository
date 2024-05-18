@@ -3,10 +3,205 @@ import 'package:path/path.dart';
 
 class DatabaseHelper {
   List<String> countries = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada", "CAR", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czechia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "North Korea", "South Korea", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau", "Palestine", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "UAE", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahamas",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cabo Verde",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "CAR",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Comoros",
+    "Congo",
+    "Costa Rica",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czechia",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "East Timor",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Equatorial Guinea",
+    "Eritrea",
+    "Estonia",
+    "Eswatini",
+    "Ethiopia",
+    "Fiji",
+    "Finland",
+    "France",
+    "Gabon",
+    "Gambia",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Greece",
+    "Grenada",
+    "Guatemala",
+    "Guinea",
+    "Guinea Bissau",
+    "Guyana",
+    "Haiti",
+    "Honduras",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Ivory Coast",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kiribati",
+    "North Korea",
+    "South Korea",
+    "Kosovo",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Lesotho",
+    "Liberia",
+    "Libya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Madagascar",
+    "Malawi",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Marshall Islands",
+    "Mauritania",
+    "Mauritius",
+    "Mexico",
+    "Micronesia",
+    "Moldova",
+    "Monaco",
+    "Mongolia",
+    "Montenegro",
+    "Morocco",
+    "Mozambique",
+    "Myanmar",
+    "Namibia",
+    "Nauru",
+    "Nepal",
+    "Netherlands",
+    "New Zealand",
+    "Nicaragua",
+    "Niger",
+    "Nigeria",
+    "North Macedonia",
+    "Norway",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Palestine",
+    "Panama",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saint Kitts and Nevis",
+    "Saint Lucia",
+    "Saint Vincent and the Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome and Principe",
+    "Saudi Arabia",
+    "Senegal",
+    "Serbia",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Solomon Islands",
+    "Somalia",
+    "South Africa",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Taiwan",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Togo",
+    "Tonga",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Tuvalu",
+    "Uganda",
+    "Ukraine",
+    "UAE",
+    "United Kingdom",
+    "United States",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Vatican",
+    "Venezuela",
+    "Vietnam",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe"
   ];
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 25;
+  static final _databaseVersion = 28;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -141,22 +336,21 @@ class DatabaseHelper {
             history_completed INTEGER,
             doesExist INTEGER
           )''');
+
           for (String country in countries) {
             insertCountry(country);
           }
-
-          // await db.execute('''
-          // CREATE TABLE profile (
-          //   profileID INTEGER PRIMARY KEY AUTOINCREMENT,
-          //   username TEXT,
-          //   picture INTEGER,
-          //   iq INTEGER,
-          //   trophies INTEGER,
-          //   geography_lessons INTEGER,
-          //   history_lessons INTEGER,
-          //   dark_mode INTEGER,
-          //   admin INTEGER
-          // )''');
+          await db.execute('DROP TABLE question');
+          await db.execute('''
+          CREATE TABLE question (
+            questionID INTEGER PRIMARY KEY AUTOINCREMENT,
+            country TEXT,
+            subject INTEGER,
+            question_text TEXT,
+            answer TEXT,
+            correct_answer INTEGER,
+            type INTEGER
+          )''');
 
           // Copy the data from the old table to the new one
 
@@ -172,9 +366,7 @@ class DatabaseHelper {
     );
   }
 
-  Future<int> insertCountry(
-    String countryName,
-  ) async {
+  Future<int> insertCountry(String countryName) async {
     Database db = await database;
     return await db.insert(table, {
       'name': countryName,
@@ -184,6 +376,92 @@ class DatabaseHelper {
       'history_completed': 0,
       'doesExist': 0
     });
+  }
+
+  Future<int> insertQuestion(
+  String countryName,
+  String question,
+  String answer,
+  int correct_answer,
+  int type,
+  int subject,
+) async {
+  Database db = await database;
+  return await db.insert('question', {
+    'country': countryName,
+    'subject': subject,
+    'question_text': question,
+    'answer': answer,
+    'correct_answer': correct_answer,
+    'type': type,
+  });
+}
+
+
+  Future<int> setCountry(String countryName) async {
+    Database db = await database;
+    return await db.update(
+      'country',
+      {
+        'doesExist': 1,
+      },
+      where: 'name = ?',
+      whereArgs: [countryName],
+    );
+  }
+
+  Future<int> setLesson(String countryName, String lesson, int subject) async {
+    Database db = await database;
+    String field = subject == 1 ? "geographyLesson" : "historyLesson";
+    return await db.update(
+      'country',
+      {
+        field: lesson,
+      },
+      where: 'name = ?',
+      whereArgs: [countryName],
+    );
+  }
+
+  Future<Map<String, dynamic>> queryLesson(String countryName) async {
+    Database db = await database;
+    List<Map<String, dynamic>> result = await db.query(
+      'country',
+      columns: ['geographyLesson', 'historyLesson'],
+      where: 'name = ?',
+      whereArgs: [countryName],
+    );
+    if (result.isNotEmpty) {
+      return {
+        'geographyLesson': result.first['geographyLesson'],
+        'historyLesson': result.first['historyLesson'],
+      };
+    } else {
+      throw Exception('Country not found');
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> queryQuestions(
+      String countryName, String subject) async {
+    Database db = await database;
+    List<Map<String, dynamic>> result = await db.query(
+      'question',
+      where: 'country = ? AND subject = ?',
+      whereArgs: [countryName, subject],
+    );
+
+    if (result.isNotEmpty) {
+      return result
+          .map((question) => {
+                'question_text': question['question_text'],
+                'answer': question['answer'],
+                'correct_answer': question['correct_answer'].toString(),
+                'type': question['type'].toString(),
+              })
+          .toList();
+    } else {
+      return [];
+    }
   }
 
   /*Future<int> insertCountry(

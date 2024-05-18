@@ -1,26 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Theme/general_info.dart';
 
 import '../Theme/translations.dart';
 
 // ignore: must_be_immutable
 class Lesson extends StatefulWidget {
-  String? lesson, country;
+  String? country;
   int? subject = 0;
-  Lesson({super.key, this.lesson, required this.country, this.subject});
+  Lesson({super.key, required this.country, this.subject});
 
   @override
   // ignore: no_logic_in_create_state
-  State<Lesson> createState() => _LessonState(lesson: lesson, country: country, subject: subject);
+  State<Lesson> createState() => _LessonState(country: country, subject: subject);
 }
 
 class _LessonState extends State<Lesson> {
   String? lesson, country;
   int? language =2, subject = 0;
-  _LessonState({this.lesson, required this.country, this.subject});
+  _LessonState({required this.country, this.subject});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   Map<String?, Map<int?, String?>> info = Info().info;
+  final _dbHelper = DatabaseHelper.instance;
+
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() async {
+    Map<String, dynamic> lessons = await _dbHelper.queryLesson(country.toString());
+    setState(() {
+      lesson = subject == 1 ? lessons['geographyLesson'] : lessons['historyLesson'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
