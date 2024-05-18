@@ -5,14 +5,15 @@ import 'package:lottie/lottie.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
-import 'package:patrocle/Quizpage/testpage3.dart';
+import 'package:patrocle/Quizpage/testpage2.dart';
 import 'dart:math';
 import '../Theme/general_info.dart';
 import '../Theme/translations.dart';
 import 'testpage1.dart';
 import 'testpage2.dart';
+import 'testpage3.dart';
 import 'testpage4.dart';
-import 'testpage5.dart';
+import 'testpage4.dart';
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
@@ -80,6 +81,9 @@ class _QuizPageState extends State<QuizPage> {
     questions = await _dbHelper.queryQuestions(country, subject);
     setState(() {
       pageMax = questions.length;
+      if(pageMax>10){
+        pageMax=10;
+      }
     });
     print('questions: $questions');
   }
@@ -596,7 +600,8 @@ class _QuizPageState extends State<QuizPage> {
                                               children: [
                                                 Expanded(
                                                   child: Text(
-                                                    "${translation[language]!["Correct answer"]}: ${questions[pageIndex - 1]['type']!=4 ? questions[pageIndex - 1]['correct_answer'] : questions[pageIndex - 1]['correct_answer']==1 ? 'True' : 'False'}",
+                                                    "${translation[language]!["Correct answer"]}: ${questions[pageIndex - 1]['type'] != 4 ? questions[pageIndex - 1]['correct_answer'] : (int.parse(questions[pageIndex - 1]['correct_answer']) == 1 ? 'True' : 'False')}",
+
                                                     style: const TextStyle(
                                                       fontSize: 20,
                                                     ),
@@ -724,20 +729,20 @@ class _QuizPageState extends State<QuizPage> {
         givenAnswer: 0,
       );
     } else if (questionType == 2) {
-      return TestPage3(
+      return TestPage2(
         key: ValueKey('TestPage3-${pageIndex}'),
         getAnswerFunction: getAnswer,
         question: question['question_text'].toString(),
         answer: question['correct_answer'].toString(),
       );
     } else if (questionType == 3) {
-      return TestPage4(
+      return TestPage3(
         key: ValueKey('TestPage4-${pageIndex}'),
         getAnswerFunction: getAnswer,
         answers: question['answer'].toString(),
       );
     } else if (questionType == 4) {
-      return TestPage5(
+      return TestPage4(
         key: ValueKey('TestPage5-${pageIndex}'),
         getAnswerFunction: getAnswer,
         answer: int.parse(question['correct_answer']),

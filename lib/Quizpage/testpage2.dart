@@ -1,49 +1,43 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
 class TestPage2 extends StatefulWidget {
   final Function getAnswerFunction;
-  int? selected = 0, givenAnswer;
-  String? questionText, answer1, answer2, answer3, answer4;
+  String? question, answer;
+
   TestPage2(
-      {super.key,
-      required this.getAnswerFunction,
-      this.selected,
-      this.questionText,
-      this.answer1,
-      this.answer2,
-      this.answer3,
-      this.answer4,
-      this.givenAnswer});
+      {super.key, required this.getAnswerFunction, this.answer, this.question});
 
   @override
   // ignore: no_logic_in_create_state
   State<TestPage2> createState() => _TestPage2State(
-      getAnswerFunction: getAnswerFunction,
-      selected: selected,
-      questionText: questionText,
-      answer1: answer1,
-      answer2: answer2,
-      answer3: answer3,
-      answer4: answer4,
-      givenAnswer: givenAnswer);
+        getAnswerFunction: getAnswerFunction,
+        answer: answer,
+        question: question,
+      );
 }
 
 class _TestPage2State extends State<TestPage2> {
-  int? questionAnswer = 1, selected, givenAnswer;
-  String? questionText, answer1, answer2, answer3, answer4;
   final Function getAnswerFunction;
+  String? question, answer;
+  int? questionAnswer = 1, selected, givenAnswer;
+  int randomNumber = 3;
+  double _currentSliderValue = 0, value = 0;
 
-  _TestPage2State(
-      {required this.getAnswerFunction,
-      this.selected,
-      this.questionText,
-      this.answer1,
-      this.answer2,
-      this.answer3,
-      this.answer4,
-      this.givenAnswer});
+  _TestPage2State({
+    required this.getAnswerFunction,
+    this.answer,
+    this.question,
+  });
+
+  @override
+  void initState() {
+    super.initState();
+    var random = Random();
+    randomNumber = random.nextInt(6) + 1;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +75,7 @@ class _TestPage2State extends State<TestPage2> {
                       thickness: 3),
                   const SizedBox(height: 12),
                   Text(
-                    questionText.toString(),
+                    question ?? "Question",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.tertiary,
@@ -89,145 +83,30 @@ class _TestPage2State extends State<TestPage2> {
                         fontSize: 27),
                   ),
                   const SizedBox(height: 40),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          getAnswerFunction(1);
-                          selected = 1;
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        side: selected == 1
-                            ? const BorderSide(
-                                color: Color.fromARGB(255, 102, 102, 255),
-                                width: 3)
-                            : BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 3),
-                      ),
-                      child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text(answer1.toString(),
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30)),
-                      )),
+                  SliderTheme(
+                    data: const SliderThemeData(
+                      trackHeight: 25,
+                      thumbShape: RoundSliderThumbShape(enabledThumbRadius: 17),
+                      inactiveTrackColor: Color.fromARGB(255, 210, 210, 210),
+                      activeTrackColor: Colors.green,
+                      thumbColor: Colors.green,
+                      valueIndicatorColor: Colors.green,
+                      activeTickMarkColor: Colors.transparent,
+                      inactiveTickMarkColor: Colors.transparent,
+                      valueIndicatorTextStyle: TextStyle(color: Colors.white),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    child: ElevatedButton(
-                      onPressed: () {
+                    child: Slider(
+                      value: _currentSliderValue,
+                      min: 0,
+                      max: int.parse(answer.toString()) / randomNumber * 6,
+                      divisions: 6,
+                      label: _currentSliderValue.round().toString(),
+                      onChanged: (double value) {
                         setState(() {
-                          getAnswerFunction(2);
-                          selected = 2;
+                          getAnswerFunction(value.toInt());
+                          _currentSliderValue = value;
                         });
                       },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        side: selected == 2
-                            ? const BorderSide(
-                                color: Color.fromARGB(255, 102, 102, 255),
-                                width: 3)
-                            : BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 3),
-                      ),
-                      child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text(answer2.toString(),
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30)),
-                      )),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          getAnswerFunction(3);
-                          selected = 3;
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        side: selected == 3
-                            ? const BorderSide(
-                                color: Color.fromARGB(255, 102, 102, 255),
-                                width: 3)
-                            : BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 3),
-                      ),
-                      child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text(answer3.toString(),
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30)),
-                      )),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          getAnswerFunction(4);
-                          selected = 4;
-                        });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        backgroundColor: Theme.of(context).colorScheme.primary,
-                        side: selected == 4
-                            ? const BorderSide(
-                                color: Color.fromARGB(255, 102, 102, 255),
-                                width: 3)
-                            : BorderSide(
-                                color: Theme.of(context).colorScheme.primary,
-                                width: 3),
-                      ),
-                      child: Center(
-                          child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Text(answer4.toString(),
-                            style: TextStyle(
-                                color: Theme.of(context).colorScheme.tertiary,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30)),
-                      )),
                     ),
                   ),
                   const SizedBox(
@@ -242,44 +121,3 @@ class _TestPage2State extends State<TestPage2> {
     );
   }
 }
-// class _Test1State extends State<Test1> {
-//   List<Widget> sections = [
-//     createSection(Colors.green),
-//     createSection(Colors.red),
-//     // Add more sections here
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     int remainingSpace = 10 - sections.length;
-
-//     return Scaffold(
-//       body: Column(
-//         children: [
-//           // Your other widgets here
-//           Row(
-//             children: [
-//               ...sections,
-//               Expanded(
-//                 flex: remainingSpace, // Remaining space of the bar
-//                 child: Container(
-//                   height: 20, // Altura de la barra
-//                   color: Colors.transparent, // Transparent color
-//                 ),
-//               ),
-//             ],
-//           ),
-//           ElevatedButton(
-//             onPressed: () {
-//               if (remainingSpace > 0) {
-//                 setState(() {
-//                   sections.add(createSection(Colors.blue)); // Add a new section
-//                 });
-//               }
-//             },
-//             child: Text('Add Section'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
