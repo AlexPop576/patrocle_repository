@@ -204,42 +204,6 @@ class _LevelsState extends State<Levels> {
                                       Navigator.push(
                                         context,
                                         PageTransition(
-                                          child: const AddTest(),
-                                          type: PageTransitionType.bottomToTop,
-                                          duration:
-                                              const Duration(milliseconds: 400),
-                                        ),
-                                      ).then((_) => setState(() {}));
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 63, 255, 38),
-                                      shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                          bottomRight: Radius.circular(0),
-                                          bottomLeft: Radius.circular(15),
-                                        ),
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20.0),
-                                      child: Text(
-                                        "${translation[language]!["Add"]}",
-                                        style: const TextStyle(
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 17),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        PageTransition(
                                           child: const AddTestPage(),
                                           type: PageTransitionType.bottomToTop,
                                           duration:
@@ -248,12 +212,12 @@ class _LevelsState extends State<Levels> {
                                       ).then((_) => setState(() {}));
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 255, 55, 55),
+                                      backgroundColor:const Color.fromARGB(
+                                          255, 63, 255, 38),
                                       shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomRight: Radius.circular(15),
-                                          bottomLeft: Radius.circular(0),
+                                          bottomLeft: Radius.circular(15),
                                         ),
                                       ),
                                     ),
