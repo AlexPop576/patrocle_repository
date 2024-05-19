@@ -336,8 +336,49 @@ class DatabaseHelper {
   String answer131 = jsonEncode(['Yunnan', 'Shanghai', 'Tibet', 'Gobi']);
   String answer132 = jsonEncode(['Xi\'an', 'Beijing', 'Nanjing', 'Hangzhou']);
   String answer133 = jsonEncode(['Shanghai', 'Sichuan', 'Guangdong', 'Fujian']);
+  String answer134 = jsonEncode(['Epoca de Aur a Chinei', 'Perioada de Cincisprezece State', 'Dinastia Zhou', 'Epoca de Glorie a Hanului']);
+  String answer135 = jsonEncode(['Dinastia Han', 'Dinastia Tang', 'Dinastia Qin', 'Dinastia Song']);
+  String answer136 = jsonEncode(['Dinastia Han', 'Dinastia Tang', 'Dinastia Yuan', 'Dinastia Ming']);
+  String answer137 = jsonEncode(['Imperiul Ming', 'Imperiul Tang', 'Imperiul Yuan', 'Imperiul Qing']);
+  String answer138 = jsonEncode(['Epoca de Aur a Chinei', 'Perioada de Cincisprezece State', 'Dinastiile Tang și Song', 'Perioada Statelor Combatante']);
+  String answer139 = jsonEncode(['Războiul Coreean și Războiul Vietnamului', 'Războaiele Napoleonice și Războiul Civil American', 'Războaiele Opiumului și Războiul Sino-Japonez', 'Războaiele Mondiale I și II']);
+  String answer140 = jsonEncode(['Tratatul de la Versailles - China a câștigat autonomia', 'Tratatul de la Nanking - Deschiderea porturilor și concesiuni teritoriale', 'Tratatul de la Trianon - China a devenit stat tampon între imperiile vecine', 'Tratatul de la Brest-Litovsk - China a primit despăgubiri de război']);
+  String answer141 = jsonEncode(['Dinastia Qing - a căzut în 1912', 'Dinastia Tang - a căzut în 618', 'Dinastia Ming - a căzut în 1644', 'Dinastia Han - a căzut în 220 î.Hr.']);
+  String answer142 = jsonEncode(['Sun Yat-sen', 'Mao Zedong', 'Deng Xiaoping', 'Chiang Kai-shek']);
+  String answer143 = jsonEncode(['1958 - liderul a fost Zhou Enlai', '1911 - liderul a fost Sun Yat-sen', '1949 - liderul a fost Mao Zedong', '1976 - liderul a fost Deng Xiaoping']);
+  String answer144 = jsonEncode(['Mao Zedong', 'Sun Yat-sen', 'Deng Xiaoping', 'Chiang Kai-shek']);
+  String answer145 = jsonEncode(['Prin adoptarea unei economii socialiste planificate', 'Prin restricționarea comerțului exterior', 'Prin introducerea reformelor de piață și deschiderea către investiții străine', 'Prin renunțarea la comerțul internațional']);
+  String answer146 = jsonEncode(['Economie puternică, tehnologie avansată, domnia imperială', 'Artă tradițională, influență culturală, agricultură intensivă', 'Economie în creștere rapidă, tehnologie avansată, influență globală în comerț și politică', 'Rezerve naturale bogate, arhitectură antică, industrie textilă']);
+  String answer147 = jsonEncode(['Filosofia, religia, tehnologia', 'Literatura, arhitectura, agricultura', 'Muzica, dansul, gastronomia', 'Filosofia, literatura, arta și arhitectura']);
+  String answer148 = jsonEncode(['Qin Shi Huang', 'Sun Yat-sen', 'Confucius', 'Mao Zedong']);
+  String answer149 = jsonEncode(['Beijing', 'Shanghai', 'Xi\'an', 'Nanjing']);
+  String answer150 = jsonEncode(['Dinastia Ming', 'Dinastia Qing', 'Dinastia Han', 'Dinastia Tang']);
+  String answer151 = jsonEncode(['Sun Yat-sen', 'Mao Zedong', 'Qiú Jǐguāng', 'Chiang Kai-shek']);
+  String answer152 = jsonEncode(['Revoluția Culturală', 'Revolta Boxerilor', 'Proclamarea Republicii Populare Chineze', 'Tratatul de la Nanking']);
+  String answer153 = jsonEncode(['"Marș spre socialism"', '"Calea chineză către modernizare"', '"Economie de piață, socialism cu caracteristici chinezești"', '"Revoluția Culturală"']);
+  String answer154 = jsonEncode(['Nord: Canada; Sud: Brazilia; Est: Marea Atlantică; Vest: Oceanul Pacific', 'Nord: Mexic; Sud: Canada; Est: Oceanul Atlantic; Vest: Oceanul Pacific', 'Nord: Canada; Sud: Mexic; Est: Oceanul Atlantic; Vest: Oceanul Pacific', 'Nord: Alaska; Sud: Florida; Est: Marea Atlantică; Vest: Oceanul Pacific']);
+  String answer155 = jsonEncode(['Los Angeles', 'Washington, D.C', 'New York City', 'Chicago']);
+  String answer156 = jsonEncode(['Parcul Național Yellowstone', 'Munții Stâncoși', 'Râul Mississippi', 'Deșertul Sonora']);
+  String answer157 = jsonEncode(['Râul Amazon și Râul Nil', 'Râul Thames și Râul Sena', 'Râul Mississippi și Râul Missouri', 'Râul Volga și Râul Dunărea']);
+  String answer158 = jsonEncode(['Este o sursă majoră de energie electrică', 'Asigură irigarea culturilor agricole din Midwest', 'Este o importantă rută comercială și de transport', 'Este cunoscut pentru peisajele spectaculoase din jurul său']);
+  String answer159 = jsonEncode(['Munți, câmpii și regiuni de coastă', 'Deșerturi și munți vulcanici', 'Tundră și păduri de conifere', 'Platouri și canioane adânci']);
+  String answer160 = jsonEncode(['Sunt centre culturale și artistice', 'Asigură majoritatea resurselor naturale ale țării', 'Fac parte din sistemul de transport naval și sunt importante pentru comerțul exterior', 'Sunt cunoscute pentru arhitectura lor istorică']);
+  String answer161 = jsonEncode(['Dallas, Las Vegas, Denver', 'Seattle, Boston, Philadelphia', 'Miami, New Orleans, San Diego', 'Atlanta, Detroit, Phoenix']);
+  String answer162 = jsonEncode(['Clima tropicală, subtropicală și arctică', 'Clima temperată, aridă și subarctică', 'Clima temperată, subtropicală și deșertică', 'Clima temperată, subtropicală și tropicală']);
+  String answer163 = jsonEncode(['Parcul Național Yellowstone și Parcul Național Yosemite', 'Parcul Național Everglades și Parcul Național Grand Canyon', 'Parcul Național Zion și Parcul Național Denali', 'Parcul Național Rocky Mountain și Parcul Național Acadia']);
+  String answer164 = jsonEncode(['Sunt bogate în resurse minerale', 'Găzduiesc cele mai mari orașe industriale ale țării', 'Sunt cruciale pentru comerțul maritim și turismul', 'Asigură majoritatea producției agricole a SUA']);
+  String answer165 = jsonEncode(['Alaska și Hawaii', 'Puerto Rico și Insulele Virgine Americane', 'Guam și Samoa Americană', 'Alaska și Puerto Rico']);
+  String answer166 = jsonEncode(['Este constant pe întreg teritoriul SUA', 'Este mai rece în partea de sud și mai cald în partea de nord', 'Variază de la nord la sud și de la est la vest, având regiuni temperate, subtropicale și tropicale', 'Este influențat doar de apropierea de oceane și mări']);
+  String answer167 = jsonEncode(['Munții Stâncoși', 'Fluviul Mississippi', 'Munții Apalași', 'Marea de Est']);
+  String answer168 = jsonEncode(['Texas și Florida', 'Arizona și Nevada', 'California și Oregon', 'Alaska și Maine']);
+  String answer169 = jsonEncode(['Este un ocean în vestul SUA', 'Este un lac mare în estul SUA', 'Este un golf important pe coasta estică a SUA', 'Este o zonă de ținuturi mlăștinoase în SUA']);
+  String answer170 = jsonEncode(['Elefanți africani', 'Urs grizzly', 'Canguri', 'Tigri bengalezi']);
+  String answer171 = jsonEncode(['Montana', 'California', 'Colorado', 'Wyoming']);
+  String answer172 = jsonEncode(['Paella și sushi', 'Taco și sushi', 'Burger și pizza', 'Curry și sushi']);
+  String answer173 = jsonEncode(['Guam și Samoa Americană', 'Alaska și Guam', 'Insulele Virgine Americane și Samoa Americană', 'Puerto Rico și Insulele Virgine Americane']);
+
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 31;
+  static final _databaseVersion = 32;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -918,9 +959,6 @@ class DatabaseHelper {
           'type': 1
         });
 
-        // Continuă pentru fiecare întrebare similar
-
-        // Întrebări grele
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
@@ -1863,9 +1901,446 @@ class DatabaseHelper {
                   'correct_answer': 2,
                   'type': 1
                 });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost perioada în care China a fost locuită de numeroase triburi și regate înainte de unificarea sub o autoritate centrală?',
+                  'answer': answer134,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care dinastie a început procesul de unificare a Chinei sub o autoritate centrală?',
+                  'answer': answer135,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care dinastie chineză a fost cunoscută pentru invențiile tehnologice precum tiparul mobil și busola?',
+                  'answer': answer136,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce imperiu a fost fondat de mongoli în China?',
+                  'answer': answer137,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost perioada în care China a fost un centru comercial și cultural important, cunoscută pentru inovațiile tehnologice?',
+                  'answer': answer138,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+           
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care au fost două evenimente semnificative care au marcat influența imperialistă asupra Chinei în secolul al XIX-lea?',
+                  'answer': answer139,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce tratat a fost semnat în urma războaielor opiumului și care au fost consecințele acestuia pentru China?',
+                  'answer': answer140,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost ultima dinastie imperială a Chinei și când a căzut?',
+                  'answer': answer141,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine a fost liderul revoluției care a condus la căderea sistemului imperial în China în 1911?',
+                  'answer': answer142,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Când a fost proclamată înființarea Republicii Populare Chineze și cine a fost liderul partidului care a condus această proclamare?',
+                  'answer': answer143,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Sub conducerea cui China a trecut printr-o serie de reforme economice și sociale masive în anii \'80?',
+                  'answer': answer144,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cum a transformat China economia sa în timpul reformelor lui Deng Xiaoping?',
+                  'answer': answer145,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care sunt trei aspecte pentru care este cunoscută China astăzi în contextul global?',
+                  'answer': answer146,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În afară de economie și tehnologie, ce alte domenii au contribuit la istoria culturală bogată a Chinei?',
+                  'answer': answer147,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a fost fondatorul dinastiei Qin din China?',
+                  'answer': answer148,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost capitala Chinei în timpul dinastiei Tang?',
+                  'answer': answer149,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care dinastie chineză a construit celebrul Zid Chinezesc?',
+                  'answer': answer150,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a fost liderul rebelilor în timpul Revoltei boxerilor?',
+                  'answer': answer151,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+             
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Ce eveniment a marcat sfârșitul perioadei de dominație străină și instabilitate internă în China?',
+                  'answer': answer152,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+ 
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost sloganul principal al lui Deng Xiaoping în timpul reformelor economice din China?',
+                  'answer': answer153,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt granițele geografice ale SUA?',
+                  'answer': answer154,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este capitala SUA?',
+                  'answer': answer155,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+           
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este caracteristica geografică iconică a SUA menționată în lecție?',
+                  'answer': answer156,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce râuri majore traversează teritoriul SUA?',
+                  'answer': answer157,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este importanța râului Mississippi pentru țară?',
+                  'answer': answer158,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+        
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt principalele caracteristici geografice ale teritoriului SUA menționate în lecție?',
+                  'answer': answer159,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce rol au orașele portuare ale SUA în economia țării?',
+                  'answer': answer160,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Numește trei orașe importante din SUA, în afară de capitală și cel mai mare oraș.',
+                  'answer': answer161,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este varietatea climatică a SUA?',
+                  'answer': answer162,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce parcuri naționale din SUA sunt menționate în lecție?',
+                  'answer': answer163,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este importanța economică a coastelor SUA?',
+                  'answer': answer164,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+         
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt teritoriile SUA în afara continentului principal?',
+                  'answer': answer165,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+           
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cum variază climatul în funcție de poziția geografică în SUA?',
+                  'answer': answer166,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce caracteristică geografică a SUA influențează economia și transportul intern?',
+                  'answer': answer167,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Numește două state care au terenuri deșertice în SUA.',
+                  'answer': answer168,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce reprezintă Marea de Est, menționată în lecție?',
+                  'answer': answer169,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+        
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care dintre următoarele animale este asociat cu Parcul Național Yellowstone?',
+                  'answer': answer170,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce stat găzduiește Munții Stâncoși?',
+                  'answer': answer171,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+          
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce mâncăruri tradiționale sunt menționate în contextul diversității culinare a SUA?',
+                  'answer': answer172,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt două dintre teritoriile SUA menționate în lecție, în afară de Hawaii și Puerto Rico?',
+                  'answer': answer173,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+      },
+
+
+
   onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
-          //await db.execute('DROP TABLE profile');
+          await db.execute('DROP TABLE question');
           //await db.execute('DROP TABLE $table');
           /*await db.execute('''
           CREATE TABLE profile (
@@ -1907,6 +2382,9 @@ class DatabaseHelper {
           }*/
 
           //preinstall
+
+          await db.execute(''' CREATE TABLE question ( questionID INTEGER PRIMARY KEY AUTOINCREMENT, country TEXT, subject INTEGER, difficulty INTEGER, question_text TEXT, answer TEXT, correct_answer INTEGER, type INTEGER )''');
+
           await db.insert('country', {
           'name': 'Romania',
           'geographyLesson': 'România este situată în partea de sud-est a Europei, având granițe cu Bulgaria, Serbia, Ungaria, Ucraina și Republica Moldova. Capitala sa, București, este cel mai mare oraș și principal centru cultural, economic și politic al țării. Cu o populație de aproximativ 19 milioane de locuitori, România este una dintre cele mai populate țări din Europa de Est. Teritoriul său este împărțit de Munții Carpați, care formează o barieră naturală ce separă țara în trei regiuni geografice distincte: Transilvania, Moldova și Maramureșul. Acești munți sunt adesea descrisi ca fiind inima României, oferind nu doar peisaje pitorești, ci și o sursă importantă de resurse naturale și biodiversitate. Dunărea, un fluviu navigabil vital, curge prin sudul țării, marcând granița naturală cu Bulgaria și oferind acces la Marea Neagră prin porturile Constanța și Mangalia. Acest aspect geografic a facilitat comerțul și interacțiunile culturale cu alte regiuni din Europa și din întreaga lume. În afară de București, alte orașe importante din România includ Cluj-Napoca, Timișoara, Iași și Constanța, fiecare cu propriile sale bogății culturale și economice. România este o țară în curs de dezvoltare, membră a Uniunii Europene și a NATO, cu o economie mixtă în care industria, agricultura și serviciile joacă roluri importante în creșterea sa economică. Cel mai înalt punct al României este vârful Moldoveanu din Munții Făgăraș, având o altitudine impresionantă de 2.544 de metri. Această înălțime oferă panorame spectaculoase și oportunități pentru alpinism și turism montan. Regiunile istorice ale României, cum ar fi Transilvania, cunoscută pentru peisajele sale montane și orașele istorice, Moldova, renumită pentru siturile sale istorice și moștenirea culturală bogată, și Maramureșul, cu peisajele sale rurale și tradițiile autentice, adaugă unicitate și diversitate acestei țări. Clima României este temperată continentală, cu veri călduroase și ierni reci, fiind influențată de Munții Carpați și de Marea Neagră. Această varietate climatică oferă condiții favorabile pentru o gamă diversă de activități, de la sporturile de iarnă în Carpați până la relaxare la malul Mării Negre în timpul verii.',
@@ -2077,7 +2555,1791 @@ class DatabaseHelper {
           'correct_answer': 1,
           'type': 1
         });
+        
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care este capitala Spaniei și cel mai mare oraș al țării?',
+          'answer': answer1,
+          'correct_answer': 2,
+          'type': 1
+        });
 
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care lanț muntos formează granița nordică a Spaniei?',
+          'answer': answer2,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care este cel mai înalt vârf din Spania?',
+          'answer': answer3,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care dintre următoarele orașe nu este situat în Spania?',
+          'answer': answer4,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care dintre următoarele insule nu aparține Spaniei?',
+          'answer': answer5,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Ce mare înconjoară coasta de sud a Spaniei?',
+          'answer': answer6,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care este cea mai mare insulă din Insulele Canare ca suprafață?',
+          'answer': answer7,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care este râul principal care străbate capitala Spaniei?',
+          'answer': answer8,
+          'correct_answer': 4,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care este cel mai lung râu din Spania?',
+          'answer': answer9,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care este climatul predominant în regiunile de coastă ale Spaniei?',
+          'answer': answer10,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Ce caracterizează clima în regiunile de coastă ale Spaniei?',
+          'answer': answer11,
+          'correct_answer': 4,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care lanț muntos formează granița dintre Spania și Portugalia?',
+          'answer': answer12,
+          'correct_answer': 4,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Care dintre aceste orașe spaniole este situat pe coasta de est a țării?',
+          'answer': answer13,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care lanț muntos formează granița dintre Spania și Portugalia?',
+          'answer': answer12,
+          'correct_answer': 4,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care dintre aceste orașe spaniole este situat pe coasta de est a țării?',
+          'answer': answer13,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Cine a fost unul dintre marii exploratori spanioli din secolele XVI-XVII, care a descoperit America?',
+          'answer': answer14,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care dintre următoarele regate NU a făcut parte din Spania medievală?',
+          'answer': answer15,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Ce marcă importantă în istoria Spaniei a fost realizată prin căsătoria regilor Ferdinand al II-lea al Aragonului și Isabela I a Castiliei?',
+          'answer': answer16,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care dintre următoarele figuri NU a fost un cuceritor spaniol din epoca colonială?',
+          'answer': answer17,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care a fost perioada de conducere a dictatorului Francisco Franco în Spania?',
+          'answer': answer18,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Cine a fost ultimul monarh care a domnit înaintea începerii dictaturii lui Francisco Franco?',
+          'answer': answer19,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Ce perioadă istorică a marcat pierderea majorității coloniilor americane ale Spaniei?',
+          'answer': answer20,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care a fost decizia semnificativă din 1492 care a consolidat controlul catolic asupra regatului spaniol?',
+          'answer': answer21,
+          'correct_answer': 4,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care a fost perioada de tranziție către democrație în Spania, după moartea lui Franco?',
+          'answer': answer22,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Care este forma de guvernământ actuală a Spaniei?',
+          'answer': answer23,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care dintre următoarele regate a fost ultimul care s-a unit cu celelalte pentru a forma Spania modernă?',
+          'answer': answer24,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Cine a fost primul rege al Spaniei, după unificarea regatelor Aragonului și Castiliei?',
+          'answer': answer25,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care dintre următoarele țări NU a fost colonizată de spanioli în timpul expansiunii lor în secolele XVI-XVII?',
+          'answer': answer26,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Ce eveniment important a marcat începutul Reconquistei în Spania medievală?',
+          'answer': answer27,
+          'correct_answer': 4,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care dintre următoarele personalități a jucat un rol cheie în Reconquista?',
+          'answer': answer28,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care a fost principalul motiv al expulzării evreilor și maurilor din Spania în 1492?',
+          'answer': answer29,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care dintre următoarele figuri a condus o expediție navală în 1492, care a dus la descoperirea Americii?',
+          'answer': answer30,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care a fost efectul principal al Reconquistei în Spania medievală?',
+          'answer': answer31,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'În care dintre următoarele conflicte a fost implicată Spania în secolul al XIX-lea, pierzând majoritatea coloniilor sale americane?',
+          'answer': answer32,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Care a fost numele coloniei spaniole din America de Nord fondată de Juan Ponce de León în 1513?',
+          'answer': answer33,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este capitala Franței?',
+          'answer': answer34,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este cel mai înalt vârf al Franței?',
+          'answer': answer35,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este principala atracție turistică din Paris?',
+          'answer': answer36,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care sunt munții care formează granița sud-vestică a Franței?',
+          'answer': answer37,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este cel mai important râu din Franța, cunoscut pentru traversarea capitalei?',
+          'answer': answer38,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este regiunea franceză cunoscută pentru stațiunile de lux și plajele frumoase?',
+          'answer': answer39,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Câtă populație aproximativă are Franța?',
+          'answer': answer40,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este cel mai lung râu din Franța?',
+          'answer': answer41,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este numele arhipelagului situat în largul coastelor Franței în Marea Mediterană?',
+          'answer': answer42,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Câte țări se învecinează direct cu Franța și care sunt acestea?',
+          'answer': answer43,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Ce caracteristică a culturii franțuzești este renumită în întreaga lume?',
+          'answer': answer44,
+          'correct_answer': 1,
+          'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Cum variază clima Franței și cum influențează aceasta agricultura și turismul?',
+          'answer': answer45,
+          'correct_answer': 3,
+          'type': 1
+        });
+
+        await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Care regiune montană marchează granița dintre Franța și Italia și include cel mai înalt vârf al Franței, Mont Blanc?',
+            'answer': answer46,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Ce regiune din Franța este renumită pentru stațiunile sale de lux și plajele frumoase de-a lungul Mării Mediterane?',
+            'answer': answer47,
+            'correct_answer': 2,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Ce eveniment important din 1789 a marcat începutul Revoluției Franceze?',
+            'answer': answer48,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Care a fost capitala precedentă a Franței, înainte de Paris?',
+            'answer': answer49,
+            'correct_answer': 4,
+            'type': 1
+          });
+
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Ce regiune din Franța este cunoscută pentru vinurile sale fine?',
+            'answer': answer50,
+            'correct_answer': 4,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Ce parte a Franței este cunoscută pentru climatul mediteranean și plajele sale?',
+            'answer': answer51,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Care este numele regiunii franceze renumite pentru peisajele sale sălbatice și stâncile impresionante?',
+            'answer': answer52,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Câtă populație aproximativă are Franța?',
+            'answer': answer53,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost una dintre provinciile romane în care a fost încorporată Franța în antichitate?',
+            'answer': answer54,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Cine a condus Franța în timpul Revoluției Franceze din 1789?',
+            'answer': answer55,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost perioada de dominație a lui Napoleon Bonaparte în Franța?',
+            'answer': answer56,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Ce eveniment a pus capăt monarhiei în Franța și a instaurat o republică în 1789?',
+            'answer': answer57,
+            'correct_answer': 2,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost perioada de ocupație a Franței de către forțele naziste între 1940 și 1944?',
+            'answer': answer58,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost numele celei de-a treia perioade a istoriei Franceze, după Revoluția Franceză și perioada napoleoniană?',
+            'answer': answer59,
+            'correct_answer': 2,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Cine a fost regele francez care a condus în timpul Revoluției Franceze și care a fost executat?',
+            'answer': answer60,
+            'correct_answer': 2,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'În ce an a avut loc bătălia de la Waterloo, în care Napoleon a fost învins definitiv?',
+            'answer': answer61,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care dintre următorii nu a fost un rege important al Franței în Evul Mediu?',
+            'answer': answer62,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost una dintre coloniile importante pierdute de Franța în timpul procesului de decolonizare în secolul al XX-lea?',
+            'answer': answer63,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost perioada de domnie a regelui Ludovic al XIV-lea, cunoscut și sub numele de "Regele Soare"?',
+            'answer': answer64,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Ce nume a primit conflictul dintre Franța și Prusia care a dus la înfrângerea Franței și instaurarea celei de-a Treia Republici în 1870?',
+            'answer': answer65,
+            'correct_answer': 2,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost perioada de domnie a regelui Ludovic al XVI-lea și a reginei Marie Antoinette?',
+            'answer': answer66,
+            'correct_answer': 2,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Cine a fost celebrul general francez care a condus forțele aliate în timpul Bătăliei de la Waterloo împotriva lui Napoleon?',
+            'answer': answer67,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost capitala Franței în timpul Revoluției Franceze?',
+            'answer': answer68,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Care a fost perioada de domnie a împăratului Napoleon al III-lea, nepotul lui Napoleon Bonaparte?',
+            'answer': answer69,
+            'correct_answer': 3,
+            'type': 1
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Cine a fost regele francez care a condus în timpul Războiului de O Sută de Ani împotriva Angliei?',
+            'answer': answer70,
+            'correct_answer': 1,
+            'type': 1
+          });
+
+          await db.insert('question', {
+              'country': 'France',
+              'subject': 2,
+              'difficulty': 1,
+              'question_text': 'Care a fost numele reginei franceze care a jucat un rol important în conducerea țării în timpul minorității fiului ei, Ludovic al XIV-lea?',
+              'answer': answer71,
+              'correct_answer': 2,
+              'type': 1
+            });
+
+            await db.insert('question', {
+              'country': 'France',
+              'subject': 2,
+              'difficulty': 1,
+              'question_text': 'Care a fost numele mișcării politice și sociale care a dus la începutul Revoluției Franceze și la căderea monarhiei?',
+              'answer': answer72,
+              'correct_answer': 1,
+              'type': 1
+            });
+
+            await db.insert('question', {
+              'country': 'France',
+              'subject': 2,
+              'difficulty': 1,
+              'question_text': 'Cine a fost generalul francez care a condus forțele franceze în timpul Războiului Franco-Prusac și a fost capturat în bătălia de la Sedan?',
+              'answer': answer73,
+              'correct_answer': 3,
+              'type': 1
+            });
+
+            await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este capitala Italiei?',
+                'answer': answer74,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este cel mai mare lanț muntos din Italia?',
+                'answer': answer75,
+                'correct_answer': 3,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este cel mai înalt vârf din Italia?',
+                'answer': answer76,
+                'correct_answer': 2,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Cât de mare este populația Italiei?',
+                'answer': answer77,
+                'correct_answer': 2,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este cea mai mare insulă din Italia?',
+                'answer': answer78,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este principala sursă de apă din Italia?',
+                'answer': answer79,
+                'correct_answer': 2,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este clima predominantă în sudul Italiei?',
+                'answer': answer80,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este cel mai cunoscut oraș pentru canalele sale?',
+                'answer': answer81,
+                'correct_answer': 4,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Ce ocean înconjoară Peninsula Italică?',
+                'answer': answer82,
+                'correct_answer': 2,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 1,
+                'question_text': 'Care este cea mai populată insulă din Italia?',
+                'answer': answer83,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care este altitudinea vârfului Monte Rosa din Alpii Graiei?',
+                'answer': answer84,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care este numele râului principal din nordul Italiei, cunoscut pentru inundațiile sale istorice?',
+                'answer': answer85,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care insulă italiană este cunoscută pentru forma sa de stiletto?',
+                'answer': answer86,
+                'correct_answer': 3,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care este numele celor două insule italiene situate în Marea Mediterană, aproape de coasta africană?',
+                'answer': answer87,
+                'correct_answer': 4,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care este cel mai înalt vârf din Alpii Graiei?',
+                'answer': answer88,
+                'correct_answer': 2,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care oraș italian este renumit pentru festivalul său de carnevale?',
+                'answer': answer89,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care este numele celei mai lungi râpe subterane din Italia?',
+                'answer': answer90,
+                'correct_answer': 4,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care este numele celui mai mare lac din Italia?',
+                'answer': answer91,
+                'correct_answer': 3,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care munte vulcanic se află în apropierea orașului Napoli?',
+                'answer': answer92,
+                'correct_answer': 1,
+                'type': 1
+              });
+
+              await db.insert('question', {
+                'country': 'Italy',
+                'subject': 1,
+                'difficulty': 2,
+                'question_text': 'Care regiune italiană este cunoscută pentru producția sa de vin Chianti?',
+                'answer': answer93,
+                'correct_answer': 1,
+                'type': 1
+              });
+              await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care regiune italiană este cunoscută pentru producția sa de vin Chianti?',
+                  'answer': answer94,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost capitala Italiei după finalizarea procesului de unificare?',
+                  'answer': answer95,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce perioadă a fost Italia epicentrul unei puternice mișcări culturale și artistice?',
+                  'answer': answer96,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce perioadă istorică este cunoscută pentru competiția între diverse state și republici independente în Italia?',
+                  'answer': answer97,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce evenimente importante s-au întâmplat în Italia în timpul secolului al XX-lea, în contextul Primului Război Mondial?',
+                  'answer': answer98,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine a fost unul dintre artiștii renumiți ai Renașterii italiene?',
+                  'answer': answer99,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care au fost principalele conflicte politice și transformări în Italia în secolele XVIII și XIX?',
+                  'answer': answer100,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cum s-a implicat Italia în Primul Război Mondial?',
+                  'answer': answer101,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost una dintre principalele consecințe ale Conferinței de Pace de la Paris pentru Italia după Primul Război Mondial?',
+                  'answer': answer102,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care au fost unele dintre statele și republicile independente din Italia medievală?',
+                  'answer': answer103,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Când a devenit completă unificarea Italiei?',
+                  'answer': answer104,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Când a fost fondată Republica Romană?',
+                  'answer': answer105,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost una dintre personalitățile care au contribuit la formarea Imperiului Roman?',
+                  'answer': answer106,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Ce perioadă a generat nemulțumiri și instabilitate politică în Italia, pregătind terenul pentru ascensiunea fascismului?',
+                  'answer': answer107,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost una dintre principalele motive pentru care Italia s-a alăturat Puterilor Aliate în Primul Război Mondial?',
+                  'answer': answer108,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost una dintre cele mai concentrate zone de luptă în Italia în timpul Primului Război Mondial?',
+                  'answer': answer109,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Când a fost Italia una dintre țările fondatoare ale Comunității Economice Europene (CEE)?',
+                  'answer': answer110,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost una dintre personalitățile care a contribuit la procesul de unificare a Italiei în secolul al XIX-lea?',
+                  'answer': answer111,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Ce domenii sunt menționate ca fiind influențate de cultura italiană?',
+                  'answer': answer112,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Italy',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care este capitala Italiei?',
+                  'answer': answer113,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care este capitala Chinei?',
+                  'answer': answer114,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care este cel mai înalt vârf din China?',
+                  'answer': answer115,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce râu este al treilea cel mai lung râu din lume și traversează China?',
+                  'answer': answer116,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care lanț muntos formează granița de nord-est a Chinei?',
+                  'answer': answer117,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce monument istoric impresionant este construit de-a lungul graniței nordice a Chinei?',
+                  'answer': answer118,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care oraș chinez este renumit pentru industria sa tehnologică și comercială?',
+                  'answer': answer119,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce regiune autonomă din China este cunoscută pentru peisajele sale spectaculoase și cultura sa distinctă?',
+                  'answer': answer120,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care râu chinez se numește și "Râul Galben" datorită sedimentelor sale?',
+                  'answer': answer121,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce climă predomină în nordul Chinei?',
+                  'answer': answer122,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care este cel mai populat oraș din China?',
+                  'answer': answer123,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care dintre aceste orașe chineze se află pe malurile Fluviului Yangtze?',
+                  'answer': answer124,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care este cel mai înalt lanț muntos din China?',
+                  'answer': answer125,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care oraș chinez este cunoscut pentru ceramica sa?',
+                  'answer': answer126,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care regiune chineză este cunoscută pentru arhitectura sa tradițională și canalele sale?',
+                  'answer': answer127,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care insulă chineză este renumită pentru plajele sale și turismul său?',
+                  'answer': answer128,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care lanț muntos chinez formează o parte a graniței cu Nepalul?',
+                  'answer': answer129,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care dintre aceste lanțuri muntoase nu traversează China?',
+                  'answer': answer130,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce regiune chineză este cunoscută pentru producția sa de ceai?',
+                  'answer': answer131,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care oraș chinez este asociat cu cele "Patru Măreții" monumentale?',
+                  'answer': answer132,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care regiune chineză este cunoscută pentru bucătăria sa picantă?',
+                  'answer': answer133,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost perioada în care China a fost locuită de numeroase triburi și regate înainte de unificarea sub o autoritate centrală?',
+                  'answer': answer134,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care dinastie a început procesul de unificare a Chinei sub o autoritate centrală?',
+                  'answer': answer135,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care dinastie chineză a fost cunoscută pentru invențiile tehnologice precum tiparul mobil și busola?',
+                  'answer': answer136,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce imperiu a fost fondat de mongoli în China?',
+                  'answer': answer137,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost perioada în care China a fost un centru comercial și cultural important, cunoscută pentru inovațiile tehnologice?',
+                  'answer': answer138,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+           
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care au fost două evenimente semnificative care au marcat influența imperialistă asupra Chinei în secolul al XIX-lea?',
+                  'answer': answer139,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce tratat a fost semnat în urma războaielor opiumului și care au fost consecințele acestuia pentru China?',
+                  'answer': answer140,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care a fost ultima dinastie imperială a Chinei și când a căzut?',
+                  'answer': answer141,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine a fost liderul revoluției care a condus la căderea sistemului imperial în China în 1911?',
+                  'answer': answer142,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Când a fost proclamată înființarea Republicii Populare Chineze și cine a fost liderul partidului care a condus această proclamare?',
+                  'answer': answer143,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Sub conducerea cui China a trecut printr-o serie de reforme economice și sociale masive în anii \'80?',
+                  'answer': answer144,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cum a transformat China economia sa în timpul reformelor lui Deng Xiaoping?',
+                  'answer': answer145,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care sunt trei aspecte pentru care este cunoscută China astăzi în contextul global?',
+                  'answer': answer146,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În afară de economie și tehnologie, ce alte domenii au contribuit la istoria culturală bogată a Chinei?',
+                  'answer': answer147,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a fost fondatorul dinastiei Qin din China?',
+                  'answer': answer148,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost capitala Chinei în timpul dinastiei Tang?',
+                  'answer': answer149,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+               
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care dinastie chineză a construit celebrul Zid Chinezesc?',
+                  'answer': answer150,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a fost liderul rebelilor în timpul Revoltei boxerilor?',
+                  'answer': answer151,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+             
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Ce eveniment a marcat sfârșitul perioadei de dominație străină și instabilitate internă în China?',
+                  'answer': answer152,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+ 
+                await db.insert('question', {
+                  'country': 'China',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost sloganul principal al lui Deng Xiaoping în timpul reformelor economice din China?',
+                  'answer': answer153,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt granițele geografice ale SUA?',
+                  'answer': answer154,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este capitala SUA?',
+                  'answer': answer155,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+           
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este caracteristica geografică iconică a SUA menționată în lecție?',
+                  'answer': answer156,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce râuri majore traversează teritoriul SUA?',
+                  'answer': answer157,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+              
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este importanța râului Mississippi pentru țară?',
+                  'answer': answer158,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+        
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt principalele caracteristici geografice ale teritoriului SUA menționate în lecție?',
+                  'answer': answer159,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce rol au orașele portuare ale SUA în economia țării?',
+                  'answer': answer160,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Numește trei orașe importante din SUA, în afară de capitală și cel mai mare oraș.',
+                  'answer': answer161,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este varietatea climatică a SUA?',
+                  'answer': answer162,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce parcuri naționale din SUA sunt menționate în lecție?',
+                  'answer': answer163,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care este importanța economică a coastelor SUA?',
+                  'answer': answer164,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+         
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt teritoriile SUA în afara continentului principal?',
+                  'answer': answer165,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+           
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cum variază climatul în funcție de poziția geografică în SUA?',
+                  'answer': answer166,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce caracteristică geografică a SUA influențează economia și transportul intern?',
+                  'answer': answer167,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Numește două state care au terenuri deșertice în SUA.',
+                  'answer': answer168,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce reprezintă Marea de Est, menționată în lecție?',
+                  'answer': answer169,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+        
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care dintre următoarele animale este asociat cu Parcul Național Yellowstone?',
+                  'answer': answer170,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce stat găzduiește Munții Stâncoși?',
+                  'answer': answer171,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+          
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce mâncăruri tradiționale sunt menționate în contextul diversității culinare a SUA?',
+                  'answer': answer172,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+            
+                await db.insert('question', {
+                  'country': 'SUA',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt două dintre teritoriile SUA menționate în lecție, în afară de Hawaii și Puerto Rico?',
+                  'answer': answer173,
+                  'correct_answer': 3,
+                  'type': 1
+                });
           // Copy the data from the old table to the new one
 
           // Delete the old table
@@ -2087,10 +4349,11 @@ class DatabaseHelper {
           // Rename the new table to the old one's name
           await db.execute('ALTER TABLE new_table RENAME TO $table');
           */
-        }
-      };
-      });
-  }
+        
+      }
+    },
+  );
+ }
 
   Future<int> insertCountry(String countryName) async {
     Database db = await database;
