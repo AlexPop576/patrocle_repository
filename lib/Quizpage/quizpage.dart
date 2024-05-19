@@ -63,28 +63,25 @@ class _QuizPageState extends State<QuizPage> {
   void initState() {
     super.initState();
     fetchData(country.toString(), subject.toString());
-
-    var random = Random();
-    var numbers = List<int>.generate(10, (index) => index)..shuffle(random);
-    questionNumber = numbers.take(10).toList();
-
-    String populationString = info[country]![3]!.replaceAll(',', '');
-    digits = populationString.length;
-    population = double.parse(populationString);
-    specialQuestionAnswers[1] =
-        (digits! > 6 ? population / 1000000 : population / 100000).toInt();
-    randomNumber = random.nextInt(5) + 1;
-    //print("$specialQuestionAnswers[1] $population");
   }
 
   void fetchData(String country, String subject) async {
-    questions = await _dbHelper.queryQuestions(country, subject);
+    if(difficulty == 1) {
+      questions = await _dbHelper.queryQuestions(country, subject, 1);
+    }else if(difficulty == 3){
+      questions = await _dbHelper.queryQuestions(country, subject, 2);
+    }else{
+      questions = await _dbHelper.queryQuestions(country, subject, 1) + await _dbHelper.queryQuestions(country, subject, 2);
+    }
     setState(() {
       pageMax = questions.length;
       if(pageMax>10){
         pageMax=10;
       }
     });
+    var random = Random();
+    var numbers = List<int>.generate(questions.length, (index) => index)..shuffle(random);
+    questionNumber = numbers.take(pageMax).toList();
     print('questions: $questions');
   }
 
@@ -445,12 +442,12 @@ class _QuizPageState extends State<QuizPage> {
                             bonus = 1;
                           });
                           if (int.parse(
-                                  questions[pageIndex - 1]['correct_answer']) ==
+                                  questions[questionNumber[pageIndex - 1]]['correct_answer']) ==
                               givenAnswer) {
                             correct();
                             difficulty == 1
                                 ? correctAnswersEasy++
-                                : difficulty == 2 && pageIndex % 2 == 0
+                                : difficulty == 2 && questions[questionNumber[pageIndex - 1]]['difficulty'] == 1
                                     ? correctAnswersEasy++
                                     : correctAnswersHard++;
                             showModalBottomSheet(
@@ -600,7 +597,7 @@ class _QuizPageState extends State<QuizPage> {
                                               children: [
                                                 Expanded(
                                                   child: Text(
-                                                    "${translation[language]!["Correct answer"]}: ${questions[pageIndex - 1]['type'] != 4 ? questions[pageIndex - 1]['correct_answer'] : (int.parse(questions[pageIndex - 1]['correct_answer']) == 1 ? 'True' : 'False')}",
+                                                    "${translation[language]!["Correct answer"]}: ${questions[questionNumber[pageIndex - 1]]['type'] != 4 ? questions[questionNumber[pageIndex - 1]]['correct_answer'] : (int.parse(questions[questionNumber[pageIndex - 1]]['correct_answer']) == 1 ? 'True' : 'False')}",
 
                                                     style: const TextStyle(
                                                       fontSize: 20,
@@ -709,7 +706,7 @@ class _QuizPageState extends State<QuizPage> {
       subject: subject,
     );
   } else if (pageIndex != pageMax+1) {
-    final question = questions[pageIndex - 1];
+    final question = questions[questionNumber[pageIndex - 1]];
 
     // Adaugă declarații print pentru debugging
     print('Question Type: ${question['type']}');
@@ -927,16 +924,16 @@ class FinishPage extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: const BorderRadius.all(Radius.circular(15)),
                       color: correctAnswers == 0 ||
-                              correctAnswers == 1 ||
-                              correctAnswers == 2
+                              correctAnswers == (0.1*pageMax!).round() ||
+                              correctAnswers == (0.2*pageMax!).round()
                           ? const Color.fromARGB(255, 219, 64, 64)
-                          : correctAnswers == 3 || correctAnswers == 4
+                          : correctAnswers == (0.3*pageMax!).round() || correctAnswers == (0.4*pageMax!).round()
                               ? const Color.fromARGB(255, 219, 121, 64)
-                              : correctAnswers == 5 || correctAnswers == 6
+                              : correctAnswers == (0.5*pageMax!).round() || correctAnswers == (0.6*pageMax!).round()
                                   ? const Color.fromARGB(255, 216, 219, 64)
-                                  : correctAnswers == 7 || correctAnswers == 8
+                                  : correctAnswers == (0.7*pageMax!).round() || correctAnswers == (0.8*pageMax!).round()
                                       ? const Color.fromARGB(255, 196, 219, 64)
-                                      : correctAnswers == 9
+                                      : correctAnswers == (0.9*pageMax!).round()
                                           ? const Color.fromARGB(
                                               255, 131, 219, 64)
                                           : const Color.fromARGB(
@@ -970,23 +967,23 @@ class FinishPage extends StatelessWidget {
                                   "$correctAnswers/$pageMax",
                                   style: TextStyle(
                                       color: correctAnswers == 0 ||
-                                              correctAnswers == 1 ||
-                                              correctAnswers == 2
+                                              correctAnswers == (0.1*pageMax!).round() ||
+                                              correctAnswers == (0.2*pageMax!).round()
                                           ? const Color.fromARGB(
                                               255, 219, 64, 64)
-                                          : correctAnswers == 3 ||
-                                                  correctAnswers == 4
+                                          : correctAnswers == (0.3*pageMax!).round() ||
+                                                  correctAnswers == (0.4*pageMax!).round()
                                               ? const Color.fromARGB(
                                                   255, 219, 121, 64)
-                                              : correctAnswers == 5 ||
-                                                      correctAnswers == 6
+                                              : correctAnswers == (0.5*pageMax!).round() ||
+                                                      correctAnswers == (0.6*pageMax!).round()
                                                   ? const Color.fromARGB(
                                                       255, 216, 219, 64)
-                                                  : correctAnswers == 7 ||
-                                                          correctAnswers == 8
+                                                  : correctAnswers == (0.7*pageMax!).round() ||
+                                                          correctAnswers == (0.8*pageMax!).round()
                                                       ? const Color.fromARGB(
                                                           255, 196, 219, 64)
-                                                      : correctAnswers == 9
+                                                      : correctAnswers == (0.9*pageMax!).round()
                                                           ? const Color
                                                               .fromARGB(
                                                               255, 131, 219, 64)

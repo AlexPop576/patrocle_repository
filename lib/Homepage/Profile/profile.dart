@@ -534,6 +534,7 @@ class _ProfileState extends State<Profile> {
                                       language=1;
                                     });
                                   }
+                                  await _dbHelper.updateLanguage(language!);
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:

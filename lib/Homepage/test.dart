@@ -125,7 +125,7 @@ class _TestState extends State<Test> {
           ),
           Expanded(
             child: FutureBuilder<List<Map<String, dynamic>>>(
-              future: _dbHelper.queryQuestions("Belgium", "2"),
+              future: _dbHelper.queryQuestions("Belgium", "2", 1),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return ListView.builder(

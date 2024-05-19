@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:patrocle/Homepage/levels.dart';
 import 'package:patrocle/Homepage/Profile/profile.dart';
+import 'package:patrocle/Homepage/museum.dart';
 import 'package:patrocle/Homepage/test.dart';
 import 'package:patrocle/Homepage/trophies.dart';
 import '../Database/database_helper.dart';
@@ -22,7 +23,7 @@ class _HomepageState extends State<Homepage> {
   static const List<Widget> _pages = <Widget>[
     Trophies(),
     Levels(),
-    Test(),
+    Museum(),
     Profile(),
   ];
 

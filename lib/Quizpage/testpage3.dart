@@ -64,7 +64,7 @@ class _TestPage3State extends State<TestPage3> {
                           style: TextStyle(
                               color: Theme.of(context).colorScheme.tertiary,
                               fontWeight: FontWeight.bold,
-                              fontSize: 50),
+                              fontSize: 45),
                         ),
                       ),
                     ],

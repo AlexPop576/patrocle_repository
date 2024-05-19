@@ -25,7 +25,6 @@ class _AddTestPageState extends State<AddTestPage> {
           preferredSize: Size(MediaQuery.of(context).size.width, 60),
           child: ClipRect(
             child: AppBar(
-              //flexibleSpace: Container(color: Colors.transparent),
               backgroundColor: Theme.of(context).colorScheme.primary,
               leading: IconButton(
                   icon: const Icon(
@@ -196,7 +195,7 @@ class _addCountryState extends State<addCountry> {
                               const SizedBox(
                                 width: 10,
                               ),
-                              Text('${snapshot.data![index]['name']}'),
+                              Expanded(child: Text('${snapshot.data![index]['name']}')),
                             ],
                           ),
                           trailing: snapshot.data![index]['doesExist'] == 0
@@ -274,6 +273,7 @@ class addQuestion extends StatefulWidget {
 class _addQuestionState extends State<addQuestion> {
   _addQuestionState({required this.country});
   String? country;
+  int subject = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -411,7 +411,7 @@ class _addQuestionState extends State<addQuestion> {
         child: Column(
           children: [
             const SizedBox(height: 30),
-            Center(
+            const Center(
                 child: Text(
               "Add new question",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
@@ -424,14 +424,17 @@ class _addQuestionState extends State<addQuestion> {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        child: addQuiz(language: 2, country: country),
-                        type: PageTransitionType.rightToLeftWithFade,
-                        duration: const Duration(milliseconds: 250),
-                      ),
-                    );
+                    if (subject != 0) {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: addQuiz(
+                              language: 2, country: country, subject: subject),
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: const Duration(milliseconds: 250),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -441,8 +444,8 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: Text("Quiz",
-                      style: const TextStyle(
+                  child: const Text("Quiz",
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 35)),
@@ -457,14 +460,17 @@ class _addQuestionState extends State<addQuestion> {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        child: addSlider(country: country, language: 2),
-                        type: PageTransitionType.rightToLeftWithFade,
-                        duration: const Duration(milliseconds: 250),
-                      ),
-                    );
+                    if (subject != 0) {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: addSlider(
+                              country: country, language: 2, subject: subject),
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: const Duration(milliseconds: 250),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -474,8 +480,8 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: Text("Value slider",
-                      style: const TextStyle(
+                  child: const Text("Value slider",
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 35)),
@@ -490,14 +496,17 @@ class _addQuestionState extends State<addQuestion> {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        child: addMatch(country: country, language: 2),
-                        type: PageTransitionType.rightToLeftWithFade,
-                        duration: const Duration(milliseconds: 250),
-                      ),
-                    );
+                    if (subject != 0) {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: addMatch(
+                              country: country, language: 2, subject: subject),
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: const Duration(milliseconds: 250),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -507,8 +516,8 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: Text("Match columns",
-                      style: const TextStyle(
+                  child: const Text("Match columns",
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 35)),
@@ -523,14 +532,17 @@ class _addQuestionState extends State<addQuestion> {
                 borderRadius: const BorderRadius.all(Radius.circular(15)),
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      PageTransition(
-                        child: addTrueFalse(country: country, language: 2),
-                        type: PageTransitionType.rightToLeftWithFade,
-                        duration: const Duration(milliseconds: 250),
-                      ),
-                    );
+                    if (subject != 0) {
+                      Navigator.push(
+                        context,
+                        PageTransition(
+                          child: addTrueFalse(
+                              country: country, language: 2, subject: subject),
+                          type: PageTransitionType.rightToLeftWithFade,
+                          duration: const Duration(milliseconds: 250),
+                        ),
+                      );
+                    }
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Theme.of(context).colorScheme.primary,
@@ -540,14 +552,77 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: Text("True or False",
-                      style: const TextStyle(
+                  child: const Text("True or False",
+                      style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 35)),
                 ),
               ),
             ),
+            const SizedBox(height: 15),
+            Divider(
+              color: Theme.of(context).colorScheme.primary,
+              thickness: 3,
+            ),
+            const SizedBox(height: 15),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Container(
+                    height: 100,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: subject == 1
+                            ? Colors.green
+                            : Colors.grey, // This is the button color
+                        shape: const RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15),
+                            bottomLeft: Radius.circular(15),
+                          ),
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          subject = 1;
+                        });
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.asset('assets/icons/Geography.png'),
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  child: Container(
+                    height: 100,
+                    child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: subject == 2
+                              ? Colors.red
+                              : Colors.grey, // This is the button color
+                          shape: const RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            subject = 2;
+                          });
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Image.asset('assets/icons/History.png'),
+                        )),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -837,17 +912,18 @@ class _addLessonState extends State<addLesson> {
 }
 
 class addQuiz extends StatefulWidget {
-  addQuiz({super.key, this.language, required this.country});
-  int? language;
+  addQuiz(
+      {super.key, this.language, required this.country, required this.subject});
+  int? language, subject = 1;
   String? country;
 
   @override
   State<addQuiz> createState() =>
-      _addQuizState(language: language, country: country);
+      _addQuizState(language: language, country: country, subject: subject);
 }
 
 class _addQuizState extends State<addQuiz> {
-  _addQuizState({this.language, required this.country});
+  _addQuizState({this.language, required this.country, required this.subject});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
   int? language = 1, subject = 1;
@@ -857,7 +933,8 @@ class _addQuizState extends State<addQuiz> {
       _controllerAnswer2 = TextEditingController(),
       _controllerAnswer3 = TextEditingController(),
       _controllerAnswer4 = TextEditingController();
-  int answer = 0, difficulty = 0;
+  int answer = 0, difficulty = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -865,7 +942,6 @@ class _addQuizState extends State<addQuiz> {
         preferredSize: Size(MediaQuery.of(context).size.width, 60),
         child: ClipRect(
           child: AppBar(
-            //flexibleSpace: Container(color: Colors.transparent),
             backgroundColor: Theme.of(context).colorScheme.primary,
             leading: IconButton(
                 icon: const Icon(
@@ -1127,7 +1203,9 @@ class _addQuizState extends State<addQuiz> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 1
+                              ? Colors.green
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -1136,11 +1214,17 @@ class _addQuizState extends State<addQuiz> {
                           ),
                         ),
                         onPressed: () {
-                        setState((){
-                          difficulty = 1;
-                        });
+                          setState(() {
+                            difficulty = 1;
+                          });
                         },
-                        child: Text("${translation[language]!["Easy"]}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Easy',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
@@ -1149,7 +1233,9 @@ class _addQuizState extends State<addQuiz> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 2
+                              ? Colors.red
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(15),
@@ -1158,11 +1244,17 @@ class _addQuizState extends State<addQuiz> {
                           ),
                         ),
                         onPressed: () {
-                          setState((){
-                          difficulty = 2;
-                        });
+                          setState(() {
+                            difficulty = 2;
+                          });
                         },
-                        child: Text("${translation[language]!["Hard"]}", style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Hard',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
@@ -1204,7 +1296,8 @@ class _addQuizState extends State<addQuiz> {
                           answersText,
                           answer,
                           1,
-                          subject!);
+                          subject!,
+                          difficulty);
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -1232,19 +1325,22 @@ class _addQuizState extends State<addQuiz> {
 }
 
 class addSlider extends StatefulWidget {
-  addSlider({super.key, required this.country, this.language});
-  int? language;
+  addSlider(
+      {super.key, required this.country, this.language, required this.subject});
+  int? language, subject = 1;
   String? country;
 
   @override
   State<addSlider> createState() =>
-      _addSliderState(country: country, language: language);
+      _addSliderState(country: country, language: language, subject: subject);
 }
 
 class _addSliderState extends State<addSlider> {
-  _addSliderState({required this.country, this.language});
+  _addSliderState(
+      {required this.country, this.language, required this.subject});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   int? language = 1, subject = 1;
+  int difficulty = 1;
   String? country;
   final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController(),
@@ -1257,7 +1353,6 @@ class _addSliderState extends State<addSlider> {
         preferredSize: Size(MediaQuery.of(context).size.width, 60),
         child: ClipRect(
           child: AppBar(
-            //flexibleSpace: Container(color: Colors.transparent),
             backgroundColor: Theme.of(context).colorScheme.primary,
             leading: IconButton(
                 icon: const Icon(
@@ -1413,7 +1508,9 @@ class _addSliderState extends State<addSlider> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 1
+                              ? Colors.green
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -1422,11 +1519,17 @@ class _addSliderState extends State<addSlider> {
                           ),
                         ),
                         onPressed: () {
-                        setState((){
-                          difficulty = 1;
-                        });
+                          setState(() {
+                            difficulty = 1;
+                          });
                         },
-                        child: Text('Easy',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Easy',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
@@ -1435,7 +1538,9 @@ class _addSliderState extends State<addSlider> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 2
+                              ? Colors.red
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(15),
@@ -1444,20 +1549,26 @@ class _addSliderState extends State<addSlider> {
                           ),
                         ),
                         onPressed: () {
-                          setState((){
-                          difficulty = 2;
-                        });
+                          setState(() {
+                            difficulty = 2;
+                          });
                         },
-                        child: Text('Hard', style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Hard',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
                 ],
               )
-      ],
-    ),
-   ),
-  ),
+            ],
+          ),
+        ),
+      ),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -1483,8 +1594,8 @@ class _addSliderState extends State<addSlider> {
                           "",
                           int.parse(_controllerAnswer.text),
                           2,
-                          subject!);
-                      //await _dbHelper.setCountry(country.toString());
+                          subject!,
+                          difficulty);
                     },
                     style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -1512,19 +1623,21 @@ class _addSliderState extends State<addSlider> {
 }
 
 class addMatch extends StatefulWidget {
-  addMatch({super.key, required this.country, this.language});
-  int? language;
+  addMatch(
+      {super.key, required this.country, this.language, required this.subject});
+  int? language, subject = 1;
   String? country;
 
   @override
   State<addMatch> createState() =>
-      _addMatchState(country: country, language: language);
+      _addMatchState(country: country, language: language, subject: subject);
 }
 
 class _addMatchState extends State<addMatch> {
-  _addMatchState({required this.country, this.language});
+  _addMatchState({required this.country, this.language, required this.subject});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   int? language = 1, subject = 1;
+  int difficulty = 0;
   String? country;
   final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController(),
@@ -1535,9 +1648,8 @@ class _addMatchState extends State<addMatch> {
       _controllerW3C1 = TextEditingController(),
       _controllerW3C2 = TextEditingController(),
       _controllerW4C1 = TextEditingController(),
-      _controllerW4C2 = TextEditingController(),
-      _controllerAnswer = TextEditingController();
-  int difficulty = 0;
+      _controllerW4C2 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1545,7 +1657,6 @@ class _addMatchState extends State<addMatch> {
         preferredSize: Size(MediaQuery.of(context).size.width, 60),
         child: ClipRect(
           child: AppBar(
-            //flexibleSpace: Container(color: Colors.transparent),
             backgroundColor: Theme.of(context).colorScheme.primary,
             leading: IconButton(
                 icon: const Icon(
@@ -1746,7 +1857,9 @@ class _addMatchState extends State<addMatch> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 1
+                              ? Colors.green
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -1755,11 +1868,17 @@ class _addMatchState extends State<addMatch> {
                           ),
                         ),
                         onPressed: () {
-                        setState((){
-                          difficulty = 1;
-                        });
+                          setState(() {
+                            difficulty = 1;
+                          });
                         },
-                        child: Text('Easy',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Easy',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
@@ -1768,7 +1887,9 @@ class _addMatchState extends State<addMatch> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 2
+                              ? Colors.red
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(15),
@@ -1777,11 +1898,17 @@ class _addMatchState extends State<addMatch> {
                           ),
                         ),
                         onPressed: () {
-                          setState((){
-                          difficulty = 2;
-                        });
+                          setState(() {
+                            difficulty = 2;
+                          });
                         },
-                        child: Text('Hard', style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Hard',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
@@ -1820,8 +1947,14 @@ class _addMatchState extends State<addMatch> {
                         _controllerW3C2.text,
                         _controllerW4C2.text,
                       ]);
-                      await _dbHelper.insertQuestion(country.toString(),
-                          _controllerQuestion.text, answersText, 1, 3, subject!);
+                      await _dbHelper.insertQuestion(
+                          country.toString(),
+                          _controllerQuestion.text,
+                          answersText,
+                          1,
+                          3,
+                          subject!,
+                          difficulty);
                       //await _dbHelper.setCountry(country.toString());
                     },
                     style: ElevatedButton.styleFrom(
@@ -1850,24 +1983,26 @@ class _addMatchState extends State<addMatch> {
 }
 
 class addTrueFalse extends StatefulWidget {
-  addTrueFalse({super.key, required this.country, this.language});
-  int? language;
+  addTrueFalse(
+      {super.key, required this.country, this.language, required this.subject});
+  int? language, subject = 1;
   String? country;
 
   @override
-  State<addTrueFalse> createState() =>
-      _addTrueFalseState(country: country, language: language);
+  State<addTrueFalse> createState() => _addTrueFalseState(
+      country: country, language: language, subject: subject);
 }
 
 class _addTrueFalseState extends State<addTrueFalse> {
-  _addTrueFalseState({required this.country, this.language});
+  _addTrueFalseState(
+      {required this.country, this.language, required this.subject});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   int? language = 1, subject = 1;
   String? country;
   final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController();
-  int selected = 0;
-  int difficulty = 0;
+  int selected = 0, difficulty = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1875,7 +2010,6 @@ class _addTrueFalseState extends State<addTrueFalse> {
         preferredSize: Size(MediaQuery.of(context).size.width, 60),
         child: ClipRect(
           child: AppBar(
-            //flexibleSpace: Container(color: Colors.transparent),
             backgroundColor: Theme.of(context).colorScheme.primary,
             leading: IconButton(
                 icon: const Icon(
@@ -2106,7 +2240,9 @@ class _addTrueFalseState extends State<addTrueFalse> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 1
+                              ? Colors.green
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(15),
@@ -2115,11 +2251,17 @@ class _addTrueFalseState extends State<addTrueFalse> {
                           ),
                         ),
                         onPressed: () {
-                        setState((){
-                          difficulty = 1;
-                        });
+                          setState(() {
+                            difficulty = 1;
+                          });
                         },
-                        child: Text('Easy',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Easy',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
@@ -2128,7 +2270,9 @@ class _addTrueFalseState extends State<addTrueFalse> {
                       height: 58,
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          backgroundColor: difficulty == 2
+                              ? Colors.red
+                              : Colors.grey, // This is the button color
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.only(
                               topRight: Radius.circular(15),
@@ -2137,17 +2281,22 @@ class _addTrueFalseState extends State<addTrueFalse> {
                           ),
                         ),
                         onPressed: () {
-                          setState((){
-                          difficulty = 2;
-                        });
+                          setState(() {
+                            difficulty = 2;
+                          });
                         },
-                        child: Text('Hard', style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                        child: Text(
+                          'Hard',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25),
+                        ),
                       ),
                     ),
                   ),
                 ],
-              ),
-              const SizedBox(height: 15),
+              )
             ],
           ),
         ),
@@ -2171,8 +2320,14 @@ class _addTrueFalseState extends State<addTrueFalse> {
                   child: ElevatedButton(
                     onPressed: () async {
                       Navigator.pop(context);
-                      await _dbHelper.insertQuestion(country.toString(),
-                          _controllerQuestion.text, "", selected, 4, subject!);
+                      await _dbHelper.insertQuestion(
+                          country.toString(),
+                          _controllerQuestion.text,
+                          "",
+                          selected,
+                          4,
+                          subject!,
+                          difficulty);
                       //await _dbHelper.setCountry(country.toString());
                     },
                     style: ElevatedButton.styleFrom(
