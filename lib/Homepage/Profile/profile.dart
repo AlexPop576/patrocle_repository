@@ -25,6 +25,7 @@ class _ProfileState extends State<Profile> {
     Colors.yellow
   ];
   final _dbHelper = DatabaseHelper.instance;
+  
   String username = "user";
 
   @override

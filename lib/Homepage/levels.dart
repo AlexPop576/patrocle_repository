@@ -30,6 +30,7 @@ class _LevelsState extends State<Levels> {
       if (results.isNotEmpty) {
         setState(() {
           admin = results.first['admin'];
+          language = results.first['language'];
         });
       }
     });

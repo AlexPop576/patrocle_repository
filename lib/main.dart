@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:patrocle/Theme/language_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'dart:io';
@@ -19,8 +20,11 @@ void main() async {
   await themeProvider.loadTheme();
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => themeProvider,
+   MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => themeProvider),
+        ChangeNotifierProvider(create: (context) => LanguageProvider()),
+      ],
       child: MyApp(),
     ),
   );

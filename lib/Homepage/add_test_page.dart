@@ -857,8 +857,7 @@ class _addQuizState extends State<addQuiz> {
       _controllerAnswer2 = TextEditingController(),
       _controllerAnswer3 = TextEditingController(),
       _controllerAnswer4 = TextEditingController();
-  int answer = 0;
-
+  int answer = 0, difficulty = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1120,6 +1119,55 @@ class _addQuizState extends State<addQuiz> {
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
+              const SizedBox(height: 15),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                        setState((){
+                          difficulty = 1;
+                        });
+                        },
+                        child: Text("${translation[language]!["Easy"]}",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState((){
+                          difficulty = 2;
+                        });
+                        },
+                        child: Text("${translation[language]!["Hard"]}", style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -1201,7 +1249,7 @@ class _addSliderState extends State<addSlider> {
   final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController(),
       _controllerAnswer = TextEditingController();
-
+  int difficulty = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1357,10 +1405,59 @@ class _addSliderState extends State<addSlider> {
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
-            ],
-          ),
-        ),
-      ),
+              const SizedBox(height: 15),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                        setState((){
+                          difficulty = 1;
+                        });
+                        },
+                        child: Text('Easy',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState((){
+                          difficulty = 2;
+                        });
+                        },
+                        child: Text('Hard', style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+      ],
+    ),
+   ),
+  ),
       bottomNavigationBar: SizedBox(
         height: 100,
         child: Padding(
@@ -1440,7 +1537,7 @@ class _addMatchState extends State<addMatch> {
       _controllerW4C1 = TextEditingController(),
       _controllerW4C2 = TextEditingController(),
       _controllerAnswer = TextEditingController();
-
+  int difficulty = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1641,6 +1738,55 @@ class _addMatchState extends State<addMatch> {
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
               ),
+              const SizedBox(height: 15),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                        setState((){
+                          difficulty = 1;
+                        });
+                        },
+                        child: Text('Easy',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState((){
+                          difficulty = 2;
+                        });
+                        },
+                        child: Text('Hard', style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -1721,7 +1867,7 @@ class _addTrueFalseState extends State<addTrueFalse> {
   final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController();
   int selected = 0;
-
+  int difficulty = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -1951,6 +2097,55 @@ class _addTrueFalseState extends State<addTrueFalse> {
               Divider(
                 color: Theme.of(context).colorScheme.primary,
                 thickness: 3,
+              ),
+              const SizedBox(height: 15),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty==1? Colors.green: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15),
+                              bottomLeft: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                        setState((){
+                          difficulty = 1;
+                        });
+                        },
+                        child: Text('Easy',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 58,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: difficulty== 2? Colors.red: Colors.grey, // This is the button color
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15),
+                              bottomRight: Radius.circular(15),
+                            ),
+                          ),
+                        ),
+                        onPressed: () {
+                          setState((){
+                          difficulty = 2;
+                        });
+                        },
+                        child: Text('Hard', style:TextStyle(color: Colors.white,fontWeight: FontWeight.bold, fontSize: 25),),
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 15),
             ],
