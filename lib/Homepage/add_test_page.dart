@@ -1345,7 +1345,7 @@ class _addSliderState extends State<addSlider> {
   final _dbHelper = DatabaseHelper.instance;
   final _controllerQuestion = TextEditingController(),
       _controllerAnswer = TextEditingController();
-  int difficulty = 0;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
