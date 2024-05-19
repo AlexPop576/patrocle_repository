@@ -128,6 +128,7 @@ class _TestPage1State extends State<TestPage1> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Text(answers[0].toString(),
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary, 
                                       fontWeight: FontWeight.bold,
@@ -167,6 +168,7 @@ class _TestPage1State extends State<TestPage1> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Text(answers[1].toString(),
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary,
                                       fontWeight: FontWeight.bold,
@@ -206,6 +208,7 @@ class _TestPage1State extends State<TestPage1> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Text(answers[2].toString(),
+                                  textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary,
                                       fontWeight: FontWeight.bold,

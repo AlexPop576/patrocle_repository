@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
   static const List<Widget> _pages = <Widget>[
     Trophies(),
     Levels(),
-    Museum(),
+    Test(),
     Profile(),
   ];
 

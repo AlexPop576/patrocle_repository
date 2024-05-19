@@ -212,7 +212,7 @@ class DatabaseHelper {
   String answer7 = jsonEncode(['Gran Canaria','Tenerife','Lanzarote','Fuerteventura']);
   String answer8 = jsonEncode(['Ebro','Tagus','Guadalquivir','Manzanares']);
   String answer9 = jsonEncode(['Ebro','Guadalquivir','Tagus','Duero']);
-  String answer10 = jsonEncode(['Temperat continental', 'Mediteranean', 'Oceanic', 'Alpine']);
+  String answer10 = jsonEncode(['Temperat continental', 'Mediteranean', 'Oceanic', 'Alpin']);
   String answer11 = jsonEncode(['Temperaturi reci și precipitații abundente', 'Temperaturi moderate și veri uscate', 'Ierni lungi și veri călduroase', 'Temperaturi extreme și umiditate ridicată']);
   String answer12 = jsonEncode(['Munții Cantabrici', 'Munții Pirinei', 'Munții Betici', 'Munții Centrali']);
   String answer13 = jsonEncode(['Valencia', 'Bilbao', 'Sevilla', 'Santiago de Compostela']);
@@ -238,7 +238,7 @@ class DatabaseHelper {
   String answer33 = jsonEncode(['Florida', 'California', 'Louisiana', 'Texas']);
   String answer34 = jsonEncode(['Barcelona', 'Madrid', 'Paris', 'Lisabona']);
   String answer35 = jsonEncode(['Mont Blanc', 'Matterhorn', 'Mont Ventoux', 'Montserrat']);
-  String answer36 = jsonEncode(['Turnul Eiffel', 'Sagrada Familia', 'Colosseumul', 'Acropolisul']);
+  String answer36 = jsonEncode(['Turnul Eiffel', 'Sagrada Familia', 'Colosseumul', 'Acropola']);
   String answer37 = jsonEncode(['Alpii', 'Pirineii', 'Apeninii', 'Carpații']);
   String answer38 = jsonEncode(['Tamisa', 'Sena', 'Tiber', 'Rin']);
   String answer39 = jsonEncode(['Bretania', 'Corsica', 'Côte d\'Azur', 'Normandia']);
@@ -246,7 +246,6 @@ class DatabaseHelper {
   String answer41 = jsonEncode(['Toscana', 'Bordeaux', 'Rioja', 'Bourgogne']);
   String answer42 = jsonEncode(['Sudul', 'Nordul', 'Estul', 'Vestul']);
   String answer43 = jsonEncode(['Normandia', 'Alsacia', 'Bretania', 'Provence']);
-  String answer44 = jsonEncode(['25 milioane', '47 milioane', '67 milioane', '90 milioane']);
   String answer45 = jsonEncode(['Sena', 'Loara', 'Rhone', 'Garonne']);
   String answer46 = jsonEncode(['Insulele Baleare', 'Insulele Canare', 'Corsica', 'Insulele Britanice']);
   String answer47 = jsonEncode(['4 - Belgia, Germania, Italia, Spania', '5 - Belgia, Luxemburg, Germania, Italia, Spania', '6 - Belgia, Luxemburg, Germania, Italia, Elveția, Spania', '3 - Belgia, Germania, Spania']);
@@ -378,7 +377,7 @@ class DatabaseHelper {
   String answer173 = jsonEncode(['Guam și Samoa Americană', 'Alaska și Guam', 'Insulele Virgine Americane și Samoa Americană', 'Puerto Rico și Insulele Virgine Americane']);
 
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 32;
+  static final _databaseVersion = 34;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -1006,7 +1005,7 @@ class DatabaseHelper {
           'subject': 1,
           'difficulty': 2,
           'question_text': 'Ce caracteristică a culturii franțuzești este renumită în întreaga lume?',
-          'answer': answer44,
+          'answer': answer45,
           'correct_answer': 1,
           'type': 1
         });
@@ -2121,7 +2120,7 @@ class DatabaseHelper {
 
                             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt granițele geografice ale SUA?',
@@ -2132,7 +2131,7 @@ class DatabaseHelper {
 
               
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este capitala SUA?',
@@ -2143,7 +2142,7 @@ class DatabaseHelper {
 
            
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este caracteristica geografică iconică a SUA menționată în lecție?',
@@ -2154,7 +2153,7 @@ class DatabaseHelper {
 
               
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce râuri majore traversează teritoriul SUA?',
@@ -2165,7 +2164,7 @@ class DatabaseHelper {
 
               
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este importanța râului Mississippi pentru țară?',
@@ -2176,7 +2175,7 @@ class DatabaseHelper {
 
         
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt principalele caracteristici geografice ale teritoriului SUA menționate în lecție?',
@@ -2187,7 +2186,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce rol au orașele portuare ale SUA în economia țării?',
@@ -2197,7 +2196,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Numește trei orașe importante din SUA, în afară de capitală și cel mai mare oraș.',
@@ -2208,7 +2207,7 @@ class DatabaseHelper {
 
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este varietatea climatică a SUA?',
@@ -2218,7 +2217,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce parcuri naționale din SUA sunt menționate în lecție?',
@@ -2229,7 +2228,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este importanța economică a coastelor SUA?',
@@ -2240,7 +2239,7 @@ class DatabaseHelper {
 
          
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt teritoriile SUA în afara continentului principal?',
@@ -2251,7 +2250,7 @@ class DatabaseHelper {
 
            
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Cum variază climatul în funcție de poziția geografică în SUA?',
@@ -2261,7 +2260,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce caracteristică geografică a SUA influențează economia și transportul intern?',
@@ -2271,7 +2270,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Numește două state care au terenuri deșertice în SUA.',
@@ -2282,7 +2281,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce reprezintă Marea de Est, menționată în lecție?',
@@ -2293,7 +2292,7 @@ class DatabaseHelper {
 
         
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care dintre următoarele animale este asociat cu Parcul Național Yellowstone?',
@@ -2304,7 +2303,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce stat găzduiește Munții Stâncoși?',
@@ -2315,7 +2314,7 @@ class DatabaseHelper {
 
           
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce mâncăruri tradiționale sunt menționate în contextul diversității culinare a SUA?',
@@ -2326,7 +2325,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt două dintre teritoriile SUA menționate în lecție, în afară de Hawaii și Puerto Rico?',
@@ -3012,7 +3011,7 @@ class DatabaseHelper {
           'subject': 1,
           'difficulty': 2,
           'question_text': 'Ce caracteristică a culturii franțuzești este renumită în întreaga lume?',
-          'answer': answer44,
+          'answer': answer45,
           'correct_answer': 1,
           'type': 1
         });
@@ -4127,7 +4126,7 @@ class DatabaseHelper {
 
                             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt granițele geografice ale SUA?',
@@ -4138,7 +4137,7 @@ class DatabaseHelper {
 
               
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este capitala SUA?',
@@ -4149,7 +4148,7 @@ class DatabaseHelper {
 
            
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este caracteristica geografică iconică a SUA menționată în lecție?',
@@ -4160,7 +4159,7 @@ class DatabaseHelper {
 
               
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce râuri majore traversează teritoriul SUA?',
@@ -4171,7 +4170,7 @@ class DatabaseHelper {
 
               
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este importanța râului Mississippi pentru țară?',
@@ -4182,7 +4181,7 @@ class DatabaseHelper {
 
         
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt principalele caracteristici geografice ale teritoriului SUA menționate în lecție?',
@@ -4193,7 +4192,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce rol au orașele portuare ale SUA în economia țării?',
@@ -4203,7 +4202,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Numește trei orașe importante din SUA, în afară de capitală și cel mai mare oraș.',
@@ -4214,7 +4213,7 @@ class DatabaseHelper {
 
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este varietatea climatică a SUA?',
@@ -4224,7 +4223,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce parcuri naționale din SUA sunt menționate în lecție?',
@@ -4235,7 +4234,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care este importanța economică a coastelor SUA?',
@@ -4246,7 +4245,7 @@ class DatabaseHelper {
 
          
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt teritoriile SUA în afara continentului principal?',
@@ -4257,7 +4256,7 @@ class DatabaseHelper {
 
            
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Cum variază climatul în funcție de poziția geografică în SUA?',
@@ -4267,7 +4266,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce caracteristică geografică a SUA influențează economia și transportul intern?',
@@ -4277,7 +4276,7 @@ class DatabaseHelper {
                 });
 
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Numește două state care au terenuri deșertice în SUA.',
@@ -4288,7 +4287,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce reprezintă Marea de Est, menționată în lecție?',
@@ -4299,7 +4298,7 @@ class DatabaseHelper {
 
         
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care dintre următoarele animale este asociat cu Parcul Național Yellowstone?',
@@ -4310,7 +4309,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce stat găzduiește Munții Stâncoși?',
@@ -4321,7 +4320,7 @@ class DatabaseHelper {
 
           
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Ce mâncăruri tradiționale sunt menționate în contextul diversității culinare a SUA?',
@@ -4332,7 +4331,7 @@ class DatabaseHelper {
 
             
                 await db.insert('question', {
-                  'country': 'SUA',
+                  'country': 'United States',
                   'subject': 2,
                   'difficulty': 1,
                   'question_text': 'Care sunt două dintre teritoriile SUA menționate în lecție, în afară de Hawaii și Puerto Rico?',
