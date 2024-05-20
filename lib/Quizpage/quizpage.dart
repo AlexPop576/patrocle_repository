@@ -13,7 +13,7 @@ import 'testpage1.dart';
 import 'testpage2.dart';
 import 'testpage3.dart';
 import 'testpage4.dart';
-import 'testpage4.dart';
+
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
@@ -58,6 +58,8 @@ class _QuizPageState extends State<QuizPage> {
   List<Map<String, dynamic>> questions = [];
   double population = 0;
   final _dbHelper = DatabaseHelper.instance;
+  List<int> answerBonus = [0,0,0,0,0,0,0,0,0,0];
+  int? bonusIQ = 0;
 
   @override
   void initState() {
@@ -549,6 +551,19 @@ class _QuizPageState extends State<QuizPage> {
                             );
                             //await _correct.seek(Duration.zero);
                             //await _correct.play();
+                            setState(() {
+                              answerBonus[pageIndex-1]=1;
+                            });
+                            if(pageIndex-3>=0)
+                            {
+                              if(answerBonus[pageIndex-1]+answerBonus[pageIndex-2]+answerBonus[pageIndex-3]==3)
+                              {
+                                setState(() {
+                                  bonusIQ = bonusIQ! + 3;
+                                });
+                                
+                              }
+                            }
                           } else {
                             wrong();
                             showModalBottomSheet(
@@ -657,7 +672,7 @@ class _QuizPageState extends State<QuizPage> {
                                   ),
                                 );
                               },
-                            );
+                            );         
                             //await _incorrect.seek(Duration.zero);
                             //await _incorrect.play();
                           }
@@ -762,6 +777,7 @@ class _QuizPageState extends State<QuizPage> {
         correctAnswersHard: correctAnswersHard,
         correctAnswers: correctAnswersEasy + correctAnswersHard,
         pageMax: pageMax,
+        bonusIQ: bonusIQ,
       );
     }
   }
@@ -796,10 +812,11 @@ class FinishPage extends StatelessWidget {
     required this.correctAnswersHard,
     required this.correctAnswers,
     required this.pageMax,
+    required this.bonusIQ,
   });
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final int correctAnswersEasy, correctAnswersHard, correctAnswers;
-  int? language = 2, pageMax;
+  int? language = 2, pageMax, bonusIQ = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -933,7 +950,7 @@ class FinishPage extends StatelessWidget {
                                 ),
                                 child: Center(
                                     child: Text(
-                                  "+${correctAnswersEasy * 5 + correctAnswersHard * 10} IQ",
+                                  "+${correctAnswersEasy * 5 + correctAnswersHard * 10 + bonusIQ!} IQ",
                                   style: const TextStyle(
                                       color: Color.fromARGB(255, 102, 102, 255),
                                       fontWeight: FontWeight.bold,

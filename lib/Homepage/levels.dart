@@ -164,7 +164,7 @@ class _LevelsState extends State<Levels> {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  "${translation[language]!["Create your test!"]}",
+                                                  "Panou de control",
                                                   style: const TextStyle(
                                                       shadows: <Shadow>[
                                                         Shadow(
@@ -213,7 +213,7 @@ class _LevelsState extends State<Levels> {
                                       ).then((_) => setState(() {}));
                                     },
                                     style: ElevatedButton.styleFrom(
-                                      backgroundColor:const Color.fromARGB(
+                                      backgroundColor: const Color.fromARGB(
                                           255, 63, 255, 38),
                                       shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
@@ -226,7 +226,7 @@ class _LevelsState extends State<Levels> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20.0),
                                       child: Text(
-                                        "${translation[language]!["Update"]}",
+                                        "Accesează",
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,

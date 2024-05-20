@@ -4,23 +4,30 @@ import '../../Database/database_helper.dart';
 import '../../Theme/translations.dart';
 
 class EditProfile extends StatefulWidget {
-  EditProfile({super.key, required this.username});
+  EditProfile({super.key, required this.username, required this.profileIndex});
   String? username;
+  int profileIndex = 0;
 
   @override
-  State<EditProfile> createState() => _EditProfileState(username: username);
+  State<EditProfile> createState() => _EditProfileState(username: username, profileIndex: profileIndex);
 }
 
 class _EditProfileState extends State<EditProfile> {
-  _EditProfileState({required this.username});
+  _EditProfileState({required this.username, required this.profileIndex});
   String? username;
-  int profileIndex = 0, maxIndex = 3, language = 2;
+  int profileIndex = 0, maxIndex = 2, language = 2;
   List<Color> profileColor = [
+    Colors.blue,
     Colors.red,
     Colors.green,
-    Colors.blue,
-    Colors.yellow
   ];
+
+  List<Image> profilePhoto = [
+    Image.asset('assets/icons/face1.png',height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face2.png',height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face3.png',height: 100, fit: BoxFit.contain),
+  ];
+
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
   final usernameController = TextEditingController();
@@ -205,9 +212,7 @@ class _EditProfileState extends State<EditProfile> {
                               child: SizedBox(
                                 height: 250,
                                 width: 250,
-                                child: Image.asset(
-                                  'assets/icons/Face.png',
-                                ),
+                                child: profilePhoto[profileIndex],
                               ),
                             ),
                           ),
@@ -234,7 +239,7 @@ class _EditProfileState extends State<EditProfile> {
               TextField(
                 controller: usernameController,
                 cursorColor: Colors.white,
-                maxLength: 150,
+                maxLength: 10,
                 decoration: InputDecoration(
                   focusedBorder: const OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15)),

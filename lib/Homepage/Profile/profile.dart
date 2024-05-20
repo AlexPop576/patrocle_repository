@@ -19,10 +19,15 @@ class _ProfileState extends State<Profile> {
   int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   List<Color> profileColor = [
+    Colors.blue,
     Colors.red,
     Colors.green,
-    Colors.blue,
-    Colors.yellow
+  ];
+
+  List<Image> profilePhoto = [
+    Image.asset('assets/icons/face1.png',height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face2.png',height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face3.png',height: 100, fit: BoxFit.contain),
   ];
   final _dbHelper = DatabaseHelper.instance;
   
@@ -81,8 +86,7 @@ class _ProfileState extends State<Profile> {
                             height: 280,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                              child: Image.asset('assets/icons/Face.png',
-                                  height: 100, fit: BoxFit.contain),
+                              child: profilePhoto[profileIndex!],
                             ),
                           ),
                           Divider(
@@ -126,6 +130,7 @@ class _ProfileState extends State<Profile> {
                                     PageTransition(
                                       child: EditProfile(
                                         username: username,
+                                        profileIndex: profileIndex!,
                                       ),
                                       type: PageTransitionType.bottomToTop,
                                       duration:
