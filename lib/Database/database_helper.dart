@@ -396,11 +396,20 @@ class DatabaseHelper {
   String answer191 = jsonEncode(['Munții Carpați', 'Marea Neagră', 'Dunărea', 'Iași']);
   String answer192 = jsonEncode(['Dunărea', 'Marea Neagră', 'Munții Carpați', 'Iași']);
   String answer193 = jsonEncode(['LAIA', 'NATO', 'NAFTA', 'MERCOSUR']);
-
-  
-
+  String answer194 = jsonEncode(['Unguri', 'Daci', 'Egipteni', 'Celți']);
+  String answer195 = jsonEncode(['Imperiul Otoman', 'Imperiul Roman', 'Imperiul Mongol', 'Imperiul Babilonian']);
+  String answer196 = jsonEncode(['Moscova', 'Saxonia', 'Moldova', 'Toscana']);
+  String answer197 = jsonEncode(['Marea', 'Uniunea', 'Vlad', 'Țara','Unire','Sovietică','Țepeș','Românească']);
+  String answer198 = jsonEncode(['Democrată', 'Comunistă', 'Totalitară', 'Fascistă']);
+  String answer199 = jsonEncode(['2004', '2007', '2010', '1997']);
+  String answer200 = jsonEncode(['Traian Băsescu', 'Klaus Iohannis', 'Emil Boc', 'Nicolae Ceaușescu']);
+  String answer201 = jsonEncode(['Nicolae Titulescu', 'Iancu de Hunedoara', 'Ștefan Cel Mare', 'Alexandru Ioan Cuza']);
+  String answer202 = jsonEncode(['Axei', 'Aliații', 'Otomanii', 'Chinezii']);
+  String answer203 = jsonEncode(['Iliescu', 'Constantinescu', 'Nicolae Ceaușescu', 'Gheorghe Ghiorghiu-Dej']);
+  String answer204 = jsonEncode(['Războiul Civil Român', 'Războiul de Independență', 'Războiul Balcanic', 'Războiul Crimeii']);
+  String answer205 = jsonEncode(['Romanizare', 'Nivelare', 'Dacizare', 'Globalizare']);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 39;
+  static final _databaseVersion = 40;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -2501,6 +2510,206 @@ class DatabaseHelper {
                   'correct_answer': 19,
                   'type': 2
                 }); 
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În vremurile străvechi, ce popor locuia pe teritoriul României?',
+                  'answer': answer194,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce imperiu a cucerit Dacia?',
+                  'answer': answer195,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce principat aparținea teritoriului românesc? ',
+                  'answer': answer196,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an a avut Unirea Principatelor Române?',
+                  'answer': '',
+                  'correct_answer': 1859,
+                  'type': 1
+                });
+        
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce fel de regim adoptă România în anul 1947?',
+                  'answer': answer198,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': '',
+                  'answer': answer197,
+                  'correct_answer': 1,
+                  'type': 3
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Marea Unire a avut loc în anul 1925',
+                  'answer': "",
+                  'correct_answer': 2,
+                  'type': 4
+                }); 
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an și-a proclamat România independența față de Imperiul Otoman?',
+                  'answer': '',
+                  'correct_answer': 1877,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an a căzut comunismul în România?',
+                  'answer': '',
+                  'correct_answer': 1989,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an devine România membră UE?',
+                  'answer': answer199,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+           
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine este actualul președinte al României?',
+                  'answer': answer200,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a domnit Moldova în epoca medievală?',
+                  'answer': answer201,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În timpul celui de-al Doilea Război Mondial, ce putere ocupă România?',
+                  'answer': answer202,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În ce an a fost cucerită Dacia?',
+                  'answer': '',
+                  'correct_answer': 106,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În ce secol a crescut mișcarea națională?',
+                  'answer': '',
+                  'correct_answer': 19,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost primul conducător al României Comuniste?',
+                  'answer': answer203,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În ce război au participat Principatele Române pentru a-și consolida statutul de națiune suverană?',
+                  'answer': answer204,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cum se numește procesul prin care Romanii influențiază cultura dacilor',
+                  'answer': answer205,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Vlad Țepeș a domnit în Țara Românească',
+                  'answer': "",
+                  'correct_answer': 1,
+                  'type': 4
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': '',
+                  'answer': answer197,
+                  'correct_answer': 1,
+                  'type': 3
+                });
       },
 
 
@@ -4564,8 +4773,205 @@ class DatabaseHelper {
                   'type': 2
                 }); 
 
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În vremurile străvechi, ce popor locuia pe teritoriul României?',
+                  'answer': answer194,
+                  'correct_answer': 2,
+                  'type': 1
+                });
 
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce imperiu a cucerit Dacia?',
+                  'answer': answer195,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce principat aparținea teritoriului românesc? ',
+                  'answer': answer196,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an a avut loc Unirea Principatelor Române?',
+                  'answer': '',
+                  'correct_answer': 1859,
+                  'type': 2
+                });
         
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Ce fel de regim adoptă România în anul 1947?',
+                  'answer': answer198,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': '',
+                  'answer': answer197,
+                  'correct_answer': 1,
+                  'type': 3
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Marea Unire a avut loc în anul 1925',
+                  'answer': "",
+                  'correct_answer': 2,
+                  'type': 4
+                }); 
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an și-a proclamat România independența față de Imperiul Otoman?',
+                  'answer': '',
+                  'correct_answer': 1877,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an a căzut comunismul în România?',
+                  'answer': '',
+                  'correct_answer': 1989,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'În ce an devine România membră UE?',
+                  'answer': answer199,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+           
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine este actualul președinte al României?',
+                  'answer': answer200,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a domnit Moldova în epoca medievală?',
+                  'answer': answer201,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În timpul celui de-al Doilea Război Mondial, ce putere ocupă România?',
+                  'answer': answer202,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În ce an a fost cucerită Dacia?',
+                  'answer': '',
+                  'correct_answer': 106,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În ce secol a crescut mișcarea națională?',
+                  'answer': '',
+                  'correct_answer': 19,
+                  'type': 2
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Care a fost primul conducător al României Comuniste?',
+                  'answer': answer203,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'În ce război au participat Principatele Române pentru a-și consolida statutul de națiune suverană?',
+                  'answer': answer204,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cum se numește procesul prin care Romanii influențiază cultura dacilor',
+                  'answer': answer205,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Vlad Țepeș a domnit în Țara Românească',
+                  'answer': "",
+                  'correct_answer': 1,
+                  'type': 4
+                });
+
+                await db.insert('question', {
+                  'country': 'Romania',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': '',
+                  'answer': answer197,
+                  'correct_answer': 1,
+                  'type': 3
+                });
           // Copy the data from the old table to the new one
 
           // Delete the old table
