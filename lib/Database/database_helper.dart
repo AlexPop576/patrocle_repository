@@ -408,6 +408,15 @@ class DatabaseHelper {
   String answer203 = jsonEncode(['Iliescu', 'Constantinescu', 'Nicolae Ceaușescu', 'Gheorghe Ghiorghiu-Dej']);
   String answer204 = jsonEncode(['Războiul Civil Român', 'Războiul de Independență', 'Războiul Balcanic', 'Războiul Crimeii']);
   String answer205 = jsonEncode(['Romanizare', 'Nivelare', 'Dacizare', 'Globalizare']);
+  String answer206 = jsonEncode(['Nord: Canada; Sud: Brazilia; Est: Marea Atlantică; Vest: Oceanul Pacific', 'Nord: Mexic; Sud: Canada; Est: Oceanul Atlantic; Vest: Oceanul Pacific', 'Nord: Canada; Sud: Mexic; Est: Oceanul Atlantic; Vest: Oceanul Pacific', 'Nord: Alaska; Sud: Florida; Est: Marea Atlantică; Vest: Oceanul Pacific']);
+  String answer207 = jsonEncode(['Los Angeles','Washington, D.C', 'New York City','Chicago']);
+  String answer208 = jsonEncode(['Parcul Național Yellowstone','Munții Stâncoși','Râul Mississippi','Deșertul Sonora']);
+  String answer209 = jsonEncode(['Râul Amazon și Râul Nil','Râul Thames și Râul Sena','Râul Mississippi și Râul Missouri','Râul Volga și Râul Dunărea']);
+  String answer210 = jsonEncode(['Este o sursă majoră de energie electrică','Asigură irigarea culturilor agricole din Midwest','Este o importantă rută comercială și de transport','Este cunoscut pentru peisajele spectaculoase din jurul său']);
+  String answer211 = jsonEncode(['Clima tropicală, subtropicală și arctică','Clima temperată, aridă și subarctică','Clima temperată, subtropicală și deșertică','Clima temperată, subtropicală și tropicală']);
+  String answer212 = jsonEncode(['Doar populația khoikhoi','Doar populația bantu','Doar populația khoikhoi și bantu','Populația khoikhoi, bantu și san']);
+  String answer213 = jsonEncode(['În 1492','În 1652','În 1806','În 1910']);
+  String answer214 = jsonEncode(['F.W. de Klerk','Nelson Mandela','Paul Kruger','Jan van Riebeeck']);
   static final _databaseName = "MyDatabase.db";
   static final _databaseVersion = 41;
 
@@ -684,7 +693,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
+          'difficulty': 2,
           'question_text': 'Ce caracterizează clima în regiunile de coastă ale Spaniei?',
           'answer': answer11,
           'correct_answer': 4,
@@ -694,7 +703,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
+          'difficulty': 2,
           'question_text': 'Care lanț muntos formează granița dintre Spania și Portugalia?',
           'answer': answer12,
           'correct_answer': 4,
@@ -704,11 +713,21 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
+          'difficulty': 2,
           'question_text': 'Care dintre aceste orașe spaniole este situat pe coasta de est a țării?',
           'answer': answer13,
           'correct_answer': 1,
           'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este populația Spaniei?',
+          'answer': '',
+          'correct_answer': 47,
+          'type': 2
         });
 
         await db.insert('question', {
@@ -924,7 +943,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este cel mai înalt vârf al Franței?',
           'answer': answer35,
           'correct_answer': 1,
@@ -934,7 +953,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este principala atracție turistică din Paris?',
           'answer': answer36,
           'correct_answer': 1,
@@ -944,7 +963,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care sunt munții care formează granița sud-vestică a Franței?',
           'answer': answer37,
           'correct_answer': 2,
@@ -954,7 +973,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este cel mai important râu din Franța, cunoscut pentru traversarea capitalei?',
           'answer': answer38,
           'correct_answer': 2,
@@ -964,7 +983,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este regiunea franceză cunoscută pentru stațiunile de lux și plajele frumoase?',
           'answer': answer39,
           'correct_answer': 3,
@@ -974,7 +993,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Câtă populație aproximativă are Franța?',
           'answer': '',
           'correct_answer': 67,
@@ -1048,7 +1067,7 @@ class DatabaseHelper {
           await db.insert('question', {
             'country': 'France',
             'subject': 1,
-            'difficulty': 2,
+            'difficulty': 1,
             'question_text': 'Ce regiune din Franța este cunoscută pentru vinurile sale fine?',
             'answer': answer41,
             'correct_answer': 4,
@@ -2084,7 +2103,74 @@ class DatabaseHelper {
                   'type': 1
                 });
 
-              
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care sunt granițele geografice ale SUA?',
+                  'answer': answer206,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care este capitala SUA?',
+                  'answer': answer207,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care este caracteristica geografică iconică a SUA?',
+                  'answer': answer208,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Las Vegas este un oras important',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 4
+                });
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce râuri majore traversează teritoriul SUA?',
+                  'answer': answer209,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt principalele caracteristici geografice ale teritoriului SUA?',
+                  'answer': answer210,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care este varietatea climatică a SUA ?',
+                  'answer': answer211,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
                 await db.insert('question', {
                   'country': 'United States',
                   'subject': 2,
@@ -2710,6 +2796,46 @@ class DatabaseHelper {
                   'correct_answer': 1,
                   'type': 3
                 });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine locuia pe teritoriul actual al Africii de Sud înainte de sosirea europenilor?',
+                  'answer': answer212,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Când au fondat olandezii Cape Town-ul?',
+                  'answer': answer213,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Războaiele anglo-boere au avut loc in secolul XIX',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a devenit primul președinte negru al Africii de Sud după sfârșitul apartheidului?',
+                  'answer': answer214,
+                  'correct_answer': 2,
+                  'type': 1
+                });
       },
 
 
@@ -2946,7 +3072,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
+          'difficulty': 2,
           'question_text': 'Ce caracterizează clima în regiunile de coastă ale Spaniei?',
           'answer': answer11,
           'correct_answer': 4,
@@ -2956,7 +3082,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
+          'difficulty': 2,
           'question_text': 'Care lanț muntos formează granița dintre Spania și Portugalia?',
           'answer': answer12,
           'correct_answer': 4,
@@ -2966,11 +3092,21 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
+          'difficulty': 2,
           'question_text': 'Care dintre aceste orașe spaniole este situat pe coasta de est a țării?',
           'answer': answer13,
           'correct_answer': 1,
           'type': 1
+        });
+
+        await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Care este populația Spaniei?',
+          'answer': '',
+          'correct_answer': 47,
+          'type': 2
         });
 
         await db.insert('question', {
@@ -3186,7 +3322,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este cel mai înalt vârf al Franței?',
           'answer': answer35,
           'correct_answer': 1,
@@ -3196,7 +3332,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este principala atracție turistică din Paris?',
           'answer': answer36,
           'correct_answer': 1,
@@ -3206,7 +3342,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care sunt munții care formează granița sud-vestică a Franței?',
           'answer': answer37,
           'correct_answer': 2,
@@ -3216,7 +3352,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este cel mai important râu din Franța, cunoscut pentru traversarea capitalei?',
           'answer': answer38,
           'correct_answer': 2,
@@ -3226,7 +3362,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Care este regiunea franceză cunoscută pentru stațiunile de lux și plajele frumoase?',
           'answer': answer39,
           'correct_answer': 3,
@@ -3236,7 +3372,7 @@ class DatabaseHelper {
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
+          'difficulty': 1,
           'question_text': 'Câtă populație aproximativă are Franța?',
           'answer': '',
           'correct_answer': 67,
@@ -3310,7 +3446,7 @@ class DatabaseHelper {
           await db.insert('question', {
             'country': 'France',
             'subject': 1,
-            'difficulty': 2,
+            'difficulty': 1,
             'question_text': 'Ce regiune din Franța este cunoscută pentru vinurile sale fine?',
             'answer': answer41,
             'correct_answer': 4,
@@ -4346,7 +4482,74 @@ class DatabaseHelper {
                   'type': 1
                 });
 
-              
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care sunt granițele geografice ale SUA?',
+                  'answer': answer206,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care este capitala SUA?',
+                  'answer': answer207,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Care este caracteristica geografică iconică a SUA?',
+                  'answer': answer208,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Las Vegas este un oras important',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 4
+                });
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Ce râuri majore traversează teritoriul SUA?',
+                  'answer': answer209,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care sunt principalele caracteristici geografice ale teritoriului SUA?',
+                  'answer': answer210,
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'United States',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Care este varietatea climatică a SUA ?',
+                  'answer': answer211,
+                  'correct_answer': 4,
+                  'type': 1
+                });
+
                 await db.insert('question', {
                   'country': 'United States',
                   'subject': 2,
@@ -4709,7 +4912,7 @@ class DatabaseHelper {
                   'difficulty': 2,
                   'question_text': 'În ce munte se află Vârful Moldoveanu?',
                   'answer': answer188,
-                  'correct_answer': 2,
+                  'correct_answer': 3,
                   'type': 1
                 }); 
 
@@ -4758,9 +4961,9 @@ class DatabaseHelper {
                   'subject': 1,
                   'difficulty': 2,
                   'question_text': 'România este membră NATO',
-                  'answer': "",
+                  'answer': '',
                   'correct_answer': 1,
-                  'type': 4
+                  'type': 1
                 }); 
 
                 await db.insert('question', {
@@ -4807,10 +5010,10 @@ class DatabaseHelper {
                   'country': 'Romania',
                   'subject': 2,
                   'difficulty': 1,
-                  'question_text': 'În ce an a avut loc Unirea Principatelor Române?',
+                  'question_text': 'În ce an a avut Unirea Principatelor Române?',
                   'answer': '',
                   'correct_answer': 1859,
-                  'type': 2
+                  'type': 1
                 });
         
                 await db.insert('question', {
@@ -4972,6 +5175,48 @@ class DatabaseHelper {
                   'correct_answer': 1,
                   'type': 3
                 });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Cine locuia pe teritoriul actual al Africii de Sud înainte de sosirea europenilor?',
+                  'answer': answer212,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Când au fondat olandezii Cape Town-ul?',
+                  'answer': answer213,
+                  'correct_answer': 3,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'Războaiele anglo-boere au avut loc in secolul XIX',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 1
+                });
+
+                await db.insert('question', {
+                  'country': 'South Africa',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Cine a devenit primul președinte negru al Africii de Sud după sfârșitul apartheidului?',
+                  'answer': answer214,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+   
+            
           // Copy the data from the old table to the new one
 
           // Delete the old table
