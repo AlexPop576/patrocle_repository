@@ -46,16 +46,16 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 23, 24, 31),
+      //backgroundColor: const Color.fromARGB(255, 23, 24, 31),
       body: Center(
         child: _pages.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: GNav(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.tertiary,
           activeColor:const Color.fromARGB(255, 102, 102, 255),
-          tabBackgroundColor: const Color.fromARGB(15, 255, 255, 255),
+          tabBackgroundColor: Theme.of(context).colorScheme.primary,
           gap: 12,
           haptic: true,
           padding: const EdgeInsets.all(18),

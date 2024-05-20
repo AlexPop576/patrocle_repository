@@ -409,7 +409,7 @@ class DatabaseHelper {
   String answer204 = jsonEncode(['Războiul Civil Român', 'Războiul de Independență', 'Războiul Balcanic', 'Războiul Crimeii']);
   String answer205 = jsonEncode(['Romanizare', 'Nivelare', 'Dacizare', 'Globalizare']);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 40;
+  static final _databaseVersion = 41;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
