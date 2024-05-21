@@ -18,6 +18,22 @@ class _TrophiesState extends State<Trophies> {
   int? language = 2;
 
   @override
+  void initState() {
+    super.initState();
+    fetchData();
+  }
+
+  void fetchData() {
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          language = results.first['language'];
+        });
+      }
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
@@ -82,11 +98,13 @@ class _TrophiesState extends State<Trophies> {
                             TrophyTile(
                                 trophy: newIndex <= snapshot.data!.length
                                     ? snapshot.data![newIndex-1]['trophy']
-                                    : 9),
+                                    : 9,
+                                    language: language),
                             TrophyTile(
                                 trophy: newIndex + 1 <= snapshot.data!.length
                                     ? snapshot.data![newIndex]['trophy']
-                                    : 9),
+                                    : 9,
+                                    language: language),
                           ],
                         );
                       },

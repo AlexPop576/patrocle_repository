@@ -4,13 +4,15 @@ import 'package:patrocle/Database/database_helper.dart';
 import '../../Theme/translations.dart';
 
 class AdminPage extends StatefulWidget {
-  const AdminPage({super.key});
-
+  AdminPage({super.key, this.language});
+  int? language;
   @override
-  State<AdminPage> createState() => _AdminPageState();
+  State<AdminPage> createState() => _AdminPageState(language: language);
 }
 
 class _AdminPageState extends State<AdminPage> {
+  _AdminPageState({this.language});
+
   final _dbHelper = DatabaseHelper.instance;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final pinController = TextEditingController();

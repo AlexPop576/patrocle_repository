@@ -22,9 +22,10 @@ class QuizPage extends StatefulWidget {
     required this.country,
     required this.difficulty,
     required this.subject,
+    this.language,
   });
   String? country;
-  int? difficulty, subject;
+  int? difficulty, subject, language;
 
   @override
   // ignore: no_logic_in_create_state
@@ -32,6 +33,7 @@ class QuizPage extends StatefulWidget {
         country: country,
         difficulty: difficulty,
         subject: subject,
+        language:language
       );
 }
 
@@ -40,6 +42,7 @@ class _QuizPageState extends State<QuizPage> {
     required this.country,
     required this.difficulty,
     required this.subject,
+    this.language
   });
   String? country;
   int? difficulty, subject, language = 2, randomNumber, digits;
@@ -778,6 +781,7 @@ class _QuizPageState extends State<QuizPage> {
         correctAnswers: correctAnswersEasy + correctAnswersHard,
         pageMax: pageMax,
         bonusIQ: bonusIQ,
+        language: language,
       );
     }
   }
@@ -813,6 +817,7 @@ class FinishPage extends StatelessWidget {
     required this.correctAnswers,
     required this.pageMax,
     required this.bonusIQ,
+    this.language,
   });
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final int correctAnswersEasy, correctAnswersHard, correctAnswers;

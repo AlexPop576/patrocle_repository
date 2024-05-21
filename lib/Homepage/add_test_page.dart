@@ -9,14 +9,18 @@ import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
 
 class AddTestPage extends StatefulWidget {
-  const AddTestPage({super.key});
+  AddTestPage({super.key, this.language});
+  int? language;
 
   @override
-  State<AddTestPage> createState() => _AddTestPageState();
+  State<AddTestPage> createState() => _AddTestPageState(language: language);
 }
 
 class _AddTestPageState extends State<AddTestPage> {
+  _AddTestPageState({this.language});
+  int? language;
   int pageIndex = 0;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +66,7 @@ class _AddTestPageState extends State<AddTestPage> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 40),
                                     child: Text(
-                                      "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                      "${translation[language]!["QP_QMSG"]}",
                                       style: TextStyle(
                                         color: Theme.of(context)
                                             .colorScheme
@@ -90,9 +94,9 @@ class _AddTestPageState extends State<AddTestPage> {
                                           backgroundColor: const Color.fromARGB(
                                               255, 102, 102, 255),
                                         ),
-                                        child: const Center(
-                                            child: Text("Continue",
-                                                style: TextStyle(
+                                        child: Center(
+                                            child: Text("${translation[language]!["Continue"]}",
+                                                style: const TextStyle(
                                                     color: Colors.white,
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 30))),
@@ -135,9 +139,9 @@ class _AddTestPageState extends State<AddTestPage> {
                           );
                         });
                   }),
-              title: const Text(
-                "Add test",
-                style: TextStyle(
+              title: Text(
+                "${translation[language]!["Add test"]}",
+                style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 35),
@@ -147,18 +151,21 @@ class _AddTestPageState extends State<AddTestPage> {
             ),
           ),
         ),
-        body: addCountry());
+        body: addCountry(language: language,));
   }
 }
 
 class addCountry extends StatefulWidget {
-  const addCountry({super.key});
+  addCountry({super.key, this.language});
+  int? language;
 
   @override
-  State<addCountry> createState() => _addCountryState();
+  State<addCountry> createState() => _addCountryState(language: language);
 }
 
 class _addCountryState extends State<addCountry> {
+  _addCountryState({this.language});
+  int? language;
   final _dbHelper = DatabaseHelper.instance;
 
   @override
@@ -221,20 +228,7 @@ class _addCountryState extends State<addCountry> {
                                     setState(() {});
                                   },
                                 )
-                              : Wrap(
-                                  children: [
-                                    IconButton(
-                                      icon: const CircleAvatar(
-                                          backgroundColor:
-                                              Color.fromARGB(255, 255, 203, 59),
-                                          radius: 18,
-                                          child: Icon(Icons.edit,
-                                              color: Colors.white)),
-                                      onPressed: () async {
-                                        setState(() {});
-                                      },
-                                    ),
-                                    IconButton(
+                              : IconButton(
                                       icon: const CircleAvatar(
                                         backgroundColor: Colors.red,
                                         radius: 18,
@@ -242,11 +236,13 @@ class _addCountryState extends State<addCountry> {
                                             color: Colors.white),
                                       ),
                                       onPressed: () async {
-                                        setState(() {});
+                                        setState(() {
+
+                                          _dbHelper.deleteCountry(snapshot.data![index]
+                                                ['name'].toString());
+                                        });
                                       },
-                                    )
-                                  ],
-                                ));
+                                    ));
                     },
                   );
                 } else if (snapshot.hasError) {
@@ -263,15 +259,17 @@ class _addCountryState extends State<addCountry> {
 }
 
 class addQuestion extends StatefulWidget {
-  addQuestion({super.key, required this.country});
+  addQuestion({super.key, required this.country, this.language});
+  int? language;
   String? country;
 
   @override
-  State<addQuestion> createState() => _addQuestionState(country: country);
+  State<addQuestion> createState() => _addQuestionState(country: country, language: language);
 }
 
 class _addQuestionState extends State<addQuestion> {
-  _addQuestionState({required this.country});
+  _addQuestionState({required this.country, this.language});
+  int? language;
   String? country;
   int subject = 0;
 
@@ -631,15 +629,16 @@ class _addQuestionState extends State<addQuestion> {
 }
 
 class addLesson extends StatefulWidget {
-  addLesson({super.key, required this.country});
+  addLesson({super.key, required this.country, this.language});
+  int? language;
   String? country;
 
   @override
-  State<addLesson> createState() => _addLessonState(country: country);
+  State<addLesson> createState() => _addLessonState(country: country, language: language);
 }
 
 class _addLessonState extends State<addLesson> {
-  _addLessonState({required this.country});
+  _addLessonState({required this.country, this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   String? country;
   int? language = 1;
@@ -764,9 +763,9 @@ class _addLessonState extends State<addLesson> {
                         );
                       });
                 }),
-            title: const Text(
+            title: Text(
               "Lessons",
-              style: TextStyle(
+              style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                   fontSize: 35),
@@ -890,7 +889,7 @@ class _addLessonState extends State<addLesson> {
                         backgroundColor:
                             const Color.fromARGB(255, 102, 102, 255)),
                     child: Center(
-                      child: Text("${translation[language]!["Save"]}",
+                      child: Text("Save",
                           style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -1417,9 +1416,9 @@ class _addSliderState extends State<addSlider> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 102, 102, 255),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text("${translation[language]!["Continue"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -1444,9 +1443,9 @@ class _addSliderState extends State<addSlider> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 219, 64, 64),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text("${translation[language]!["Quit"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -1483,7 +1482,7 @@ class _addSliderState extends State<addSlider> {
               const SizedBox(height: 30),
               Textfield(
                   height: 58,
-                  text: "Question",
+                  text: "${translation[language]!["Question"]}",
                   controller: _controllerQuestion),
               const SizedBox(height: 15),
               Divider(
@@ -1524,7 +1523,7 @@ class _addSliderState extends State<addSlider> {
                           });
                         },
                         child: Text(
-                          'Easy',
+                          "${translation[language]!["Easy"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -1554,7 +1553,7 @@ class _addSliderState extends State<addSlider> {
                           });
                         },
                         child: Text(
-                          'Hard',
+                          "${translation[language]!["Hard"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -1693,7 +1692,7 @@ class _addMatchState extends State<addMatch> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 40),
                                   child: Text(
-                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    "${translation[language]!["QP_QMSG"]}",
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -1721,9 +1720,9 @@ class _addMatchState extends State<addMatch> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 102, 102, 255),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text("${translation[language]!["Continue"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -1748,9 +1747,9 @@ class _addMatchState extends State<addMatch> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 219, 64, 64),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text("${translation[language]!["Quit"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -1873,7 +1872,7 @@ class _addMatchState extends State<addMatch> {
                           });
                         },
                         child: Text(
-                          'Easy',
+                          "${translation[language]!["Easy"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -1903,7 +1902,7 @@ class _addMatchState extends State<addMatch> {
                           });
                         },
                         child: Text(
-                          'Hard',
+                          "${translation[language]!["Hard"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -2046,7 +2045,7 @@ class _addTrueFalseState extends State<addTrueFalse> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 40),
                                   child: Text(
-                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    "${translation[language]!["QP_QMSG"]}",
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -2074,9 +2073,9 @@ class _addTrueFalseState extends State<addTrueFalse> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 102, 102, 255),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text("${translation[language]!["Continue"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -2101,9 +2100,9 @@ class _addTrueFalseState extends State<addTrueFalse> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 219, 64, 64),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
-                                              style: TextStyle(
+                                      child: Center(
+                                          child: Text("${translation[language]!["Quit"]}",
+                                              style: const TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 30))),
@@ -2140,7 +2139,7 @@ class _addTrueFalseState extends State<addTrueFalse> {
               const SizedBox(height: 30),
               Textfield(
                   height: 58,
-                  text: "Question",
+                  text: "${translation[language]!["Question"]}",
                   controller: _controllerQuestion),
               const SizedBox(height: 15),
               Divider(
@@ -2256,7 +2255,7 @@ class _addTrueFalseState extends State<addTrueFalse> {
                           });
                         },
                         child: Text(
-                          'Easy',
+                          "${translation[language]!["Easy"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -2286,7 +2285,7 @@ class _addTrueFalseState extends State<addTrueFalse> {
                           });
                         },
                         child: Text(
-                          'Hard',
+                          "${translation[language]!["Hard"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,

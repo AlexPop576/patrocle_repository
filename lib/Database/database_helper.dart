@@ -15,7 +15,7 @@ class DatabaseHelper {
     "Antigua and Barbuda",
     "Argentina",
     "Armenia",
-    //"Australia",
+    "Australia",
     "Austria",
     "Azerbaijan",
     "Bahamas",
@@ -41,7 +41,7 @@ class DatabaseHelper {
     "Canada",
     "CAR",
     "Chad",
-    //"Chile",
+    "Chile",
     //"China",
     "Colombia",
     "Comoros",
@@ -169,7 +169,7 @@ class DatabaseHelper {
     "Slovenia",
     "Solomon Islands",
     "Somalia",
-    //"South Africa",
+    "South Africa",
     "South Sudan",
     //"Spain",
     "Sri Lanka",
@@ -418,7 +418,7 @@ class DatabaseHelper {
   String answer213 = jsonEncode(['În 1492','În 1652','În 1806','În 1910']);
   String answer214 = jsonEncode(['F.W. de Klerk','Nelson Mandela','Paul Kruger','Jan van Riebeeck']);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 41;
+  static final _databaseVersion = 43;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -2845,6 +2845,12 @@ class DatabaseHelper {
           await db.execute('DROP TABLE question');
           await db.execute('DROP TABLE $table');
           await db.execute('DROP TABLE profile');
+          await db.execute('DROP TABLE trophies');
+          await db.execute('''
+          CREATE TABLE trophies (
+            $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
+            $columnTrophy INTEGER
+          )''');
           await db.execute('''
           CREATE TABLE profile (
             profileID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -2942,7 +2948,7 @@ class DatabaseHelper {
           'doesExist': 1
         });
 
-        await db.insert('country', {
+        /*await db.insert('country', {
           'name': 'Australia',
           'geographyLesson': 'Australia, situată în emisfera sudică, este una dintre cele mai mari insule din lume și cea mai mare țară insulară. Cu o varietate de caracteristici geografice și regiuni distincte, Australia este un amestec captivant de peisaje și ecosisteme. Australia se învecinează cu Oceanul Indian și Marea Coralilor la vest și sud-vest, cu Oceanul Pacific la est și cu Marea Tasmaniei la sud-est. Nu are granițe terestre cu alte țări. Relieful Australiei este extrem de variat, cuprinzând munți, platouri, câmpii și deșerturi. Munții Great Dividing Range, care rulează de-a lungul coastei de est, sunt un element caracteristic și oferă peisaje spectaculoase. Clima din Australia variază de la aridă în interiorul deșertic al continentului până la temperată în regiunile de coastă și subtropicală în nord-est. Sezonul ploios în nord aduce precipitații abundente, în timp ce regiunile de coastă beneficiază de un climat mediteranean. Australia este bogată în resurse naturale, inclusiv minereuri, cărbune, aur, uraniu și petrol. De asemenea, dispune de o biodiversitate impresionantă, cu o varietate de specii de plante și animale, multe dintre ele endemice. Principalele centre urbane din Australia includ Sydney, Melbourne, Brisbane și Perth. Sydney-ul este centrul economic și cultural al țării, cunoscut pentru iconicul său Opera House, în timp ce Melbourne-ul este renumit pentru viața sa culturală vibrantă. Australia are o coastă lungă și variată, cu orașe portuare importante precum Sydney, Melbourne și Brisbane. Aceste orașe portuare joacă un rol crucial în comerțul maritim și economia australiană.',
           'historyLesson': 'Înainte de colonizarea europeană, teritoriul actual al Australiei era locuit de diverse populații indigene, cum ar fi aborigenii și insularii din Strâmtoarea Torres, fiecare având culturi și societăți distincte. Colonizarea europeană a început în secolul al XVIII-lea, odată cu sosirea exploratorilor olandezi și britanici. Această perioadă a adus conflicte între coloniști europeni și populațiile indigene, precum și schimbări semnificative în modul de viață al acestora din urmă. În secolul al XIX-lea, Australia a fost colonizată de britanici, iar unele regiuni au fost folosite ca colonii penale pentru deținuții britanici. Procesul de colonizare a dus la devastarea culturii și modului de viață al populațiilor indigene, precum și la confiscarea terenurilor lor. În secolul al XX-lea, Australia a devenit o națiune independentă, cu o economie în creștere și o societate în curs de modernizare. Participarea la ambele războaie mondiale și dezvoltarea economică ulterioară au contribuit la consolidarea identității naționale australiene. Australia a fost, de asemenea, marcată de politici discriminatorii împotriva populațiilor indigene, cum ar fi politica de asimilare și politica de separare a copiilor aborigeni de familiile lor. Aceste politici au fost contestate și criticate de-a lungul anilor și au dus la mișcări de protest și activism pentru drepturile indigenilor. În prezent, Australia se confruntă cu provocări precum reconcilierea cu populațiile indigene, conservarea mediului înconjurător și gestionarea imigrației. Cu toate acestea, țara rămâne unul dintre cei mai prosperi membri ai comunității mondiale și continuă să joace un rol important în afacerile internaționale.',
@@ -2967,7 +2973,7 @@ class DatabaseHelper {
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
-        });
+        });*/
 
         await db.insert('question', {
           'country': 'Spain',
@@ -5278,6 +5284,18 @@ class DatabaseHelper {
     );
   }
 
+  Future<int> deleteCountry(String countryName) async {
+    Database db = await database;
+    return await db.update(
+      'country',
+      {
+        'doesExist': 0,
+      },
+      where: 'name = ?',
+      whereArgs: [countryName],
+    );
+  }
+
   Future<int> setLesson(String countryName, String lesson, int subject) async {
     Database db = await database;
     String field = subject == 1 ? "geographyLesson" : "historyLesson";
@@ -5410,10 +5428,10 @@ class DatabaseHelper {
     return await db.query(tableTrophy, orderBy: '$columnTrophyId ASC');
   }
 
-  Future<int> deleteCountry(int id) async {
+  /*Future<int> deleteCountry(int id) async {
     Database db = await instance.database;
     return await db.delete(table, where: '$columnId = ?', whereArgs: [id]);
-  }
+  }*/
 
   Future<int> deleteTrophy(int id) async {
     Database db = await instance.database;

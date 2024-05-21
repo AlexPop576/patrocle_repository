@@ -4,18 +4,20 @@ import '../../Database/database_helper.dart';
 import '../../Theme/translations.dart';
 
 class EditProfile extends StatefulWidget {
-  EditProfile({super.key, required this.username, required this.profileIndex});
+  EditProfile({super.key, required this.username, required this.profileIndex, this.language});
   String? username;
   int profileIndex = 0;
+  int? language;
 
   @override
-  State<EditProfile> createState() => _EditProfileState(username: username, profileIndex: profileIndex);
+  State<EditProfile> createState() => _EditProfileState(username: username, profileIndex: profileIndex, language: language);
 }
 
 class _EditProfileState extends State<EditProfile> {
-  _EditProfileState({required this.username, required this.profileIndex});
+  _EditProfileState({required this.username, required this.profileIndex, this.language});
   String? username;
-  int profileIndex = 0, maxIndex = 2, language = 2;
+  int profileIndex = 0, maxIndex = 2;
+  int? language = 2;
   List<Color> profileColor = [
     Colors.blue,
     Colors.red,

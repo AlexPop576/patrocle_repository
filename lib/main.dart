@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart'; // Import the material package for UI components
 import 'package:flutter/foundation.dart'
     show kIsWeb; // Import kIsWeb to check if the app is running on the web
-import 'package:patrocle/Theme/language_provider.dart'; // Import your custom LanguageProvider
 import 'package:provider/provider.dart'; // Import the provider package for state management
 import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // Import sqflite_common_ffi for SQLite support on desktop
 import 'dart:io'; // Import dart:io to check the platform

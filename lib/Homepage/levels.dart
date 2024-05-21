@@ -101,6 +101,7 @@ class _LevelsState extends State<Levels> {
                                 ['geography_completed'],
                             history_completed: snapshot.data![index]
                                 ['history_completed'],
+                            language: language,
                           );
                         }
                         return Container();
@@ -164,7 +165,7 @@ class _LevelsState extends State<Levels> {
                                               ),
                                               Expanded(
                                                 child: Text(
-                                                  "Panou de control",
+                                                  "${translation[language]!["Control panel"]}",
                                                   style: const TextStyle(
                                                       shadows: <Shadow>[
                                                         Shadow(
@@ -205,7 +206,7 @@ class _LevelsState extends State<Levels> {
                                       Navigator.push(
                                         context,
                                         PageTransition(
-                                          child: const AddTestPage(),
+                                          child: AddTestPage(language: language),
                                           type: PageTransitionType.bottomToTop,
                                           duration:
                                               const Duration(milliseconds: 400),
@@ -226,7 +227,7 @@ class _LevelsState extends State<Levels> {
                                       padding: const EdgeInsets.symmetric(
                                           vertical: 20.0),
                                       child: Text(
-                                        "Accesează",
+                                        "${translation[language]!["Access"]}",
                                         style: const TextStyle(
                                             color: Colors.white,
                                             fontWeight: FontWeight.bold,

@@ -3,6 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/Profile/admin.dart';
 import 'package:patrocle/Homepage/Profile/edit_profile.dart';
+import 'package:patrocle/Homepage/homepage.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
 import '../../Components/trophy_tile.dart';
@@ -25,12 +26,12 @@ class _ProfileState extends State<Profile> {
   ];
 
   List<Image> profilePhoto = [
-    Image.asset('assets/icons/face1.png',height: 100, fit: BoxFit.contain),
-    Image.asset('assets/icons/face2.png',height: 100, fit: BoxFit.contain),
-    Image.asset('assets/icons/face3.png',height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face2.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
   ];
   final _dbHelper = DatabaseHelper.instance;
-  
+
   String username = "user";
 
   @override
@@ -48,6 +49,7 @@ class _ProfileState extends State<Profile> {
           trophies = results.first['trophies'];
           profileIndex = results.first['picture'];
           admin = results.first['admin'];
+          language = results.first['language'];
         });
       }
     });
@@ -131,6 +133,7 @@ class _ProfileState extends State<Profile> {
                                       child: EditProfile(
                                         username: username,
                                         profileIndex: profileIndex!,
+                                        language: language,
                                       ),
                                       type: PageTransitionType.bottomToTop,
                                       duration:
@@ -529,17 +532,24 @@ class _ProfileState extends State<Profile> {
                                   const BorderRadius.all(Radius.circular(10)),
                               child: ElevatedButton(
                                 onPressed: () async {
-                                  if(language!<4)
-                                  {
+                                  if (language! < 4) {
                                     setState(() {
-                                      language=language!+1;
+                                      language = language! + 1;
                                     });
-                                  }else{
+                                  } else {
                                     setState(() {
-                                      language=1;
+                                      language = 1;
                                     });
                                   }
                                   await _dbHelper.updateLanguage(language!);
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => Homepage(),
+                                    ),
+                                  );
+                                  
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:
@@ -551,7 +561,14 @@ class _ProfileState extends State<Profile> {
                                   ),
                                 ),
                                 child: Center(
-                                  child: Text(language == 1 ? "English" : language == 2 ? "Română" : language == 3 ? "Magyar" : "Español",
+                                  child: Text(
+                                      language == 1
+                                          ? "English"
+                                          : language == 2
+                                              ? "Română"
+                                              : language == 3
+                                                  ? "Magyar"
+                                                  : "Español",
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -577,7 +594,8 @@ class _ProfileState extends State<Profile> {
                                           Navigator.push(
                                             context,
                                             PageTransition(
-                                              child: const AdminPage(),
+                                              child:
+                                                  AdminPage(language: language),
                                               type: PageTransitionType
                                                   .bottomToTop,
                                               duration: const Duration(

@@ -33,9 +33,9 @@ dependencies:
   provider:
   lottie:
   page_transition:
-  shared_preferences:
+  #shared_preferences:
   animations:
-  just_audio: ^0.9.3
+  #just_audio: ^0.9.3
   sqflite: any
   sqflite_common_ffi: any
   path_provider:

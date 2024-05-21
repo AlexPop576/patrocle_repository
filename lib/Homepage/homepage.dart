@@ -23,7 +23,7 @@ class _HomepageState extends State<Homepage> {
   static const List<Widget> _pages = <Widget>[
     Trophies(),
     Levels(),
-    Test(),
+    //Test(),
     Profile(),
   ];
 
@@ -62,7 +62,7 @@ class _HomepageState extends State<Homepage> {
           tabs: [
             GButton(icon: Icons.star, text: "${translation[language]!["Trophies"]}"),
             GButton(icon: Icons.gamepad, text: "${translation[language]!["Levels"]}"),
-            GButton(icon: Icons.map, text: "${translation[language]!["Map"]}",),
+            //GButton(icon: Icons.map, text: "${translation[language]!["Map"]}",),
             GButton(icon: Icons.person, text: "${translation[language]!["Profile"]}"),
           ],
           selectedIndex: _selectedIndex,

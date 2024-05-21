@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:patrocle/Theme/translations.dart';
 
 class TrophyTile extends StatelessWidget {
-  TrophyTile({super.key, required this.trophy});
+  TrophyTile({super.key, required this.trophy, this.language});
   int? trophy, language = 2;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
 
@@ -17,6 +17,7 @@ class TrophyTile extends StatelessWidget {
     8: "Legend",
     9: "Locked",
   };
+
   Map<int, Map<int, Color>> color = {
     1: {
       1: const Color.fromARGB(255, 0, 255, 132),

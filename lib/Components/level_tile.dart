@@ -12,8 +12,9 @@ class LevelTile extends StatefulWidget {
     required this.country,
     required this.geography_completed,
     required this.history_completed,
+    this.language,
   });
-  int? colorIndex, geography_completed, history_completed;
+  int? colorIndex, geography_completed, history_completed, language;
   String? country,
       continent;
 
@@ -25,6 +26,7 @@ class LevelTile extends StatefulWidget {
           country: country,
           geography_completed: geography_completed,
           history_completed: history_completed,
+          language: language
           );
 }
 
@@ -34,6 +36,7 @@ class _LevelTileState extends State<LevelTile> {
     required this.country,
     required this.geography_completed,
     required this.history_completed,
+    this.language,
   });
   int? colorIndex = 1, selectedSubject = 0, geography_completed, history_completed, language = 2;
   String? country;
@@ -195,6 +198,7 @@ class _LevelTileState extends State<LevelTile> {
                               country: country,
                               difficulty: 1,
                               subject: 1,
+                              language:language
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -231,6 +235,7 @@ class _LevelTileState extends State<LevelTile> {
                               country: country,
                               difficulty: 2,
                               subject: 1,
+                              language:language
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -268,6 +273,7 @@ class _LevelTileState extends State<LevelTile> {
                               country: country,
                               difficulty: 3,
                               subject: 1,
+                              language:language
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -314,6 +320,7 @@ class _LevelTileState extends State<LevelTile> {
                               country: country,
                               difficulty: 1,
                               subject: 2,
+                              language:language
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -350,6 +357,7 @@ class _LevelTileState extends State<LevelTile> {
                               country: country,
                               difficulty: 2,
                               subject: 2,
+                              language:language
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
@@ -387,6 +395,7 @@ class _LevelTileState extends State<LevelTile> {
                               country: country,
                               difficulty: 3,
                               subject: 2,
+                              language:language
                             ),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
