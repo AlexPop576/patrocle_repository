@@ -107,7 +107,8 @@ class _LevelTileState extends State<LevelTile> {
                           ),
                           Expanded(
                             child: Text(
-                              country.toString(),
+                              "${translation[language]![country.toString()]}",
+                              overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
                                   shadows: <Shadow>[
                                     Shadow(

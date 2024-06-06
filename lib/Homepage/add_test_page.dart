@@ -167,6 +167,7 @@ class _addCountryState extends State<addCountry> {
   _addCountryState({this.language});
   int? language;
   final _dbHelper = DatabaseHelper.instance;
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   @override
   Widget build(BuildContext context) {
@@ -202,7 +203,7 @@ class _addCountryState extends State<addCountry> {
                               const SizedBox(
                                 width: 10,
                               ),
-                              Expanded(child: Text('${snapshot.data![index]['name']}')),
+                              Expanded(child: Text("${translation[language]![snapshot.data![index]['name']]}")),
                             ],
                           ),
                           trailing: snapshot.data![index]['doesExist'] == 0
@@ -218,7 +219,8 @@ class _addCountryState extends State<addCountry> {
                                       PageTransition(
                                         child: addLesson(
                                             country: snapshot.data![index]
-                                                ['name']),
+                                                ['name'],
+                                            language: language,),
                                         type: PageTransitionType
                                             .rightToLeftWithFade,
                                         duration:
@@ -259,7 +261,7 @@ class _addCountryState extends State<addCountry> {
 }
 
 class addQuestion extends StatefulWidget {
-  addQuestion({super.key, required this.country, this.language});
+  addQuestion({super.key, required this.country, required this.language});
   int? language;
   String? country;
 
@@ -268,7 +270,8 @@ class addQuestion extends StatefulWidget {
 }
 
 class _addQuestionState extends State<addQuestion> {
-  _addQuestionState({required this.country, this.language});
+  _addQuestionState({required this.country, required this.language});
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
   int? language;
   String? country;
   int subject = 0;
@@ -280,7 +283,6 @@ class _addQuestionState extends State<addQuestion> {
         preferredSize: Size(MediaQuery.of(context).size.width, 60),
         child: ClipRect(
           child: AppBar(
-            //flexibleSpace: Container(color: Colors.transparent),
             backgroundColor: Theme.of(context).colorScheme.primary,
             leading: IconButton(
                 icon: const Icon(
@@ -317,7 +319,7 @@ class _addQuestionState extends State<addQuestion> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 40),
                                   child: Text(
-                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    "${translation[language]!['AP_QMSG']}",
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -345,8 +347,8 @@ class _addQuestionState extends State<addQuestion> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 102, 102, 255),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
+                                      child: Center(
+                                          child: Text("${translation[language]!["Continue"]}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -374,8 +376,8 @@ class _addQuestionState extends State<addQuestion> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 219, 64, 64),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
+                                      child: Center(
+                                          child: Text("${translation[language]!["Quit"]}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -393,7 +395,7 @@ class _addQuestionState extends State<addQuestion> {
                       });
                 }),
             title: Text(
-              country.toString(),
+              "${translation[language]![country.toString()]}",
               style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -409,9 +411,10 @@ class _addQuestionState extends State<addQuestion> {
         child: Column(
           children: [
             const SizedBox(height: 30),
-            const Center(
+            Center(
                 child: Text(
-              "Add new question",
+              "${translation[language]!['Add new question']}",
+              textAlign: TextAlign.center,
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 32),
             )),
             const SizedBox(height: 30),
@@ -442,7 +445,7 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: const Text("Quiz",
+                  child: Text("${translation[language]!["Quiz"]}",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -478,7 +481,7 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: const Text("Value slider",
+                  child: Text("${translation[language]!["Value slider"]}",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -514,7 +517,7 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: const Text("Match columns",
+                  child: Text("${translation[language]!["Match words"]}",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -550,7 +553,7 @@ class _addQuestionState extends State<addQuestion> {
                       ),
                     ),
                   ),
-                  child: const Text("True or False",
+                  child: Text("${translation[language]!["True or False"]}",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -629,7 +632,7 @@ class _addQuestionState extends State<addQuestion> {
 }
 
 class addLesson extends StatefulWidget {
-  addLesson({super.key, required this.country, this.language});
+  addLesson({super.key, required this.country, required this.language});
   int? language;
   String? country;
 
@@ -638,7 +641,7 @@ class addLesson extends StatefulWidget {
 }
 
 class _addLessonState extends State<addLesson> {
-  _addLessonState({required this.country, this.language});
+  _addLessonState({required this.country, required this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   String? country;
   int? language = 1;
@@ -690,7 +693,7 @@ class _addLessonState extends State<addLesson> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 40),
                                   child: Text(
-                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    "${translation[language]!["AP_QMSG"]}",
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -718,8 +721,8 @@ class _addLessonState extends State<addLesson> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 102, 102, 255),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
+                                      child: Center(
+                                          child: Text("${translation[language]!["Continue"]}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -745,8 +748,8 @@ class _addLessonState extends State<addLesson> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 219, 64, 64),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
+                                      child: Center(
+                                          child: Text("${translation[language]!["Quit"]}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -764,7 +767,7 @@ class _addLessonState extends State<addLesson> {
                       });
                 }),
             title: Text(
-              "Lessons",
+              "${translation[language]!["Lessons"]}",
               style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -781,8 +784,8 @@ class _addLessonState extends State<addLesson> {
           physics: const BouncingScrollPhysics(),
           child: Column(children: [
             const SizedBox(height: 20),
-            const Text(
-              "Geography lesson",
+            Text(
+              "${translation[language]!["Geography lesson"]}",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 25),
@@ -805,7 +808,7 @@ class _addLessonState extends State<addLesson> {
                         color: Theme.of(context).colorScheme.tertiary,
                         width: 1.0),
                   ),
-                  labelText: 'Geography lesson',
+                  labelText: "${translation[language]!['Geography lesson']}",
                   labelStyle:
                       TextStyle(color: Theme.of(context).colorScheme.tertiary),
                   counterText: '',
@@ -818,8 +821,8 @@ class _addLessonState extends State<addLesson> {
               thickness: 3,
             ),
             const SizedBox(height: 20),
-            const Text(
-              "History lesson",
+            Text(
+              "${translation[language]!["History lesson"]}",
               style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 25),
@@ -842,14 +845,14 @@ class _addLessonState extends State<addLesson> {
                         color: Theme.of(context).colorScheme.tertiary,
                         width: 1.0),
                   ),
-                  labelText: 'History lesson',
+                  labelText: "${translation[language]!['History lesson']}",
                   labelStyle:
                       TextStyle(color: Theme.of(context).colorScheme.tertiary),
                   counterText: '',
                 ),
               ),
             ),
-            const SizedBox(height: 350),
+            const SizedBox(height: 20),
           ]),
         ),
       ),
@@ -874,7 +877,7 @@ class _addLessonState extends State<addLesson> {
                       Navigator.push(
                         context,
                         PageTransition(
-                          child: addQuestion(country: country),
+                          child: addQuestion(country: country, language: language),
                           type: PageTransitionType.rightToLeftWithFade,
                           duration: const Duration(milliseconds: 250),
                         ),
@@ -889,7 +892,7 @@ class _addLessonState extends State<addLesson> {
                         backgroundColor:
                             const Color.fromARGB(255, 102, 102, 255)),
                     child: Center(
-                      child: Text("Save",
+                      child: Text("${translation[language]!["Save"]}",
                           style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -977,7 +980,7 @@ class _addQuizState extends State<addQuiz> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 40),
                                   child: Text(
-                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    "${translation[language]!["AP_QMSG"]}",
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -1005,8 +1008,8 @@ class _addQuizState extends State<addQuiz> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 102, 102, 255),
                                       ),
-                                      child: const Center(
-                                          child: Text("Continue",
+                                      child: Center(
+                                          child: Text("${translation[language]!["Continue"]}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -1032,8 +1035,8 @@ class _addQuizState extends State<addQuiz> {
                                         backgroundColor: const Color.fromARGB(
                                             255, 219, 64, 64),
                                       ),
-                                      child: const Center(
-                                          child: Text("Quit",
+                                      child: Center(
+                                          child: Text("${translation[language]!["Quit"]}",
                                               style: TextStyle(
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold,
@@ -1050,8 +1053,8 @@ class _addQuizState extends State<addQuiz> {
                         );
                       });
                 }),
-            title: const Text(
-              "Quiz",
+            title: Text(
+              "${translation[language]!["Quiz"]}",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -1071,7 +1074,7 @@ class _addQuizState extends State<addQuiz> {
               const SizedBox(height: 30),
               Textfield(
                   height: 58,
-                  text: "Question",
+                  text: "${translation[language]!["Question"]}",
                   controller: _controllerQuestion),
               const SizedBox(height: 15),
               Divider(
@@ -1080,16 +1083,16 @@ class _addQuizState extends State<addQuiz> {
               ),
               const SizedBox(height: 15),
               Textfield(
-                  height: 58, text: "Answer 1", controller: _controllerAnswer1),
+                  height: 58, text: "${translation[language]!["Answer"]} 1", controller: _controllerAnswer1),
               const SizedBox(height: 15),
               Textfield(
-                  height: 58, text: "Answer 2", controller: _controllerAnswer2),
+                  height: 58, text: "${translation[language]!["Answer"]} 2", controller: _controllerAnswer2),
               const SizedBox(height: 15),
               Textfield(
-                  height: 58, text: "Answer 3", controller: _controllerAnswer3),
+                  height: 58, text: "${translation[language]!["Answer"]} 3", controller: _controllerAnswer3),
               const SizedBox(height: 15),
               Textfield(
-                  height: 58, text: "Answer 4", controller: _controllerAnswer4),
+                  height: 58, text: "${translation[language]!["Answer"]} 4", controller: _controllerAnswer4),
               const SizedBox(height: 15),
               Divider(
                 color: Theme.of(context).colorScheme.primary,
@@ -1218,7 +1221,7 @@ class _addQuizState extends State<addQuiz> {
                           });
                         },
                         child: Text(
-                          'Easy',
+                          "${translation[language]!["Easy"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -1248,7 +1251,7 @@ class _addQuizState extends State<addQuiz> {
                           });
                         },
                         child: Text(
-                          'Hard',
+                          "${translation[language]!["Hard"]}",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -1388,7 +1391,7 @@ class _addSliderState extends State<addSlider> {
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 40),
                                   child: Text(
-                                    "Do you want to quit adding the test? If you quit, you`ll lose your work.",
+                                    "${translation[language]!["AP_QMSG"]}",
                                     style: TextStyle(
                                       color: Theme.of(context)
                                           .colorScheme
@@ -1461,8 +1464,8 @@ class _addSliderState extends State<addSlider> {
                         );
                       });
                 }),
-            title: const Text(
-              "Value slider",
+            title: Text(
+              "${translation[language]!["Value slider"]}",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -1492,7 +1495,7 @@ class _addSliderState extends State<addSlider> {
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Correct value",
+                  text: "${translation[language]!["Correct value"]}",
                   controller: _controllerAnswer),
               const SizedBox(height: 15),
               Divider(
@@ -1791,12 +1794,12 @@ class _addMatchState extends State<addMatch> {
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 1, Column 1",
+                  text: "${translation[language]!["Word"]} 1, ${translation[language]!["Column"]} 1",
                   controller: _controllerW1C1),
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 1, Column 2",
+                  text: "${translation[language]!["Word"]} 1, ${translation[language]!["Column"]} 2",
                   controller: _controllerW1C2),
               const SizedBox(height: 15),
               Divider(
@@ -1806,12 +1809,12 @@ class _addMatchState extends State<addMatch> {
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 2, Column 1",
+                  text: "${translation[language]!["Word"]} 2, ${translation[language]!["Column"]} 1",
                   controller: _controllerW2C1),
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 2, Column 2",
+                  text: "${translation[language]!["Word"]} 2, ${translation[language]!["Column"]} 2",
                   controller: _controllerW2C2),
               const SizedBox(height: 15),
               Divider(
@@ -1821,12 +1824,12 @@ class _addMatchState extends State<addMatch> {
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 3, Column 1",
+                  text: "${translation[language]!["Word"]} 3, ${translation[language]!["Column"]} 1",
                   controller: _controllerW3C1),
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 3, Column 2",
+                  text: "${translation[language]!["Word"]} 3, ${translation[language]!["Column"]} 2",
                   controller: _controllerW3C2),
               const SizedBox(height: 15),
               Divider(
@@ -1836,12 +1839,12 @@ class _addMatchState extends State<addMatch> {
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 4, Column 1",
+                  text: "${translation[language]!["Word"]} 4, ${translation[language]!["Column"]} 1",
                   controller: _controllerW4C1),
               const SizedBox(height: 15),
               Textfield(
                   height: 58,
-                  text: "Word 4, Column 2",
+                  text: "${translation[language]!["Word"]} 4, ${translation[language]!["Column"]} 2",
                   controller: _controllerW4C2),
               const SizedBox(height: 15),
               Divider(
@@ -2118,8 +2121,8 @@ class _addTrueFalseState extends State<addTrueFalse> {
                         );
                       });
                 }),
-            title: const Text(
-              "True or False",
+            title: Text(
+              "${translation[language]!["True or False"]}",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

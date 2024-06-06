@@ -117,15 +117,8 @@ class _ProfileState extends State<Profile> {
                                     fontWeight: FontWeight.bold),
                               ),
                               const Spacer(),
-                              TextButton(
-                                child: Text(
-                                  "${translation[language]!["Edit profile"]}",
-                                  style: TextStyle(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w400),
-                                ),
+                              IconButton(
+                                icon: Icon(Icons.edit),
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -197,6 +190,7 @@ class _ProfileState extends State<Profile> {
                                         child: Column(
                                           children: [
                                             Text(
+                                              overflow: TextOverflow.ellipsis,
                                               iq == 0 ? '0 IQ' : "$iq IQ",
                                               style: const TextStyle(
                                                   color: Color.fromARGB(
@@ -205,6 +199,7 @@ class _ProfileState extends State<Profile> {
                                                   fontSize: 27),
                                             ),
                                             Text(
+                                              overflow: TextOverflow.ellipsis,
                                               "${translation[language]!["Total IQ"]}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
@@ -244,6 +239,7 @@ class _ProfileState extends State<Profile> {
                                         child: Column(
                                           children: [
                                             Text(
+                                              overflow: TextOverflow.ellipsis,
                                               trophies == 0
                                                   ? '0/6'
                                                   : '$trophies/6',
@@ -254,6 +250,7 @@ class _ProfileState extends State<Profile> {
                                                   fontSize: 27),
                                             ),
                                             Text(
+                                              overflow: TextOverflow.ellipsis,
                                               "${translation[language]!["Trophies"]}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
@@ -291,6 +288,7 @@ class _ProfileState extends State<Profile> {
                 child: Column(
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
                         Expanded(
                           flex: 1,
@@ -298,6 +296,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Center(
                                   child: Text(
+                                    overflow: TextOverflow.ellipsis,
                                 "${translation[language]!["Geography"]}",
                                 style: TextStyle(
                                     color:
@@ -314,6 +313,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Center(
                                   child: Text(
+                                    overflow: TextOverflow.ellipsis,
                                 "${translation[language]!["History"]}",
                                 style: TextStyle(
                                     color:
@@ -494,6 +494,7 @@ class _ProfileState extends State<Profile> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
+                                      overflow: TextOverflow.ellipsis,
                                         Provider.of<ThemeProvider>(context,
                                                         listen: false)
                                                     .getTheme() ==
@@ -546,7 +547,7 @@ class _ProfileState extends State<Profile> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => Homepage(),
+                                      builder: (context) => Homepage(selectedIndex: 2),
                                     ),
                                   );
                                   
@@ -562,6 +563,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 child: Center(
                                   child: Text(
+                                    overflow: TextOverflow.ellipsis,
                                       language == 1
                                           ? "English"
                                           : language == 2
@@ -626,6 +628,7 @@ class _ProfileState extends State<Profile> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
+                                                overflow: TextOverflow.ellipsis,
                                                   "${translation[language]!["Admin mode"]}",
                                                   style: const TextStyle(
                                                     color: Colors.white,
@@ -663,7 +666,14 @@ class _ProfileState extends State<Profile> {
                             ),
                           ),
                           const SizedBox(
-                            height: 90,
+                            height: 24,
+                          ),
+                          Divider(
+                            color: Theme.of(context).colorScheme.primary,
+                            thickness: 3,
+                          ),
+                          const SizedBox(
+                            height: 24,
                           ),
                         ],
                       ),

@@ -49,6 +49,7 @@ class _AdminPageState extends State<AdminPage> {
             ),
             Center(
               child: Text(
+                textAlign: TextAlign.center,
                 "${translation[language]!["Input admin pin"]}",
                 style: const TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),

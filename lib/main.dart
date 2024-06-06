@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false, // Disable the debug banner
-      home: const Homepage(), // Set Homepage as the initial widget
+      home: Homepage(selectedIndex: 1), // Set Homepage as the initial widget
       theme: themeProvider.themeData, // Apply the current theme
     );
   }
