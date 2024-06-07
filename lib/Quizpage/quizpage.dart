@@ -13,8 +13,7 @@ import 'testpage1.dart';
 import 'testpage2.dart';
 import 'testpage3.dart';
 import 'testpage4.dart';
-
-
+import 'package:patrocle/Homepage/homepage.dart';
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
   QuizPage({
@@ -107,6 +106,7 @@ class _QuizPageState extends State<QuizPage> {
   void updateLessonStatus() async {
     await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
+    await _dbHelper.incrementCoins(); 
   }
 
   void updateIQ() async {

@@ -418,7 +418,7 @@ class DatabaseHelper {
   String answer213 = jsonEncode(['În 1492','În 1652','În 1806','În 1910']);
   String answer214 = jsonEncode(['F.W. de Klerk','Nelson Mandela','Paul Kruger','Jan van Riebeeck']);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 43;
+  static final _databaseVersion = 45;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -466,7 +466,7 @@ class DatabaseHelper {
             history_completed INTEGER,
             doesExist INTEGER
           )''');
-
+           
           await db.execute('''
           CREATE TABLE question (
             questionID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -494,7 +494,8 @@ class DatabaseHelper {
             history_lessons INTEGER,
             dark_mode INTEGER,
             language INTEGER,
-            admin INTEGER
+            admin INTEGER,
+            coins INTEGER
           )''');  
           
         db.insert('profile', {
@@ -506,7 +507,8 @@ class DatabaseHelper {
           'history_lessons': 0,
           'dark_mode': 1,
           'language': 1,
-          'admin': 0
+          'admin': 0,
+          'coins': 0
         });
 
         await db.insert('country', {
@@ -2862,7 +2864,8 @@ class DatabaseHelper {
             history_lessons INTEGER,
             dark_mode INTEGER,
             language INTEGER,
-            admin INTEGER
+            admin INTEGER,
+            coins INTEGER
           )''');
           db.insert('profile', {
             'username': 'username',
@@ -2873,7 +2876,8 @@ class DatabaseHelper {
             'history_lessons': 0,
             'dark_mode': 1,
             'language': 1,
-            'admin': 0
+            'admin': 0,
+            'coins': 0
           });
           await db.execute('''
           CREATE TABLE country (
@@ -5248,6 +5252,13 @@ class DatabaseHelper {
       'history_completed': 0,
       'doesExist': 0
     });
+  }
+  
+  Future<void> incrementCoins() async {
+    Database db = await this.database;
+    await db.rawUpdate(
+      'UPDATE profile SET coins = coins + 5',
+    );
   }
 
   Future<int> insertQuestion(

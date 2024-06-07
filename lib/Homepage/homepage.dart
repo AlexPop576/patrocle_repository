@@ -14,12 +14,10 @@ class Homepage extends StatefulWidget {
 
   @override
   State<Homepage> createState() => _HomepageState(selectedIndex: selectedIndex);
-}
-
-class _HomepageState extends State<Homepage> {
+}class _HomepageState extends State<Homepage> {
   _HomepageState({required this.selectedIndex});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? selectedIndex, language = 2;
+  int? selectedIndex, language = 2, coin = 0, profileId;
   final _dbHelper = DatabaseHelper.instance;
 
   static const List<Widget> _pages = <Widget>[
@@ -35,27 +33,52 @@ class _HomepageState extends State<Homepage> {
     fetchData();
   }
 
-  void fetchData(){
-    _dbHelper.queryProfile().then((results) {
-      if (results.isNotEmpty) {
-        setState(() {
-          language = results.first['language'];
-        });
-      }
-    });
+  Future<void> fetchData() async {
+    final results = await _dbHelper.queryProfile();
+    if (results.isNotEmpty) {
+      setState(() {
+        language = results.first['language'];
+        coin = results.first['coins'];
+        profileId = results.first['profileID'];
+      });
+    }
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+  return Scaffold(
+    appBar: AppBar(
+      //title: Text("Patrocle"),
+      actions:[
+        
+              
+              SizedBox(width: 8), 
+              Text(
+                '$coin',
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.tertiary,
+                  fontSize: 19,
+                  fontWeight: FontWeight.bold,
+                ),
+              ), 
+               SizedBox(width: 10),
+               
+              Image.asset("assets/icons/coin.png", height: 24, width: 24),
+              SizedBox(width: 8),
+      ],
+      
+    ),
       body: Center(
-        child: _pages.elementAt(selectedIndex!),
+        child: _pages.elementAt(selectedIndex!), 
+        
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: GNav(
           color: Theme.of(context).colorScheme.tertiary,
-          activeColor:const Color.fromARGB(255, 102, 102, 255),
+          activeColor: const Color.fromARGB(255, 102, 102, 255),
           tabBackgroundColor: Theme.of(context).colorScheme.primary,
           gap: 12,
           haptic: true,
@@ -63,7 +86,6 @@ class _HomepageState extends State<Homepage> {
           tabs: [
             GButton(icon: Icons.star, text: "${translation[language]!["Inventory"]}"),
             GButton(icon: Icons.gamepad, text: "${translation[language]!["Levels"]}"),
-            //GButton(icon: Icons.map, text: "${translation[language]!["Map"]}",),
             GButton(icon: Icons.person, text: "${translation[language]!["Profile"]}"),
           ],
           selectedIndex: selectedIndex!,
