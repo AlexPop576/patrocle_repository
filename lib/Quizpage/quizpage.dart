@@ -14,6 +14,7 @@ import 'testpage2.dart';
 import 'testpage3.dart';
 import 'testpage4.dart';
 import 'package:patrocle/Homepage/homepage.dart';
+
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
   QuizPage({
@@ -29,20 +30,20 @@ class QuizPage extends StatefulWidget {
   @override
   // ignore: no_logic_in_create_state
   State<QuizPage> createState() => _QuizPageState(
-        country: country,
-        difficulty: difficulty,
-        subject: subject,
-        language:language
-      );
+      country: country,
+      difficulty: difficulty,
+      subject: subject,
+      language: language);
 }
 
 class _QuizPageState extends State<QuizPage> {
-  _QuizPageState({
-    required this.country,
-    required this.difficulty,
-    required this.subject,
-    this.language
-  });
+  _QuizPageState(
+      {required this.country,
+      required this.difficulty,
+      required this.subject,
+      this.language});
+    
+  //final _homepage = Homepage.instance;
   String? country;
   int? difficulty, subject, language = 2, randomNumber, digits;
   int pageIndex = 0,
@@ -60,7 +61,7 @@ class _QuizPageState extends State<QuizPage> {
   List<Map<String, dynamic>> questions = [];
   double population = 0;
   final _dbHelper = DatabaseHelper.instance;
-  List<int> answerBonus = [0,0,0,0,0,0,0,0,0,0];
+  List<int> answerBonus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   int? bonusIQ = 0;
 
   @override
@@ -106,8 +107,9 @@ class _QuizPageState extends State<QuizPage> {
   void updateLessonStatus() async {
     await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
-    await _dbHelper.incrementCoins(); 
+    await _dbHelper.incrementCoins();
     await _dbHelper.incrementStreak();
+    //_homepage.fetchStreak();
   }
 
   void updateIQ() async {
@@ -138,7 +140,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 1)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 1, language: language,)),
                 elevation: 24,
               ),
             );
@@ -153,7 +155,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 2)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 2, language: language,)),
                 elevation: 24,
               ),
             );
@@ -169,7 +171,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 3)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 3, language: language,)),
                 elevation: 24,
               ),
             );
@@ -184,7 +186,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 5)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 5, language: language,)),
                 elevation: 24,
               ),
             );
@@ -199,7 +201,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 6)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 6, language: language,)),
                 elevation: 24,
               ),
             );
@@ -216,7 +218,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 4)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 4, language: language,)),
                 elevation: 24,
               ),
             );
@@ -232,7 +234,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 7)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 7, language: language,)),
                 elevation: 24,
               ),
             );
@@ -248,7 +250,7 @@ class _QuizPageState extends State<QuizPage> {
                         "${translation[language]!["New trophy unlocked!"]}",
                         style: const TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 25))),
-                content: SizedBox(width: 100, child: TrophyTile(trophy: 8)),
+                content: SizedBox(width: 100, child: TrophyTile(trophy: 8, language: language,)),
                 elevation: 24,
               ),
             );
@@ -556,16 +558,16 @@ class _QuizPageState extends State<QuizPage> {
                             //await _correct.seek(Duration.zero);
                             //await _correct.play();
                             setState(() {
-                              answerBonus[pageIndex-1]=1;
+                              answerBonus[pageIndex - 1] = 1;
                             });
-                            if(pageIndex-3>=0)
-                            {
-                              if(answerBonus[pageIndex-1]+answerBonus[pageIndex-2]+answerBonus[pageIndex-3]==3)
-                              {
+                            if (pageIndex - 3 >= 0) {
+                              if (answerBonus[pageIndex - 1] +
+                                      answerBonus[pageIndex - 2] +
+                                      answerBonus[pageIndex - 3] ==
+                                  3) {
                                 setState(() {
                                   bonusIQ = bonusIQ! + 3;
                                 });
-                                
                               }
                             }
                           } else {
@@ -676,7 +678,7 @@ class _QuizPageState extends State<QuizPage> {
                                   ),
                                 );
                               },
-                            );         
+                            );
                             //await _incorrect.seek(Duration.zero);
                             //await _incorrect.play();
                           }
@@ -743,7 +745,6 @@ class _QuizPageState extends State<QuizPage> {
       final int questionType = int.parse(question['type'].toString());
 
       if (questionType == 1) {
-        
         return TestPage1(
           key: ValueKey('TestPage1-${pageIndex}'),
           getAnswerFunction: getAnswer,
@@ -797,17 +798,18 @@ class _QuizPageState extends State<QuizPage> {
     var currentQuestion = questions[questionNumber[pageIndex - 1]];
     var type = int.parse(currentQuestion['type']);
     print(currentQuestion['type']);
-    if (type==4) {
+    if (type == 4) {
       print(' yes ');
       if (int.parse(currentQuestion['correct_answer']) == 1) {
         return "${translation[language]!["Correct answer"]}: ${translation[language]!["true"]}";
       } else {
         return "${translation[language]!["Correct answer"]}: ${translation[language]!["false"]}";
       }
-    } else if(type==1){
-      List<String> answers = List<String>.from(jsonDecode(currentQuestion['answer']));
-      return "${translation[language]!["Correct answer"]}: ${answers[int.parse(currentQuestion['correct_answer'])-1]}";
-    } else if(type==2){
+    } else if (type == 1) {
+      List<String> answers =
+          List<String>.from(jsonDecode(currentQuestion['answer']));
+      return "${translation[language]!["Correct answer"]}: ${answers[int.parse(currentQuestion['correct_answer']) - 1]}";
+    } else if (type == 2) {
       return "${translation[language]!["Correct answer"]}: ${currentQuestion['correct_answer']}";
     } else {
       return "";

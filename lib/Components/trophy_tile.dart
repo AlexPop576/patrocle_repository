@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:patrocle/Theme/translations.dart';
 
 class TrophyTile extends StatelessWidget {
-  TrophyTile({super.key, required this.trophy, this.language});
+  TrophyTile({super.key, required this.trophy, required this.language});
   int? trophy, language = 2;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
 

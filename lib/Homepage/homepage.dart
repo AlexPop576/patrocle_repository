@@ -14,23 +14,19 @@ class Homepage extends StatefulWidget {
 
   @override
   State<Homepage> createState() => _HomepageState(selectedIndex: selectedIndex);
-}class _HomepageState extends State<Homepage> {
+}
+
+class _HomepageState extends State<Homepage> {
   _HomepageState({required this.selectedIndex});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? selectedIndex, language = 2, coin = 0, profileId, streak=0;
+  int? selectedIndex, language = 2, coin = 0, profileId, streak = 0;
   final _dbHelper = DatabaseHelper.instance;
-
-  static const List<Widget> _pages = <Widget>[
-    Inventory(),
-    Levels(),
-    //Test(),
-    Profile(),
-  ];
 
   @override
   void initState() {
     super.initState();
     fetchData();
+    fetchStreak();
   }
 
   Future<void> fetchData() async {
@@ -42,51 +38,73 @@ class Homepage extends StatefulWidget {
         profileId = results.first['profileID'];
       });
     }
-    int streakResults = await _dbHelper.getStreakCount();
-      setState(() {
-        streak = streakResults;
-      });
   }
 
-  
+  Future<void> fetchStreak() async {
+    int streakResults = await _dbHelper.getStreakCount();
+    setState(() {
+      streak = streakResults;
+    });
+  }
+
+  setLanguage(int newLanguage) {
+    setState(() {
+      language = newLanguage;
+    });
+  }
 
   @override
-Widget build(BuildContext context) {
-  return Scaffold(
-    appBar: AppBar(
-  title: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(
-              'Streak: $streak',
-              style: TextStyle(
-                color: Theme.of(context).colorScheme.tertiary,
-                fontSize: 19,
-                fontWeight: FontWeight.bold,
-              ),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        elevation: 10,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Image.asset(language == 1 ? 'assets/icons/ukIcon.png' : language == 2 ? 'assets/icons/romaniaIcon.png' : language == 3 ? 'assets/icons/hungaryIcon.png' : 'assets/icons/spainIcon.png', height: 39),
+            Row(
+              children: [
+                SizedBox(width: 10),
+                Image.asset(
+                  'assets/icons/flameIcon.png',
+                  height: 36,
+                ),
+                SizedBox(width: 6),
+                Text(
+                  '$streak',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.tertiary,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-      Row(
-        children: [
-          SizedBox(width: 8),
-          Text(
-            '$coin',
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.tertiary,
-              fontSize: 19,
-              fontWeight: FontWeight.bold,
+            Row(
+              children: [
+                SizedBox(width: 8),
+                Text(
+                  '$coin',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.tertiary,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(width: 10),
+                Image.asset("assets/icons/coinIcon.png", height: 36, width: 36),
+                SizedBox(width: 8),
+              ],
             ),
-          ), 
-          SizedBox(width: 10),
-          Image.asset("assets/icons/coin.png", height: 24, width: 24),
-          SizedBox(width: 8),
-        ],
+          ],
+        ),
       ),
-    ],
-  ),
-),
-    body: Center(
-      child: _pages.elementAt(selectedIndex!),
-    ),
+      body: selectedIndex == 0
+          ? Inventory()
+          : selectedIndex == 1
+              ? Levels()
+              : Profile(setLanguageFunction: setLanguage),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: GNav(
@@ -97,9 +115,15 @@ Widget build(BuildContext context) {
           haptic: true,
           padding: const EdgeInsets.all(18),
           tabs: [
-            GButton(icon: Icons.star, text: "${translation[language]!["Inventory"]}"),
-            GButton(icon: Icons.gamepad, text: "${translation[language]!["Levels"]}"),
-            GButton(icon: Icons.person, text: "${translation[language]!["Profile"]}"),
+            GButton(
+                icon: Icons.star,
+                text: "${translation[language]!["Inventory"]}"),
+            GButton(
+                icon: Icons.gamepad,
+                text: "${translation[language]!["Levels"]}"),
+            GButton(
+                icon: Icons.person,
+                text: "${translation[language]!["Profile"]}"),
           ],
           selectedIndex: selectedIndex!,
           onTabChange: (index) {

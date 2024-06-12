@@ -10,15 +10,19 @@ import '../../Components/trophy_tile.dart';
 import '../../Theme/theme_provider.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({super.key});
+  Profile({super.key, required this.setLanguageFunction,});
+  final Function setLanguageFunction;
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<Profile> createState() => _ProfileState(setLanguageFunction: setLanguageFunction);
 }
 
 class _ProfileState extends State<Profile> {
   int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
+  final Function setLanguageFunction;
+  _ProfileState({required this.setLanguageFunction,});
+
   List<Color> profileColor = [
     Colors.blue,
     Colors.red,
@@ -543,14 +547,9 @@ class _ProfileState extends State<Profile> {
                                     });
                                   }
                                   await _dbHelper.updateLanguage(language!);
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => Homepage(selectedIndex: 2),
-                                    ),
-                                  );
-                                  
+                                  setState(() {
+                                    setLanguageFunction(language);
+                                  });
                                 },
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor:

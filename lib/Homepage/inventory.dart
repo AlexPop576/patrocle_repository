@@ -160,7 +160,7 @@ class _InventoryState extends State<Inventory> {
                       itemBuilder: (context, index) {
                         return ShopTile(
                           
-                          colorIndex: 2,
+                          colorIndex: index%3,
                         );
                       },
                     );
