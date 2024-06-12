@@ -107,6 +107,7 @@ class _QuizPageState extends State<QuizPage> {
     await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
     await _dbHelper.incrementCoins(); 
+    await _dbHelper.incrementStreak();
   }
 
   void updateIQ() async {

@@ -17,7 +17,7 @@ class Homepage extends StatefulWidget {
 }class _HomepageState extends State<Homepage> {
   _HomepageState({required this.selectedIndex});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? selectedIndex, language = 2, coin = 0, profileId;
+  int? selectedIndex, language = 2, coin = 0, profileId, streak=0;
   final _dbHelper = DatabaseHelper.instance;
 
   static const List<Widget> _pages = <Widget>[
@@ -42,38 +42,51 @@ class Homepage extends StatefulWidget {
         profileId = results.first['profileID'];
       });
     }
+    int streakResults = await _dbHelper.getStreakCount();
+      setState(() {
+        streak = streakResults;
+      });
   }
 
   
 
   @override
-  Widget build(BuildContext context) {
+Widget build(BuildContext context) {
   return Scaffold(
     appBar: AppBar(
-      //title: Text("Patrocle"),
-      actions:[
-        
-              
-              SizedBox(width: 8), 
-              Text(
-                '$coin',
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.tertiary,
-                  fontSize: 19,
-                  fontWeight: FontWeight.bold,
-                ),
-              ), 
-               SizedBox(width: 10),
-               
-              Image.asset("assets/icons/coin.png", height: 24, width: 24),
-              SizedBox(width: 8),
-      ],
-      
-    ),
-      body: Center(
-        child: _pages.elementAt(selectedIndex!), 
-        
+  title: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(
+              'Streak: $streak',
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.tertiary,
+                fontSize: 19,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+      Row(
+        children: [
+          SizedBox(width: 8),
+          Text(
+            '$coin',
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.tertiary,
+              fontSize: 19,
+              fontWeight: FontWeight.bold,
+            ),
+          ), 
+          SizedBox(width: 10),
+          Image.asset("assets/icons/coin.png", height: 24, width: 24),
+          SizedBox(width: 8),
+        ],
       ),
+    ],
+  ),
+),
+    body: Center(
+      child: _pages.elementAt(selectedIndex!),
+    ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: GNav(

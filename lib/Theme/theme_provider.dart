@@ -42,19 +42,28 @@ class ThemeProvider with ChangeNotifier {
   }
 
   Future<void> loadTheme() async {
-    await _dbHelper.queryProfile().then((results) {
-      if (results.isNotEmpty) {
-        modeInt = results.first['dark_mode'];
-      }
-    });
+  await _dbHelper.queryProfile().then((results) {
+    if (results.isNotEmpty) {
+      modeInt = results.first['dark_mode'];
+    }
+  });
+
+  // Check if modeInt is null before using it
+  if (modeInt != null) {
     int themeMode = modeInt!; // Default to light mode
     if (themeMode == 0) {
       themeData = lightMode;
     } else {
       themeData = darkMode;
     }
-    notifyListeners();
+  } else {
+    // Handle the case where modeInt is null
+    // For example, you might want to set a default theme
+    themeData = lightMode;
   }
+
+  notifyListeners();
+}
 
   void toggleTheme() {
     if (_themeData == lightMode) {
