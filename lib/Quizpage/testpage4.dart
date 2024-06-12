@@ -1,15 +1,16 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:translator/translator.dart';
 
 // ignore: must_be_immutable
 class TestPage4 extends StatefulWidget {
   final Function getAnswerFunction;
   String? question;
-  int? answer;
+  int? answer, language;
 
   TestPage4(
-      {super.key, required this.getAnswerFunction, this.answer, this.question});
+      {super.key, required this.getAnswerFunction, this.answer, this.question, required this.language});
 
   @override
   // ignore: no_logic_in_create_state
@@ -17,23 +18,49 @@ class TestPage4 extends StatefulWidget {
         getAnswerFunction: getAnswerFunction,
         answer: answer,
         question: question,
+        language: language,
       );
 }
 
 class _TestPage4State extends State<TestPage4> {
   final Function getAnswerFunction;
   String? question;
-  int? questionAnswer = 1, selected=0, givenAnswer, answer;
+  int? questionAnswer = 1, selected=0, givenAnswer, answer, language;
+  GoogleTranslator translator = GoogleTranslator();
 
   _TestPage4State({
     required this.getAnswerFunction,
     this.answer,
     this.question,
+    required this.language,
   });
 
   @override
   void initState() {
     super.initState();
+    translate(question!);
+  }
+
+  void translate(String text)
+  {
+    String toLanguage;
+    if(language==4)
+    {
+      toLanguage = "es";
+    }else if(language==2)
+    {
+      toLanguage = "ro";
+    }else if(language==3)
+    {
+      toLanguage = "hu";
+    }else{
+      toLanguage = "en";
+    }
+    translator.translate(text, to: toLanguage).then((output){
+      setState(() {
+        question = output.toString();
+      });
+    });
   }
 
   @override

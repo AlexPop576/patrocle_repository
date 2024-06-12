@@ -2,27 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Theme/general_info.dart';
-
+import 'package:translator/translator.dart';
 import '../Theme/translations.dart';
 
 // ignore: must_be_immutable
 class Lesson extends StatefulWidget {
   String? country;
-  int? subject = 0;
-  Lesson({super.key, required this.country, this.subject});
+  int? subject = 0, language;
+  Lesson({super.key, required this.country, this.subject, required this.language});
 
   @override
   // ignore: no_logic_in_create_state
-  State<Lesson> createState() => _LessonState(country: country, subject: subject);
+  State<Lesson> createState() => _LessonState(country: country, subject: subject, language: language);
 }
 
 class _LessonState extends State<Lesson> {
   String? lesson, country;
   int? language =2, subject = 0;
-  _LessonState({required this.country, this.subject});
+  _LessonState({required this.country, this.subject, required this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   Map<String?, Map<int?, String?>> info = Info().info;
   final _dbHelper = DatabaseHelper.instance;
+  GoogleTranslator translator = GoogleTranslator();
 
   void initState() {
     super.initState();
@@ -33,6 +34,29 @@ class _LessonState extends State<Lesson> {
     Map<String, dynamic> lessons = await _dbHelper.queryLesson(country.toString());
     setState(() {
       lesson = subject == 1 ? lessons['geographyLesson'] : lessons['historyLesson'];
+      translate(lesson!);
+    });
+  }
+
+  void translate(String text)
+  {
+    String toLanguage;
+    if(language==4)
+    {
+      toLanguage = "es";
+    }else if(language==2)
+    {
+      toLanguage = "ro";
+    }else if(language==3)
+    {
+      toLanguage = "hu";
+    }else{
+      toLanguage = "en";
+    }
+    translator.translate(text, to: toLanguage).then((output){
+      setState(() {
+        lesson = output.toString();
+      });
     });
   }
 

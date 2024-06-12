@@ -729,6 +729,7 @@ class _QuizPageState extends State<QuizPage> {
       return Lesson(
         country: country,
         subject: subject,
+        language: language,
       );
     } else if (pageIndex != pageMax + 1) {
       final question = questions[questionNumber[pageIndex - 1]];
@@ -741,6 +742,7 @@ class _QuizPageState extends State<QuizPage> {
       final int questionType = int.parse(question['type'].toString());
 
       if (questionType == 1) {
+        
         return TestPage1(
           key: ValueKey('TestPage1-${pageIndex}'),
           getAnswerFunction: getAnswer,
@@ -749,6 +751,7 @@ class _QuizPageState extends State<QuizPage> {
           answersJSON: question['answer'].toString(),
           correct_answer: question['correct_answer'].toString(),
           givenAnswer: 0,
+          language: language,
         );
       } else if (questionType == 2) {
         return TestPage2(
@@ -756,12 +759,14 @@ class _QuizPageState extends State<QuizPage> {
           getAnswerFunction: getAnswer,
           question: question['question_text'].toString(),
           answer: question['correct_answer'].toString(),
+          language: language,
         );
       } else if (questionType == 3) {
         return TestPage3(
           key: ValueKey('TestPage4-${pageIndex}'),
           getAnswerFunction: getAnswer,
           answers: question['answer'].toString(),
+          language: language,
         );
       } else if (questionType == 4) {
         return TestPage4(
@@ -769,6 +774,7 @@ class _QuizPageState extends State<QuizPage> {
           getAnswerFunction: getAnswer,
           answer: int.parse(question['correct_answer']),
           question: question['question_text'].toString(),
+          language: language,
         );
       } else {
         print('Unexpected Question Type: $questionType');

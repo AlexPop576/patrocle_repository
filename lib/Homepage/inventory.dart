@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:patrocle/Components/shop_tile.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
 
 import '../Database/database_helper.dart';
@@ -157,35 +158,9 @@ class _InventoryState extends State<Inventory> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: 4,
                       itemBuilder: (context, index) {
-                        int newIndex = index * 2 + 1;
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(6.5),
-                              child: Container(
-                                height: 200,
-                                width: MediaQuery.of(context).size.width * 0.43,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(15)),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(6.5),
-                              child: Container(
-                                height: 200,
-                                width: MediaQuery.of(context).size.width * 0.43,
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius:
-                                      const BorderRadius.all(Radius.circular(15)),
-                                ),
-                              ),
-                            ),
-                          ],
+                        return ShopTile(
+                          
+                          colorIndex: 2,
                         );
                       },
                     );

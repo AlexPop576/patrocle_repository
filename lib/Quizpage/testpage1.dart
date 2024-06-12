@@ -1,12 +1,12 @@
 import 'dart:convert';
-
+import 'package:translator/translator.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
 class TestPage1 extends StatefulWidget {
   final Function getAnswerFunction;
-  int? selected = 0, givenAnswer;
+  int? selected = 0, givenAnswer, language;
   String? questionText, answersJSON, correct_answer;
   TestPage1(
       {super.key,
@@ -15,7 +15,8 @@ class TestPage1 extends StatefulWidget {
       required this.questionText,
       required this.answersJSON,
       required this.correct_answer,
-      this.givenAnswer});
+      this.givenAnswer,
+      required this.language});
 
   @override
   // ignore: no_logic_in_create_state
@@ -25,14 +26,16 @@ class TestPage1 extends StatefulWidget {
       questionText: questionText,
       answersJSON: answersJSON,
       correct_answer: correct_answer,
-      givenAnswer: givenAnswer);
+      givenAnswer: givenAnswer, 
+      language: language);
 }
 
 class _TestPage1State extends State<TestPage1> {
-  int? questionAnswer = 1, selected, givenAnswer, correct_anwerINT;
+  int? questionAnswer = 1, selected, givenAnswer, correct_anwerINT, language;
   String? questionText, answersJSON, correct_answer;
   List<String> answers = ["","","","",""];
   final Function getAnswerFunction;
+  GoogleTranslator translator = GoogleTranslator();
 
   _TestPage1State(
       {required this.getAnswerFunction,
@@ -40,7 +43,8 @@ class _TestPage1State extends State<TestPage1> {
       required this.questionText,
       required this.answersJSON,
       required this.correct_answer,
-      this.givenAnswer});
+      this.givenAnswer,
+      required this.language});
 
   @override
   void initState()
@@ -51,6 +55,39 @@ class _TestPage1State extends State<TestPage1> {
     }
     correct_anwerINT = int.parse(correct_answer.toString());
     print("Decoded answers: $answers");
+    translate(questionText!, answers[0], answers[1], answers[2], answers[3]);
+  }
+
+  void translate(String question, String answer1, String answer2, String answer3, String answer4) {
+    String toLanguage;
+    if (widget.language == 4) {
+      toLanguage = "es";
+    } else if (widget.language == 2) {
+      toLanguage = "ro";
+    } else if (widget.language == 3) {
+      toLanguage = "hu";
+    } else {
+      toLanguage = "en";
+    }
+
+    Future.wait([
+      translator.translate(question, to: toLanguage),
+      translator.translate(answer1, to: toLanguage),
+      translator.translate(answer2, to: toLanguage),
+      translator.translate(answer3, to: toLanguage),
+      translator.translate(answer4, to: toLanguage),
+    ]).then((translations) {
+      setState(() {
+        questionText = translations[0].text;
+        answers[0] = translations[1].text;
+        answers[1] = translations[2].text;
+        answers[2] = translations[3].text;
+        answers[3] = translations[4].text;
+      });
+    }).catchError((error) {
+      // Handle any errors here
+      print('Translation error: $error');
+    });
   }
 
   @override
@@ -248,6 +285,7 @@ class _TestPage1State extends State<TestPage1> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               child: Text(answers[3].toString(),
+                              textAlign: TextAlign.center,
                                   style: TextStyle(
                                       color: Theme.of(context).colorScheme.tertiary,
                                       fontWeight: FontWeight.bold,
