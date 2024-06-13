@@ -6,17 +6,17 @@ import '../Theme/translations.dart';
 
 // ignore: must_be_immutable
 class LevelTile extends StatefulWidget {
-  LevelTile({
-    super.key,
-    required this.colorIndex,
-    required this.country,
-    required this.geography_completed,
-    required this.history_completed,
-    this.language,
-  });
+  LevelTile(
+      {super.key,
+      required this.colorIndex,
+      required this.country,
+      required this.geography_completed,
+      required this.history_completed,
+      required this.language,
+      required this.refreshAppbar});
   int? colorIndex, geography_completed, history_completed, language;
-  String? country,
-      continent;
+  String? country, continent;
+  final Function refreshAppbar;
 
   @override
   State<LevelTile> createState() =>
@@ -26,21 +26,26 @@ class LevelTile extends StatefulWidget {
           country: country,
           geography_completed: geography_completed,
           history_completed: history_completed,
-          language: language
-          );
+          language: language,
+          refreshAppbar: refreshAppbar);
 }
 
 class _LevelTileState extends State<LevelTile> {
-  _LevelTileState({
-    required this.colorIndex,
-    required this.country,
-    required this.geography_completed,
-    required this.history_completed,
-    this.language,
-  });
-  int? colorIndex = 1, selectedSubject = 0, geography_completed, history_completed, language = 2;
+  _LevelTileState(
+      {required this.colorIndex,
+      required this.country,
+      required this.geography_completed,
+      required this.history_completed,
+      required this.language,
+      required this.refreshAppbar});
+  int? colorIndex = 1,
+      selectedSubject = 0,
+      geography_completed,
+      history_completed,
+      language = 2;
   String? country;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
+  final Function refreshAppbar;
 
   @override
   Widget build(BuildContext context) {
@@ -157,8 +162,12 @@ class _LevelTileState extends State<LevelTile> {
                                   });
                                 },
                                 child: Image.asset(selectedSubject != 1
-                                    ? geography_completed!=1 ? 'assets/icons/Geography.png' : 'assets/icons/Tick.png'
-                                    : geography_completed!=1 ? 'assets/icons/GeographySelected.png' : 'assets/icons/TickOutlined.png'))),
+                                    ? geography_completed != 1
+                                        ? 'assets/icons/Geography.png'
+                                        : 'assets/icons/Tick.png'
+                                    : geography_completed != 1
+                                        ? 'assets/icons/GeographySelected.png'
+                                        : 'assets/icons/TickOutlined.png'))),
                         const SizedBox(height: 5),
                         SizedBox(
                             height: 78,
@@ -174,8 +183,12 @@ class _LevelTileState extends State<LevelTile> {
                                   });
                                 },
                                 child: Image.asset(selectedSubject != 2
-                                    ? history_completed!=1 ? 'assets/icons/History.png' : 'assets/icons/Tick.png'
-                                    : history_completed!=1 ? 'assets/icons/HistorySelected.png' : 'assets/icons/TickOutlined.png'))),
+                                    ? history_completed != 1
+                                        ? 'assets/icons/History.png'
+                                        : 'assets/icons/Tick.png'
+                                    : history_completed != 1
+                                        ? 'assets/icons/HistorySelected.png'
+                                        : 'assets/icons/TickOutlined.png'))),
                       ],
                     ),
                   )
@@ -196,15 +209,20 @@ class _LevelTileState extends State<LevelTile> {
                           context,
                           PageTransition(
                             child: QuizPage(
-                              country: country,
-                              difficulty: 1,
-                              subject: 1,
-                              language:language
-                            ),
+                                country: country,
+                                difficulty: 1,
+                                subject: 1,
+                                language: language),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        ).then((_) => setState(() {selectedSubject = 0;}));
+                        ).then((_) async {
+                          setState(() {
+                            selectedSubject = 0;
+                          });
+                          await Future.delayed(Duration(milliseconds: 30));
+                          refreshAppbar();
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 63, 255, 38),
@@ -233,15 +251,20 @@ class _LevelTileState extends State<LevelTile> {
                           context,
                           PageTransition(
                             child: QuizPage(
-                              country: country,
-                              difficulty: 2,
-                              subject: 1,
-                              language:language
-                            ),
+                                country: country,
+                                difficulty: 2,
+                                subject: 1,
+                                language: language),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        ).then((_) => setState(() {selectedSubject = 0;}));
+                        ).then((_) async {
+                          setState(() {
+                            selectedSubject = 0;
+                          });
+                          await Future.delayed(Duration(milliseconds: 30));
+                          refreshAppbar();
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -271,15 +294,20 @@ class _LevelTileState extends State<LevelTile> {
                           context,
                           PageTransition(
                             child: QuizPage(
-                              country: country,
-                              difficulty: 3,
-                              subject: 1,
-                              language:language
-                            ),
+                                country: country,
+                                difficulty: 3,
+                                subject: 1,
+                                language: language),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        ).then((_) => setState(() {selectedSubject = 0;}));
+                        ).then((_) async {
+                          setState(() {
+                            selectedSubject = 0;
+                          });
+                          await Future.delayed(Duration(milliseconds: 30));
+                          refreshAppbar();
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 55, 55),
@@ -318,15 +346,20 @@ class _LevelTileState extends State<LevelTile> {
                           context,
                           PageTransition(
                             child: QuizPage(
-                              country: country,
-                              difficulty: 1,
-                              subject: 2,
-                              language:language
-                            ),
+                                country: country,
+                                difficulty: 1,
+                                subject: 2,
+                                language: language),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        ).then((_) => setState(() {selectedSubject = 0;}));
+                        ).then((_) async {
+                          setState(() {
+                            selectedSubject = 0;
+                          });
+                          await Future.delayed(Duration(milliseconds: 30));
+                          refreshAppbar();
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 63, 255, 38),
@@ -355,15 +388,20 @@ class _LevelTileState extends State<LevelTile> {
                           context,
                           PageTransition(
                             child: QuizPage(
-                              country: country,
-                              difficulty: 2,
-                              subject: 2,
-                              language:language
-                            ),
+                                country: country,
+                                difficulty: 2,
+                                subject: 2,
+                                language: language),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        ).then((_) => setState(() {selectedSubject = 0;}));
+                        ).then((_) async {
+                          setState(() {
+                            selectedSubject = 0;
+                          });
+                          await Future.delayed(Duration(milliseconds: 30));
+                          refreshAppbar();
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
@@ -393,15 +431,20 @@ class _LevelTileState extends State<LevelTile> {
                           context,
                           PageTransition(
                             child: QuizPage(
-                              country: country,
-                              difficulty: 3,
-                              subject: 2,
-                              language:language
-                            ),
+                                country: country,
+                                difficulty: 3,
+                                subject: 2,
+                                language: language),
                             type: PageTransitionType.bottomToTop,
                             duration: const Duration(milliseconds: 300),
                           ),
-                        ).then((_) => setState(() {selectedSubject = 0;}));
+                        ).then((_) async {
+                          setState(() {
+                            selectedSubject = 0;
+                          });
+                          await Future.delayed(Duration(milliseconds: 30));
+                          refreshAppbar();
+                        });
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color.fromARGB(255, 255, 55, 55),

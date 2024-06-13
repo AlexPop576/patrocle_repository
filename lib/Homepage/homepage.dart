@@ -53,6 +53,16 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
+  refreshAppbar() async {
+    await fetchStreak();
+    final results = await _dbHelper.queryProfile();
+    if (results.isNotEmpty) {
+      setState(() {
+        coin = results.first['coins'];
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,7 +113,7 @@ class _HomepageState extends State<Homepage> {
       body: selectedIndex == 0
           ? Inventory()
           : selectedIndex == 1
-              ? Levels()
+              ? Levels(refreshAppbar: refreshAppbar,)
               : Profile(setLanguageFunction: setLanguage),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),

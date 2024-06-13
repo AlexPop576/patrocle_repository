@@ -18,7 +18,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0;
+  int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0, streakCount = 0, coins = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final Function setLanguageFunction;
   _ProfileState({required this.setLanguageFunction,});
@@ -54,9 +54,16 @@ class _ProfileState extends State<Profile> {
           profileIndex = results.first['picture'];
           admin = results.first['admin'];
           language = results.first['language'];
+          coins = results.first['coins'];
         });
       }
     });
+    _dbHelper.getStreakCount().then((results) {
+      setState(() {
+          streakCount = results;
+        });
+    });
+    
   }
 
   Future<void> setAdmin() async {
@@ -166,7 +173,7 @@ class _ProfileState extends State<Profile> {
                             ],
                           ),
                           const SizedBox(
-                            height: 12,
+                            height: 16,
                           ),
                           Row(
                             children: [
@@ -256,6 +263,109 @@ class _ProfileState extends State<Profile> {
                                             Text(
                                               overflow: TextOverflow.ellipsis,
                                               "${translation[language]!["Trophies"]}",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 12,
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 1,
+                                child: SizedBox(
+                                  height: 85,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.fromLTRB(0, 0, 8.3, 0),
+                                    padding: const EdgeInsets.all(2.8),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          width: 3.2),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(15)),
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              streakCount == 1 ? '1 DAY' : "$streakCount DAYS",
+                                              style: const TextStyle(
+                                                  color: Colors.green,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 27),
+                                            ),
+                                            Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              "Streak",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .colorScheme
+                                                      .primary,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: SizedBox(
+                                  height: 85,
+                                  child: Container(
+                                    margin:
+                                        const EdgeInsets.fromLTRB(8.3, 0, 0, 0),
+                                    padding: const EdgeInsets.all(2.8),
+                                    decoration: BoxDecoration(
+                                      border: Border.all(
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .primary,
+                                          width: 3.2),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(15)),
+                                    ),
+                                    child: Center(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 2),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              '$coins',
+                                              style: const TextStyle(
+                                                  color: Colors.orange,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 27),
+                                            ),
+                                            Text(
+                                              overflow: TextOverflow.ellipsis,
+                                              "Coins",
                                               style: TextStyle(
                                                   color: Theme.of(context)
                                                       .colorScheme

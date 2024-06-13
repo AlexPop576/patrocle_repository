@@ -159,8 +159,9 @@ class _InventoryState extends State<Inventory> {
                       itemCount: 4,
                       itemBuilder: (context, index) {
                         return ShopTile(
-                          
                           colorIndex: index%3,
+                          price: 120,
+                          bought: 0,
                         );
                       },
                     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ShopTile extends StatelessWidget {
-  ShopTile({super.key, required this.colorIndex});
-  int? colorIndex = 1, price = 100;
+  ShopTile({super.key, required this.colorIndex, required this.price ,required this.bought});
+  int? colorIndex = 1, price = 100, bought = 0;
   List<Color> color = [
     Colors.blue,
     Colors.red,
@@ -40,7 +40,7 @@ class ShopTile extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
                   ),
-                  child: Column(
+                  child: bought == 0 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
@@ -120,14 +120,34 @@ class ShopTile extends StatelessWidget {
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "$price\$",
-                        style: TextStyle(
-                            color: Colors.grey[700],
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "$price",
+                            style: TextStyle(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 30),
+                          ),
+                          SizedBox(width: 3,),
+                          Image.asset('assets/icons/coin.png', height: 35,),
+                        ],
                       ),
                       SizedBox(width: 10),
+                    ],
+                  ) : Column(
+                    children: [
+                      Image.asset('assets/icons/true.png'),
+                      SizedBox(height: 6),
+                      Text(
+                            "Already bought",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.grey[700],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 25),
+                          ),
                     ],
                   ),
                 ),

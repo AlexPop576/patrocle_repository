@@ -9,13 +9,16 @@ import 'add_test.dart';
 
 
 class Levels extends StatefulWidget {
-  const Levels({super.key});
+  const Levels({super.key, required this.refreshAppbar});
+  final Function refreshAppbar;
 
   @override
-  State<Levels> createState() => _LevelsState();
+  State<Levels> createState() => _LevelsState(refreshAppbar: refreshAppbar);
 }
 
 class _LevelsState extends State<Levels> {
+  _LevelsState({required this.refreshAppbar});
+  final Function refreshAppbar;
   int color = 0, admin = 0, language = 2, indexColor = 1;
   final _dbHelper = DatabaseHelper.instance;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
@@ -24,6 +27,7 @@ class _LevelsState extends State<Levels> {
   void initState() {
     super.initState();
     fetchData();
+    refreshAppbar();
   }
 
   void fetchData() {
@@ -36,6 +40,7 @@ class _LevelsState extends State<Levels> {
       }
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,6 +107,7 @@ class _LevelsState extends State<Levels> {
                             history_completed: snapshot.data![index]
                                 ['history_completed'],
                             language: language,
+                            refreshAppbar: refreshAppbar,
                           );
                         }
                         return Container();
