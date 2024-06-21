@@ -971,7 +971,7 @@ class DatabaseHelper {
   String answer214 = jsonEncode(
       ['F.W. de Klerk', 'Nelson Mandela', 'Paul Kruger', 'Jan van Riebeeck']);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 74;
+  static final _databaseVersion = 75;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';

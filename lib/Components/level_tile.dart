@@ -13,10 +13,11 @@ class LevelTile extends StatefulWidget {
       required this.geography_completed,
       required this.history_completed,
       required this.language,
-      required this.refreshAppbar});
+      required this.refreshAppbar,
+      required this.refreshLevels});
   int? colorIndex, geography_completed, history_completed, language;
   String? country, continent;
-  final Function refreshAppbar;
+  final Function refreshAppbar, refreshLevels;
 
   @override
   State<LevelTile> createState() =>
@@ -27,7 +28,8 @@ class LevelTile extends StatefulWidget {
           geography_completed: geography_completed,
           history_completed: history_completed,
           language: language,
-          refreshAppbar: refreshAppbar);
+          refreshAppbar: refreshAppbar,
+          refreshLevels: refreshLevels);
 }
 
 class _LevelTileState extends State<LevelTile> {
@@ -37,7 +39,8 @@ class _LevelTileState extends State<LevelTile> {
       required this.geography_completed,
       required this.history_completed,
       required this.language,
-      required this.refreshAppbar});
+      required this.refreshAppbar,
+      required this.refreshLevels});
   int? colorIndex = 1,
       selectedSubject = 0,
       geography_completed,
@@ -45,7 +48,7 @@ class _LevelTileState extends State<LevelTile> {
       language = 2;
   String? country;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  final Function refreshAppbar;
+  final Function refreshAppbar, refreshLevels;
 
   @override
   Widget build(BuildContext context) {

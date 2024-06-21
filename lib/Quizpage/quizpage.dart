@@ -129,7 +129,7 @@ class _QuizPageState extends State<QuizPage> {
           history_lessons = subject == 2
               ? results.first['history_lessons'] + 1
               : results.first['history_lessons'];
-          if (geography_lessons == 5) {
+          if (geography_lessons == 5&&subject==1) {
             _dbHelper.insertTrophy(1);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -144,7 +144,7 @@ class _QuizPageState extends State<QuizPage> {
                 elevation: 24,
               ),
             );
-          } else if (history_lessons == 5) {
+          } else if (history_lessons == 5&&subject==2) {
             _dbHelper.insertTrophy(2);
             _dbHelper.updateProfileTrophies();
             showDialog(

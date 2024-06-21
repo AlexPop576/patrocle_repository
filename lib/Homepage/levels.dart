@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:patrocle/Components/daily_challange_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/add_test_page.dart';
 import '../Components/level_tile.dart';
 import '../Theme/translations.dart';
 import 'add_test.dart';
-
 
 class Levels extends StatefulWidget {
   const Levels({super.key, required this.refreshAppbar});
@@ -19,7 +19,7 @@ class Levels extends StatefulWidget {
 class _LevelsState extends State<Levels> {
   _LevelsState({required this.refreshAppbar});
   final Function refreshAppbar;
-  int color = 0, admin = 0, language = 2, indexColor = 1;
+  int color = 0, admin = 0, language = 2, indexColor = 1, a = 0;
   final _dbHelper = DatabaseHelper.instance;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
 
@@ -38,6 +38,12 @@ class _LevelsState extends State<Levels> {
           language = results.first['language'];
         });
       }
+    });
+  }
+
+  refresh() {
+    setState(() {
+      a++;
     });
   }
 
@@ -83,7 +89,52 @@ class _LevelsState extends State<Levels> {
                     thickness: 3,
                   ),
                   const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Daily challange",
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.tertiary,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
                     height: 20,
+                  ),
+                ]),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 9, horizontal: 18),
+                child: Column(children: [
+                  DailyChallangeTile(),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  Divider(
+                    color: Theme.of(context).colorScheme.primary,
+                    thickness: 3,
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Countries",
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.tertiary,
+                            fontSize: 30,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 15,
                   ),
                 ]),
               ),
@@ -108,6 +159,7 @@ class _LevelsState extends State<Levels> {
                                 ['history_completed'],
                             language: language,
                             refreshAppbar: refreshAppbar,
+                            refreshLevels: refresh,
                           );
                         }
                         return Container();
@@ -212,7 +264,8 @@ class _LevelsState extends State<Levels> {
                                       Navigator.push(
                                         context,
                                         PageTransition(
-                                          child: AddTestPage(language: language),
+                                          child:
+                                              AddTestPage(language: language),
                                           type: PageTransitionType.bottomToTop,
                                           duration:
                                               const Duration(milliseconds: 400),
