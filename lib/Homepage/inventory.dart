@@ -162,6 +162,7 @@ class _InventoryState extends State<Inventory> {
                           colorIndex: index%3,
                           price: 120,
                           bought: 0,
+                          id: index+1,
                         );
                       },
                     );

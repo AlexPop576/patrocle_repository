@@ -970,8 +970,10 @@ class DatabaseHelper {
   String answer213 = jsonEncode(['În 1492', 'În 1652', 'În 1806', 'În 1910']);
   String answer214 = jsonEncode(
       ['F.W. de Klerk', 'Nelson Mandela', 'Paul Kruger', 'Jan van Riebeeck']);
+
+  String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 75;
+  static final _databaseVersion = 77;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -1050,7 +1052,8 @@ class DatabaseHelper {
             admin INTEGER,
             coins INTEGER,
             streak_count INTEGER DEFAULT 0,
-            last_activity_date TEXT 
+            last_activity_date TEXT,
+            faces TEXT
           )''');
 
         db.insert('profile', {
@@ -1065,7 +1068,8 @@ class DatabaseHelper {
           'admin': 0,
           'coins': 0,
           'streak_count': 0,
-          'last_activity_date': DateTime.now().toIso8601String()
+          'last_activity_date': DateTime.now().toIso8601String(),
+          'faces': facesList
         });
 
         await db.insert('country', {
@@ -3268,7 +3272,7 @@ class DatabaseHelper {
           'subject': 2,
           'difficulty': 1,
           'question_text':
-              'În vremurile străvechi, ce popor locuia pe teritoriul României?',
+              'În vremurile străvechi, ce popor locuia pe teritoriul României?',///
           'answer': answer194,
           'correct_answer': 2,
           'type': 1
@@ -3278,7 +3282,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'Ce imperiu a cucerit Dacia?',
+          'question_text': 'Ce imperiu a cucerit Dacia?',///
           'answer': answer195,
           'correct_answer': 2,
           'type': 1
@@ -3288,7 +3292,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'Ce principat aparținea teritoriului românesc? ',
+          'question_text': 'Ce principat aparținea teritoriului românesc? ',///
           'answer': answer196,
           'correct_answer': 3,
           'type': 1
@@ -3301,14 +3305,14 @@ class DatabaseHelper {
           'question_text': 'În ce an a avut Unirea Principatelor Române?',
           'answer': '',
           'correct_answer': 1859,
-          'type': 1
+          'type': 2
         });
 
         await db.insert('question', {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'Ce fel de regim adoptă România în anul 1947?',
+          'question_text': 'Ce fel de regim adoptă România în anul 1947?',///
           'answer': answer198,
           'correct_answer': 2,
           'type': 1
@@ -3328,7 +3332,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'Marea Unire a avut loc în anul 1925',
+          'question_text': 'Marea Unire a avut loc în anul 1925',///
           'answer': "",
           'correct_answer': 2,
           'type': 4
@@ -3339,7 +3343,7 @@ class DatabaseHelper {
           'subject': 2,
           'difficulty': 1,
           'question_text':
-              'În ce an și-a proclamat România independența față de Imperiul Otoman?',
+              'În ce an și-a proclamat România independența față de Imperiul Otoman?',///
           'answer': '',
           'correct_answer': 1877,
           'type': 2
@@ -3349,7 +3353,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'În ce an a căzut comunismul în România?',
+          'question_text': 'În ce an a căzut comunismul în România?',///
           'answer': '',
           'correct_answer': 1989,
           'type': 2
@@ -3359,7 +3363,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'În ce an devine România membră UE?',
+          'question_text': 'În ce an devine România membră UE?',///
           'answer': answer199,
           'correct_answer': 2,
           'type': 1
@@ -3369,7 +3373,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 2,
           'difficulty': 1,
-          'question_text': 'Cine este actualul președinte al României?',
+          'question_text': 'Cine este actualul președinte al României?',///
           'answer': answer200,
           'correct_answer': 2,
           'type': 1
@@ -3536,7 +3540,8 @@ class DatabaseHelper {
             admin INTEGER,
             coins INTEGER,
             streak_count INTEGER DEFAULT 0,
-            last_activity_date TEXT 
+            last_activity_date TEXT,
+            faces TEXT
           )''');
           db.insert('profile', {
             'username': 'username',
@@ -3551,6 +3556,7 @@ class DatabaseHelper {
             'coins': 0,
             'streak_count': 0,
             'last_activity_date': "${DateTime.now().toIso8601String()}",
+            'faces': facesList
           });
           await db.execute('''
           CREATE TABLE country (
@@ -5797,7 +5803,7 @@ class DatabaseHelper {
             'question_text': 'Ce principat aparținea teritoriului românesc? ',
             'answer': answer196,
             'correct_answer': 3,
-            'type': 1
+            'type': 2
           });
 
           await db.insert('question', {
@@ -6083,7 +6089,7 @@ class DatabaseHelper {
 
     return result.first['streak_count'];
   }
-
+   
   Future<void> incrementStreak() async {
     Database db = await this.database;
     DateTime lastActivityDate = await getLastActivityDate(db);
@@ -6126,6 +6132,37 @@ class DatabaseHelper {
       'type': type,
     });
   }
+  
+  Future<int> setFaces(String faceList) async {
+    Database db = await database;
+    int id=1;
+    return await db.update(
+      'profile',
+      {
+        'faces': faceList,
+      },
+      where: 'profileID = ?',
+      whereArgs: [id],
+    );
+  }
+
+  Future<Map<String, dynamic>> queryFaces() async {
+    Database db = await database;
+    int id=1;
+    List<Map<String, dynamic>> result = await db.query(
+      'profile',
+      columns: ['faces'],
+      where: 'profileID = ?',
+      whereArgs: [id],
+    );
+    if (result.isNotEmpty) {
+      return {
+        'faces': result.first['faces'],
+      };
+    } else {
+      throw Exception('Faces not found');
+    }
+  }
 
   Future<int> setCountry(String countryName) async {
     Database db = await database;
@@ -6150,6 +6187,24 @@ class DatabaseHelper {
       whereArgs: [countryName],
     );
   }
+
+  Future<List<String>> queryExistingCountries() async {
+  Database db = await database;
+  int exist = 1;
+  List<Map<String, dynamic>> result = await db.query(
+    'country',
+    columns: ['name'],
+    where: 'doesExist = ?',
+    whereArgs: [exist],
+  );
+
+  if (result.isNotEmpty) {
+    return result.map((country) => country['name'] as String).toList();
+  } else {
+    throw Exception('Countries not found');
+  }
+}
+
 
   Future<int> setLesson(String countryName, String lesson, int subject) async {
     Database db = await database;

@@ -1,20 +1,28 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../../Database/database_helper.dart';
 import '../../Theme/translations.dart';
 
 class EditProfile extends StatefulWidget {
-  EditProfile({super.key, required this.username, required this.profileIndex, this.language});
+  EditProfile(
+      {super.key,
+      required this.username,
+      required this.profileIndex,
+      this.language});
   String? username;
   int profileIndex = 0;
   int? language;
 
   @override
-  State<EditProfile> createState() => _EditProfileState(username: username, profileIndex: profileIndex, language: language);
+  State<EditProfile> createState() => _EditProfileState(
+      username: username, profileIndex: profileIndex, language: language);
 }
 
 class _EditProfileState extends State<EditProfile> {
-  _EditProfileState({required this.username, required this.profileIndex, this.language});
+  _EditProfileState(
+      {required this.username, required this.profileIndex, this.language});
   String? username;
   int profileIndex = 0, maxIndex = 2;
   int? language = 2;
@@ -22,23 +30,47 @@ class _EditProfileState extends State<EditProfile> {
     Colors.blue,
     Colors.red,
     Colors.green,
+    Colors.green,
+    Colors.green,
+    Colors.green,
+    Colors.green,
   ];
 
   List<Image> profilePhoto = [
-    Image.asset('assets/icons/face1.png',height: 100, fit: BoxFit.contain),
-    Image.asset('assets/icons/face2.png',height: 100, fit: BoxFit.contain),
-    Image.asset('assets/icons/face3.png',height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face2.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
   ];
 
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final _dbHelper = DatabaseHelper.instance;
   final usernameController = TextEditingController();
+  String? faces;
+  List<int>? faceList = [];
 
   @override
   void initState() {
     super.initState();
     setState(() {
       usernameController.text = username!;
+    });
+    fetchData();
+  }
+
+  void fetchData() async {
+    await _dbHelper.queryFaces().then((results) {
+      faces = results['faces'];
+      if (faces != null) {
+        faceList = List<int>.from(jsonDecode(faces!));
+      }
+      print("List: $faceList");
+      print(profileIndex);
+      print(faceList!.length);
+      setState(() {
+        if(faceList!.length!=0)
+          maxIndex = faceList!.length-1;
+        else maxIndex = 0;
+      });
     });
   }
 
@@ -201,20 +233,21 @@ class _EditProfileState extends State<EditProfile> {
                                 setState(() {
                                   if (profileIndex < maxIndex) {
                                     profileIndex++;
+                                    print(profileIndex);
                                   } else {
                                     profileIndex = 0;
+                                    print(profileIndex);
                                   }
                                 });
                               }),
-                            icon: const Icon(Icons.arrow_back)
-                          ),
+                              icon: const Icon(Icons.arrow_back)),
                           Expanded(
                             child: Align(
                               alignment: Alignment.bottomCenter,
                               child: SizedBox(
                                 height: 250,
                                 width: 250,
-                                child: profilePhoto[profileIndex],
+                                child: Image.asset('assets/icons/face${faceList![profileIndex]}.png', height: 100, fit: BoxFit.contain),
                               ),
                             ),
                           ),
@@ -223,13 +256,14 @@ class _EditProfileState extends State<EditProfile> {
                                 setState(() {
                                   if (profileIndex > 0) {
                                     profileIndex--;
+                                    print(profileIndex);
                                   } else {
                                     profileIndex = maxIndex;
+                                    print(profileIndex);
                                   }
                                 });
                               }),
-                            icon: const Icon(Icons.arrow_forward)
-                          ),
+                              icon: const Icon(Icons.arrow_forward)),
                         ]),
                   )),
               const SizedBox(height: 15),

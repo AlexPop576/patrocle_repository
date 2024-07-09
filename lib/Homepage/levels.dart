@@ -111,7 +111,7 @@ class _LevelsState extends State<Levels> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 9, horizontal: 18),
                 child: Column(children: [
-                  DailyChallangeTile(),
+                  DailyChallangeTile(language: language,),
                   const SizedBox(
                     height: 30,
                   ),

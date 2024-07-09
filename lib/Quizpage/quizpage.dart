@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:animations/animations.dart';
@@ -22,10 +23,11 @@ class QuizPage extends StatefulWidget {
     required this.country,
     required this.difficulty,
     required this.subject,
+    required this.mode,
     this.language,
   });
   String? country;
-  int? difficulty, subject, language;
+  int? difficulty, subject, language, mode;
 
   @override
   // ignore: no_logic_in_create_state
@@ -33,6 +35,7 @@ class QuizPage extends StatefulWidget {
       country: country,
       difficulty: difficulty,
       subject: subject,
+      mode: mode,
       language: language);
 }
 
@@ -41,17 +44,18 @@ class _QuizPageState extends State<QuizPage> {
       {required this.country,
       required this.difficulty,
       required this.subject,
+      required this.mode,
       this.language});
     
   //final _homepage = Homepage.instance;
   String? country;
-  int? difficulty, subject, language = 2, randomNumber, digits;
+  int? difficulty, subject, language = 2, mode = 1, randomNumber, digits;
   int pageIndex = 0,
       givenAnswer = -1,
       correctAnswersHard = 0,
       correctAnswersEasy = 0,
       bonus = 0,
-      pageMax = 11;
+      pageMax = 11, seconds = 60, initialSeconds = 0;
   List<int> questionNumber = [],
       easyAnswers = [],
       hardAnswers = [],
@@ -63,11 +67,24 @@ class _QuizPageState extends State<QuizPage> {
   final _dbHelper = DatabaseHelper.instance;
   List<int> answerBonus = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   int? bonusIQ = 0;
+  Timer? timer;
 
   @override
   void initState() {
     super.initState();
     fetchData(country.toString(), subject.toString());
+    mode == 2 ? startTimer() : null;
+  }
+
+  void startTimer(){
+    timer = Timer.periodic(Duration(milliseconds: 500), (_) {
+      setState(() {
+        seconds--;
+        if(seconds==0){
+          pageIndex = pageMax+1;
+        }
+      });
+    });
   }
 
   void fetchData(String country, String subject) async {
@@ -84,6 +101,8 @@ class _QuizPageState extends State<QuizPage> {
       if (pageMax > 10) {
         pageMax = 10;
       }
+      seconds = questions.length*20;
+      initialSeconds = seconds;
     });
     var random = Random();
     var numbers = List<int>.generate(questions.length, (index) => index)
@@ -273,7 +292,7 @@ class _QuizPageState extends State<QuizPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: pageIndex != pageMax + 1
-          ? AppBar(
+          ? mode == 1 ? AppBar(
               backgroundColor: Theme.of(context).colorScheme.primary,
               leading: IconButton(
                   icon: const Icon(
@@ -416,7 +435,156 @@ class _QuizPageState extends State<QuizPage> {
               centerTitle: true,
               elevation: 0,
             )
-          : null,
+          : AppBar(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              leading: IconButton(
+                  icon: const Icon(
+                    Icons.close,
+                    color: Colors.white,
+                    size: 29,
+                  ),
+                  onPressed: () {
+                    showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: double.infinity,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.background,
+                                borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(25),
+                                    topRight: Radius.circular(25))),
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 17),
+                              child: SingleChildScrollView(
+                                physics: const BouncingScrollPhysics(),
+                                child: Column(children: [
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                  Lottie.asset('assets/patrocle.json',
+                                      frameRate: FrameRate.max, height: 100),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 40),
+                                    child: Text(
+                                      "${translation[language]!["QP_QMSG"]}",
+                                      style: TextStyle(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .tertiary,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 40,
+                                  ),
+                                  SizedBox(
+                                    height: 58,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 102, 102, 255),
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(15),
+                                          ),
+                                        ),
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                              "${translation[language]!["Continue"]}",
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30))),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 12,
+                                  ),
+                                  SizedBox(
+                                    height: 58,
+                                    width: double.infinity,
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 219, 64, 64),
+                                        shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.all(
+                                            Radius.circular(15),
+                                          ),
+                                        ),
+                                      ),
+                                      child: Center(
+                                          child: Text(
+                                              "${translation[language]!["Quit"]}",
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 30))),
+                                    ),
+                                  ),
+                                  const SizedBox(
+                                    height: 20,
+                                  ),
+                                ]),
+                              ),
+                            ),
+                          );
+                        });
+                  }),
+              title: pageIndex == 0
+                  ? Text(
+                      country.toString(),
+                      style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 35),
+                    )
+                  : Container(
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                flex: seconds,
+                                child: Container(
+                                  height: 20,
+                                  color: Colors.red,
+                                ),
+                              ),
+                              Expanded(
+                                flex: initialSeconds-seconds,
+                                child: Container(
+                                  height: 20,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          )),
+                    ),
+              centerTitle: true,
+              elevation: 0,
+            ) : null,
       body: PageTransitionSwitcher(
           duration: const Duration(seconds: 1),
           transitionBuilder: (child, animation, secondaryAnimation) =>
@@ -695,6 +863,7 @@ class _QuizPageState extends State<QuizPage> {
                         updateIQ();
                         updateTrophies();
                         Navigator.pop(context);
+                        mode == 2 ? Navigator.pop(context) : null;
                       }
                     },
                     style: ElevatedButton.styleFrom(

@@ -4,13 +4,18 @@ import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Quizpage/dailyquizpage.dart';
 
 class DailyChallangeTile extends StatefulWidget {
-  const DailyChallangeTile({super.key});
+  DailyChallangeTile({super.key, required this.language});
+  int? language;
 
   @override
-  State<DailyChallangeTile> createState() => _DailyChallangeTileState();
+  State<DailyChallangeTile> createState() =>
+      _DailyChallangeTileState(language: language);
 }
 
 class _DailyChallangeTileState extends State<DailyChallangeTile> {
+  _DailyChallangeTileState({required this.language});
+  int? language;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -60,7 +65,7 @@ class _DailyChallangeTileState extends State<DailyChallangeTile> {
                       ),
                       Expanded(
                         child: Text(
-                          "Random Country",
+                          "Random",
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               shadows: <Shadow>[
@@ -104,13 +109,14 @@ class _DailyChallangeTileState extends State<DailyChallangeTile> {
                               Navigator.push(
                                 context,
                                 PageTransition(
-                                  child: DailyQuiz(),
+                                  child: DailyQuiz(language: language),
                                   type: PageTransitionType.bottomToTop,
                                   duration: const Duration(milliseconds: 300),
                                 ),
                               );
                             },
-                            child: Icon(Icons.place_rounded))),
+                            child:
+                                Image.asset('assets/icons/randomButton.png'))),
                   ],
                 ),
               )

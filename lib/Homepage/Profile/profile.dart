@@ -55,6 +55,7 @@ class _ProfileState extends State<Profile> {
           admin = results.first['admin'];
           language = results.first['language'];
           coins = results.first['coins'];
+          profileIndex=1;
         });
       }
     });
@@ -309,7 +310,7 @@ class _ProfileState extends State<Profile> {
                                           children: [
                                             Text(
                                               overflow: TextOverflow.ellipsis,
-                                              streakCount == 1 ? '1 DAY' : "$streakCount DAYS",
+                                              streakCount == 1 ? '1 ${translation[language]!['Day']}' : "$streakCount ${translation[language]!['Days']}",
                                               style: const TextStyle(
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
@@ -317,7 +318,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                             Text(
                                               overflow: TextOverflow.ellipsis,
-                                              "Streak",
+                                              "${translation[language]!['Streak']}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
                                                       .colorScheme
@@ -365,7 +366,7 @@ class _ProfileState extends State<Profile> {
                                             ),
                                             Text(
                                               overflow: TextOverflow.ellipsis,
-                                              "Coins",
+                                              "${translation[language]!['Coins']}",
                                               style: TextStyle(
                                                   color: Theme.of(context)
                                                       .colorScheme
