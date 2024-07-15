@@ -3,31 +3,61 @@ import 'package:lottie/lottie.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Theme/general_info.dart';
 import 'package:translator/translator.dart';
+import 'package:flutter_tts/flutter_tts.dart'; 
 import '../Theme/translations.dart';
 
-// ignore: must_be_immutable
 class Lesson extends StatefulWidget {
   String? country;
   int? subject = 0, language;
   Lesson({super.key, required this.country, this.subject, required this.language});
 
   @override
-  // ignore: no_logic_in_create_state
   State<Lesson> createState() => _LessonState(country: country, subject: subject, language: language);
 }
 
 class _LessonState extends State<Lesson> {
   String? lesson, country;
-  int? language =2, subject = 0;
+  int? language = 2, subject = 0;
   _LessonState({required this.country, this.subject, required this.language});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   Map<String?, Map<int?, String?>> info = Info().info;
   final _dbHelper = DatabaseHelper.instance;
   GoogleTranslator translator = GoogleTranslator();
+  FlutterTts flutterTts = FlutterTts();
+  bool _isSpeaking = false;
 
+  @override
   void initState() {
     super.initState();
+    flutterTts.setPitch(1.0);
     fetchData();
+  }
+
+  @override
+  void dispose() {
+    flutterTts.stop();
+    super.dispose();
+  }
+
+  Future<void> speak(String text) async {
+    String languageCode = getLanguageCode(language);
+    await flutterTts.setLanguage(languageCode);
+    if (_isSpeaking) {
+      await flutterTts.stop();
+    } else {
+      await flutterTts.speak(text);
+    }
+    _isSpeaking = !_isSpeaking;
+  }
+
+  String getLanguageCode(int? language) {
+    Map<int, String> languageCodes = {
+      1: "en-US",
+      2: "ro-RO", // with english accent :|
+      3: "hu-HU", // with english accent :|
+      4: "es-ES",
+    };
+    return languageCodes[language] ?? "en-US";
   }
 
   void fetchData() async {
@@ -38,22 +68,18 @@ class _LessonState extends State<Lesson> {
     });
   }
 
-  void translate(String text)
-  {
+  void translate(String text) {
     String toLanguage;
-    if(language==4)
-    {
+    if (language == 4) {
       toLanguage = "es";
-    }else if(language==2)
-    {
+    } else if (language == 2) {
       toLanguage = "ro";
-    }else if(language==3)
-    {
+    } else if (language == 3) {
       toLanguage = "hu";
-    }else{
+    } else {
       toLanguage = "en";
     }
-    translator.translate(text, to: toLanguage).then((output){
+    translator.translate(text, to: toLanguage).then((output) {
       setState(() {
         lesson = output.toString();
       });
@@ -89,7 +115,15 @@ class _LessonState extends State<Lesson> {
                         color: Theme.of(context).colorScheme.tertiary,
                         fontWeight: FontWeight.bold,
                         fontSize: 40),
-                  )
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.volume_up),
+                    onPressed: () {
+                      if (lesson != null) {
+                        speak(lesson!);
+                      }
+                    },
+                  ),
                 ]),
                 const SizedBox(
                   height: 12,

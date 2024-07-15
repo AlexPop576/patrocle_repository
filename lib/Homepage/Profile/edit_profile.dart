@@ -30,10 +30,6 @@ class _EditProfileState extends State<EditProfile> {
     Colors.blue,
     Colors.red,
     Colors.green,
-    Colors.green,
-    Colors.green,
-    Colors.green,
-    Colors.green,
   ];
 
   List<Image> profilePhoto = [
@@ -68,7 +64,7 @@ class _EditProfileState extends State<EditProfile> {
       print(faceList!.length);
       setState(() {
         if(faceList!.length!=0)
-          maxIndex = faceList!.length-1;
+          maxIndex = faceList!.length+1;
         else maxIndex = 0;
       });
     });
@@ -222,7 +218,7 @@ class _EditProfileState extends State<EditProfile> {
               ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: Container(
-                    color: profileColor[profileIndex],
+                    color: profileColor[profileIndex%3],
                     height: 300,
                     width: double.infinity,
                     child: Row(
@@ -247,7 +243,7 @@ class _EditProfileState extends State<EditProfile> {
                               child: SizedBox(
                                 height: 250,
                                 width: 250,
-                                child: Image.asset('assets/icons/face${faceList![profileIndex]}.png', height: 100, fit: BoxFit.contain),
+                                child: Image.asset('assets/icons/face${faceList![0]}.png', height: 100, fit: BoxFit.contain),
                               ),
                             ),
                           ),

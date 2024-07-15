@@ -1,20 +1,35 @@
 import 'package:animate_gradient/animate_gradient.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:patrocle/Quizpage/dailyquizpage.dart';
+import 'package:patrocle/Database/database_helper.dart';
+import 'package:patrocle/Quizpage/special_challenge.dart';
 
-class DailyChallangeTile extends StatefulWidget {
-  DailyChallangeTile({super.key, required this.language});
-  int? language;
+class SpecialChallengeTile extends StatefulWidget {
+  SpecialChallengeTile({super.key});
+ 
 
   @override
-  State<DailyChallangeTile> createState() =>
-      _DailyChallangeTileState(language: language);
+  State<SpecialChallengeTile> createState() =>
+      _SpecialChallengeTileState();
 }
 
-class _DailyChallangeTileState extends State<DailyChallangeTile> {
-  _DailyChallangeTileState({required this.language});
+class _SpecialChallengeTileState extends State<SpecialChallengeTile> {
+  
   int? language;
+  final _dbHelper = DatabaseHelper.instance;
+  @override void initState()
+  {super.initState();
+    fetchData();
+  }
+  void fetchData() async {
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          language = results.first['language'];
+        });
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +124,7 @@ class _DailyChallangeTileState extends State<DailyChallangeTile> {
                               Navigator.push(
                                 context,
                                 PageTransition(
-                                  child: DailyQuiz(language: language),
+                                  child: SpecialChallenge(language: language),
                                   type: PageTransitionType.bottomToTop,
                                   duration: const Duration(milliseconds: 300),
                                 ),

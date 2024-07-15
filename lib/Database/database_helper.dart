@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -973,7 +971,7 @@ class DatabaseHelper {
 
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 77;
+  static final _databaseVersion = 79;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -3254,7 +3252,7 @@ class DatabaseHelper {
           'question_text': 'România este membră NATO',
           'answer': '',
           'correct_answer': 1,
-          'type': 1
+          'type': 4
         });
 
         await db.insert('question', {
@@ -5762,7 +5760,7 @@ class DatabaseHelper {
             'question_text': 'România este membră NATO',
             'answer': '',
             'correct_answer': 1,
-            'type': 1
+            'type': 4
           });
 
           await db.insert('question', {
@@ -5813,7 +5811,7 @@ class DatabaseHelper {
             'question_text': 'În ce an a avut Unirea Principatelor Române?',
             'answer': '',
             'correct_answer': 1859,
-            'type': 1
+            'type': 2
           });
 
           await db.insert('question', {

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:patrocle/Components/daily_challange_tile.dart';
+import 'package:patrocle/Components/special_challange_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/add_test_page.dart';
 import '../Components/level_tile.dart';
 import '../Theme/translations.dart';
-import 'add_test.dart';
 
 class Levels extends StatefulWidget {
   const Levels({super.key, required this.refreshAppbar});
@@ -19,7 +18,7 @@ class Levels extends StatefulWidget {
 class _LevelsState extends State<Levels> {
   _LevelsState({required this.refreshAppbar});
   final Function refreshAppbar;
-  int color = 0, admin = 0, language = 2, indexColor = 1, a = 0;
+  int color = 0, admin = 0, language = 3, indexColor = 1, a = 0;
   final _dbHelper = DatabaseHelper.instance;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
 
@@ -30,7 +29,7 @@ class _LevelsState extends State<Levels> {
     refreshAppbar();
   }
 
-  void fetchData() {
+  void fetchData() async {
     _dbHelper.queryProfile().then((results) {
       if (results.isNotEmpty) {
         setState(() {
@@ -40,7 +39,7 @@ class _LevelsState extends State<Levels> {
       }
     });
   }
-
+  
   refresh() {
     setState(() {
       a++;
@@ -93,8 +92,8 @@ class _LevelsState extends State<Levels> {
                   ),
                   Row(
                     children: [
-                      Text(
-                        "Daily challange",
+                      Text(    
+                         "${translation[language]!["Special challenge"]}",
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.tertiary,
                             fontSize: 30,
@@ -111,7 +110,7 @@ class _LevelsState extends State<Levels> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 9, horizontal: 18),
                 child: Column(children: [
-                  DailyChallangeTile(language: language,),
+                  SpecialChallengeTile(),
                   const SizedBox(
                     height: 30,
                   ),
@@ -125,7 +124,7 @@ class _LevelsState extends State<Levels> {
                   Row(
                     children: [
                       Text(
-                        "Countries",
+                        "${translation[language]!["Countries"]}",
                         style: TextStyle(
                             color: Theme.of(context).colorScheme.tertiary,
                             fontSize: 30,

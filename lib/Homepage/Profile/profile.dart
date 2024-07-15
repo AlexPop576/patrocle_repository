@@ -3,10 +3,8 @@ import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/Profile/admin.dart';
 import 'package:patrocle/Homepage/Profile/edit_profile.dart';
-import 'package:patrocle/Homepage/homepage.dart';
 import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
-import '../../Components/trophy_tile.dart';
 import '../../Theme/theme_provider.dart';
 
 class Profile extends StatefulWidget {

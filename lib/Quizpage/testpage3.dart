@@ -44,14 +44,14 @@ class _TestPage3State extends State<TestPage3> {
     answersColumn = List<String>.from(jsonDecode(answers!));
     print('randomm $randomNumbers');
     correctAnswer = (randomNumbers[0]+1)*1000+(randomNumbers[1]+1)*100+(randomNumbers[2]+1)*10+(randomNumbers[3]+1);
-    translate(answersColumn![0], 0);
-    translate(answersColumn![1], 1);
-    translate(answersColumn![2], 2);
-    translate(answersColumn![3], 3);
-    translate(answersColumn![4], 4);
-    translate(answersColumn![5], 5);
-    translate(answersColumn![6], 6);
-    translate(answersColumn![7], 7);
+    translate(answersColumn[0], 0);
+    translate(answersColumn[1], 1);
+    translate(answersColumn[2], 2);
+    translate(answersColumn[3], 3);
+    translate(answersColumn[4], 4);
+    translate(answersColumn[5], 5);
+    translate(answersColumn[6], 6);
+    translate(answersColumn[7], 7);
   }
 
   void translate(String text, int index)

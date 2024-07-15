@@ -5,16 +5,16 @@ import 'package:animations/animations.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
 import 'package:patrocle/Database/database_helper.dart';
+import 'package:patrocle/Homepage/homepage.dart';
+import 'package:patrocle/Homepage/levels.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
 import 'package:patrocle/Quizpage/testpage2.dart';
 import 'dart:math';
 import '../Theme/general_info.dart';
 import '../Theme/translations.dart';
 import 'testpage1.dart';
-import 'testpage2.dart';
 import 'testpage3.dart';
 import 'testpage4.dart';
-import 'package:patrocle/Homepage/homepage.dart';
 
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
@@ -73,7 +73,7 @@ class _QuizPageState extends State<QuizPage> {
   void initState() {
     super.initState();
     fetchData(country.toString(), subject.toString());
-    mode == 2 ? startTimer() : null;
+    
   }
 
   void startTimer(){
@@ -569,7 +569,7 @@ class _QuizPageState extends State<QuizPage> {
                                 flex: seconds,
                                 child: Container(
                                   height: 20,
-                                  color: Colors.red,
+                                  color: Colors.yellow,
                                 ),
                               ),
                               Expanded(
@@ -615,7 +615,12 @@ class _QuizPageState extends State<QuizPage> {
                   child: ElevatedButton(
                     onPressed: () async {
                       if (givenAnswer != 0 && pageIndex != pageMax + 1) {
-                        if (pageIndex > 0 && pageIndex < pageMax + 1) {
+                        if(pageIndex == 0)
+                        {
+                          startTimer();
+
+                        }
+                        else if (pageIndex > 0 && pageIndex < pageMax + 1) {
                           setState(() {
                             bonus = 1;
                           });
@@ -863,8 +868,14 @@ class _QuizPageState extends State<QuizPage> {
                         updateIQ();
                         updateTrophies();
                         Navigator.pop(context);
+                        Navigator.pop(context);
                         mode == 2 ? Navigator.pop(context) : null;
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return Homepage(selectedIndex: 1);
+                      }));
                       }
+                      
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor:

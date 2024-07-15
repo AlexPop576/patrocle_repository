@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class Translations {
   Map<int?, Map<String?, String?>> translation = {
@@ -290,7 +289,10 @@ class Translations {
       "Vietnam": "Vietnam",
       "Yemen": "Yemen",
       "Zambia": "Zambia",
-      "Zimbabwe": "Zimbabwe"
+      "Zimbabwe": "Zimbabwe",
+      "Special challenge": "Special challenge",
+      "Countries": "Countries",
+
     },
     2: {
       "Profile": "Profil",
@@ -580,7 +582,9 @@ class Translations {
       "Vietnam": "Vietnam",
       "Yemen": "Yemen",
       "Zambia": "Zambia",
-      "Zimbabwe": "Zimbabwe"
+      "Zimbabwe": "Zimbabwe",
+      "Special challenge": "Provocare specială", 
+      "Countries": "Țări",
     },
     3: {
       "Profile": "Profil",
@@ -870,7 +874,9 @@ class Translations {
       "Vietnam": "Vietnám",
       "Yemen": "Jemen",
       "Zambia": "Zambia",
-      "Zimbabwe": "Zimbabwe"
+      "Zimbabwe": "Zimbabwe",
+      "Special challenge": "Különleges kihívás",
+      "Countries": "Országok",
     },
     4: {
       "Profile": "Perfil",
@@ -1160,7 +1166,9 @@ class Translations {
       "Vietnam": "Vietnam",
       "Yemen": "Yemen",
       "Zambia": "Zambia",
-      "Zimbabwe": "Zimbabue"
+      "Zimbabwe": "Zimbabue",
+      "Special challenge": "Desafío especial",
+      "Countries": "Países",
     }
   };
 }

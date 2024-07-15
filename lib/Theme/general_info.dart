@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class Info {
   Map<String?, Map<int?, String?>> info = {

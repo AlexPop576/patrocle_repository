@@ -42,13 +42,15 @@ dependencies:
   google_nav_bar: ^5.0.6
   cupertino_icons: ^1.0.2
   translator: 
+  flutter_tts:
   flutter_gradient_animation_text:
   animate_gradient:
 
+  path: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_launcher_icons: ^0.9.2
+  flutter_launcher_icons: ^0.13.1
 
 flutter_icons:
   android: true
