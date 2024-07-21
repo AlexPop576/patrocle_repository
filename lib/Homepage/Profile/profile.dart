@@ -20,7 +20,7 @@ class _ProfileState extends State<Profile> {
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final Function setLanguageFunction;
   _ProfileState({required this.setLanguageFunction,});
-
+  
   List<Color> profileColor = [
     Colors.blue,
     Colors.red,

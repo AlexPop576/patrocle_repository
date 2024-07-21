@@ -150,20 +150,15 @@ class _InventoryState extends State<Inventory> {
                 ]),
               ),
               FutureBuilder<List<Map<String, dynamic>>>(
-                future: _dbHelper.queryTrophies(),
+                future: _dbHelper.queryAllFaces(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
-                      itemCount: 4,
+                      itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                        return ShopTile(
-                          colorIndex: index%3,
-                          price: 120,
-                          bought: 0,
-                          id: index+1,
-                        );
+                      return ShopTile(colorIndex: snapshot.data![index]['color'], price: snapshot.data![index]['price'], bought:snapshot.data![index]['bought'], id: snapshot.data![index]['face']);
                       },
                     );
                   } else if (snapshot.hasError) {

@@ -116,14 +116,18 @@ class _LessonState extends State<Lesson> {
                         fontWeight: FontWeight.bold,
                         fontSize: 40),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.volume_up),
-                    onPressed: () {
-                      if (lesson != null) {
+                  language == 1 || language == 4 ?
+                  ElevatedButton(onPressed: (){ if (lesson != null) {
                         speak(lesson!);
-                      }
-                    },
-                  ),
+                      }}
+                      ,style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))), child: ClipRRect(
+                        borderRadius: BorderRadius.circular(15),
+                        child: Container(color: Theme.of(context).colorScheme.secondary,child: 
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                          child: Icon(Icons.volume_up,color: Colors.white,),
+                        ),),
+                      )):SizedBox(),
                 ]),
                 const SizedBox(
                   height: 12,

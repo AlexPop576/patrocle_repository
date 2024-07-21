@@ -60,6 +60,7 @@ class _ShopTileState extends State<ShopTile> {
     Colors.blue,
     Colors.red,
     Colors.green,
+    Colors.yellow,
   ];
 
   // Building the widget.
@@ -100,7 +101,10 @@ class _ShopTileState extends State<ShopTile> {
                               padding: const EdgeInsets.symmetric(horizontal: 5),
                               child: ElevatedButton(
                                 onPressed: () {
-                                  // Displaying dialog to confirm purchase.
+                                  _dbHelper.setBought(widget.id!); 
+                                  setState(() {
+                                    
+                                  });
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),

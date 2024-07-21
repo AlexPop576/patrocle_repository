@@ -58,7 +58,6 @@ class ThemeProvider with ChangeNotifier {
     }
   } else {
     // Handle the case where modeInt is null
-    // For example, you might want to set a default theme
     themeData = lightMode;
   }
 

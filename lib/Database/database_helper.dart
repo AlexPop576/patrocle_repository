@@ -202,141 +202,78 @@ class DatabaseHelper {
     "Zimbabwe"
   ];
 
-  String answer1 = jsonEncode(['Barcelona', 'Madrid', 'Valencia', 'Sevilla']);
-  String answer2 = jsonEncode([
-    'Munții Pirinei',
-    'Munții Cantabrici',
-    'Munții Betici',
-    'Munții Centrali'
+  String answer1 = jsonEncode([
+    'Mountains',
+    'River',
+    'The sea',
+    'The region',
+    'Pyrenees',
+    'Ebro',
+    'Mediterranean',
+    'Iberian Peninsula'
   ]);
-  String answer3 = jsonEncode([
-    'Vârful Teide',
-    'Vârful Aneto',
-    'Vârful Mulhacén',
-    'Vârful Pico de Orizaba'
+  String answer2 = jsonEncode(['Barcelona', 'Madrid', 'Valencia', 'Sevilla']);
+  String answer3 = jsonEncode(['Mallorca', 'Ibiza', 'Sardinia', 'Tenerife']);
+  String answer4 = jsonEncode([
+    'Mountains',
+    'River',
+    'The sea',
+    'The region',
+    'Teide',
+    'Guadalquivir',
+    'Mediterranean',
+    'Canary Islands'
   ]);
-  String answer4 = jsonEncode(['Lisbona', 'Barcelona', 'Sevilla', 'Bilbao']);
-  String answer5 = jsonEncode(['Mallorca', 'Ibiza', 'Sardinia', 'Tenerife']);
-  String answer6 = jsonEncode(
-      ['Marea Neagră', 'Marea Caspică', 'Marea Mediterană', 'Marea Azov']);
-  String answer7 =
-      jsonEncode(['Gran Canaria', 'Tenerife', 'Lanzarote', 'Fuerteventura']);
-  String answer8 = jsonEncode(['Ebro', 'Tagus', 'Guadalquivir', 'Manzanares']);
-  String answer9 = jsonEncode(['Ebro', 'Guadalquivir', 'Tagus', 'Duero']);
-  String answer10 =
-      jsonEncode(['Temperat continental', 'Mediteranean', 'Oceanic', 'Alpin']);
-  String answer11 = jsonEncode([
-    'Temperaturi reci și precipitații abundente',
-    'Temperaturi moderate și veri uscate',
-    'Ierni lungi și veri călduroase',
-    'Temperaturi extreme și umiditate ridicată'
-  ]);
-  String answer12 = jsonEncode([
-    'Munții Cantabrici',
-    'Munții Pirinei',
-    'Munții Betici',
-    'Munții Centrali'
-  ]);
-  String answer13 =
-      jsonEncode(['Valencia', 'Bilbao', 'Sevilla', 'Santiago de Compostela']);
-  String answer14 = jsonEncode([
-    'Cristofor Columb',
+  String answer5 = jsonEncode([
+    'Christopher Columbus',
     'Vasco da Gama',
     'Ferdinand Magellan',
     'Marco Polo'
   ]);
-  String answer15 = jsonEncode([
-    'Regatul Castiliei',
-    'Regatul Aragonului',
-    'Regatul Franței',
-    'Regatul Navarrei'
+  String answer6 = jsonEncode([
+    'Kingdom',
+    'Explorer',
+    'Dictator',
+    'Queen',
+    'Castile',
+    'Columbus',
+    'Franco',
+    'Isabella'
   ]);
-  String answer16 = jsonEncode([
-    'Cucerirea Americii',
-    'Începutul Reconquistei',
-    'Unificarea regatelor',
-    'Reforma Protestantă'
-  ]);
-  String answer17 = jsonEncode([
-    'Hernán Cortés',
-    'Francisco Pizarro',
-    'Ferdinand Magellan',
-    'Juan Ponce de León'
-  ]);
-  String answer18 =
+  String answer7 =
       jsonEncode(['1910-1930', '1939-1975', '1980-2000', '1960-1980']);
-  String answer19 = jsonEncode([
-    'Ferdinand al VII-lea',
-    'Alfonso al XIII-lea',
-    'Carol al III-lea',
-    'Isabela a II-a'
+  String answer8 = jsonEncode([
+    'Iberians and Celtiberians',
+    'Ferdinand II and Isabella I',
+    'Christopher Columbus',
+    'Democratic Constitution',
+    'Antiquity',
+    '15th Century',
+    'Modern Era',
+    '20th Century'
   ]);
-  String answer20 = jsonEncode([
-    'Războiul Civil Spaniol',
-    'Revoluția Industrială',
-    'Războaiele de independență din America Latină',
-    'Primul Război Mondial'
+  String answer9 = jsonEncode(['Barcelona', 'Madrid', 'Paris', 'Lisabona']);
+String answer10 = jsonEncode([
+    'Mont Blanc',
+    'French Riviera',
+    'Seine',
+    'Lyon',
+    'Peak',
+    'River',
+    'City',
+    'Resorts'
   ]);
-  String answer21 = jsonEncode([
-    'Decizia de a intra în Războiul de Treizeci de Ani',
-    'Declararea independenței față de Franța',
-    'Cucerirea Constantinopolului',
-    'Decretul de expulzare a evreilor și a maurilor'
+  String answer11 = jsonEncode(['Tamisa', 'Sena', 'Tiber', 'Rin']);
+String answer12 = jsonEncode([
+    'Paris',
+    'Alps',
+    'Bordeaux',
+    'Mediterranean Sea',
+    'Capital city',
+    'Mountain range',
+    'Coastal area',
+    'Wine region'
   ]);
-  String answer22 = jsonEncode([
-    'În secolul al XIX-lea',
-    'În secolul al XX-lea',
-    'În secolul al XVIII-lea',
-    'În secolul al XVI-lea'
-  ]);
-  String answer23 = jsonEncode(
-      ['Monarhie absolută', 'Republică', 'Monarhie parlamentară', 'Dictatură']);
-  String answer24 = jsonEncode([
-    'Regatul Castiliei',
-    'Regatul Aragonului',
-    'Regatul Navarrei',
-    'Regatul Portugaliei'
-  ]);
-  String answer25 = jsonEncode([
-    'Ferdinand al II-lea',
-    'Isabela I',
-    'Carol al V-lea',
-    'Filip al II-lea'
-  ]);
-  String answer26 = jsonEncode(['Mexic', 'Peru', 'Brazilia', 'Argentina']);
-  String answer27 = jsonEncode([
-    'Bătălia de la Las Navas de Tolosa',
-    'Căderea Granadei',
-    'Căsătoria regilor Ferdinand și Isabela',
-    'Bătălia de la Covadonga'
-  ]);
-  String answer28 =
-      jsonEncode(['El Cid', 'Don Quijote', 'El Greco', 'Miguel de Cervantes']);
-  String answer29 = jsonEncode([
-    'Diversificarea culturală',
-    'Extinderea influenței catolice',
-    'Intoleranța religioasă',
-    'Stabilirea unei uniuni naționale'
-  ]);
-  String answer30 = jsonEncode([
-    'Ferdinand Magellan',
-    'Cristofor Columb',
-    'Vasco da Gama',
-    'James Cook'
-  ]);
-  String answer31 = jsonEncode([
-    'Consolidarea controlului musulman',
-    'Extinderea diversității religioase',
-    'Unificarea teritoriilor sub un singur regat',
-    'Perioade de coabitare pașnică între creștini, musulmani și evrei'
-  ]);
-  String answer32 = jsonEncode([
-    'Războiul de șapte ani',
-    'Războiul de independență al SUA',
-    'Războiul Peninsular',
-    'Războiul Crimeei'
-  ]);
-  String answer33 = jsonEncode(['Florida', 'California', 'Louisiana', 'Texas']);
   String answer34 = jsonEncode(['Barcelona', 'Madrid', 'Paris', 'Lisabona']);
   String answer35 =
       jsonEncode(['Mont Blanc', 'Matterhorn', 'Mont Ventoux', 'Montserrat']);
@@ -971,7 +908,7 @@ class DatabaseHelper {
 
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 79;
+  static final _databaseVersion = 88;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -1053,6 +990,36 @@ class DatabaseHelper {
             last_activity_date TEXT,
             faces TEXT
           )''');
+
+        await db.execute('''
+          CREATE TABLE faces (
+            faceID INTEGER PRIMARY KEY AUTOINCREMENT,
+            face INTEGER,
+            bought INTEGER,
+            price INTEGER,
+            color INTEGER
+          )''');
+  
+        await db.insert('faces', {
+            'face': 1,
+            'bought': 0,
+            'price': 50,
+            'color': 0
+          });
+
+          await db.insert('faces', {
+            'face': 2,
+            'bought': 0,
+            'price': 50,
+            'color': 1
+          });
+
+          await db.insert('faces', {
+            'face': 3,
+            'bought': 0,
+            'price': 50,
+            'color': 2
+          });
 
         db.insert('profile', {
           'username': 'username',
@@ -1173,540 +1140,227 @@ class DatabaseHelper {
           'country': 'Spain',
           'subject': 1,
           'difficulty': 1,
-          'question_text':
-              'Care este capitala Spaniei și cel mai mare oraș al țării?',
+          'question_text': '',
           'answer': answer1,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care lanț muntos formează granița nordică a Spaniei?',
-          'answer': answer2,
           'correct_answer': 1,
-          'type': 1
+          'type': 3
         });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text':
+                      'What is the capital of Spain and the largest city in the country?',
+                  'answer': answer2,
+                  'correct_answer': 2,
+                  'type': 1
+                });
+
+
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'What is the population of Spain?',
+                  'answer': '',
+                  'correct_answer': 47,
+                  'type': 2
+                });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 1,
+                  'difficulty': 1,
+                  'question_text': 'Spain and Portugal are neighboring countries.',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 4
+                });
 
         await db.insert('question', {
           'country': 'Spain',
           'subject': 1,
-          'difficulty': 1,
-          'question_text': 'Care este cel mai înalt vârf din Spania?',
+          'difficulty': 2,
+          'question_text':
+              'Which of the following islands does not belong to Spain?',
           'answer': answer3,
-          'correct_answer': 1,
+          'correct_answer': 3,
           'type': 1
         });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': '',
+                  'answer': answer4,
+                  'correct_answer': 1,
+                  'type': 3
+                });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'How many meters is the highest mountain peak?',
+                  'answer': '',
+                  'correct_answer': 3718,
+                  'type': 2
+                });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 1,
+                  'difficulty': 2,
+                  'question_text': 'Formentera belongs to Spain.',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 4
+                });
 
         await db.insert('question', {
           'country': 'Spain',
-          'subject': 1,
+          'subject': 2,
           'difficulty': 1,
           'question_text':
-              'Care dintre următoarele orașe nu este situat în Spania?',
-          'answer': answer4,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care dintre următoarele insule nu aparține Spaniei?',
+              'Who was one of the great Spanish explorers of the 16th-17th centuries who discovered America?',
           'answer': answer5,
-          'correct_answer': 3,
+          'correct_answer': 1,
           'type': 1
         });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'When was the decree for the expulsion of Jews and Moors signed?',
+                  'answer': '',
+                  'correct_answer': 1492,
+                  'type': 2
+                });
 
         await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 2,
+                  'difficulty': 1,
+                  'question_text': 'In the 19th century, Spain managed to keep all its colonies in Latin America.',
+                  'answer': '',
+                  'correct_answer': 2,
+                  'type': 4
+                });
+        await db.insert('question', {
           'country': 'Spain',
-          'subject': 1,
+          'subject': 2,
           'difficulty': 1,
-          'question_text': 'Ce mare înconjoară coasta de sud a Spaniei?',
+          'question_text': '',
           'answer': answer6,
-          'correct_answer': 3,
-          'type': 1
+          'correct_answer': 1,
+          'type': 3
         });
-
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text':
+                      'What was the period of rule of dictator Francisco Franco in Spain?',
+                  'answer': answer7,
+                  'correct_answer': 2,
+                  'type': 1
+                });
         await db.insert('question', {
           'country': 'Spain',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care este cea mai mare insulă din Insulele Canare ca suprafață?',
-          'answer': answer7,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care este râul principal care străbate capitala Spaniei?',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
           'answer': answer8,
-          'correct_answer': 4,
-          'type': 1
+          'correct_answer': 1,
+          'type': 3
         });
-
         await db.insert('question', {
-          'country': 'Spain',
+                  'country': 'Spain',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'In what year did Spain become a democracy?',
+                  'answer': '',
+                  'correct_answer': 1978,
+                  'type': 2
+                });
+        await db.insert('question', {
+                  'country': 'Spain',
+                  'subject': 2,
+                  'difficulty': 2,
+                  'question_text': 'Ferdinand II and Isabella I were responsible for the completion of the Reconquista.',
+                  'answer': '',
+                  'correct_answer': 1,
+                  'type': 4
+                });
+        await db.insert('question', {
+          'country': 'France',
           'subject': 1,
           'difficulty': 1,
-          'question_text': 'Care este cel mai lung râu din Spania?',
+          'question_text': 'What is the capital of France?',
           'answer': answer9,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care este climatul predominant în regiunile de coastă ale Spaniei?',
-          'answer': answer10,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Ce caracterizează clima în regiunile de coastă ale Spaniei?',
-          'answer': answer11,
-          'correct_answer': 4,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Care lanț muntos formează granița dintre Spania și Portugalia?',
-          'answer': answer12,
-          'correct_answer': 4,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Care dintre aceste orașe spaniole este situat pe coasta de est a țării?',
-          'answer': answer13,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text': 'Care este populația Spaniei?',
-          'answer': '',
-          'correct_answer': 47,
-          'type': 2
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Cine a fost unul dintre marii exploratori spanioli din secolele XVI-XVII, care a descoperit America?',
-          'answer': answer14,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Care dintre următoarele regate NU a făcut parte din Spania medievală?',
-          'answer': answer15,
           'correct_answer': 3,
           'type': 1
         });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Ce eveniment important din istoria Spaniei a fost realizat prin căsătoria regilor Ferdinand al II-lea al Aragonului și Isabela I a Castiliei?',
-          'answer': answer16,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Care dintre următoarele figuri NU a fost un cuceritor spaniol din epoca colonială?',
-          'answer': answer17,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Care a fost perioada de conducere a dictatorului Francisco Franco în Spania?',
-          'answer': answer18,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Cine a fost ultimul monarh care a domnit înaintea începerii dictaturii lui Francisco Franco?',
-          'answer': answer19,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Ce perioadă istorică a marcat pierderea majorității coloniilor americane ale Spaniei?',
-          'answer': answer20,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Care a fost decizia semnificativă din 1492 care a consolidat controlul catolic asupra regatului spaniol?',
-          'answer': answer21,
-          'correct_answer': 4,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Care a fost perioada de tranziție către democrație în Spania, după moartea lui Franco?',
-          'answer': answer22,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text': 'Care este forma de guvernământ actuală a Spaniei?',
-          'answer': answer23,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care dintre următoarele regate a fost ultimul care s-a unit cu celelalte pentru a forma Spania modernă?',
-          'answer': answer24,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Cine a fost primul rege al Spaniei, după unificarea regatelor Aragonului și Castiliei?',
-          'answer': answer25,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care dintre următoarele țări NU a fost colonizată de spanioli în timpul expansiunii lor în secolele XVI-XVII?',
-          'answer': answer26,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Ce eveniment important a marcat începutul Reconquistei în Spania medievală?',
-          'answer': answer27,
-          'correct_answer': 4,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care dintre următoarele personalități a jucat un rol cheie în Reconquista?',
-          'answer': answer28,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care a fost principalul motiv al expulzării evreilor și maurilor din Spania în 1492?',
-          'answer': answer29,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care dintre următoarele figuri a condus o expediție navală în 1492, care a dus la descoperirea Americii?',
-          'answer': answer30,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care a fost efectul principal al Reconquistei în Spania medievală?',
-          'answer': answer31,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'În care dintre următoarele conflicte a fost implicată Spania în secolul al XIX-lea, pierzând majoritatea coloniilor sale americane?',
-          'answer': answer32,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text':
-              'Care a fost numele coloniei spaniole din America de Nord fondată de Juan Ponce de León în 1513?',
-          'answer': answer33,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
+await db.insert('question', {
           'country': 'France',
           'subject': 1,
           'difficulty': 1,
-          'question_text': 'Care este capitala Franței?',
-          'answer': answer34,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': 'Care este cel mai înalt vârf al Franței?',
-          'answer': answer35,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': 'Care este principala atracție turistică din Paris?',
-          'answer': answer36,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care sunt munții care formează granița sud-vestică a Franței?',
-          'answer': answer37,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care este cel mai important râu din Franța, cunoscut pentru traversarea capitalei?',
-          'answer': answer38,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text':
-              'Care este regiunea franceză cunoscută pentru stațiunile de lux și plajele frumoase?',
-          'answer': answer39,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': 'Câtă populație aproximativă are Franța?',
+          'question_text': 'What is the population of France?',
           'answer': '',
           'correct_answer': 67,
           'type': 2
         });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text': 'Care este cel mai lung râu din Franța?',
-          'answer': answer45,
-          'correct_answer': 2,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Care este numele arhipelagului situat în largul coastelor Franței în Marea Mediterană?',
-          'answer': answer46,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Câte țări se învecinează direct cu Franța și care sunt acestea?',
-          'answer': answer47,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Ce caracteristică a culturii franțuzești este renumită în întreaga lume?',
-          'answer': answer45,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Cum variază clima Franței și cum influențează aceasta agricultura și turismul?',
-          'answer': answer49,
-          'correct_answer': 3,
-          'type': 1
-        });
-
-        await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Care regiune montană marchează granița dintre Franța și Italia și include cel mai înalt vârf al Franței, Mont Blanc?',
-          'answer': answer50,
-          'correct_answer': 1,
-          'type': 1
-        });
-
-        await db.insert('question', {
+await db.insert('question', {
           'country': 'France',
           'subject': 1,
           'difficulty': 1,
-          'question_text':
-              'Ce regiune din Franța este cunoscută pentru vinurile sale fine?',
-          'answer': answer41,
-          'correct_answer': 4,
-          'type': 1
+          'question_text': 'The Pyrenees Mountains form a natural border between France and Italy.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
         });
-
-        await db.insert('question', {
+await db.insert('question', {
           'country': 'France',
           'subject': 1,
-          'difficulty': 2,
-          'question_text':
-              'Ce parte a Franței este cunoscută pentru climatul mediteranean și plajele sale?',
-          'answer': answer42,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer10,
           'correct_answer': 1,
-          'type': 1
+          'type': 3
         });
-
-        await db.insert('question', {
+await db.insert('question', {
           'country': 'France',
           'subject': 1,
           'difficulty': 2,
           'question_text':
-              'Care este numele regiunii franceze renumite pentru peisajele sale sălbatice și stâncile impresionante?',
-          'answer': answer47,
-          'correct_answer': 3,
+              'What is the most important river in France, known for flowing through the capital?',
+          'answer': answer11,
+          'correct_answer': 2,
           'type': 1
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer12,
+          'correct_answer': 1,
+          'type': 3
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'How many meters is the highest peak in France?',
+          'answer': '',
+          'correct_answer': 4810,
+          'type': 2
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'The Eiffel Tower is located in Paris.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
         });
 
         await db.insert('question', {
@@ -3519,6 +3173,7 @@ class DatabaseHelper {
           await db.execute('DROP TABLE $table');
           await db.execute('DROP TABLE profile');
           await db.execute('DROP TABLE trophies');
+          await db.execute('DROP TABLE faces');
           await db.execute('''
           CREATE TABLE trophies (
             $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -3556,6 +3211,39 @@ class DatabaseHelper {
             'last_activity_date': "${DateTime.now().toIso8601String()}",
             'faces': facesList
           });
+
+          await db.execute('''
+          CREATE TABLE faces (
+            faceID INTEGER PRIMARY KEY AUTOINCREMENT,
+            face INTEGER,
+            bought INTEGER,
+            price INTEGER,
+            color INTEGER
+          )''');
+
+          await db.insert('faces', {
+            'face': 1,
+            'bought': 0,
+            'price': 50,
+            'color': 0
+          });
+
+          await db.insert('faces', {
+            'face': 2,
+            'bought': 0,
+            'price': 50,
+            'color': 1
+          });
+
+          await db.insert('faces', {
+            'face': 3,
+            'bought': 0,
+            'price': 50,
+            'color': 2
+          });
+
+          
+
           await db.execute('''
           CREATE TABLE country (
             countryID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -3670,546 +3358,231 @@ class DatabaseHelper {
         });*/
 
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este capitala Spaniei și cel mai mare oraș al țării?',
-            'answer': answer1,
-            'correct_answer': 2,
-            'type': 1
-          });
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer1,
+          'correct_answer': 1,
+          'type': 3
+        });
+await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text':
+              'What is the capital of Spain and the largest city in the country?',
+          'answer': answer2,
+          'correct_answer': 2,
+          'type': 1
+        });
+
+
+await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the population of Spain?',
+          'answer': '',
+          'correct_answer': 47,
+          'type': 2
+        });
+await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Spain and Portugal are neighboring countries.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
+
+           await db.insert('question', {
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text':
+              'Which of the following islands does not belong to Spain?',
+          'answer': answer3,
+          'correct_answer': 3,
+          'type': 1
+        });
+          await db.insert('question', {
+                    'country': 'Spain',
+                    'subject': 1,
+                    'difficulty': 2,
+                    'question_text': '',
+                    'answer': answer4,
+                    'correct_answer': 1,
+                    'type': 3
+                  });
+          await db.insert('question', {
+                    'country': 'Spain',
+                    'subject': 1,
+                    'difficulty': 2,
+                    'question_text': 'How many meters is the highest mountain peak?',
+                    'answer': '',
+                    'correct_answer': 3718,
+                    'type': 2
+                  });
+          await db.insert('question', {
+                    'country': 'Spain',
+                    'subject': 1,
+                    'difficulty': 2,
+                    'question_text': 'Formentera belongs to Spain.',
+                    'answer': '',
+                    'correct_answer': 1,
+                    'type': 4
+                  });
 
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care lanț muntos formează granița nordică a Spaniei?',
-            'answer': answer2,
-            'correct_answer': 1,
-            'type': 1
-          });
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'Who was one of the great Spanish explorers of the 16th-17th centuries who discovered America?',
+          'answer': answer5,
+          'correct_answer': 1,
+          'type': 1
+        });
+          await db.insert('question', {
+                    'country': 'Spain',
+                    'subject': 2,
+                    'difficulty': 1,
+                    'question_text': 'When was the decree for the expulsion of Jews and Moors signed?',
+                    'answer': '',
+                    'correct_answer': 1492,
+                    'type': 2
+                  });
 
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text': 'Care este cel mai înalt vârf din Spania?',
-            'answer': answer3,
-            'correct_answer': 1,
-            'type': 1
-          });
-
+                    'country': 'Spain',
+                    'subject': 2,
+                    'difficulty': 1,
+                    'question_text': 'In the 19th century, Spain managed to keep all its colonies in Latin America.',
+                    'answer': '',
+                    'correct_answer': 2,
+                    'type': 4
+                  });
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care dintre următoarele orașe nu este situat în Spania?',
-            'answer': answer4,
-            'correct_answer': 1,
-            'type': 1
-          });
-
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer6,
+          'correct_answer': 1,
+          'type': 3
+        });
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care dintre următoarele insule nu aparține Spaniei?',
-            'answer': answer5,
-            'correct_answer': 3,
-            'type': 1
-          });
-
+                    'country': 'Spain',
+                    'subject': 2,
+                    'difficulty': 2,
+                    'question_text':
+                        'What was the period of rule of dictator Francisco Franco in Spain?',
+                    'answer': answer7,
+                    'correct_answer': 2,
+                    'type': 1
+                  });
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text': 'Ce mare înconjoară coasta de sud a Spaniei?',
-            'answer': answer6,
-            'correct_answer': 3,
-            'type': 1
-          });
-
+                    'country': 'Spain',
+                    'subject': 2,
+                    'difficulty': 2,
+                    'question_text': 'In what year did Spain become a democracy?',
+                    'answer': '',
+                    'correct_answer': 1978,
+                    'type': 2
+                  });
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este cea mai mare insulă din Insulele Canare ca suprafață?',
-            'answer': answer7,
-            'correct_answer': 2,
-            'type': 1
-          });
-
+                    'country': 'Spain',
+                    'subject': 2,
+                    'difficulty': 2,
+                    'question_text': 'Ferdinand II and Isabella I were responsible for the completion of the Reconquista.',
+                    'answer': '',
+                    'correct_answer': 1,
+                    'type': 4
+                  });
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este râul principal care străbate capitala Spaniei?',
-            'answer': answer8,
-            'correct_answer': 4,
-            'type': 1
-          });
-
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer8,
+          'correct_answer': 1,
+          'type': 3
+        });
           await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text': 'Care este cel mai lung râu din Spania?',
-            'answer': answer9,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este climatul predominant în regiunile de coastă ale Spaniei?',
-            'answer': answer10,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Ce caracterizează clima în regiunile de coastă ale Spaniei?',
-            'answer': answer11,
-            'correct_answer': 4,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Care lanț muntos formează granița dintre Spania și Portugalia?',
-            'answer': answer12,
-            'correct_answer': 4,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Care dintre aceste orașe spaniole este situat pe coasta de est a țării?',
-            'answer': answer13,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text': 'Care este populația Spaniei?',
-            'answer': '',
-            'correct_answer': 47,
-            'type': 2
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Cine a fost unul dintre marii exploratori spanioli din secolele XVI-XVII, care a descoperit America?',
-            'answer': answer14,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Care dintre următoarele regate NU a făcut parte din Spania medievală?',
-            'answer': answer15,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Ce eveniment important din istoria Spaniei a fost realizat prin căsătoria regilor Ferdinand al II-lea al Aragonului și Isabela I a Castiliei?',
-            'answer': answer16,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Care dintre următoarele figuri NU a fost un cuceritor spaniol din epoca colonială?',
-            'answer': answer17,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Care a fost perioada de conducere a dictatorului Francisco Franco în Spania?',
-            'answer': answer18,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Cine a fost ultimul monarh care a domnit înaintea începerii dictaturii lui Francisco Franco?',
-            'answer': answer19,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Ce perioadă istorică a marcat pierderea majorității coloniilor americane ale Spaniei?',
-            'answer': answer20,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Care a fost decizia semnificativă din 1492 care a consolidat controlul catolic asupra regatului spaniol?',
-            'answer': answer21,
-            'correct_answer': 4,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Care a fost perioada de tranziție către democrație în Spania, după moartea lui Franco?',
-            'answer': answer22,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Care este forma de guvernământ actuală a Spaniei?',
-            'answer': answer23,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care dintre următoarele regate a fost ultimul care s-a unit cu celelalte pentru a forma Spania modernă?',
-            'answer': answer24,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Cine a fost primul rege al Spaniei, după unificarea regatelor Aragonului și Castiliei?',
-            'answer': answer25,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care dintre următoarele țări NU a fost colonizată de spanioli în timpul expansiunii lor în secolele XVI-XVII?',
-            'answer': answer26,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Ce eveniment important a marcat începutul Reconquistei în Spania medievală?',
-            'answer': answer27,
-            'correct_answer': 4,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care dintre următoarele personalități a jucat un rol cheie în Reconquista?',
-            'answer': answer28,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care a fost principalul motiv al expulzării evreilor și maurilor din Spania în 1492?',
-            'answer': answer29,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care dintre următoarele figuri a condus o expediție navală în 1492, care a dus la descoperirea Americii?',
-            'answer': answer30,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care a fost efectul principal al Reconquistei în Spania medievală?',
-            'answer': answer31,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'În care dintre următoarele conflicte a fost implicată Spania în secolul al XIX-lea, pierzând majoritatea coloniilor sale americane?',
-            'answer': answer32,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'Spain',
-            'subject': 2,
-            'difficulty': 2,
-            'question_text':
-                'Care a fost numele coloniei spaniole din America de Nord fondată de Juan Ponce de León în 1513?',
-            'answer': answer33,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text': 'Care este capitala Franței?',
-            'answer': answer34,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text': 'Care este cel mai înalt vârf al Franței?',
-            'answer': answer35,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este principala atracție turistică din Paris?',
-            'answer': answer36,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care sunt munții care formează granița sud-vestică a Franței?',
-            'answer': answer37,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este cel mai important râu din Franța, cunoscut pentru traversarea capitalei?',
-            'answer': answer38,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Care este regiunea franceză cunoscută pentru stațiunile de lux și plajele frumoase?',
-            'answer': answer39,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text': 'Câtă populație aproximativă are Franța?',
-            'answer': '',
-            'correct_answer': 67,
-            'type': 2
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text': 'Care este cel mai lung râu din Franța?',
-            'answer': answer45,
-            'correct_answer': 2,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Care este numele arhipelagului situat în largul coastelor Franței în Marea Mediterană?',
-            'answer': answer46,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Câte țări se învecinează direct cu Franța și care sunt acestea?',
-            'answer': answer47,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Ce caracteristică a culturii franțuzești este renumită în întreaga lume?',
-            'answer': answer45,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Cum variază clima Franței și cum influențează aceasta agricultura și turismul?',
-            'answer': answer49,
-            'correct_answer': 3,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Care regiune montană marchează granița dintre Franța și Italia și include cel mai înalt vârf al Franței, Mont Blanc?',
-            'answer': answer50,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 1,
-            'question_text':
-                'Ce regiune din Franța este cunoscută pentru vinurile sale fine?',
-            'answer': answer41,
-            'correct_answer': 4,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Ce parte a Franței este cunoscută pentru climatul mediteranean și plajele sale?',
-            'answer': answer42,
-            'correct_answer': 1,
-            'type': 1
-          });
-
-          await db.insert('question', {
-            'country': 'France',
-            'subject': 1,
-            'difficulty': 2,
-            'question_text':
-                'Care este numele regiunii franceze renumite pentru peisajele sale sălbatice și stâncile impresionante?',
-            'answer': answer47,
-            'correct_answer': 3,
-            'type': 1
-          });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the capital of France?',
+          'answer': answer9,
+          'correct_answer': 3,
+          'type': 1
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the population of France?',
+          'answer': '',
+          'correct_answer': 67,
+          'type': 2
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'The Pyrenees Mountains form a natural border between France and Italy.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer10,
+          'correct_answer': 1,
+          'type': 3
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text':
+              'What is the most important river in France, known for flowing through the capital?',
+          'answer': answer11,
+          'correct_answer': 2,
+          'type': 1
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer12,
+          'correct_answer': 1,
+          'type': 3
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'How many meters is the highest peak in France?',
+          'answer': '',
+          'correct_answer': 4810,
+          'type': 2
+        });
+await db.insert('question', {
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'The Eiffel Tower is located in Paris.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
           await db.insert('question', {
             'country': 'France',
@@ -6257,6 +5630,18 @@ class DatabaseHelper {
       return [];
     }
   }
+  
+  Future<int> setBought(int face) async {
+    Database db = await database;
+    return await db.update(
+      'faces',
+      {
+        'bought': 1,
+      },
+      where: 'face = ?',
+      whereArgs: [face],
+    );
+  }
 
   /*Future<int> insertCountry(
     String countryName,
@@ -6479,6 +5864,11 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> queryProfile() async {
     Database db = await instance.database;
     return await db.query('profile', orderBy: 'profileID ASC');
+  }
+
+  Future<List<Map<String, dynamic>>> queryAllFaces() async {
+    Database db = await instance.database;
+    return await db.query('faces', orderBy: 'faceID ASC');
   }
 
   // Future<void> clearTableAndResetId(String tableName) async {

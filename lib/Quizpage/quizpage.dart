@@ -15,7 +15,7 @@ import '../Theme/translations.dart';
 import 'testpage1.dart';
 import 'testpage3.dart';
 import 'testpage4.dart';
-
+import 'package:patrocle/Theme/theme.dart';
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
   QuizPage({
@@ -113,13 +113,15 @@ class _QuizPageState extends State<QuizPage> {
 
   void correct() {
     setState(() {
-      sections.add(section(Colors.green));
+      // Use the correctColor from the ThemeData extension
+      sections.add(section(Theme.of(context).correctColor));
     });
   }
 
   void wrong() {
     setState(() {
-      sections.add(section(Colors.red));
+      // Use the wrongColor from the ThemeData extension
+      sections.add(section(Theme.of(context).wrongColor));
     });
   }
 
@@ -127,6 +129,7 @@ class _QuizPageState extends State<QuizPage> {
     await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
     await _dbHelper.incrementCoins();
+    mode == 2 ? await _dbHelper.incrementCoins() : null;
     await _dbHelper.incrementStreak();
     //_homepage.fetchStreak();
   }
