@@ -3,20 +3,30 @@ import 'package:patrocle/Database/database_helper.dart';
 
 import '../../Theme/translations.dart';
 
+// Defining a StatefulWidget, AdminPage.
 class AdminPage extends StatefulWidget {
+  // Constructor for AdminPage.
   AdminPage({super.key, this.language});
   int? language;
+
   @override
   State<AdminPage> createState() => _AdminPageState(language: language);
 }
 
+// State class for AdminPage.
 class _AdminPageState extends State<AdminPage> {
+  // Constructor for _AdminPageState.
   _AdminPageState({this.language});
 
+  // Database helper instance.
   final _dbHelper = DatabaseHelper.instance;
+  // Translation map.
   Map<int?, Map<String?, String?>> translation = Translations().translation;
+  // Controller for the PIN input field.
   final pinController = TextEditingController();
+  // Default language.
   int? language = 2;
+
 
   @override
   Widget build(BuildContext context) {

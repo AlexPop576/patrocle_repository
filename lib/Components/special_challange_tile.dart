@@ -4,33 +4,41 @@ import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Quizpage/special_challenge.dart';
 
+// Defining a StatefulWidget, SpecialChallengeTile.
 class SpecialChallengeTile extends StatefulWidget {
+  // Constructor for SpecialChallengeTile.
   SpecialChallengeTile({super.key});
- 
 
+  // Overriding createState to return an instance of _SpecialChallengeTileState.
   @override
-  State<SpecialChallengeTile> createState() =>
-      _SpecialChallengeTileState();
+  State<SpecialChallengeTile> createState() => _SpecialChallengeTileState();
 }
 
+// Private State class for SpecialChallengeTile.
 class _SpecialChallengeTileState extends State<SpecialChallengeTile> {
-  
+  // Declaring variables for _SpecialChallengeTileState.
   int? language;
-  final _dbHelper = DatabaseHelper.instance;
-  @override void initState()
-  {super.initState();
+  final _dbHelper = DatabaseHelper.instance; // Instance of DatabaseHelper.
+
+  // initState method to perform initial fetch of data.
+  @override
+  void initState() {
+    super.initState();
     fetchData();
   }
+
+  // Method to fetch data from the database.
   void fetchData() async {
     _dbHelper.queryProfile().then((results) {
       if (results.isNotEmpty) {
         setState(() {
-          language = results.first['language'];
+          language = results.first['language']; // Updating language from database results.
         });
       }
     });
   }
 
+  // Building the widget.
   @override
   Widget build(BuildContext context) {
     return SizedBox(

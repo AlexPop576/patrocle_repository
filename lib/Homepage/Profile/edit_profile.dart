@@ -5,6 +5,7 @@ import 'package:lottie/lottie.dart';
 import '../../Database/database_helper.dart';
 import '../../Theme/translations.dart';
 
+// Main widget for editing profile
 class EditProfile extends StatefulWidget {
   EditProfile(
       {super.key,
@@ -20,27 +21,38 @@ class EditProfile extends StatefulWidget {
       username: username, profileIndex: profileIndex, language: language);
 }
 
+// State class for EditProfile
 class _EditProfileState extends State<EditProfile> {
   _EditProfileState(
       {required this.username, required this.profileIndex, this.language});
+  
+  // Variables for profile data
   String? username;
   int profileIndex = 0, maxIndex = 2;
   int? language = 2;
+  
+  // Lists for profile colors and photos
   List<Color> profileColor = [
     Colors.blue,
     Colors.red,
     Colors.green,
   ];
-
   List<Image> profilePhoto = [
     Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face2.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
   ];
-
+  
+  // Translation map
   Map<int?, Map<String?, String?>> translation = Translations().translation;
+  
+  // Database helper instance
   final _dbHelper = DatabaseHelper.instance;
+  
+  // Controller for username input
   final usernameController = TextEditingController();
+  
+  // Variables for faces data
   String? faces;
   List<int>? faceList = [];
 

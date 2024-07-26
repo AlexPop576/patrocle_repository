@@ -3,7 +3,7 @@ import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Quizpage/quizpage.dart';
 
 import '../Theme/translations.dart';
-
+// Stateful widget for LevelTile
 // ignore: must_be_immutable
 class LevelTile extends StatefulWidget {
   LevelTile(
@@ -15,6 +15,7 @@ class LevelTile extends StatefulWidget {
       required this.language,
       required this.refreshAppbar,
       required this.refreshLevels});
+      // Properties of the widget
   int? colorIndex, geography_completed, history_completed, language;
   String? country, continent;
   final Function refreshAppbar, refreshLevels;
@@ -22,6 +23,7 @@ class LevelTile extends StatefulWidget {
   @override
   State<LevelTile> createState() =>
       // ignore: no_logic_in_create_state
+      // Create state for LevelTile
       _LevelTileState(
           colorIndex: colorIndex,
           country: country,
@@ -31,8 +33,9 @@ class LevelTile extends StatefulWidget {
           refreshAppbar: refreshAppbar,
           refreshLevels: refreshLevels);
 }
-
+// State class for LevelTile
 class _LevelTileState extends State<LevelTile> {
+   // Constructor with required parameters
   _LevelTileState(
       {required this.colorIndex,
       required this.country,
@@ -41,6 +44,7 @@ class _LevelTileState extends State<LevelTile> {
       required this.language,
       required this.refreshAppbar,
       required this.refreshLevels});
+      // State properties
   int? colorIndex = 1,
       selectedSubject = 0,
       geography_completed,

@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'package:patrocle/Theme/translations.dart';
 import '../../Theme/theme_provider.dart';
 
+// Profile widget which is a StatefulWidget
 class Profile extends StatefulWidget {
   Profile({super.key, required this.setLanguageFunction,});
   final Function setLanguageFunction;
@@ -15,31 +16,38 @@ class Profile extends StatefulWidget {
   State<Profile> createState() => _ProfileState(setLanguageFunction: setLanguageFunction);
 }
 
+// State class for Profile widget
 class _ProfileState extends State<Profile> {
+  // Variables to hold profile data
   int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0, streakCount = 0, coins = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final Function setLanguageFunction;
+
+  // Constructor to initialize setLanguageFunction
   _ProfileState({required this.setLanguageFunction,});
   
+  // List of profile colors
   List<Color> profileColor = [
     Colors.blue,
     Colors.red,
     Colors.green,
   ];
 
+  // List of profile photos
   List<Image> profilePhoto = [
     Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face2.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
   ];
-  final _dbHelper = DatabaseHelper.instance;
 
+  // Database helper instance
+  final _dbHelper = DatabaseHelper.instance;
   String username = "user";
 
   @override
   void initState() {
     super.initState();
-    fetchData();
+    fetchData(); // Fetch profile data on initialization
   }
 
   void fetchData() {

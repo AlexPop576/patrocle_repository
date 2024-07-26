@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:patrocle/Theme/translations.dart';
 
+// Defining a StatelessWidget, TrophyTile.
 class TrophyTile extends StatelessWidget {
+  // Constructor for TrophyTile.
   TrophyTile({super.key, required this.trophy, required this.language});
-  int? trophy, language = 2;
-  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
+  // Declaring variables for TrophyTile.
+  int? trophy, language = 2; // Trophy and language variables.
+  Map<int?, Map<String?, String?>> translation = Translations().translation; // Translation map.
+
+  // Map to store trophy names.
   Map<int, String> name = {
     1: "Geographer",
     2: "Historian",
@@ -18,6 +23,7 @@ class TrophyTile extends StatelessWidget {
     9: "Locked",
   };
 
+  // Map to store trophy colors.
   Map<int, Map<int, Color>> color = {
     1: {
       1: const Color.fromARGB(255, 0, 255, 132),
@@ -57,6 +63,7 @@ class TrophyTile extends StatelessWidget {
     },
   };
 
+  // Building the widget.
   @override
   Widget build(BuildContext context) {
     return Padding(

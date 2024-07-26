@@ -12,16 +12,22 @@ class AddTest extends StatefulWidget {
 }
 
 class _AddTestState extends State<AddTest> {
+  // Instance of the database helper
   final _dbHelper = DatabaseHelper.instance;
+
+  // Lists to store answers for different categories and difficulties
   List<int> answersGeographyEasy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<int> answersGeographyHard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<int> answersHistoryEasy = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   List<int> answersHistoryHard = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
+  // Lists to store questions for different categories and difficulties
   List<String> easyGeographyQuestions = [],
       hardGeographyQuestions = [],
       easyHistoryQuestions = [],
       hardHistoryQuestions = [];
+
+  // Lists to store answer options for different categories and difficulties
   List<String> easyGeographyA1 = [],
       hardGeographyA1 = [],
       easyHistoryA1 = [],
@@ -39,10 +45,15 @@ class _AddTestState extends State<AddTest> {
       easyHistoryA4 = [],
       hardHistoryA4 = [];
 
+  // Variable to store text input
   String? textus;
+
+  // Text editing controllers for various input fields
   final _controllerName = TextEditingController(),
       _controllerLessonGeography = TextEditingController(),
       _controllerLessonHistory = TextEditingController();
+
+  // Controllers for easy geography questions
   final _controllerGEQ1 = TextEditingController(),
       _controllerGEQ2 = TextEditingController(),
       _controllerGEQ3 = TextEditingController(),
@@ -53,6 +64,8 @@ class _AddTestState extends State<AddTest> {
       _controllerGEQ8 = TextEditingController(),
       _controllerGEQ9 = TextEditingController(),
       _controllerGEQ10 = TextEditingController();
+
+  // Controllers for hard geography questions
   final _controllerGHQ1 = TextEditingController(),
       _controllerGHQ2 = TextEditingController(),
       _controllerGHQ3 = TextEditingController(),
@@ -63,6 +76,8 @@ class _AddTestState extends State<AddTest> {
       _controllerGHQ8 = TextEditingController(),
       _controllerGHQ9 = TextEditingController(),
       _controllerGHQ10 = TextEditingController();
+
+  // Controllers for easy history questions
   final _controllerHEQ1 = TextEditingController(),
       _controllerHEQ2 = TextEditingController(),
       _controllerHEQ3 = TextEditingController(),
@@ -73,6 +88,8 @@ class _AddTestState extends State<AddTest> {
       _controllerHEQ8 = TextEditingController(),
       _controllerHEQ9 = TextEditingController(),
       _controllerHEQ10 = TextEditingController();
+
+  // Controllers for hard history questions
   final _controllerHHQ1 = TextEditingController(),
       _controllerHHQ2 = TextEditingController(),
       _controllerHHQ3 = TextEditingController(),
@@ -84,6 +101,7 @@ class _AddTestState extends State<AddTest> {
       _controllerHHQ9 = TextEditingController(),
       _controllerHHQ10 = TextEditingController();
 
+  // Controllers for easy geography answer options 1
   final _controllerGEQ1A1 = TextEditingController(),
       _controllerGEQ2A1 = TextEditingController(),
       _controllerGEQ3A1 = TextEditingController(),
@@ -94,6 +112,8 @@ class _AddTestState extends State<AddTest> {
       _controllerGEQ8A1 = TextEditingController(),
       _controllerGEQ9A1 = TextEditingController(),
       _controllerGEQ10A1 = TextEditingController();
+
+  // Controllers for hard geography answer options 1
   final _controllerGHQ1A1 = TextEditingController(),
       _controllerGHQ2A1 = TextEditingController(),
       _controllerGHQ3A1 = TextEditingController(),
@@ -104,6 +124,8 @@ class _AddTestState extends State<AddTest> {
       _controllerGHQ8A1 = TextEditingController(),
       _controllerGHQ9A1 = TextEditingController(),
       _controllerGHQ10A1 = TextEditingController();
+
+  // Controllers for easy history answer options 1
   final _controllerHEQ1A1 = TextEditingController(),
       _controllerHEQ2A1 = TextEditingController(),
       _controllerHEQ3A1 = TextEditingController(),
@@ -114,6 +136,8 @@ class _AddTestState extends State<AddTest> {
       _controllerHEQ8A1 = TextEditingController(),
       _controllerHEQ9A1 = TextEditingController(),
       _controllerHEQ10A1 = TextEditingController();
+
+  // Controllers for hard history answer options 1
   final _controllerHHQ1A1 = TextEditingController(),
       _controllerHHQ2A1 = TextEditingController(),
       _controllerHHQ3A1 = TextEditingController(),
@@ -125,6 +149,7 @@ class _AddTestState extends State<AddTest> {
       _controllerHHQ9A1 = TextEditingController(),
       _controllerHHQ10A1 = TextEditingController();
 
+  // Controllers for easy geography answer options 2
   final _controllerGEQ1A2 = TextEditingController(),
       _controllerGEQ2A2 = TextEditingController(),
       _controllerGEQ3A2 = TextEditingController(),
@@ -135,6 +160,8 @@ class _AddTestState extends State<AddTest> {
       _controllerGEQ8A2 = TextEditingController(),
       _controllerGEQ9A2 = TextEditingController(),
       _controllerGEQ10A2 = TextEditingController();
+
+  // Controllers for hard geography answer options 2
   final _controllerGHQ1A2 = TextEditingController(),
       _controllerGHQ2A2 = TextEditingController(),
       _controllerGHQ3A2 = TextEditingController(),
@@ -145,6 +172,8 @@ class _AddTestState extends State<AddTest> {
       _controllerGHQ8A2 = TextEditingController(),
       _controllerGHQ9A2 = TextEditingController(),
       _controllerGHQ10A2 = TextEditingController();
+
+  // Controllers for easy history answer options 2
   final _controllerHEQ1A2 = TextEditingController(),
       _controllerHEQ2A2 = TextEditingController(),
       _controllerHEQ3A2 = TextEditingController(),
@@ -155,6 +184,8 @@ class _AddTestState extends State<AddTest> {
       _controllerHEQ8A2 = TextEditingController(),
       _controllerHEQ9A2 = TextEditingController(),
       _controllerHEQ10A2 = TextEditingController();
+
+  // Controllers for hard history answer options 2
   final _controllerHHQ1A2 = TextEditingController(),
       _controllerHHQ2A2 = TextEditingController(),
       _controllerHHQ3A2 = TextEditingController(),
