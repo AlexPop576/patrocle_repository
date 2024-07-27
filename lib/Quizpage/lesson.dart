@@ -3,16 +3,18 @@ import 'package:lottie/lottie.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Theme/general_info.dart';
 import 'package:translator/translator.dart';
-import 'package:flutter_tts/flutter_tts.dart'; 
+import 'package:flutter_tts/flutter_tts.dart';
 import '../Theme/translations.dart';
 
 class Lesson extends StatefulWidget {
   String? country;
   int? subject = 0, language;
-  Lesson({super.key, required this.country, this.subject, required this.language});
+  Lesson(
+      {super.key, required this.country, this.subject, required this.language});
 
   @override
-  State<Lesson> createState() => _LessonState(country: country, subject: subject, language: language);
+  State<Lesson> createState() =>
+      _LessonState(country: country, subject: subject, language: language);
 }
 
 class _LessonState extends State<Lesson> {
@@ -61,9 +63,11 @@ class _LessonState extends State<Lesson> {
   }
 
   void fetchData() async {
-    Map<String, dynamic> lessons = await _dbHelper.queryLesson(country.toString());
+    Map<String, dynamic> lessons =
+        await _dbHelper.queryLesson(country.toString());
     setState(() {
-      lesson = subject == 1 ? lessons['geographyLesson'] : lessons['historyLesson'];
+      lesson =
+          subject == 1 ? lessons['geographyLesson'] : lessons['historyLesson'];
       translate(lesson!);
     });
   }
@@ -116,18 +120,33 @@ class _LessonState extends State<Lesson> {
                         fontWeight: FontWeight.bold,
                         fontSize: 40),
                   ),
-                  language == 1 || language == 4 ?
-                  ElevatedButton(onPressed: (){ if (lesson != null) {
-                        speak(lesson!);
-                      }}
-                      ,style: ElevatedButton.styleFrom(shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))), child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Container(color: Theme.of(context).colorScheme.secondary,child: 
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                          child: Icon(Icons.volume_up,color: Colors.white,),
-                        ),),
-                      )):SizedBox(),
+                  language == 1 || language == 4
+                      ? Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 14),
+                        child: ElevatedButton(
+                            onPressed: () {
+                              if (lesson != null) {
+                                speak(lesson!);
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15)),
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.secondary,
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 10),
+                                child: Icon(
+                                  Icons.volume_up,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )),
+                      )
+                      : SizedBox(),
                 ]),
                 const SizedBox(
                   height: 12,
@@ -149,7 +168,8 @@ class _LessonState extends State<Lesson> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 10),
                             child: ClipRRect(
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(15)),
@@ -159,22 +179,49 @@ class _LessonState extends State<Lesson> {
                                 )),
                           ),
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                            child: subject == 1 ? Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("${translation[language]!["Capital"]}: ${info[country]![1]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                                Text("${translation[language]!["Surface"]}: ${info[country]![2]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                                Text("${translation[language]!["Population"]}: ${info[country]![3]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                              ],
-                            ) : Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text("${translation[language]!["Capital"]}: ${info[country]![1]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                                Text("${translation[language]!["Independence"]}: ${info[country]![4]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                                Text("${translation[language]!["Wars"]}: ${info[country]![5]}", style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
-                              ],
-                            ),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 10),
+                            child: subject == 1
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                          "${translation[language]!["Capital"]}: ${info[country]![1]}",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)),
+                                      Text(
+                                          "${translation[language]!["Surface"]}: ${info[country]![2]}",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)),
+                                      Text(
+                                          "${translation[language]!["Population"]}: ${info[country]![3]}",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  )
+                                : Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                          "${translation[language]!["Capital"]}: ${info[country]![1]}",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)),
+                                      Text(
+                                          "${translation[language]!["Independence"]}: ${info[country]![4]}",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)),
+                                      Text(
+                                          "${translation[language]!["Wars"]}: ${info[country]![5]}",
+                                          style: const TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold)),
+                                    ],
+                                  ),
                           )
                         ],
                       ),

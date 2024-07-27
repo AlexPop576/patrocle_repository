@@ -29,10 +29,11 @@ class _EditProfileState extends State<EditProfile> {
   // Variables for profile data
   String? username;
   int profileIndex = 0, maxIndex = 2;
-  int? language = 2;
+  int? language = 2, imageIndex = 0;
   
   // Lists for profile colors and photos
   List<Color> profileColor = [
+    Colors.grey,
     Colors.blue,
     Colors.red,
     Colors.green,
@@ -41,6 +42,7 @@ class _EditProfileState extends State<EditProfile> {
     Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face2.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face4.png', height: 100, fit: BoxFit.contain),
   ];
   
   // Translation map
@@ -75,8 +77,10 @@ class _EditProfileState extends State<EditProfile> {
       print(profileIndex);
       print(faceList!.length);
       setState(() {
-        if(faceList!.length!=0)
-          maxIndex = faceList!.length+1;
+        if(faceList!.length!=0){
+          maxIndex = faceList!.length-1;
+          imageIndex = faceList?.indexOf(profileIndex);
+        }
         else maxIndex = 0;
       });
     });
@@ -230,7 +234,7 @@ class _EditProfileState extends State<EditProfile> {
               ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: Container(
-                    color: profileColor[profileIndex%3],
+                    color: profileColor[faceList![imageIndex!]-1],
                     height: 300,
                     width: double.infinity,
                     child: Row(
@@ -239,12 +243,12 @@ class _EditProfileState extends State<EditProfile> {
                           IconButton(
                               onPressed: (() {
                                 setState(() {
-                                  if (profileIndex < maxIndex) {
-                                    profileIndex++;
-                                    print(profileIndex);
+                                  if (imageIndex! < maxIndex) {
+                                    imageIndex = imageIndex! +1;
+                                    print(imageIndex);
                                   } else {
-                                    profileIndex = 0;
-                                    print(profileIndex);
+                                    imageIndex = 0;
+                                    print(imageIndex);
                                   }
                                 });
                               }),
@@ -255,19 +259,19 @@ class _EditProfileState extends State<EditProfile> {
                               child: SizedBox(
                                 height: 250,
                                 width: 250,
-                                child: Image.asset('assets/icons/face${faceList![0]}.png', height: 100, fit: BoxFit.contain),
+                                child: Image.asset('assets/icons/face${faceList![imageIndex!]}.png', height: 100, fit: BoxFit.contain),
                               ),
                             ),
                           ),
                           IconButton(
                               onPressed: (() {
                                 setState(() {
-                                  if (profileIndex > 0) {
-                                    profileIndex--;
-                                    print(profileIndex);
+                                  if (imageIndex! > 0) {
+                                    imageIndex = imageIndex!-1;
+                                    print(imageIndex);
                                   } else {
-                                    profileIndex = maxIndex;
-                                    print(profileIndex);
+                                    imageIndex = maxIndex;
+                                    print(imageIndex);
                                   }
                                 });
                               }),
@@ -329,7 +333,7 @@ class _EditProfileState extends State<EditProfile> {
                   borderRadius: const BorderRadius.all(Radius.circular(15)),
                   child: ElevatedButton(
                     onPressed: () async {
-                      await _dbHelper.updatePicture(profileIndex);
+                      await _dbHelper.updatePicture(faceList![imageIndex!]);
                       if (usernameController.text.isNotEmpty)
                         await _dbHelper.updateUserame(usernameController.text);
                       Navigator.pop(context);

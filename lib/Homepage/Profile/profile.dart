@@ -9,25 +9,38 @@ import '../../Theme/theme_provider.dart';
 
 // Profile widget which is a StatefulWidget
 class Profile extends StatefulWidget {
-  Profile({super.key, required this.setLanguageFunction,});
+  Profile({
+    super.key,
+    required this.setLanguageFunction,
+  });
   final Function setLanguageFunction;
 
   @override
-  State<Profile> createState() => _ProfileState(setLanguageFunction: setLanguageFunction);
+  State<Profile> createState() =>
+      _ProfileState(setLanguageFunction: setLanguageFunction);
 }
 
 // State class for Profile widget
 class _ProfileState extends State<Profile> {
   // Variables to hold profile data
-  int? iq = 0, trophies = 0, language = 2, profileIndex = 0, admin = 0, streakCount = 0, coins = 0;
+  int? iq = 0,
+      trophies = 0,
+      language = 2,
+      profileIndex = 1,
+      admin = 0,
+      streakCount = 0,
+      coins = 0;
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final Function setLanguageFunction;
 
   // Constructor to initialize setLanguageFunction
-  _ProfileState({required this.setLanguageFunction,});
-  
+  _ProfileState({
+    required this.setLanguageFunction,
+  });
+
   // List of profile colors
   List<Color> profileColor = [
+    Colors.grey,
     Colors.blue,
     Colors.red,
     Colors.green,
@@ -38,7 +51,23 @@ class _ProfileState extends State<Profile> {
     Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face2.png', height: 100, fit: BoxFit.contain),
     Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face4.png', height: 100, fit: BoxFit.contain),
   ];
+
+  List<Color> topColor = [
+    Colors.grey,
+    Colors.green,
+    Colors.red,
+  ];
+
+  List<Image> topPhoto = [
+    Image.asset('assets/icons/face1.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face4.png', height: 100, fit: BoxFit.contain),
+    Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
+  ];
+
+  List<String> topName = ["Antonio", "Robert", "Maria"];
+  List<int> topIQ = [5235, 3770, 3415];
 
   // Database helper instance
   final _dbHelper = DatabaseHelper.instance;
@@ -61,16 +90,16 @@ class _ProfileState extends State<Profile> {
           admin = results.first['admin'];
           language = results.first['language'];
           coins = results.first['coins'];
-          profileIndex=1;
+          profileIndex = results.first['picture'];
+          print(profileIndex);
         });
       }
     });
     _dbHelper.getStreakCount().then((results) {
       setState(() {
-          streakCount = results;
-        });
+        streakCount = results;
+      });
     });
-    
   }
 
   Future<void> setAdmin() async {
@@ -101,12 +130,12 @@ class _ProfileState extends State<Profile> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                                color: profileColor[profileIndex!]),
+                                color: profileColor[profileIndex! - 1]),
                             width: double.infinity,
                             height: 280,
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(0, 70, 0, 0),
-                              child: profilePhoto[profileIndex!],
+                              child: profilePhoto[profileIndex! - 1],
                             ),
                           ),
                           Divider(
@@ -316,7 +345,9 @@ class _ProfileState extends State<Profile> {
                                           children: [
                                             Text(
                                               overflow: TextOverflow.ellipsis,
-                                              streakCount == 1 ? '1 ${translation[language]!['Day']}' : "$streakCount ${translation[language]!['Days']}",
+                                              streakCount == 1
+                                                  ? '1 ${translation[language]!['Day']}'
+                                                  : "$streakCount ${translation[language]!['Days']}",
                                               style: const TextStyle(
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
@@ -417,7 +448,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Center(
                                   child: Text(
-                                    overflow: TextOverflow.ellipsis,
+                                overflow: TextOverflow.ellipsis,
                                 "${translation[language]!["Geography"]}",
                                 style: TextStyle(
                                     color:
@@ -434,7 +465,7 @@ class _ProfileState extends State<Profile> {
                             children: [
                               Center(
                                   child: Text(
-                                    overflow: TextOverflow.ellipsis,
+                                overflow: TextOverflow.ellipsis,
                                 "${translation[language]!["History"]}",
                                 style: TextStyle(
                                     color:
@@ -558,6 +589,129 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 17.0),
+                  child: Column(
+                    children: [
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Divider(
+                        color: Theme.of(context).colorScheme.primary,
+                        thickness: 3,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "${translation[language]!["Weekly top"]}",
+                            style: TextStyle(
+                                color: Theme.of(context).colorScheme.tertiary,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w500),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: 3,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 6),
+                              child: ClipRRect(
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  child: SizedBox(
+                                    height: 56,
+                                    child: Container(
+                                      color: topColor[index],
+                                      child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Row(
+                                              children: [
+                                                SizedBox(width: 20),
+                                                topPhoto[index],
+                                                SizedBox(width: 15),
+                                                Text(
+                                                  topName[index],
+                                                  style: TextStyle(
+                                                      fontSize: 30,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                              ],
+                                            ),
+                                            Row(
+                                              children: [
+                                                Text(
+                                                  "${topIQ[index]} IQ",
+                                                  style: TextStyle(
+                                                      fontSize: 30,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                                ),
+                                                SizedBox(width: 30),
+                                              ],
+                                            )
+                                          ]),
+                                    ),
+                                  )),
+                            );
+                          }),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 6),
+                        child: ClipRRect(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(15)),
+                            child: SizedBox(
+                              height: 56,
+                              child: Container(
+                                color: profileColor[profileIndex! - 1],
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(width: 20),
+                                          profilePhoto[profileIndex! - 1],
+                                          SizedBox(width: 15),
+                                          Text(
+                                            username,
+                                            style: TextStyle(
+                                                fontSize: 30,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            "$iq IQ",
+                                            style: TextStyle(
+                                                fontSize: 30,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                          SizedBox(width: 30),
+                                        ],
+                                      )
+                                    ]),
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
                 child: Column(children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 17.0),
@@ -615,7 +769,7 @@ class _ProfileState extends State<Profile> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(
-                                      overflow: TextOverflow.ellipsis,
+                                        overflow: TextOverflow.ellipsis,
                                         Provider.of<ThemeProvider>(context,
                                                         listen: false)
                                                     .getTheme() ==
@@ -679,7 +833,7 @@ class _ProfileState extends State<Profile> {
                                 ),
                                 child: Center(
                                   child: Text(
-                                    overflow: TextOverflow.ellipsis,
+                                      overflow: TextOverflow.ellipsis,
                                       language == 1
                                           ? "English"
                                           : language == 2
@@ -744,7 +898,8 @@ class _ProfileState extends State<Profile> {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                overflow: TextOverflow.ellipsis,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
                                                   "${translation[language]!["Admin mode"]}",
                                                   style: const TextStyle(
                                                     color: Colors.white,

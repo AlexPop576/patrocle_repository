@@ -27,6 +27,12 @@ class _SpecialChallengeTileState extends State<SpecialChallengeTile> {
     fetchData();
   }
 
+  // Dispose method to properly dispose of the ticker.
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   // Method to fetch data from the database.
   void fetchData() async {
     _dbHelper.queryProfile().then((results) {

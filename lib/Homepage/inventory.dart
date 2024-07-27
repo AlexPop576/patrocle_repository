@@ -158,7 +158,11 @@ class _InventoryState extends State<Inventory> {
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: snapshot.data!.length,
                       itemBuilder: (context, index) {
-                      return ShopTile(colorIndex: snapshot.data![index]['color'], price: snapshot.data![index]['price'], bought:snapshot.data![index]['bought'], id: snapshot.data![index]['face']);
+                        return ShopTile(
+                            colorIndex: snapshot.data![index]['color'],
+                            price: snapshot.data![index]['price'],
+                            bought: snapshot.data![index]['bought'],
+                            id: snapshot.data![index]['face']);
                       },
                     );
                   } else if (snapshot.hasError) {
@@ -166,6 +170,124 @@ class _InventoryState extends State<Inventory> {
                   }
                   return CircularProgressIndicator();
                 },
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 9, horizontal: 18),
+                child: Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width ,
+                  decoration: BoxDecoration(
+                    color: Colors.purple, // Background color from color list.
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  ),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: Image.asset(
+                                    'assets/icons/spell.png',
+                                    height: 175,
+                                    fit: BoxFit.contain),
+                              ), // Displaying face icon.
+                            ]),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Container(
+                            height: 185,
+                            width: MediaQuery.of(context).size.width / 3 + 30,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(15)),
+                            ),
+                            child: 0 == 0
+                                ? Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            //_dbHelper.setBought(widget.id!);
+                                            setState(() {});
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 8,
+                                                      vertical: 5),
+                                              child: Text(
+                                                "BUY",
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 30,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ),
+                                          ),
+                                          style: ElevatedButton.styleFrom(
+                                            backgroundColor: Theme.of(context)
+                                                .colorScheme
+                                                .secondary,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(15),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            "100",
+                                            style: TextStyle(
+                                                color: Colors.grey[700],
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 30),
+                                          ),
+                                          SizedBox(width: 3),
+                                          Image.asset('assets/icons/coin.png',
+                                              height: 35),
+                                        ],
+                                      ),
+                                      SizedBox(width: 10),
+                                    ],
+                                  )
+                                : Column(
+                                    children: [
+                                      Image.asset(
+                                          'assets/icons/true.png'), // Displaying 'already bought' icon.
+                                      SizedBox(height: 6),
+                                      Text(
+                                        "Already bought",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.grey[700],
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 25),
+                                      ),
+                                    ],
+                                  ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),

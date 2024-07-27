@@ -49,7 +49,8 @@ class _ShopTileState extends State<ShopTile> {
     _dbHelper.queryProfile().then((results) {
       if (results.isNotEmpty) {
         setState(() {
-          coins = results.first['coins']; // Updating coins from database results.
+          coins =
+              results.first['coins']; // Updating coins from database results.
         });
       }
     });
@@ -57,6 +58,7 @@ class _ShopTileState extends State<ShopTile> {
 
   // List of colors for the shop items.
   List<Color> color = [
+    Colors.grey,
     Colors.blue,
     Colors.red,
     Colors.green,
@@ -78,7 +80,8 @@ class _ShopTileState extends State<ShopTile> {
         child: Row(
           children: [
             Expanded(
-              child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              child:
+                  Column(mainAxisAlignment: MainAxisAlignment.end, children: [
                 Image.asset('assets/icons/face${widget.colorIndex! + 1}.png',
                     height: 175, fit: BoxFit.contain), // Displaying face icon.
               ]),
@@ -98,26 +101,123 @@ class _ShopTileState extends State<ShopTile> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 5),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
                               child: ElevatedButton(
-                                onPressed: () {
-                                  _dbHelper.setBought(widget.id!); 
-                                  setState(() {
-                                    
-                                  });
+                                onPressed: () async {
+                                  showDialog(
+                                    context: context,
+                                    builder: (_) => AlertDialog(
+                                      title: Center(
+                                          child: Text(
+                                              textAlign: TextAlign.center,
+                                              "Are you sure you want to buy?",
+                                              style: const TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 25))),
+                                      content: Container(
+                                        child: Column(children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Image.asset(
+                                            'assets/icons/face${widget.id!}.png',
+                                            height: 200,
+                                          )
+                                        ]),
+                                        height: 210,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: color[widget.colorIndex!],
+                                        ),
+                                      ),
+                                      elevation: 24,
+                                      actions: [
+                                        TextButton(
+                                          onPressed: (() async {
+                                            Navigator.pop(context);
+                                            if (coins! >= price!) {
+                                              _dbHelper.setBought(widget.id!);
+                                              await _dbHelper
+                                                  .incrementCoins(-price!);
+                                              setState(() {
+                                                bought = 1;
+                                              });
+                                              String? faces;
+                                              List<int> facesListInt = [];
+                                              await _dbHelper
+                                                  .queryFaces()
+                                                  .then((results) {
+                                                faces = results['faces'];
+                                                if (faces != null) {
+                                                  facesListInt = List<int>.from(
+                                                      jsonDecode(faces!));
+                                                  facesListInt.add(widget.id!);
+                                                  String faceList =
+                                                      jsonEncode(facesListInt);
+                                                  _dbHelper
+                                                      .setFaceList(faceList);
+                                                }
+                                              });
+                                            } else {
+                                              showDialog(
+                                                context: context,
+                                                builder: (_) => AlertDialog(
+                                                  title: Center(
+                                                      child: Text(
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          "Not enough money!",
+                                                          style:
+                                                              const TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  fontSize:
+                                                                      25))),
+                                                ),
+                                              );
+                                            }
+                                            ;
+                                          }),
+                                          child: Text("Buy",
+                                              style: const TextStyle(
+                                                  color: Colors.green,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20)),
+                                        ),
+                                        TextButton(
+                                          onPressed: (() {
+                                            Navigator.pop(context);
+                                          }),
+                                          child: Text("Cancel",
+                                              style: const TextStyle(
+                                                  color: Colors.red,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 20)),
+                                        ),
+                                      ],
+                                    ),
+                                  );
                                 },
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 8, vertical: 5),
                                     child: Text(
                                       "BUY",
-                                      style: TextStyle(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 30,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                                  backgroundColor:
+                                      Theme.of(context).colorScheme.secondary,
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(15),
                                   ),
@@ -130,10 +230,14 @@ class _ShopTileState extends State<ShopTile> {
                               children: [
                                 Text(
                                   "${widget.price}",
-                                  style: TextStyle(color: Colors.grey[700], fontWeight: FontWeight.bold, fontSize: 30),
+                                  style: TextStyle(
+                                      color: Colors.grey[700],
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 30),
                                 ),
                                 SizedBox(width: 3),
-                                Image.asset('assets/icons/coin.png', height: 35),
+                                Image.asset('assets/icons/coin.png',
+                                    height: 35),
                               ],
                             ),
                             SizedBox(width: 10),
@@ -141,12 +245,16 @@ class _ShopTileState extends State<ShopTile> {
                         )
                       : Column(
                           children: [
-                            Image.asset('assets/icons/true.png'), // Displaying 'already bought' icon.
+                            Image.asset(
+                                'assets/icons/true.png'), // Displaying 'already bought' icon.
                             SizedBox(height: 6),
                             Text(
                               "Already bought",
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.grey[700], fontWeight: FontWeight.bold, fontSize: 25),
+                              style: TextStyle(
+                                  color: Colors.grey[700],
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 25),
                             ),
                           ],
                         ),

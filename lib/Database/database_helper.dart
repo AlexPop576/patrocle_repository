@@ -385,7 +385,7 @@ String answer30 = jsonEncode([
 'Mao Zedong',
 'Economic reforms'
 ]);
- String answer31 = jsonEncode(['Beijing', 'Shanghai', 'Xi\'an', 'Nanjing']);
+String answer31 = jsonEncode(['Beijing', 'Shanghai', 'Xi\'an', 'Nanjing']);
 String answer32 = jsonEncode([
 'Dynasties',
 'Events',
@@ -397,7 +397,7 @@ String answer32 = jsonEncode([
 'Advanced technology'
 ]);
 String answer33 = jsonEncode(
-      ['Los Angeles', 'Washington, D.C', 'New York City', 'Chicago']);
+      ['San Francisco', 'Washington D.C', 'New York City', 'Chicago']);
 String answer34 = jsonEncode([
     'Mountains',
     'River',
@@ -573,7 +573,7 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
 ]);
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 95;
+  static final _databaseVersion = 110;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -667,12 +667,12 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
   
         await db.insert('faces', {
             'face': 1,
-            'bought': 0,
+            'bought': 1,
             'price': 50,
             'color': 0
           });
 
-          await db.insert('faces', {
+        await db.insert('faces', {
             'face': 2,
             'bought': 0,
             'price': 50,
@@ -686,9 +686,16 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             'color': 2
           });
 
+          await db.insert('faces', {
+            'face': 4,
+            'bought': 0,
+            'price': 50,
+            'color': 3
+          });
+
         db.insert('profile', {
           'username': 'username',
-          'picture': 0,
+          'picture': 1,
           'iq': 0,
           'trophies': 0,
           'geography_lessons': 0,
@@ -1991,7 +1998,7 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           )''');
           db.insert('profile', {
             'username': 'username',
-            'picture': 0,
+            'picture': 1,
             'iq': 0,
             'trophies': 0,
             'geography_lessons': 0,
@@ -2016,12 +2023,12 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
 
           await db.insert('faces', {
             'face': 1,
-            'bought': 0,
+            'bought': 1,
             'price': 50,
             'color': 0
           });
 
-          await db.insert('faces', {
+        await db.insert('faces', {
             'face': 2,
             'bought': 0,
             'price': 50,
@@ -2033,6 +2040,13 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             'bought': 0,
             'price': 50,
             'color': 2
+          });
+
+          await db.insert('faces', {
+            'face': 4,
+            'bought': 0,
+            'price': 50,
+            'color': 3
           });
 
           
@@ -3380,10 +3394,10 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
     await updateLastActivityDate(today.toIso8601String());
   }
 
-  Future<void> incrementCoins() async {
+  Future<void> incrementCoins(int coinsNumber) async {
     Database db = await this.database;
 
-    await db.rawUpdate('UPDATE profile SET coins = coins + 5');
+    await db.rawUpdate('UPDATE profile SET coins = coins + $coinsNumber');
   }
 
   Future<int> insertQuestion(
@@ -3543,6 +3557,19 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
       },
       where: 'face = ?',
       whereArgs: [face],
+    );
+  }
+
+  Future<int> setFaceList(String faceList) async {
+    int id = 1;
+    Database db = await database;
+    return await db.update(
+      'profile',
+      {
+        'faces': faceList,
+      },
+      where: 'profileID = ?',
+      whereArgs: [id],
     );
   }
 
