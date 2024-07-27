@@ -1,5 +1,6 @@
 
 class Translations {
+  // A map to store translations with integer keys and string values.
   Map<int?, Map<String?, String?>> translation = {
     1: {
       "Profile": "Profile",
@@ -292,7 +293,7 @@ class Translations {
       "Zimbabwe": "Zimbabwe",
       "Special challenge": "Special challenge",
       "Countries": "Countries",
-
+      "Weekly top": "Weekly top",
     },
     2: {
       "Profile": "Profil",
@@ -585,6 +586,7 @@ class Translations {
       "Zimbabwe": "Zimbabwe",
       "Special challenge": "Provocare specială", 
       "Countries": "Țări",
+      "Weekly top": "Top săptămânal",
     },
     3: {
       "Profile": "Profil",
@@ -877,6 +879,7 @@ class Translations {
       "Zimbabwe": "Zimbabwe",
       "Special challenge": "Különleges kihívás",
       "Countries": "Országok",
+      "Weekly top": "Heti top",
     },
     4: {
       "Profile": "Perfil",
@@ -1169,6 +1172,7 @@ class Translations {
       "Zimbabwe": "Zimbabue",
       "Special challenge": "Desafío especial",
       "Countries": "Países",
+      "Weekly top": "Top semanal",
     }
   };
 }

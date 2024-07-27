@@ -6,6 +6,7 @@ import 'package:patrocle/Components/trophy_tile.dart';
 import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
 
+// Inventory widget which is a StatefulWidget
 class Inventory extends StatefulWidget {
   const Inventory({super.key});
 
@@ -14,8 +15,11 @@ class Inventory extends StatefulWidget {
 }
 
 class _InventoryState extends State<Inventory> {
+  // Database helper instance
   final _dbHelper = DatabaseHelper.instance;
+  // Translation map
   Map<int?, Map<String?, String?>> translation = Translations().translation;
+  // Language setting
   int? language = 2;
 
   @override

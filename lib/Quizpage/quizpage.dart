@@ -16,6 +16,7 @@ import 'testpage1.dart';
 import 'testpage3.dart';
 import 'testpage4.dart';
 import 'package:patrocle/Theme/theme.dart';
+
 // ignore: must_be_immutable
 class QuizPage extends StatefulWidget {
   QuizPage({
@@ -31,6 +32,7 @@ class QuizPage extends StatefulWidget {
 
   @override
   // ignore: no_logic_in_create_state
+  // Create state for QuizPage
   State<QuizPage> createState() => _QuizPageState(
       country: country,
       difficulty: difficulty,
@@ -38,7 +40,7 @@ class QuizPage extends StatefulWidget {
       mode: mode,
       language: language);
 }
-
+  // State class for QuizPage
 class _QuizPageState extends State<QuizPage> {
   _QuizPageState(
       {required this.country,
@@ -70,12 +72,13 @@ class _QuizPageState extends State<QuizPage> {
   Timer? timer;
 
   @override
+  
   void initState() {
     super.initState();
     fetchData(country.toString(), subject.toString());
     
   }
-
+   // Start the timer for the quiz
   void startTimer(){
     timer = Timer.periodic(Duration(milliseconds: 500), (_) {
       setState(() {
@@ -86,7 +89,7 @@ class _QuizPageState extends State<QuizPage> {
       });
     });
   }
-
+// Fetch data from the database based on country and subject
   void fetchData(String country, String subject) async {
     if (difficulty == 1) {
       questions = await _dbHelper.queryQuestions(country, subject, 1);
@@ -111,6 +114,7 @@ class _QuizPageState extends State<QuizPage> {
     print('questions: $questions');
   }
 
+  // Mark the answer as correct
   void correct() {
     setState(() {
       // Use the correctColor from the ThemeData extension
@@ -118,6 +122,7 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  // Mark the answer as wrong
   void wrong() {
     setState(() {
       // Use the wrongColor from the ThemeData extension
@@ -125,6 +130,7 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  // Update the lesson status in the database
   void updateLessonStatus() async {
     await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
@@ -133,12 +139,14 @@ class _QuizPageState extends State<QuizPage> {
     await _dbHelper.incrementStreak();
     //_homepage.fetchStreak();
   }
-
+  
+  // Update the IQ in the database
   void updateIQ() async {
     await _dbHelper
         .updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
   }
-
+  
+  // Update the trophies in the database
   void updateTrophies() async {
     int iq = 0, geography_lessons = 0, history_lessons = 0;
     _dbHelper.queryProfile().then((results) {

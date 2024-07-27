@@ -4,6 +4,7 @@ import 'package:lottie/lottie.dart';
 import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
 
+
 class Museum extends StatefulWidget {
   const Museum({super.key});
 

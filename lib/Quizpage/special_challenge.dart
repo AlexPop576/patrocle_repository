@@ -8,6 +8,7 @@ import 'package:patrocle/Quizpage/quizpage.dart';
 import 'package:patrocle/Theme/translations.dart';
 
 class SpecialChallenge extends StatefulWidget {
+  // Constructor for SpecialChallenge widget
   SpecialChallenge({super.key, required this.language});
   int? language;
 
@@ -16,6 +17,7 @@ class SpecialChallenge extends StatefulWidget {
 }
 
 class _SpecialChallengeState extends State<SpecialChallenge> {
+  // Constructor for _SpecialChallengeState
   _SpecialChallengeState({required this.language});
   int? countryIndex, subjectIndex, len = 0, language;
   final _dbHelper = DatabaseHelper.instance;
@@ -27,7 +29,7 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
     super.initState();
     selectChallange();
   }
-
+  // Function to select a random challenge
   void selectChallange() async {
     var random = Random();
     {
