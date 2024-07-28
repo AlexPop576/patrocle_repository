@@ -3,22 +3,26 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Quizpage/special_challenge.dart';
+import 'package:patrocle/Theme/translations.dart';
 
 // Defining a StatefulWidget, SpecialChallengeTile.
 class SpecialChallengeTile extends StatefulWidget {
   // Constructor for SpecialChallengeTile.
-  SpecialChallengeTile({super.key});
+  SpecialChallengeTile({super.key, required this.language});
+  int? language;
 
   // Overriding createState to return an instance of _SpecialChallengeTileState.
   @override
-  State<SpecialChallengeTile> createState() => _SpecialChallengeTileState();
+  State<SpecialChallengeTile> createState() => _SpecialChallengeTileState(language: language);
 }
 
 // Private State class for SpecialChallengeTile.
 class _SpecialChallengeTileState extends State<SpecialChallengeTile> {
+  _SpecialChallengeTileState({required this.language});
   // Declaring variables for _SpecialChallengeTileState.
   int? language;
   final _dbHelper = DatabaseHelper.instance; // Instance of DatabaseHelper.
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   // initState method to perform initial fetch of data.
   @override
@@ -94,7 +98,7 @@ class _SpecialChallengeTileState extends State<SpecialChallengeTile> {
                       ),
                       Expanded(
                         child: Text(
-                          "Random",
+                          "${translation![language]!["Random"]}",
                           overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                               shadows: <Shadow>[

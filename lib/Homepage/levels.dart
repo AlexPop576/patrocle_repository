@@ -117,7 +117,7 @@ class _LevelsState extends State<Levels> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 9, horizontal: 18),
                 child: Column(children: [
-                  SpecialChallengeTile(),
+                  SpecialChallengeTile(language: language,),
                   const SizedBox(
                     height: 30,
                   ),

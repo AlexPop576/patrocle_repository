@@ -13,7 +13,8 @@ class SpecialChallenge extends StatefulWidget {
   int? language;
 
   @override
-  State<SpecialChallenge> createState() => _SpecialChallengeState(language: language);
+  State<SpecialChallenge> createState() =>
+      _SpecialChallengeState(language: language);
 }
 
 class _SpecialChallengeState extends State<SpecialChallenge> {
@@ -29,6 +30,7 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
     super.initState();
     selectChallange();
   }
+
   // Function to select a random challenge
   void selectChallange() async {
     var random = Random();
@@ -48,119 +50,116 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-              leading: IconButton(
-                  icon: const Icon(
-                    Icons.close,
-                    color: Colors.white,
-                    size: 29,
-                  ),
-                  onPressed: () {
-                    showModalBottomSheet(
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (BuildContext context) {
-                          return Container(
-                            height: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).colorScheme.background,
-                                borderRadius: const BorderRadius.only(
-                                    topLeft: Radius.circular(25),
-                                    topRight: Radius.circular(25))),
-                            child: Padding(
+        leading: IconButton(
+            icon: const Icon(
+              Icons.close,
+              color: Colors.white,
+              size: 29,
+            ),
+            onPressed: () {
+              showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.background,
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(25),
+                              topRight: Radius.circular(25))),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 17),
+                        child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          child: Column(children: [
+                            const SizedBox(
+                              height: 20,
+                            ),
+                            Lottie.asset('assets/patrocle.json',
+                                frameRate: FrameRate.max, height: 100),
+                            const SizedBox(
+                              height: 30,
+                            ),
+                            Padding(
                               padding:
-                                  const EdgeInsets.symmetric(horizontal: 17),
-                              child: SingleChildScrollView(
-                                physics: const BouncingScrollPhysics(),
-                                child: Column(children: [
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  Lottie.asset('assets/patrocle.json',
-                                      frameRate: FrameRate.max, height: 100),
-                                  const SizedBox(
-                                    height: 30,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 40),
-                                    child: Text(
-                                      "${translation[language]!["QP_QMSG"]}",
-                                      style: TextStyle(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .tertiary,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                      ),
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 40,
-                                  ),
-                                  SizedBox(
-                                    height: 58,
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 102, 102, 255),
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(15),
-                                          ),
-                                        ),
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                              "${translation[language]!["Continue"]}",
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 30))),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 12,
-                                  ),
-                                  SizedBox(
-                                    height: 58,
-                                    width: double.infinity,
-                                    child: ElevatedButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                        Navigator.pop(context);
-                                      },
-                                      style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 219, 64, 64),
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(15),
-                                          ),
-                                        ),
-                                      ),
-                                      child: Center(
-                                          child: Text(
-                                              "${translation[language]!["Quit"]}",
-                                              style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 30))),
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                ]),
+                                  const EdgeInsets.symmetric(horizontal: 40),
+                              child: Text(
+                                "${translation[language]!["QP_QMSG"]}",
+                                style: TextStyle(
+                                  color: Theme.of(context).colorScheme.tertiary,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20,
+                                ),
+                                textAlign: TextAlign.center,
                               ),
                             ),
-                          );
-                        });
-                  }),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                            SizedBox(
+                              height: 58,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 102, 102, 255),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                child: Center(
+                                    child: Text(
+                                        "${translation[language]!["Continue"]}",
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 30))),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            SizedBox(
+                              height: 58,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  Navigator.pop(context);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromARGB(255, 219, 64, 64),
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
+                                ),
+                                child: Center(
+                                    child: Text(
+                                        "${translation[language]!["Quit"]}",
+                                        style: const TextStyle(
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 30))),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 20,
+                            ),
+                          ]),
+                        ),
+                      ),
+                    );
+                  });
+            }),
         title: Text("${translation[language]!["Special challenge"]}",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold)),
@@ -173,7 +172,7 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               SizedBox(height: 100),
-              Text(  "${translation[language]![countryNames![countryIndex!]]}",
+              Text("${translation[language]![countryNames![countryIndex!]]}",
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
               SizedBox(height: 20),
@@ -233,7 +232,7 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
                     ),
                     child: Text(
                         overflow: TextOverflow.ellipsis,
-                        "Play",
+                        "${translation![language]!["Play"]}",
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -245,7 +244,8 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
               const SizedBox(height: 10),
             ],
           ),
-        ),),
+        ),
+      ),
     );
   }
 }

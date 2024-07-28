@@ -67,7 +67,7 @@ class _ProfileState extends State<Profile> {
     Image.asset('assets/icons/face3.png', height: 100, fit: BoxFit.contain),
   ];
 
-  List<String> topName = ["Antonio", "Robert", "Maria"];
+  List<String> topName = ["Anto", "Robert", "Maria"];
   List<int> topIQ = [5235, 3770, 3415];
 
   // Database helper instance

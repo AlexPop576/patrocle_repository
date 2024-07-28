@@ -1974,7 +1974,7 @@ class DatabaseHelper {
           await db.execute('DROP TABLE $table');
           await db.execute('DROP TABLE profile');
           await db.execute('DROP TABLE trophies');
-          await db.execute('DROP TABLE faces');
+          //await db.execute('DROP TABLE faces');
           await db.execute('''
           CREATE TABLE trophies (
             $columnTrophyId INTEGER PRIMARY KEY AUTOINCREMENT,

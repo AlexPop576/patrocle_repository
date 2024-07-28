@@ -169,6 +169,7 @@ class _InventoryState extends State<Inventory> {
                             colorIndex: snapshot.data![index]['color'],
                             price: snapshot.data![index]['price'],
                             bought: snapshot.data![index]['bought'],
+                            language: language,
                             id: snapshot.data![index]['face']);
                       },
                     );

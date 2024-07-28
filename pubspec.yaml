@@ -42,7 +42,7 @@ dependencies:
   google_nav_bar: ^5.0.6
   cupertino_icons: ^1.0.2
   translator: 
-  flutter_tts:
+  #flutter_tts:
   flutter_gradient_animation_text:
   animate_gradient:
 

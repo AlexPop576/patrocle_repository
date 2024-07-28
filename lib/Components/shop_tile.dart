@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/homepage.dart';
+import 'package:patrocle/Theme/translations.dart';
 
 // Defining a StatefulWidget, ShopTile, to represent an item in a shop.
 class ShopTile extends StatefulWidget {
@@ -13,15 +14,16 @@ class ShopTile extends StatefulWidget {
     required this.price,
     required this.bought,
     required this.id,
+    required this.language
   });
 
   // Declaring variables for ShopTile.
-  int? colorIndex = 1, price = 100, bought = 0, id = 1;
-
+  int? colorIndex = 1, price = 100, bought = 0, id = 1, language = 1;
+  
   // Overriding createState to return an instance of _ShopTileState.
   @override
   State<ShopTile> createState() => _ShopTileState(
-      colorIndex: colorIndex, price: price, bought: bought, id: id);
+      colorIndex: colorIndex, price: price, bought: bought, id: id, language: language);
 }
 
 // Private State class for ShopTile.
@@ -32,11 +34,13 @@ class _ShopTileState extends State<ShopTile> {
     required this.price,
     required this.bought,
     required this.id,
+    required this.language
   });
 
   // Declaring variables for _ShopTileState.
-  int? colorIndex = 1, price = 100, bought = 0, id = 1, coins = 0;
+  int? colorIndex = 1, price = 100, bought = 0, id = 1, coins = 0, language = 1;
   final _dbHelper = DatabaseHelper.instance; // Instance of DatabaseHelper.
+  Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   // initState method to perform initial fetch of data.
   @override
@@ -112,7 +116,7 @@ class _ShopTileState extends State<ShopTile> {
                                       title: Center(
                                           child: Text(
                                               textAlign: TextAlign.center,
-                                              "Are you sure you want to buy?",
+                                              "${translation[language]!["Are you sure you want to buy?"]}",
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 25))),
@@ -176,7 +180,7 @@ class _ShopTileState extends State<ShopTile> {
                                                       child: Text(
                                                           textAlign:
                                                               TextAlign.center,
-                                                          "Not enough coins!",
+                                                          "${translation[language]!["Not enough coins!"]}",
                                                           style:
                                                               const TextStyle(
                                                                   fontWeight:
@@ -189,7 +193,7 @@ class _ShopTileState extends State<ShopTile> {
                                             }
                                             ;
                                           }),
-                                          child: Text("Buy",
+                                          child: Text("${translation[language]!["Buy"]}",
                                               style: const TextStyle(
                                                   color: Colors.green,
                                                   fontWeight: FontWeight.bold,
@@ -199,7 +203,7 @@ class _ShopTileState extends State<ShopTile> {
                                           onPressed: (() {
                                             Navigator.pop(context);
                                           }),
-                                          child: Text("Cancel",
+                                          child: Text("${translation[language]!["Cancel"]}",
                                               style: const TextStyle(
                                                   color: Colors.red,
                                                   fontWeight: FontWeight.bold,
@@ -215,10 +219,11 @@ class _ShopTileState extends State<ShopTile> {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 5),
                                     child: Text(
-                                      "BUY",
+                                      textAlign: TextAlign.center,
+                                      "${translation[language]!["BUY"]}",
                                       style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 30,
+                                          fontSize: 18,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ),
@@ -257,7 +262,7 @@ class _ShopTileState extends State<ShopTile> {
                                 'assets/icons/true.png'), // Displaying 'already bought' icon.
                             SizedBox(height: 6),
                             Text(
-                              "Already bought",
+                              "${translation[language]!["Already bought"]}",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.grey[700],

@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Theme/general_info.dart';
 import 'package:translator/translator.dart';
-import 'package:flutter_tts/flutter_tts.dart';
+//import 'package:flutter_tts/flutter_tts.dart';
 import '../Theme/translations.dart';
 
 class Lesson extends StatefulWidget {
@@ -27,24 +27,24 @@ class _LessonState extends State<Lesson> {
   Map<String?, Map<int?, String?>> info = Info().info;
   final _dbHelper = DatabaseHelper.instance;
   GoogleTranslator translator = GoogleTranslator();
-  FlutterTts flutterTts = FlutterTts();
+  //FlutterTts flutterTts = FlutterTts();
   bool _isSpeaking = false;
 
   @override
   void initState() {
     super.initState();
-    flutterTts.setPitch(1.0);
+    //flutterTts.setPitch(1.0);
     fetchData();
   }
 
   @override
   void dispose() {
     // Stop TTS when disposing
-    flutterTts.stop();
+    //flutterTts.stop();
     super.dispose();
   }
   // Method to handle text-to-speech
-  Future<void> speak(String text) async {
+  /*Future<void> speak(String text) async {
     String languageCode = getLanguageCode(language);
     await flutterTts.setLanguage(languageCode);
     if (_isSpeaking) {
@@ -53,7 +53,7 @@ class _LessonState extends State<Lesson> {
       await flutterTts.speak(text);
     }
     _isSpeaking = !_isSpeaking;
-  }
+  }*/
   
   // Method to get language code based on language ID
   String getLanguageCode(int? language) {
@@ -130,7 +130,7 @@ class _LessonState extends State<Lesson> {
                         child: ElevatedButton(
                             onPressed: () {
                               if (lesson != null) {
-                                speak(lesson!);
+                                //speak(lesson!);
                               }
                             },
                             style: ElevatedButton.styleFrom(

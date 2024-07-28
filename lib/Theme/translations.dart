@@ -297,10 +297,12 @@ class Translations {
       "Your streak": "Your streak",
       "Already bought": "Already bought",
       "BUY": "BUY",
+      "Buy": "Buy",
       "Cancel": "Cancel",
       "Not enough coins!": "Not enough coins!",
       "Are you sure you want to buy?" : "Are you sure you want to buy?",
-
+      "Random": "Random" ,
+      "Play": "Play",
     },
     2: {
       "Profile": "Profil",
@@ -597,10 +599,12 @@ class Translations {
       "Your streak": "Seria ta",
       "Already bought": "Deja cumpărat",
       "BUY": "CUMPĂRĂ",
+      "Buy": "Cumpără",
       "Cancel": "Anulează",
       "Not enough coins!": "Nu ai suficienți bani!",
       "Are you sure you want to buy?" : "Ești sigur că vrei să cumperi?",
-
+      "Random": "Aleatoriu",
+      "Play": "Joacă",
     },
     3: {
       "Profile": "Profil",
@@ -897,10 +901,12 @@ class Translations {
       "Your streak": "Sorozatod",
       "Already bought": "Már megvásárolt",
       "BUY": "VÁSÁRLÁS",
+      "Buy": "Vásárlás",
       "Cancel": "Mégse",
       "Not enough coins!": "Nincs elég érme!",
       "Are you sure you want to buy?" : "Biztosan meg akarod vásárolni?",
-
+      "Random": "Véletlen" ,
+      "Play": "Játszani",
     },
     4: {
       "Profile": "Perfil",
@@ -1197,10 +1203,12 @@ class Translations {
       "Your streak": "Tu racha",
       "Already bought": "Ya comprado",
       "BUY": "COMPRAR",
+      "Buy": "Comprar",
       "Cancel": "Cancelar",
       "Not enough coins!": "¡No tienes suficientes monedas!",
       "Are you sure you want to buy?" : "¿Estás seguro de que quieres comprar?",
-  
+      "Random": "Aleatorio" ,
+      "Play": "Jugar",
     }
   };
 }
