@@ -1,9 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 class DatabaseHelper {
-    // List of countries
+  // List of countries
   List<String> countries = [
     "Afghanistan",
     "Albania",
@@ -202,7 +203,7 @@ class DatabaseHelper {
     "Zambia",
     "Zimbabwe"
   ];
- // JSON encoded answers
+  // JSON encoded answers
   String answer1 = jsonEncode([
     'Mountains',
     'River',
@@ -254,7 +255,7 @@ class DatabaseHelper {
     '20th Century'
   ]);
   String answer9 = jsonEncode(['Barcelona', 'Madrid', 'Paris', 'Lisabona']);
-String answer10 = jsonEncode([
+  String answer10 = jsonEncode([
     'Mont Blanc',
     'French Riviera',
     'Seine',
@@ -265,7 +266,7 @@ String answer10 = jsonEncode([
     'City'
   ]);
   String answer11 = jsonEncode(['Tamisa', 'Sena', 'Tiber', 'Rin']);
-String answer12 = jsonEncode([
+  String answer12 = jsonEncode([
     'Paris',
     'Alps',
     'Bordeaux',
@@ -287,118 +288,118 @@ String answer12 = jsonEncode([
     'Republic'
   ]);
   String answer15 = jsonEncode([
-  'The Enlightenment Period',
-  'The Medieval Era',
-  'The Napoleonic Era',
-  'The Renaissance'
+    'The Enlightenment Period',
+    'The Medieval Era',
+    'The Napoleonic Era',
+    'The Renaissance'
   ]);
   String answer16 = jsonEncode([
-  'Antiquity',
-  'Middle Ages',
-  '19th Century',
-  'Napoleon',
-  'Romans',
-  'Feudalism',
-  'Conflicts',
-  'Expansion'
+    'Antiquity',
+    'Middle Ages',
+    '19th Century',
+    'Napoleon',
+    'Romans',
+    'Feudalism',
+    'Conflicts',
+    'Expansion'
   ]);
-  String answer17= jsonEncode(['Rome', 'Milan', 'Venice', 'Naples']);
+  String answer17 = jsonEncode(['Rome', 'Milan', 'Venice', 'Naples']);
   String answer18 = jsonEncode([
-  'Mountains',
-  'River',
-  'Sea',
-  'Region',
-  'Alps',
-  'Arno',
-  'Mediterranean',
-  'Italian Peninsula'
+    'Mountains',
+    'River',
+    'Sea',
+    'Region',
+    'Alps',
+    'Arno',
+    'Mediterranean',
+    'Italian Peninsula'
   ]);
 
   String answer19 = jsonEncode(['Sicily', 'Sardinia', 'Corsica', 'Capri']);
   String answer20 = jsonEncode([
-  'Mountains',
-  'River',
-  'Sea',
-  'Region',
-  'Apennines',
-  'Tiber',
-  'Adriatic',
-  'Sicily'
+    'Mountains',
+    'River',
+    'Sea',
+    'Region',
+    'Apennines',
+    'Tiber',
+    'Adriatic',
+    'Sicily'
   ]);
   String answer21 = jsonEncode(
       ['The Middle Ages', 'Antiquity', 'The Renaissance', 'The 20th Century']);
   String answer22 = jsonEncode([
-  'Historical Period',
-  'Personality',
-  'State/Entity',
-  'Event',
-  'Renaissance',
-  'Leonardo da Vinci',
-  'Republic of Venice',
-  'Unification of Italy'
+    'Historical Period',
+    'Personality',
+    'State/Entity',
+    'Event',
+    'Renaissance',
+    'Leonardo da Vinci',
+    'Republic of Venice',
+    'Unification of Italy'
   ]);
   String answer23 = jsonEncode(
-        ['Julius Caesar', 'Attila the Hun', 'Cleopatra', 'Alexander the Great']);
+      ['Julius Caesar', 'Attila the Hun', 'Cleopatra', 'Alexander the Great']);
   String answer24 = jsonEncode([
-  'Historical Period',
-  'Personality',
-  'State/Entity',
-  'Event',
-  'Middle Ages',
-  'Giuseppe Garibaldi',
-  'Papal States',
-  'World War I'
+    'Historical Period',
+    'Personality',
+    'State/Entity',
+    'Event',
+    'Middle Ages',
+    'Giuseppe Garibaldi',
+    'Papal States',
+    'World War I'
   ]);
   String answer25 =
       jsonEncode(['Shanghai', 'Beijing', 'Guangzhou', 'Hong Kong']);
   String answer26 = jsonEncode([
-  'Mountains',
-  'River',
-  'Sea',
-  'Region',
-  'Himalaya',
-  'Yangtze',
-  'Yellow Sea',
-  'Guangzhou'
+    'Mountains',
+    'River',
+    'Sea',
+    'Region',
+    'Himalaya',
+    'Yangtze',
+    'Yellow Sea',
+    'Guangzhou'
   ]);
   String answer27 =
-        jsonEncode(['Mont Everest', 'Kilimanjaro', 'Matterhorn', 'Aconcagua']);
+      jsonEncode(['Mont Everest', 'Kilimanjaro', 'Matterhorn', 'Aconcagua']);
   String answer28 = jsonEncode([
-  'Mountains',
-  'River',
-  'Sea',
-  'Region',
-  'Tian',
-  'Yellow River',
-  'East China Sea',
-  'Tibet'
+    'Mountains',
+    'River',
+    'Sea',
+    'Region',
+    'Tian',
+    'Yellow River',
+    'East China Sea',
+    'Tibet'
   ]);
   String answer29 = jsonEncode(
       ['Dinastia Han', 'Dinastia Tang', 'Dinastia Qin', 'Dinastia Song']);
-String answer30 = jsonEncode([
-'Dynasties',
-'Events',
-'Personalities',
-'Developments',
-'Tang',
-'Opium Wars',
-'Mao Zedong',
-'Economic reforms'
-]);
-String answer31 = jsonEncode(['Beijing', 'Shanghai', 'Xi\'an', 'Nanjing']);
-String answer32 = jsonEncode([
-'Dynasties',
-'Events',
-'Personalities',
-'Developments',
-'Qin',
-'Boxer Rebellion',
-'Deng Xiaoping',
-'Advanced technology'
-]);
-String answer33 = jsonEncode(
+  String answer30 = jsonEncode([
+    'Dynasties',
+    'Events',
+    'Personalities',
+    'Developments',
+    'Tang',
+    'Opium Wars',
+    'Mao Zedong',
+    'Economic reforms'
+  ]);
+  String answer31 = jsonEncode(['Beijing', 'Shanghai', 'Xi\'an', 'Nanjing']);
+  String answer32 = jsonEncode([
+    'Dynasties',
+    'Events',
+    'Personalities',
+    'Developments',
+    'Qin',
+    'Boxer Rebellion',
+    'Deng Xiaoping',
+    'Advanced technology'
+  ]);
+  String answer33 = jsonEncode(
       ['San Francisco', 'Washington D.C', 'New York City', 'Chicago']);
-String answer34 = jsonEncode([
+  String answer34 = jsonEncode([
     'Mountains',
     'River',
     'Sea',
@@ -407,14 +408,14 @@ String answer34 = jsonEncode([
     'Mississippi',
     'Eastern Sea',
     'Columbia Plateau'
-]);
-String answer35 = jsonEncode([
+  ]);
+  String answer35 = jsonEncode([
     'Guam and American Samoa',
     'Alaska and Guam',
     'U.S. Virgin Islands and American Samoa',
     'Puerto Rico and U.S. Virgin Islands'
-]);
-String answer36 = jsonEncode([
+  ]);
+  String answer36 = jsonEncode([
     'Mountain',
     'River',
     'Sea',
@@ -423,16 +424,20 @@ String answer36 = jsonEncode([
     'Missouri',
     'Gulf of Mexico',
     'Great Plains'
-]);
-String answer38 = jsonEncode([
-    'Texas and Florida',
- 'Arizona and Nevada',
- 'California and Oregon',
- 'Alaska and Maine'
   ]);
- String answer39 = jsonEncode(
-      ['Native American tribes only', 'Indigenous tribes and European settlers', 'European settlers only', 'African populations only']);
-String answer40 = jsonEncode([
+  String answer38 = jsonEncode([
+    'Texas and Florida',
+    'Arizona and Nevada',
+    'California and Oregon',
+    'Alaska and Maine'
+  ]);
+  String answer39 = jsonEncode([
+    'Native American tribes only',
+    'Indigenous tribes and European settlers',
+    'European settlers only',
+    'African populations only'
+  ]);
+  String answer40 = jsonEncode([
     'Period',
     'Event',
     'Movement',
@@ -441,14 +446,14 @@ String answer40 = jsonEncode([
     'Manifest Destiny',
     'Declaration of Independence',
     'American Civil War',
-]);
-String answer41 = jsonEncode([
+  ]);
+  String answer41 = jsonEncode([
     'Development of a prosperous economy',
     'Decline of indigenous populations',
     'Cultural exchanges between Europeans and indigenous populations',
     'Establishment of permanent colonies'
-]);
-String answer42= jsonEncode([
+  ]);
+  String answer42 = jsonEncode([
     'Exploration',
     'War',
     'Expansion',
@@ -457,100 +462,98 @@ String answer42= jsonEncode([
     'Spanish-American War',
     'Louisiana Purchase',
     'Monroe Doctrine'
-]);
- String answer174 = jsonEncode([
-  'Mountains',
-  'River',
-  'Sea',
-  'Region',
-  'Carpathians',
-  'Danube',
-  'Black Sea',
-  'Moldova'
-]);
+  ]);
+  String answer174 = jsonEncode([
+    'Mountains',
+    'River',
+    'Sea',
+    'Region',
+    'Carpathians',
+    'Danube',
+    'Black Sea',
+    'Moldova'
+  ]);
 
-String answer175 = jsonEncode(['Zagreb', 'Budapest', 'Bucharest', 'Paris']);
-String answer177 = jsonEncode(['Volga', 'Danube', 'Rhine', 'Seine']);
-String answer178 = jsonEncode(['Cluj-Napoca', 'Timișoara', 'Sofia', 'Bucharest']);
-String answer179 = jsonEncode(['Moldoveanu', 'Negoiu', 'Făgăraș', 'Pietrosu']);
-String answer180 = jsonEncode([
-  'Oceanic Temperate',
-  'Mediterranean',
-  'Polar',
-  'Continental Temperate'
-]);
+  String answer175 = jsonEncode(['Zagreb', 'Budapest', 'Bucharest', 'Paris']);
+  String answer177 = jsonEncode(['Volga', 'Danube', 'Rhine', 'Seine']);
+  String answer178 =
+      jsonEncode(['Cluj-Napoca', 'Timișoara', 'Sofia', 'Bucharest']);
+  String answer179 =
+      jsonEncode(['Moldoveanu', 'Negoiu', 'Făgăraș', 'Pietrosu']);
+  String answer180 = jsonEncode(
+      ['Oceanic Temperate', 'Mediterranean', 'Polar', 'Continental Temperate']);
 
-String answer182 = jsonEncode([
-  'Central Europe',
-  'Western Europe',
-  'Northern Europe',
-  'Eastern Europe'
-]);
-String answer183 = jsonEncode(['Transylvania', 'Moldova', 'Catalonia', 'Maramureș']);
-String answer184 = jsonEncode(['Hungary', 'Spain', 'Bulgaria', 'Ukraine']);
-String answer185 = jsonEncode(['Făgăraș', 'Carpathians', 'Apuseni', 'Alps']);
-String answer186 = jsonEncode(['Constanța', 'Cluj-Napoca', 'Bucharest', 'Timișoara']);
-String answer188 = jsonEncode([
-  'Appalachian Mountains',
-  'Făgăraș Mountains',
-  'Apuseni Mountains',
-  'Ciucaș Mountains'
-]);
-String answer189 = jsonEncode([
-  'Mountain landscapes',
-  'Traditional villages',
-  'Developed infrastructure',
-  'Wildlife'
-]);
-String answer190 = jsonEncode(['Bucharest', 'Carpathian Mountains', 'Danube', 'Cluj-Napoca']);
-String answer191 = jsonEncode(['Carpathian Mountains', 'Black Sea', 'Danube', 'Iași']);
-String answer192 = jsonEncode(['Danube', 'Black Sea', 'Carpathian Mountains', 'Iași']);
-String answer194 = jsonEncode(['Hungarians', 'Dacians', 'Egyptians', 'Celts']);
-String answer195 = jsonEncode([
-  'Ottoman Empire',
-  'Roman Empire',
-  'Mongol Empire',
-  'Babylonian Empire'
-]);
-String answer196 = jsonEncode(['Moscow', 'Saxony', 'Moldova', 'Tuscany']);
-String answer197 = jsonEncode([
-  'Sea',
-  'Union',
-  'Vlad',
-  'Country',
-  'Unification',
-  'Soviet',
-  'Țepeș',
-  'Romanian'
-]);
-String answer198 = jsonEncode(['Democratic', 'Communist', 'Totalitarian', 'Fascist']);
-String answer199 = jsonEncode(['2004', '2007', '2010', '1997']);
-String answer200 = jsonEncode([
-  'Traian Băsescu',
-  'Klaus Iohannis',
-  'Emil Boc',
-  'Nicolae Ceaușescu'
-]);
-String answer201 = jsonEncode([
-  'Nicolae Titulescu',
-  'Iancu de Hunedoara',
-  'Ștefan Cel Mare',
-  'Alexandru Ioan Cuza'
-]);
-String answer202 = jsonEncode(['Axis', 'Allies', 'Ottomans', 'Chinese']);
-String answer203 = jsonEncode([
-  'Iliescu',
-  'Constantinescu',
-  'Nicolae Ceaușescu',
-  'Gheorghe Gheorghiu-Dej'
-]);
-String answer204 = jsonEncode([
-  'Romanian Civil War',
-  'War of Independence',
-  'Balkan War',
-  'Crimean War'
-]);
-String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Globalization']);
+  String answer182 = jsonEncode([
+    'Central Europe',
+    'Western Europe',
+    'Northern Europe',
+    'Eastern Europe'
+  ]);
+  String answer183 =
+      jsonEncode(['Transylvania', 'Moldova', 'Catalonia', 'Maramureș']);
+  String answer184 = jsonEncode(['Hungary', 'Spain', 'Bulgaria', 'Ukraine']);
+  String answer185 = jsonEncode(['Făgăraș', 'Carpathians', 'Apuseni', 'Alps']);
+  String answer186 =
+      jsonEncode(['Constanța', 'Cluj-Napoca', 'Bucharest', 'Timișoara']);
+  String answer188 = jsonEncode([
+    'Appalachian Mountains',
+    'Făgăraș Mountains',
+    'Apuseni Mountains',
+    'Ciucaș Mountains'
+  ]);
+  String answer189 = jsonEncode([
+    'Mountain landscapes',
+    'Traditional villages',
+    'Developed infrastructure',
+    'Wildlife'
+  ]);
+  String answer190 = jsonEncode(
+      ['Bucharest', 'Carpathian Mountains', 'Danube', 'Cluj-Napoca']);
+  String answer191 =
+      jsonEncode(['Carpathian Mountains', 'Black Sea', 'Danube', 'Iași']);
+  String answer192 =
+      jsonEncode(['Danube', 'Black Sea', 'Carpathian Mountains', 'Iași']);
+  String answer194 =
+      jsonEncode(['Hungarians', 'Dacians', 'Egyptians', 'Celts']);
+  String answer195 = jsonEncode(
+      ['Ottoman Empire', 'Roman Empire', 'Mongol Empire', 'Babylonian Empire']);
+  String answer196 = jsonEncode(['Moscow', 'Saxony', 'Moldova', 'Tuscany']);
+  String answer197 = jsonEncode([
+    'Sea',
+    'Union',
+    'Vlad',
+    'Country',
+    'Unification',
+    'Soviet',
+    'Țepeș',
+    'Romanian'
+  ]);
+  String answer198 =
+      jsonEncode(['Democratic', 'Communist', 'Totalitarian', 'Fascist']);
+  String answer199 = jsonEncode(['2004', '2007', '2010', '1997']);
+  String answer200 = jsonEncode(
+      ['Traian Băsescu', 'Klaus Iohannis', 'Emil Boc', 'Nicolae Ceaușescu']);
+  String answer201 = jsonEncode([
+    'Nicolae Titulescu',
+    'Iancu de Hunedoara',
+    'Ștefan Cel Mare',
+    'Alexandru Ioan Cuza'
+  ]);
+  String answer202 = jsonEncode(['Axis', 'Allies', 'Ottomans', 'Chinese']);
+  String answer203 = jsonEncode([
+    'Iliescu',
+    'Constantinescu',
+    'Nicolae Ceaușescu',
+    'Gheorghe Gheorghiu-Dej'
+  ]);
+  String answer204 = jsonEncode([
+    'Romanian Civil War',
+    'War of Independence',
+    'Balkan War',
+    'Crimean War'
+  ]);
+  String answer205 = jsonEncode(
+      ['Romanization', 'Leveling', 'Dacianization', 'Globalization']);
   String answer206 = jsonEncode([
     'Era',
     'Leader',
@@ -560,8 +563,8 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
     'Gheorghe Gheorghiu-Dej',
     '1989 Revolution',
     'Marea Unire'
-]);
- String answer207 = jsonEncode([
+  ]);
+  String answer207 = jsonEncode([
     'Region',
     'City',
     'Geographic Feature',
@@ -570,10 +573,10 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
     'Bucharest',
     'Carpathian Mountains',
     'Danube'
-]);
+  ]);
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 110;
+  static final _databaseVersion = 113;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -653,7 +656,8 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             coins INTEGER,
             streak_count INTEGER DEFAULT 0,
             last_activity_date TEXT,
-            faces TEXT
+            faces TEXT,
+            double_iq INTEGER
           )''');
 
         await db.execute('''
@@ -664,34 +668,18 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             price INTEGER,
             color INTEGER
           )''');
-  
-        await db.insert('faces', {
-            'face': 1,
-            'bought': 1,
-            'price': 50,
-            'color': 0
-          });
 
-        await db.insert('faces', {
-            'face': 2,
-            'bought': 0,
-            'price': 50,
-            'color': 1
-          });
+        await db
+            .insert('faces', {'face': 1, 'bought': 1, 'price': 50, 'color': 0});
 
-          await db.insert('faces', {
-            'face': 3,
-            'bought': 0,
-            'price': 50,
-            'color': 2
-          });
+        await db
+            .insert('faces', {'face': 2, 'bought': 0, 'price': 50, 'color': 1});
 
-          await db.insert('faces', {
-            'face': 4,
-            'bought': 0,
-            'price': 50,
-            'color': 3
-          });
+        await db
+            .insert('faces', {'face': 3, 'bought': 0, 'price': 50, 'color': 2});
+
+        await db
+            .insert('faces', {'face': 4, 'bought': 0, 'price': 50, 'color': 3});
 
         db.insert('profile', {
           'username': 'username',
@@ -706,15 +694,16 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'coins': 0,
           'streak_count': 0,
           'last_activity_date': DateTime.now().toIso8601String(),
-          'faces': facesList
+          'faces': facesList,
+          'double_iq': 0,
         });
 
         await db.insert('country', {
           'name': 'Romania',
           'geographyLesson':
-              'România este situată în partea de sud-est a Europei, având granițe cu Bulgaria, Serbia, Ungaria, Ucraina și Republica Moldova. Capitala sa, București, este cel mai mare oraș și principal centru cultural, economic și politic al țării. Cu o populație de aproximativ 19 milioane de locuitori, România este una dintre cele mai populate țări din Europa de Est. Teritoriul său este împărțit de Munții Carpați, care formează o barieră naturală ce separă țara în trei regiuni geografice distincte: Transilvania, Moldova și Maramureșul. Acești munți sunt adesea descrisi ca fiind inima României, oferind nu doar peisaje pitorești, ci și o sursă importantă de resurse naturale și biodiversitate. Dunărea, un fluviu navigabil vital, curge prin sudul țării, marcând granița naturală cu Bulgaria și oferind acces la Marea Neagră prin porturile Constanța și Mangalia. Acest aspect geografic a facilitat comerțul și interacțiunile culturale cu alte regiuni din Europa și din întreaga lume. În afară de București, alte orașe importante din România includ Cluj-Napoca, Timișoara, Iași și Constanța, fiecare cu propriile sale bogății culturale și economice. România este o țară în curs de dezvoltare, membră a Uniunii Europene și a NATO, cu o economie mixtă în care industria, agricultura și serviciile joacă roluri importante în creșterea sa economică. Cel mai înalt punct al României este vârful Moldoveanu din Munții Făgăraș, având o altitudine impresionantă de 2.544 de metri. Această înălțime oferă panorame spectaculoase și oportunități pentru alpinism și turism montan. Regiunile istorice ale României, cum ar fi Transilvania, cunoscută pentru peisajele sale montane și orașele istorice, Moldova, renumită pentru siturile sale istorice și moștenirea culturală bogată, și Maramureșul, cu peisajele sale rurale și tradițiile autentice, adaugă unicitate și diversitate acestei țări. Clima României este temperată continentală, cu veri călduroase și ierni reci, fiind influențată de Munții Carpați și de Marea Neagră. Această varietate climatică oferă condiții favorabile pentru o gamă diversă de activități, de la sporturile de iarnă în Carpați până la relaxare la malul Mării Negre în timpul verii.',
+              'Romania is located in the southeastern part of Europe, bordered by Bulgaria, Serbia, Hungary, Ukraine, and the Republic of Moldova. Its capital, Bucharest, is the largest city and the main cultural, economic, and political center of the country. With a population of approximately 19 million people, Romania is one of the most populous countries in Eastern Europe. Its territory is divided by the Carpathian Mountains, which form a natural barrier that separates the country into three distinct geographical regions: Transylvania, Moldova, and Maramureș. These mountains are often described as the heart of Romania, offering not only picturesque landscapes but also an important source of natural resources and biodiversity. The Danube, a vital navigable river, flows through the south of the country, marking the natural border with Bulgaria and providing access to the Black Sea through the ports of Constanța and Mangalia. This geographic feature has facilitated trade and cultural interactions with other regions of Europe and the world. Besides Bucharest, other important cities in Romania include Cluj-Napoca, Timișoara, Iași, and Constanța, each with its own cultural and economic wealth. Romania is a developing country, a member of the European Union and NATO, with a mixed economy in which industry, agriculture, and services play significant roles in its economic growth. The highest point in Romania is Moldoveanu Peak in the Făgăraș Mountains, with an impressive altitude of 2,544 meters. This height offers spectacular panoramas and opportunities for mountaineering and mountain tourism. The historical regions of Romania, such as Transylvania, known for its mountainous landscapes and historical towns; Moldova, renowned for its historical sites and rich cultural heritage; and Maramureș, with its rural landscapes and authentic traditions, add uniqueness and diversity to this country. Romania’s climate is temperate-continental, with hot summers and cold winters, influenced by the Carpathian Mountains and the Black Sea. This climatic variety offers favorable conditions for a diverse range of activities, from winter sports in the Carpathians to relaxation by the Black Sea during summer.',
           'historyLesson':
-              'Într-un colț al Europei, se întinde o țară plină de istorie și tradiție numită România. În vremurile străvechi, teritoriul României era locuit de daci, un popor mândru și cu o cultură bogată. În anul 106 d.Hr., Imperiul Roman a cucerit acest teritoriu, începând procesul de romanizare. Această interacțiune între daci și romani a lăsat o amprentă puternică în identitatea românească, reflectată în limba, obiceiurile și tradițiile poporului. În perioada medievală, teritoriul românesc era împărțit în principate autonome, Moldova și Țara Românească. Sub conducerea domnitorilor lor, cum ar fi Ștefan cel Mare și Vlad Țepeș, aceste principate au luptat pentru independență și au rezistat presiunilor străine, stabilind bazele statelor românești. În secolul al XIX-lea, mișcarea națională a crescut semnificativ și a avut loc Unirea Principatelor Române în 1859, sub domnia lui Alexandru Ioan Cuza. Acest pas important a deschis calea pentru formarea României moderne. În 1877, România și-a proclamat independența față de Imperiul Otoman și a participat la Războiul de Independență, consolidându-și statutul de națiune suverană. Între cele două războaie mondiale, România a experimentat perioade de instabilitate politică și progres economic. În 1918, a avut loc Marea Unire între Transilvania, Moldova și Țara Românească. Totuși, în timpul celui de-al Doilea Război Mondial, țara a fost ocupată de trupele Axei, iar după război, a devenit un stat satelit al Uniunii Sovietice. În 1947, România a devenit o republică comunistă sub conducerea lui Gheorghe Gheorghiu-Dej și apoi a lui Nicolae Ceaușescu. Regimul comunist a fost caracterizat de opresiune politică și o stagnare economică. Totuși, în decembrie 1989, Revoluția Română a dus la căderea regimului comunist și la instaurarea democrației în țară. După Revoluție, România a trecut printr-o perioadă de tranziție dificilă către economia de piață și democrație. În 2007, România a devenit membru al Uniunii Europene, consolidându-și angajamentul față de valorile democratice și integrarea europeană.',
+              'In a corner of Europe lies a country rich in history and tradition called Romania. In ancient times, the territory of Romania was inhabited by the Dacians, a proud people with a rich culture. In 106 AD, the Roman Empire conquered this territory, beginning the process of Romanization. This interaction between the Dacians and the Romans left a strong imprint on Romanian identity, reflected in the language, customs, and traditions of the people. During the medieval period, the Romanian territory was divided into autonomous principalities, Moldavia and Wallachia. Under the leadership of their rulers, such as Stephen the Great and Vlad the Impaler, these principalities fought for independence and resisted foreign pressures, laying the foundations for the Romanian states. In the 19th century, the national movement grew significantly, and the Union of the Romanian Principalities took place in 1859 under the reign of Alexandru Ioan Cuza. This important step paved the way for the formation of modern Romania. In 1877, Romania proclaimed its independence from the Ottoman Empire and participated in the War of Independence, solidifying its status as a sovereign nation. Between the two world wars, Romania experienced periods of political instability and economic progress. In 1918, the Great Union between Transylvania, Moldavia, and Wallachia occurred. However, during World War II, the country was occupied by Axis forces, and after the war, it became a satellite state of the Soviet Union. In 1947, Romania became a communist republic under the leadership of Gheorghe Gheorghiu-Dej and later Nicolae Ceaușescu. The communist regime was characterized by political oppression and economic stagnation. However, in December 1989, the Romanian Revolution led to the fall of the communist regime and the establishment of democracy in the country. After the Revolution, Romania went through a difficult transition period towards a market economy and democracy. In 2007, Romania became a member of the European Union, solidifying its commitment to democratic values and European integration.',
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
@@ -723,9 +712,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
         await db.insert('country', {
           'name': 'Spain',
           'geographyLesson':
-              'Spania este situată în partea de sud-vest a Europei, având granițe cu Franța la nord și nord-est, Portugalia la vest și Andorra și Gibraltar la sud. Capitala sa, Madrid, este cel mai mare oraș și centrul cultural, economic și politic al țării. Cu o populație de aproximativ 47 de milioane de locuitori, Spania este una dintre cele mai populate țări din Europa. Teritoriul său este caracterizat de o mare varietate geografică, cuprinzând zone montane, câmpii, și țărmuri maritime. Munții Pirinei formează granița nordică a țării, oferind peisaje montane spectaculoase și oportunități pentru sporturi de iarnă. În centrul și sudul Spaniei se află o serie de lanțuri muntoase, cum ar fi Munții Cantabrici, Munții Centrali și Munții Betici, care influențează climatul și geografia regiunilor respective. De asemenea, Spania are o rețea vastă de râuri, precum Ebro, Tagus și Guadalquivir, care contribuie la fertilitatea câmpiilor și la dezvoltarea agriculturii. Un aspect geografic semnificativ al Spaniei este Peninsula Iberică, care include și Portugal, și este înconjurată de Oceanul Atlantic și Marea Mediterană. Această poziție strategică a facilitat comerțul maritim și a adus influențe culturale diverse de-a lungul istoriei. În plus față de Madrid, alte orașe importante din Spania includ Barcelona, Valencia, Sevilla și Bilbao, fiecare având caracteristici geografice și culturale distincte. Spania este o destinație turistică populară datorită plajelor sale mediteraneene, orașelor istorice și peisajelor naturale variate. Cel mai înalt vârf din Spania este vârful Teide din Insulele Canare, având o altitudine de 3.718 metri. Acest vârf vulcanic oferă oportunități pentru explorare și turism ecologic într-un mediu unic. Clima Spaniei variază de la mediteraneană în sud la temperată în nord, iar influențele oceanice și continentale se resimt în diferite regiuni ale țării. Această diversitate climatică oferă condiții favorabile pentru o gamă largă de activități în aer liber și agricultură. Spania include mai multe arhipelaguri importante, cum ar fi Insulele Baleare în Marea Mediterană și Insulele Canare în Oceanul Atlantic. Insulele Baleare, printre care se numără Mallorca, Menorca, Ibiza și Formentera, sunt cunoscute pentru plajele lor frumoase, apele cristaline și viața de noapte vibrantă. Aceste insule sunt o destinație populară pentru turiști din întreaga lume, oferind o varietate de activități recreative și culturale. Insulele Canare, situate în largul coastelor africane, sunt formate din țapuscă vulcanică și oferă un peisaj spectaculos și diversitate ecologică. Insula Tenerife este cunoscută pentru vârful său vulcanic Teide, iar Gran Canaria pentru dunele sale de nisip și pentru viața sa maritimă bogată.',
+              'Spain is located in the southwestern part of Europe, bordered by France to the north and northeast, Portugal to the west, and Andorra and Gibraltar to the south. Its capital, Madrid, is the largest city and the cultural, economic, and political center of the country. With a population of approximately 47 million people, Spain is one of the most populous countries in Europe. Its territory is characterized by a great geographical variety, including mountainous areas, plains, and coastal shores. The Pyrenees form the northern border of the country, offering spectacular mountain landscapes and opportunities for winter sports. In central and southern Spain, there are several mountain ranges such as the Cantabrian Mountains, the Central Mountains, and the Betic Mountains, which influence the climate and geography of the respective regions. Additionally, Spain has a vast network of rivers, such as the Ebro, Tagus, and Guadalquivir, which contribute to the fertility of the plains and the development of agriculture. A significant geographical feature of Spain is the Iberian Peninsula, which also includes Portugal, and is surrounded by the Atlantic Ocean and the Mediterranean Sea. This strategic position has facilitated maritime trade and brought diverse cultural influences throughout history. In addition to Madrid, other important cities in Spain include Barcelona, Valencia, Seville, and Bilbao, each with its own distinct geographical and cultural characteristics. Spain is a popular tourist destination due to its Mediterranean beaches, historical cities, and varied natural landscapes. The highest peak in Spain is Mount Teide in the Canary Islands, with an altitude of 3,718 meters. This volcanic peak offers opportunities for exploration and ecological tourism in a unique environment. The climate of Spain ranges from Mediterranean in the south to temperate in the north, with oceanic and continental influences felt in different regions of the country. This climatic diversity provides favorable conditions for a wide range of outdoor activities and agriculture. Spain includes several important archipelagos, such as the Balearic Islands in the Mediterranean Sea and the Canary Islands in the Atlantic Ocean. The Balearic Islands, including Mallorca, Menorca, Ibiza, and Formentera, are known for their beautiful beaches, crystal-clear waters, and vibrant nightlife. These islands are a popular destination for tourists from around the world, offering a variety of recreational and cultural activities. The Canary Islands, located off the African coast, are formed from volcanic rock and offer a spectacular landscape and ecological diversity. Tenerife is known for its volcanic peak Teide, while Gran Canaria is famous for its sand dunes and rich marine life.',
           'historyLesson':
-              'În sud-vestul Europei, se află o țară cu o moștenire istorică bogată numită Spania. În antichitate, teritoriul spaniol era locuit de popoare precum ibero-geții și celtiberii, care au fost ulterior colonizați de romani, contribuind la formarea provinciei romane Hispania. În Evul Mediu, Spania a fost împărțită în numeroase regate și taifas, fiecare cu propria lor cultură și identitate. Printre cele mai importante regate se numărau Regatul Castiliei, Regatul Aragonului și Regatul Navarrei. În această perioadă, au existat și perioade de coabitare și conflicte între creștini, musulmani și evrei, evidențiind diversitatea religioasă și culturală a peninsulei iberice. În secolul al XV-lea, prin căsătoria regilor Ferdinand al II-lea al Aragonului și Isabela I a Castiliei, a fost creată o uniune între cele două regate, marcând începutul formării Spaniei moderne. Sub conducerea lor, a fost finalizată Reconquista, recucerirea teritoriilor musulmane din Spania, iar în 1492 a fost semnat decretul de expulzare a evreilor și a maurilor, consolidând controlul catolic asupra regatului. Perioada cuceririi și colonizării Americii de către spanioli a adus Spaniei o mare bogăție și putere în secolele XVI-XVII. Această epocă a fost marcată de mari exploratori și cuceritori precum Cristofor Columb, Hernán Cortés și Francisco Pizarro, care au extins influența spaniolă în întreaga lume. În secolul al XIX-lea, Spania a fost implicată în numeroase conflicte interne și externe, inclusiv Războiul Peninsular împotriva armatelor lui Napoleon și pierderea majorității coloniilor sale americane în urma războaielor de independență din America Latină. În secolul al XX-lea, Spania a fost martoră a unor perioade de instabilitate politică, inclusiv dictatura lui Francisco Franco între 1939 și 1975. După moartea sa, Spania a trecut printr-o tranziție către democrație, culminând cu adoptarea unei constituții democratice în 1978. În prezent, Spania este o monarhie parlamentară și membru al Uniunii Europene, având o economie diversificată și o moștenire culturală și istorică impresionantă.',
+              'In southwestern Europe lies a country with a rich historical heritage called Spain. In ancient times, the Spanish territory was inhabited by peoples such as the Iberians and Celtiberians, who were later colonized by the Romans, contributing to the formation of the Roman province of Hispania. During the Middle Ages, Spain was divided into numerous kingdoms and taifas, each with its own culture and identity. Among the most important kingdoms were the Kingdom of Castile, the Kingdom of Aragon, and the Kingdom of Navarre. During this period, there were also times of coexistence and conflict among Christians, Muslims, and Jews, highlighting the religious and cultural diversity of the Iberian Peninsula. In the 15th century, through the marriage of King Ferdinand II of Aragon and Queen Isabella I of Castile, a union between the two kingdoms was created, marking the beginning of the formation of modern Spain. Under their rule, the Reconquista was completed, the reconquest of Muslim territories in Spain, and in 1492, the decree for the expulsion of Jews and Moors was signed, consolidating Catholic control over the kingdom. The period of conquest and colonization of the Americas by the Spaniards brought great wealth and power to Spain in the 16th and 17th centuries. This era was marked by great explorers and conquerors such as Christopher Columbus, Hernán Cortés, and Francisco Pizarro, who expanded Spanish influence worldwide. In the 19th century, Spain was involved in numerous internal and external conflicts, including the Peninsular War against Napoleon armies and the loss of most of its American colonies following the Latin American wars of independence. In the 20th century, Spain witnessed periods of political instability, including the dictatorship of Francisco Franco from 1939 to 1975. After his death, Spain underwent a transition to democracy, culminating in the adoption of a democratic constitution in 1978. Today, Spain is a parliamentary monarchy and a member of the European Union, with a diversified economy and an impressive cultural and historical heritage.',
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
@@ -734,9 +723,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
         await db.insert('country', {
           'name': 'France',
           'geographyLesson':
-              'Geografia Franței oferă o diversitate remarcabilă, cuprinzând regiuni montane, câmpii fertile și litorale spectaculoase. Situată în partea de vest a Europei, Franța se învecinează cu Spania la sud-vest, Belgia și Luxemburg la nord-est, Germania și Elveția la est, Italia la sud-est și Marea Mediterană la sud. Capitala Franței, Parisul, este unul dintre cele mai mari centre culturale și economice ale lumii, cunoscut pentru atracțiile sale turistice remarcabile, precum Turnul Eiffel, Catedrala Notre-Dame și Muzeul Luvru. Cu o populație de aproximativ 67 de milioane de locuitori, Franța este una dintre cele mai populate țări din Europa. Relieful Franței este variat și spectaculos. Munții Alpi se întind în partea de sud-est a țării, marcând granița cu Italia, și includ cel mai înalt vârf al Franței, Mont Blanc, cu o altitudine de 4.810 metri. În partea sud-vestică, Munții Pirinei formează o graniță naturală cu Spania, oferind peisaje montane impresionante și facilitând activități sportive precum schiul și alpinismul. În nordul Franței se găsesc Câmpiile Nordului și Câmpiile Loarei, regiuni fertile care susțin o agricultură bogată și diverse industrii. De asemenea, Franța este traversată de numeroase râuri importante, cum ar fi Sena, Loara și Rhone, care au avut un impact semnificativ asupra dezvoltării sale economice și culturale. Franța este recunoscută și pentru coasta sa pitorească, care se întinde de-a lungul Mării Mediterane și a Oceanului Atlantic. Riviera Franceză, situată în sud-estul țării, este cunoscută pentru stațiunile sale de lux și plajele frumoase, în timp ce Bretania, în nord-vest, este faimoasă pentru peisajele sale sălbatice și stâncile impresionante. În afară de Paris, alte orașe importante din Franța includ Lyon, Marsilia, Bordeaux și Strasbourg, fiecare având propria sa identitate culturală și atracții distincte. Franța este, de asemenea, renumită pentru vinurile sale fine, gastronomia rafinată și cultura bogată. Clima Franței variază de la mediteraneană în sud la temperată în nord, cu influențe oceanice și continentale. Această diversitate climatică permite dezvoltarea unei game variate de culturi agricole și susține turismul pe tot parcursul anului.',
+              'France\'s geography offers remarkable diversity, encompassing mountainous regions, fertile plains, and spectacular coastlines. Located in western Europe, France borders Spain to the southwest, Belgium and Luxembourg to the northeast, Germany and Switzerland to the east, Italy to the southeast, and the Mediterranean Sea to the south. The capital of France, Paris, is one of the worlds largest cultural and economic centers, known for its remarkable tourist attractions such as the Eiffel Tower, Notre-Dame Cathedral, and the Louvre Museum. With a population of approximately 67 million people, France is one of the most populous countries in Europe. The terrain of France is varied and spectacular. The Alps extend in the southeastern part of the country, marking the border with Italy, and include France\'s highest peak, Mont Blanc, with an altitude of 4,810 meters. In the southwestern part, the Pyrenees form a natural border with Spain, offering impressive mountainous landscapes and facilitating sports activities such as skiing and mountaineering. In northern France, the Northern Plains and the Loire Plains are fertile regions that support rich agriculture and diverse industries. France is also traversed by numerous important rivers, such as the Seine, Loire, and Rhone, which have had a significant impact on its economic and cultural development. France is recognized for its picturesque coastline, which stretches along the Mediterranean Sea and the Atlantic Ocean. The French Riviera, located in the southeast of the country, is known for its luxury resorts and beautiful beaches, while Brittany, in the northwest, is famous for its wild landscapes and impressive cliffs. Besides Paris, other important cities in France include Lyon, Marseille, Bordeaux, and Strasbourg, each with its own cultural identity and distinct attractions. France is also renowned for its fine wines, refined gastronomy, and rich culture. The climate of France varies from Mediterranean in the south to temperate in the north, with oceanic and continental influences. This climatic diversity allows for the development of a wide range of agricultural crops and supports tourism throughout the year.',
           'historyLesson':
-              'Istoria Franței este una dintre cele mai fascinante din Europa, începând cu antichitatea și ajungând până în prezent. În acele vremuri îndepărtate, teritoriul francez era populat de triburi celtice și galice, iar apoi a fost colonizat de romani, formând provincia romană Gallia. Evul Mediu a adus feudalismul și fragmentarea țării în regate și principate, precum Regatul Franciei și Ducatul Normandiei. În secolul al XV-lea, Franța a început să se consolideze sub conducerea lui Ludovic al XI-lea, marcând începutul formării Franței moderne. Revolutia Franceză din 1789 a pus capăt monarhiei și a instaurat o republică, urmată de perioada Napoleonică care a adus expansiune teritorială și influență sub conducerea lui Napoleon Bonaparte. Secolul al XIX-lea a fost plin de schimbări și conflicte majore, inclusiv Războiul Franco-Prusac și instaurarea celei de-a Treia Republici în 1870. Secolul al XX-lea a fost marcat de cele două războaie mondiale și ocupația nazistă între 1940 și 1944. După Al Doilea Război Mondial, Franța a fost una dintre puterile fondatoare ale Uniunii Europene și a cunoscut procesul de decolonizare, pierzând majoritatea coloniilor sale în Africa și Asia. Astăzi, Franța rămâne una dintre cele mai importante și influente țări din lume, cu o economie diversificată, un sistem politic stabil și o moștenire culturală și artistică bogată. Gastronomia franceză este renumită la nivel mondial, iar arta și arhitectura sa impresionantă atrag milioane de turiști în fiecare an. Contribuțiile sale în domenii precum știința, tehnologia și literatura continuă să influențeze lumea modernă, consolidând statutul Franței ca una dintre marile puteri ale secolului XXI.',
+              'The history of France is one of the most fascinating in Europe, beginning in antiquity and continuing to the present day. In those distant times, the French territory was populated by Celtic and Gallic tribes and was later colonized by the Romans, forming the Roman province of Gallia. The Middle Ages brought feudalism and the fragmentation of the country into kingdoms and principalities, such as the Kingdom of France and the Duchy of Normandy. In the 15th century, France began to consolidate under the leadership of Louis XI, marking the beginning of the formation of modern France. The French Revolution of 1789 ended the monarchy and established a republic, followed by the Napoleonic era, which brought territorial expansion and influence under the leadership of Napoleon Bonaparte. The 19th century was full of major changes and conflicts, including the Franco-Prussian War and the establishment of the Third Republic in 1870. The 20th century was marked by the two World Wars and the Nazi occupation between 1940 and 1944. After World War II, France was one of the founding powers of the European Union and underwent the process of decolonization, losing most of its colonies in Africa and Asia. Today, France remains one of the most important and influential countries in the world, with a diversified economy, a stable political system, and a rich cultural and artistic heritage. French gastronomy is renowned worldwide, and its impressive art and architecture attract millions of tourists each year. Its contributions in fields such as science, technology, and literature continue to influence the modern world, consolidating France\'s status as one of the great powers of the 21st century.',
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
@@ -745,9 +734,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
         await db.insert('country', {
           'name': 'United States',
           'geographyLesson':
-              'Statele Unite ale Americii (SUA), una dintre cele mai mari și influente țări din lume, se află în America de Nord, având granițe cu Canada la nord și Mexic la sud. Capitala sa este Washington, D.C., iar New York City este un important centru cultural, economic și financiar. Teritoriul SUA este extrem de divers, cuprinzând munți, câmpii, deșerturi și regiuni de coastă. La vest se găsesc Munții Stâncoși, iar la est se întinde Marea de Est. La sud se află Deșertul Sonora, iar la nord-vest se întinde Podișul Columbia. Aceste caracteristici geografice influențează clima și economia țării. Râurile majore, cum ar fi Mississippi și Missouri, traversează SUA, furnizând resurse naturale și fiind vitale pentru transportul intern. Mississippi este unul dintre cele mai lungi râuri din lume și a avut o mare importanță în dezvoltarea istorică și economică a țării. O caracteristică geografică iconică a SUA o reprezintă Parcul Național Yellowstone, situat în statul Wyoming, care găzduiește gheizere, izvoare termale și o varietate de faună sălbatică. Printre speciile de animale emblemă din Parcul Național Yellowstone se numără ursul grizzly, care este considerat un simbol al sălbăticiei și al puterii naturii. Ursul grizzly poate fi întâlnit în diferite părți ale parcului, căutând hrană în zonele împădurite sau de-a lungul cursurilor de apă. SUA are și o coastă extinsă, cu orașe maritime importante precum Los Angeles, San Francisco și Miami. Aceste orașe portuare au jucat un rol crucial în dezvoltarea comerțului maritim și a economiei americane. În plus față de Washington, D.C. și New York City, alte orașe importante din SUA includ Los Angeles, Chicago și Houston, fiecare având caracteristici geografice și culturale distincte. SUA este o destinație turistică populară datorită diversității sale culturale, a parcurilor naționale și a orașelor vibrante. Clima SUA variază considerabil de la nord la sud și de la est la vest, cu regiuni temperate, deșertice și subtropicale. În nord-est, iernile sunt reci și zăpădite, în timp ce în sud-vest verile sunt fierbinți și uscate. SUA include și mai multe teritorii în afara continentului principal, cum ar fi Hawaii și Puerto Rico, care oferă peisaje spectaculoase și culturi diverse. SUA este cunoscută pentru diversitatea sa culinară, cu influențe din întreaga lume, inclusiv mâncăruri tradiționale precum burgeri, pizza și friptură, dar și specialități regionale cum ar fi gumbo din Louisiana și sushi din California',
+              'The United States of America (USA), one of the largest and most influential countries in the world, is located in North America, bordering Canada to the north and Mexico to the south. Its capital is Washington, D.C., and New York City is a major cultural, economic, and financial center. The US territory is extremely diverse, including mountains, plains, deserts, and coastal regions. In the west, the Rocky Mountains are found, and to the east stretches the Atlantic Seaboard. In the south is the Sonoran Desert, and in the northwest is the Columbia Plateau. These geographic features influence the country’s climate and economy. Major rivers, such as the Mississippi and Missouri, traverse the USA, providing natural resources and being vital for internal transportation. The Mississippi River is one of the longest rivers in the world and has been crucial in the historical and economic development of the country. An iconic geographical feature of the USA is Yellowstone National Park, located in Wyoming, which hosts geysers, hot springs, and a variety of wildlife. Among the emblematic animal species in Yellowstone National Park is the grizzly bear, which is considered a symbol of wilderness and the power of nature. The grizzly bear can be found in various parts of the park, searching for food in the forested areas or along the watercourses. The USA also has an extensive coastline, with major maritime cities such as Los Angeles, San Francisco, and Miami. These port cities have played a crucial role in the development of maritime trade and the American economy. In addition to Washington, D.C. and New York City, other important cities in the USA include Los Angeles, Chicago, and Houston, each with distinct geographic and cultural features. The USA is a popular tourist destination due to its cultural diversity, national parks, and vibrant cities. The climate of the USA varies considerably from north to south and east to west, with temperate, desert, and subtropical regions. In the northeast, winters are cold and snowy, while in the southwest, summers are hot and dry. The USA also includes several territories outside the main continent, such as Hawaii and Puerto Rico, which offer spectacular landscapes and diverse cultures. The USA is known for its culinary diversity, with influences from around the world, including traditional dishes like burgers, pizza, and steak, as well as regional specialties such as gumbo from Louisiana and sushi from California',
           'historyLesson':
-              'Înaintea colonizării europene, teritoriul actual al Statelor Unite era locuit de populații amerindiene diverse, care aveau culturi și societăți variate. Cu sosirea exploratorilor europeni în secolul al XVI-lea, începe procesul de colonizare a Americii de Nord. În secolul al XVIII-lea, coloniile britanice din America de Nord au luptat pentru independență împotriva coroanei britanice. Declarația de Independență a fost adoptată în 1776, marcând începutul Statelor Unite ale Americii ca națiune independentă. În secolul al XIX-lea, Statele Unite au experimentat o extindere teritorială masivă spre vest, într-un proces cunoscut sub numele de "Manifest Destiny". Însă, această expansiune a alimentat tensiuni între statele slave și cele non-slave, culminând în Războiul Civil American (1861-1865), care a fost luptat între statele care susțineau sclavia și cele care se opuneau ei. După Războiul Civil, Statele Unite au cunoscut o perioadă de industrializare rapidă și dezvoltare economică. În secolul al XX-lea, ele au devenit una dintre cele mai puternice și influente națiuni din lume, jucând un rol major în ambele războaie mondiale și devenind un pilon al economiei globale. Prohibiția a fost perioada în care producția, distribuția și consumul de alcool au fost interzise prin lege în întreaga țară, între anii 1920 și 1933. Această politică a fost implementată prin adoptarea celui de-al 18-lea amendament la Constituția SUA în 1919 și prin Legea Volstead. În prezent, Statele Unite rămân o putere economică și militară dominantă, dar se confruntă cu o serie de provocări interne și internaționale, inclusiv inegalitatea economică, schimbările climatice și tensiunile geopolitice. Cu toate acestea, diversitatea sa culturală, inovația și angajamentul față de valorile democratice continuă să definească națiunea și să inspire lumea.',
+              'Before European colonization, the current territory of the United States was inhabited by diverse Native American populations, who had varied cultures and societies. With the arrival of European explorers in the 16th century, the process of colonizing North America began. In the 18th century, the British colonies in North America fought for independence against the British crown. The Declaration of Independence was adopted in 1776, marking the beginning of the United States of America as an independent nation. In the 19th century, the United States experienced massive territorial expansion westward, in a process known as "Manifest Destiny". However, this expansion fueled tensions between slave and non-slave states, culminating in the American Civil War (1861-1865), which was fought between states that supported slavery and those that opposed it. After the Civil War, the United States experienced a period of rapid industrialization and economic development. In the 20th century, it became one of the most powerful and influential nations in the world, playing a major role in both world wars and becoming a pillar of the global economy. Prohibition was the period during which the production, distribution, and consumption of alcohol were banned by law across the country, from 1920 to 1933. This policy was implemented through the adoption of the 18th Amendment to the US Constitution in 1919 and the Volstead Act. Today, the United States remains a dominant economic and military power, but it faces a series of internal and international challenges, including economic inequality, climate change, and geopolitical tensions. Nevertheless, its cultural diversity, innovation, and commitment to democratic values continue to define the nation and inspire the world.',
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
@@ -756,9 +745,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
         await db.insert('country', {
           'name': 'Italy',
           'geographyLesson':
-              'Italia este situată în partea de sud a Europei, având granițe cu Franța la nord-vest, Elveția și Austria la nord și nord-est, Slovenia la nord-est și Croația la est. Capitala sa, Roma, este cel mai mare oraș și centrul cultural, istoric și politic al țării. Cu o populație de aproximativ 60 de milioane de locuitori, Italia este una dintre cele mai populate țări din Europa. Teritoriul său este caracterizat de o varietate geografică remarcabilă, cuprinzând munți, câmpii și țărmuri maritime. Munții Alpi formează granița nordică a țării, oferind peisaje alpine spectaculoase și oportunități pentru sporturi de iarnă. În centrul Italiei se află o serie de lanțuri muntoase, cum ar fi Apeninii, care se întind pe aproape toată lungimea peninsulei italiene și influențează climatul și geografia regiunilor respective. De asemenea, Italia are o rețea extinsă de râuri, precum Po, Tevere și Arno, care contribuie la fertilitatea câmpiilor și la dezvoltarea agriculturii. Un aspect geografic semnificativ al Italiei este Peninsula Italică, care se întinde în Marea Mediterană și este înconjurată de mai multe insule, cum ar fi Sicilia și Sardinia. Această poziție strategică a favorizat comerțul maritim și a adus influențe culturale diverse de-a lungul istoriei. Vezuviul este un vulcan activ situat în apropierea orașului Napoli din regiunea Campania din sudul Italiei. Este cunoscut în special pentru erupția sa devastatoare din anul 79 d.Hr., care a dus la distrugerea orașelor Pompei și Herculaneum. Acest vulcan este considerat unul dintre cei mai periculoși din lume din cauza populației dense și a impactului potențial asupra orașelor înconjurătoare în cazul unei noi erupții majore. În plus față de Roma, alte orașe importante din Italia includ Milano, Napoli, Florența și Veneția, fiecare având caracteristici geografice și culturale distincte. Italia este o destinație turistică populară datorită orașelor istorice, artei și arhitecturii sale bogate și peisajelor naturale variate. Cel mai înalt vârf din Italia este vârful Mont Blanc din Alpii Graiei, având o altitudine de 4.808 metri. Acest vârf glaciar oferă oportunități pentru alpinism și turism ecologic într-un mediu spectaculos. Italia este cunoscută în întreaga lume pentru producția sa bogată și variată de vinuri. Regiunea Toscana, în special, este renumită pentru vinul Chianti, un vin roșu sec. Clima Italiei variază de la mediteraneană în sud la temperată în nord, iar influențele oceanice și continentale se resimt în diferite regiuni ale țării. Această diversitate climatică oferă condiții favorabile pentru o gamă largă de activități în aer liber și agricultură. Italia include și mai multe insule importante, cum ar fi Sicilia și Sardinia, care au peisaje spectaculoase și o istorie bogată.',
+              'Italy is located in southern Europe, bordered by France to the northwest, Switzerland and Austria to the north and northeast, Slovenia to the northeast, and Croatia to the east. Its capital, Rome, is the largest city and the cultural, historical, and political center of the country. With a population of approximately 60 million inhabitants, Italy is one of the most populous countries in Europe. Its territory is characterized by remarkable geographical diversity, including mountains, plains, and coastal shores. The Alps form the northern border of the country, offering spectacular alpine landscapes and opportunities for winter sports. In central Italy, there are a series of mountain ranges such as the Apennines, which stretch almost the entire length of the Italian peninsula and influence the climate and geography of the respective regions. Italy also has an extensive network of rivers, such as the Po, Tiber, and Arno, which contribute to the fertility of the plains and the development of agriculture. A significant geographical aspect of Italy is the Italian Peninsula, which extends into the Mediterranean Sea and is surrounded by several islands, such as Sicily and Sardinia. This strategic position has favored maritime trade and brought diverse cultural influences throughout history. Mount Vesuvius is an active volcano located near the city of Naples in the Campania region of southern Italy. It is especially known for its devastating eruption in 79 AD, which led to the destruction of the cities of Pompeii and Herculaneum. This volcano is considered one of the most dangerous in the world due to the dense population and the potential impact on surrounding cities in the event of a major eruption. In addition to Rome, other important cities in Italy include Milan, Naples, Florence, and Venice, each with distinct geographical and cultural characteristics. Italy is a popular tourist destination due to its historic cities, rich art and architecture, and varied natural landscapes. The highest peak in Italy is Mont Blanc in the Graian Alps, with an altitude of 4,808 meters. This glacial peak offers opportunities for mountaineering and ecotourism in a spectacular environment. Italy is known worldwide for its rich and varied wine production. The Tuscany region, in particular, is renowned for Chianti, a dry red wine. Italy\'s climate varies from Mediterranean in the south to temperate in the north, with oceanic and continental influences felt in different regions of the country. This climatic diversity provides favorable conditions for a wide range of outdoor activities and agriculture. Italy also includes several important islands, such as Sicily and Sardinia, which have spectacular landscapes and a rich history.',
           'historyLesson':
-              'În sudul Europei, se găsește o țară cu o istorie bogată și variată - Italia. În antichitate, peninsula italiană era locuită de diverse popoare precum etruscii, grecii și samniții, dar a devenit cunoscută mai ales prin cucerirea romană, care a dus la formarea Republicii Romane și apoi a Imperiului Roman. În Evul Mediu, Italia a fost divizată în numeroase state și republici independente, precum Republica Venețiană, Ducatul Milano, Republica Florentină și Statul Papal. Această perioadă a fost marcată de competiția între aceste entități pentru putere și control.În timpul Renașterii, Italia a fost epicentrul unui puternic mișcări culturale și artistice, marcând o perioadă de înflorire în domenii precum arta, arhitectura și literatura. Personalități precum Leonardo da Vinci, Michelangelo și Dante Alighieri au contribuit la reputația de centru cultural al Europei al Italiei. În secolele XVIII și XIX, Italia a fost scena unor conflicte și transformări politice importante, incluzând războaiele napoleoniene și procesul de unificare a Italiei sub conducerea lui Giuseppe Garibaldi și a lui Camillo Benso, conte de Cavour. Acest proces a dus la formarea statului italian modern, care a fost completat în 1871, când Roma a devenit capitala Italiei. În secolul al XX-lea, Italia a fost implicată în ambele războaie mondiale. În Primul Război Mondial, Italia s-a alăturat Puterilor Aliate în 1915, în speranța că ar obține teritorii promițătoare de la Puterile Centrale. Luptele au fost concentrate în principal pe frontul italian în Alpii Orientali și au implicat confruntări dure cu trupele austro-ungare. După război, Italia a fost dezamăgită de rezultatele Conferinței de Pace de la Paris, care nu a satisfăcut așteptările sale teritoriale. Această perioadă a generat nemulțumiri și instabilitate politică în Italia, pregătind terenul pentru ascensiunea fascismului. În 1957, Italia a fost una dintre țările fondatoare ale Comunității Economice Europene (CEE), precursorul Uniunii Europene, semnând Tratatul de la Roma. Astfel, Italia a fost implicată încă de la început în procesul de integrare europeană. Italia este cunoscută pentru peisajele sale pitorești, patrimoniul său istoric și cultural bogat, bucătăria sa renumită și contribuțiile sale la domenii precum moda și designul.',
+              'In southern Europe lies a country with a rich and varied history - Italy. In ancient times, the Italian peninsula was inhabited by diverse peoples such as the Etruscans, Greeks, and Samnites, but it became best known through Roman conquest, which led to the formation of the Roman Republic and later the Roman Empire. In the Middle Ages, Italy was divided into numerous independent states and republics, such as the Venetian Republic, the Duchy of Milan, the Florentine Republic, and the Papal States. This period was marked by competition between these entities for power and control. During the Renaissance, Italy was the epicenter of a powerful cultural and artistic movement, marking a period of flourishing in fields such as art, architecture, and literature. Figures such as Leonardo da Vinci, Michelangelo, and Dante Alighieri contributed to Italy’s reputation as the cultural center of Europe. In the 18th and 19th centuries, Italy was the scene of significant political conflicts and transformations, including the Napoleonic wars and the process of Italian unification under the leadership of Giuseppe Garibaldi and Camillo Benso, Count of Cavour. This process led to the formation of the modern Italian state, which was completed in 1871 when Rome became the capital of Italy. In the 20th century, Italy was involved in both world wars. In World War I, Italy joined the Allied Powers in 1915, hoping to gain promising territories from the Central Powers. The battles were mainly concentrated on the Italian front in the Eastern Alps and involved tough confrontations with Austro-Hungarian troops. After the war, Italy was disappointed by the results of the Paris Peace Conference, which did not meet its territorial expectations. This period generated dissatisfaction and political instability in Italy, paving the way for the rise of fascism. In 1957, Italy was one of the founding countries of the European Economic Community (EEC), the precursor to the European Union, by signing the Treaty of Rome. Thus, Italy was involved from the beginning in the process of European integration. Italy is known for its picturesque landscapes, rich historical and cultural heritage, renowned cuisine, and contributions to fields such as fashion and design.',
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
@@ -767,15 +756,15 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
         await db.insert('country', {
           'name': 'China',
           'geographyLesson':
-              'China, una dintre cele mai mari țări din lume ca suprafață și populație, este situată în Asia de Est, având granițe cu mai multe țări importante precum Rusia și Mongolia la nord, India, Nepal și Bhutan la sud, și Coreea de Nord, Vietnam și Laos la sud-est. Capitala sa, Beijing, este un centru cultural, economic și politic major, iar Shanghai este unul dintre cele mai mari orașe din lume, fiind un important centru financiar și comercial. Teritoriul Chinei este caracterizat de o varietate geografică impresionantă, cuprinzând munți, câmpii și regiuni de coastă. La vest, munții Himalaya formează o graniță naturală, iar la sud-vest se găsesc Munții Tian, care includ cel mai înalt vârf din China, vârful Everest. În partea de nord se află Munții Altai, iar la est se întind Munții Qinling. Aceste lanțuri muntoase influențează în mod semnificativ clima și geografia țării. Râurile majore, precum Yangtze și Fluviul Galben, traversează China, furnizând apă pentru irigații și transportul naval. Yangtze este al treilea cel mai lung râu din lume și are o importanță culturală și economică semnificativă, cu orașe importante precum Chongqing și Wuhan aflate pe malurile sale. O caracteristică geografică distinctivă a Chinei o reprezintă Marele Zid, o structură masivă de apărare construită de-a lungul secolelor pentru a proteja imperiul chinez împotriva invaziilor din nord. Acest monument istoric impresionant este o atracție turistică de prim rang și simbolizează bogata istorie și cultura a Chinei. China are și o coastă extinsă, cu orașe portuare importante precum Hong Kong, Guangzhou și Shenzhen. Aceste regiuni au jucat un rol crucial în dezvoltarea comerțului maritim și a economiei chineze moderne. În plus față de Beijing și Shanghai, alte orașe importante din China includ Guangzhou, Chengdu și Xi an, fiecare având caracteristici geografice și culturale distincte. China este o destinație turistică populară datorită patrimoniului său cultural bogat, precum și peisajelor naturale variate, cum ar fi Muntele Huangshan și Yangshuo Karst. Clima Chinei variază considerabil de la nord la sud și de la est la vest, cu regiuni temperate, subtropicale și tropicale. În nord, iernile sunt reci și uscate, în timp ce în sud verile sunt calde și umede. China include și mai multe regiuni autonome, cum ar fi Tibetul și Xinjiang, care au peisaje spectaculoase și o diversitate culturală remarcabilă. China este, de asemenea, renumită pentru bogata sa istorie culinară și diversitatea sa gastronomică, care variază de la mâncăruri picante din Sichuan la delicatese din Shanghai și fructe de mare din Canton.',
+              'China, one of the largest countries in the world by area and population, is located in East Asia, bordered by several major countries such as Russia and Mongolia to the north, India, Nepal, and Bhutan to the south, and North Korea, Vietnam, and Laos to the southeast. Its capital, Beijing, is a major cultural, economic, and political center, while Shanghai is one of the largest cities in the world, serving as an important financial and commercial hub. China\'s territory is characterized by impressive geographical diversity, including mountains, plains, and coastal regions. To the west, the Himalayas form a natural border, while the Tian Mountains, which include the highest peak in China, Mount Everest, are located to the southwest. In the north are the Altai Mountains, and to the east stretch the Qinling Mountains. These mountain ranges significantly influence the country\'s climate and geography. Major rivers, such as the Yangtze and the Yellow River, traverse China, providing water for irrigation and river transport. The Yangtze is the third longest river in the world and holds significant cultural and economic importance, with major cities such as Chongqing and Wuhan located along its banks. A distinctive geographical feature of China is the Great Wall, a massive defensive structure built over the centuries to protect the Chinese empire against invasions from the north. This impressive historical monument is a top tourist attraction and symbolizes China\'s rich history and culture. China also has an extensive coastline, with important port cities such as Hong Kong, Guangzhou, and Shenzhen. These regions have played a crucial role in the development of maritime trade and the modern Chinese economy. In addition to Beijing and Shanghai, other important cities in China include Guangzhou, Chengdu, and Xi\'an, each with distinct geographical and cultural characteristics. China is a popular tourist destination due to its rich cultural heritage and varied natural landscapes, such as Mount Huangshan and Yangshuo Karst. China\'s climate varies significantly from north to south and east to west, with temperate, subtropical, and tropical regions. In the north, winters are cold and dry, while in the south, summers are warm and humid. China also includes several autonomous regions, such as Tibet and Xinjiang, which have spectacular landscapes and remarkable cultural diversity. China is also renowned for its rich culinary history and gastronomic diversity, ranging from spicy Sichuan cuisine to Shanghai delicacies and Cantonese seafood.',
           'historyLesson':
-              'În Asia de Est, se află o țară cu o istorie străveche și fascinantă - China. De-a lungul mileniilor, China a fost locuită de diverse civilizații și culturi, iar evoluția sa istorică a fost marcată de momente semnificative și transformări profunde. În perioada antică, China a fost locuită de numeroase triburi și regate, dar unificarea sa sub o autoritate centrală a început sub Dinastia Qin, care a condus în secolul al III-lea î.Hr. Dinastia Qin a fost urmată de Dinastiile Han, Tang și Song, perioade de prosperitate și inovație în domenii precum știința, tehnologia și arta. În Evul Mediu, China a cunoscut o serie de dinastii și imperii, precum Yuan (fondată de mongoli), Ming și Qing. În timpul dinastiei Tang și Song, China a fost un centru comercial și cultural important, fiind cunoscută pentru invențiile sale tehnologice precum tiparul mobil și busola. În secolul al XIX-lea, China a fost afectată de agresiunea imperialistă și influența puterilor străine, ceea ce a dus la războaiele opiumului și la Tratatul de la Nanking, care a deschis porțile Chinei pentru comerțul străin și a impus concesiuni teritoriale. Această perioadă de slăbiciune a statului chinez a culminat cu Revolta boxerilor și căderea dinastiei Qing. În secolul XX, China a trecut printr-o serie de schimbări politice și sociale semnificative. Revoluția din 1911 a condus la căderea sistemului imperial și la fondarea Republicii Chineze sub conducerea lui Sun Yat-sen. În 1949, Partidul Comunist Chinez, condus de Mao Zedong, a proclamat înființarea Republicii Populare Chineze, punând capăt unui secol de dominație străină și instabilitate internă. De-a lungul deceniilor, China a traversat reforme economice și sociale masive sub conducerea lui Deng Xiaoping și a succesorilor săi, transformându-se dintr-o economie planificată într-una orientată către piață și devenind una dintre cele mai mari puteri economice din lume. Astăzi, China este cunoscută pentru tehnologia sa avansată, economia sa în creștere rapidă și influența sa globală în domenii precum comerțul internațional și politica mondială. Pe lângă aceste aspecte, China are o istorie culturală bogată, cu contribuții semnificative în domenii precum filosofia, literatura, arta și arhitectura.',
+              'In East Asia, there is a country with an ancient and fascinating history - China. Over the millennia, China has been inhabited by various civilizations and cultures, and its historical evolution has been marked by significant moments and profound transformations. In ancient times, China was inhabited by numerous tribes and kingdoms, but its unification under a central authority began under the Qin Dynasty, which ruled in the 3rd century BC. The Qin Dynasty was followed by the Han, Tang, and Song Dynasties, periods of prosperity and innovation in fields such as science, technology, and art. In the Middle Ages, China experienced a series of dynasties and empires, such as the Yuan (founded by the Mongols), Ming, and Qing. During the Tang and Song dynasties, China was an important commercial and cultural center, known for its technological inventions such as movable type printing and the compass. In the 19th century, China was affected by imperialist aggression and the influence of foreign powers, leading to the Opium Wars and the Treaty of Nanking, which opened China’s doors to foreign trade and imposed territorial concessions. This period of weakness in the Chinese state culminated in the Boxer Rebellion and the fall of the Qing Dynasty. In the 20th century, China underwent significant political and social changes. The 1911 Revolution led to the fall of the imperial system and the founding of the Republic of China under the leadership of Sun Yat-sen. In 1949, the Chinese Communist Party, led by Mao Zedong, proclaimed the establishment of the People’s Republic of China, ending a century of foreign domination and internal instability. Over the decades, China has undergone massive economic and social reforms under the leadership of Deng Xiaoping and his successors, transforming from a planned economy to a market-oriented one and becoming one of the world’s largest economic powers. Today, China is known for its advanced technology, rapidly growing economy, and global influence in areas such as international trade and world politics. In addition to these aspects, China has a rich cultural history, with significant contributions in fields such as philosophy, literature, art, and architecture.',
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
         });
 
-        await db.insert('country', {
+        /*  await db.insert('country', {
           'name': 'Australia',
           'geographyLesson':
               'Australia, situată în emisfera sudică, este una dintre cele mai mari insule din lume și cea mai mare țară insulară. Cu o varietate de caracteristici geografice și regiuni distincte, Australia este un amestec captivant de peisaje și ecosisteme. Australia se învecinează cu Oceanul Indian și Marea Coralilor la vest și sud-vest, cu Oceanul Pacific la est și cu Marea Tasmaniei la sud-est. Nu are granițe terestre cu alte țări. Relieful Australiei este extrem de variat, cuprinzând munți, platouri, câmpii și deșerturi. Munții Great Dividing Range, care rulează de-a lungul coastei de est, sunt un element caracteristic și oferă peisaje spectaculoase. Clima din Australia variază de la aridă în interiorul deșertic al continentului până la temperată în regiunile de coastă și subtropicală în nord-est. Sezonul ploios în nord aduce precipitații abundente, în timp ce regiunile de coastă beneficiază de un climat mediteranean. Australia este bogată în resurse naturale, inclusiv minereuri, cărbune, aur, uraniu și petrol. De asemenea, dispune de o biodiversitate impresionantă, cu o varietate de specii de plante și animale, multe dintre ele endemice. Principalele centre urbane din Australia includ Sydney, Melbourne, Brisbane și Perth. Sydney-ul este centrul economic și cultural al țării, cunoscut pentru iconicul său Opera House, în timp ce Melbourne-ul este renumit pentru viața sa culturală vibrantă. Australia are o coastă lungă și variată, cu orașe portuare importante precum Sydney, Melbourne și Brisbane. Aceste orașe portuare joacă un rol crucial în comerțul maritim și economia australiană.',
@@ -806,7 +795,7 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'geography_completed': 0,
           'history_completed': 0,
           'doesExist': 1
-        });
+        });*/
 
         await db.insert('question', {
           'country': 'Spain',
@@ -818,35 +807,34 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 3
         });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text':
-                      'What is the capital of Spain and the largest city in the country?',
-                  'answer': answer2,
-                  'correct_answer': 2,
-                  'type': 1
-                });
-
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text':
+              'What is the capital of Spain and the largest city in the country?',
+          'answer': answer2,
+          'correct_answer': 2,
+          'type': 1
+        });
 
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the population of Spain?',
-                  'answer': '',
-                  'correct_answer': 47,
-                  'type': 2
-                });
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the population of Spain?',
+          'answer': '',
+          'correct_answer': 47,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Spain and Portugal are neighboring countries.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Spain and Portugal are neighboring countries.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
         await db.insert('question', {
           'country': 'Spain',
@@ -859,32 +847,32 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 1
         });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer4,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer4,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'How many meters is the highest mountain peak?',
-                  'answer': '',
-                  'correct_answer': 3718,
-                  'type': 2
-                });
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'How many meters is the highest mountain peak?',
+          'answer': '',
+          'correct_answer': 3718,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Formentera belongs to Spain.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'Spain',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Formentera belongs to Spain.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
         await db.insert('question', {
           'country': 'Spain',
@@ -897,24 +885,26 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 1
         });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'When was the decree for the expulsion of Jews and Moors signed?',
-                  'answer': '',
-                  'correct_answer': 1492,
-                  'type': 2
-                });
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'When was the decree for the expulsion of Jews and Moors signed?',
+          'answer': '',
+          'correct_answer': 1492,
+          'type': 2
+        });
 
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In the 19th century, Spain managed to keep all its colonies in Latin America.',
-                  'answer': '',
-                  'correct_answer': 2,
-                  'type': 4
-                });
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In the 19th century, Spain managed to keep all its colonies in Latin America.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
         await db.insert('question', {
           'country': 'Spain',
           'subject': 2,
@@ -925,15 +915,15 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 3
         });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text':
-                      'What was the period of rule of dictator Francisco Franco in Spain?',
-                  'answer': answer7,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'What was the period of rule of dictator Francisco Franco in Spain?',
+          'answer': answer7,
+          'correct_answer': 2,
+          'type': 1
+        });
         await db.insert('question', {
           'country': 'Spain',
           'subject': 2,
@@ -944,23 +934,24 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 3
         });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'In what year did Spain become a democracy?',
-                  'answer': '',
-                  'correct_answer': 1978,
-                  'type': 2
-                });
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'In what year did Spain become a democracy?',
+          'answer': '',
+          'correct_answer': 1978,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Spain',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'Ferdinand II and Isabella I were responsible for the completion of the Reconquista.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'Spain',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'Ferdinand II and Isabella I were responsible for the completion of the Reconquista.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
           'country': 'France',
           'subject': 1,
@@ -971,146 +962,146 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 1
         });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the population of France?',
-                  'answer': '',
-                  'correct_answer': 67,
-                  'type': 2
-                });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the population of France?',
+          'answer': '',
+          'correct_answer': 67,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'The Pyrenees Mountains form a natural border between France and Italy.',
-                  'answer': '',
-                  'correct_answer': 2,
-                  'type': 4
-                });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text':
+              'The Pyrenees Mountains form a natural border between France and Italy.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer10,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer10,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text':
-                      'What is the most important river in France, known for flowing through the capital?',
-                  'answer': answer11,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text':
+              'What is the most important river in France, known for flowing through the capital?',
+          'answer': answer11,
+          'correct_answer': 2,
+          'type': 1
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer12,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer12,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'How many meters is the highest peak in France?',
-                  'answer': '',
-                  'correct_answer': 4810,
-                  'type': 2
-                });
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'How many meters is the highest peak in France?',
+          'answer': '',
+          'correct_answer': 4810,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'The Eiffel Tower is located in Paris.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-
-                await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text':
-                      'Care a fost una dintre provinciile romane în care a fost încorporată Franța în antichitate?',
-                  'answer': answer13,
-                  'correct_answer': 3,
-                  'type': 1
-                });
-        await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did the French Revolution take place?',
-                  'answer': '',
-                  'correct_answer': 1789,
-                  'type': 2
-                });
-        await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer14,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'France was one of the founding members of the EU.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-
+          'country': 'France',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'The Eiffel Tower is located in Paris.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text':
-                      'Care a fost perioada de dominație a lui Napoleon Bonaparte în Franța?',
-                  'answer': answer15,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'Which was one of the Roman provinces where France was incorporated in antiquity?',
+          'answer': answer13,
+          'correct_answer': 3,
+          'type': 1
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'In what year was the Third Republic established?',
-                  'answer': '',
-                  'correct_answer': 1870,
-                  'type': 2
-                });
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'In what year did the French Revolution take place?',
+          'answer': '',
+          'correct_answer': 1789,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer16,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer14,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'France',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'The Nazi occupation was from 1920 to 1957.',
-                  'answer': '',
-                  'correct_answer': 2,
-                  'type': 4
-                });
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'France was one of the founding members of the EU.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
+
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'What was the period of Napoleon Bonaparte\'s rule in France?',
+          'answer': answer15,
+          'correct_answer': 3,
+          'type': 1
+        });
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'In what year was the Third Republic established?',
+          'answer': '',
+          'correct_answer': 1870,
+          'type': 2
+        });
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer16,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'France',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'The Nazi occupation was from 1920 to 1957.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
         await db.insert('question', {
           'country': 'Italy',
           'subject': 1,
@@ -1121,143 +1112,146 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 1
         });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is the population of Italy?',
-                  'answer': '',
-                  'correct_answer': 60,
-                  'type': 2
-                });
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'What is the population of Italy?',
+          'answer': '',
+          'correct_answer': 60,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer18,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer18,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Venice is renowned for its Carnival festival.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Venice is renowned for its Carnival festival.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is the largest island in Italy?',
-                  'answer': answer19,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'What is the largest island in Italy?',
+          'answer': answer19,
+          'correct_answer': 1,
+          'type': 1
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the altitude of Mont Blanc peak in the Graian Alps?',
-                  'answer': '',
-                  'correct_answer': 4808,
-                  'type': 2
-                });
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text':
+              'What is the altitude of Mont Blanc peak in the Graian Alps?',
+          'answer': '',
+          'correct_answer': 4808,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer20,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer20,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Venice is renowned for its Carnival festival.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-        
+          'country': 'Italy',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Venice is renowned for its Carnival festival.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
+
         await db.insert('question', {
-            'country': 'Italy',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'In which period was Italy the epicenter of a powerful cultural and artistic movement?',
-            'answer': answer21,
-            'correct_answer': 3,
-            'type': 1
-          });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In which period was Italy the epicenter of a powerful cultural and artistic movement?',
+          'answer': answer21,
+          'correct_answer': 3,
+          'type': 1
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year was the modern Italian state formed?',
-                  'answer': '',
-                  'correct_answer': 1871,
-                  'type': 2
-                });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'In what year was the modern Italian state formed?',
+          'answer': '',
+          'correct_answer': 1871,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer22,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer22,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'Italy joined the Allied Powers in 1915.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Italy joined the Allied Powers in 1915.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
-                    'country': 'Italy',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text':
-                        'Who was one of the personalities who contributed to the formation of the Roman Empire?',
-                    'answer': answer23,
-                    'correct_answer': 1,
-                    'type': 1
-                  });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'Who was one of the personalities who contributed to the formation of the Roman Empire?',
+          'answer': answer23,
+          'correct_answer': 1,
+          'type': 1
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'In which century did the two world wars take place?',
-                  'answer': '',
-                  'correct_answer': 20,
-                  'type': 2
-                });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'In which century did the two world wars take place?',
+          'answer': '',
+          'correct_answer': 20,
+          'type': 2
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer24,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer24,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'The Napoleonic Wars took place in the 19th century.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'Italy',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'The Napoleonic Wars took place in the 19th century.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
           'country': 'China',
           'subject': 1,
@@ -1268,143 +1262,145 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'type': 1
         });
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'The Yangtze is the third longest river in the world.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text':
+              'The Yangtze is the third longest river in the world.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer26,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer26,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Singapore is part of China.',
-                  'answer': '',
-                  'correct_answer': 2,
-                  'type': 4
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Singapore is part of China.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
 
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is the highest peak in China?',
-                  'answer': answer27,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'What is the highest peak in China?',
+          'answer': answer27,
+          'correct_answer': 1,
+          'type': 1
+        });
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer28,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer28,
+          'correct_answer': 1,
+          'type': 3
+        });
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Chongqing is an important city.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Chongqing is an important city.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Xinjiang is an autonomous region.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          'country': 'China',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Xinjiang is an autonomous region.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
         await db.insert('question', {
-            'country': 'China',
-            'subject': 2,
-            'difficulty': 1,
-            'question_text':
-                'Which dynasty began the process of unifying China under a central authority?',
-            'answer': answer29,
-            'correct_answer': 3,
-            'type': 1
-          });
-          await db.insert('question', {
-                    'country': 'China',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'In what year was the People Republic of China founded?',
-                    'answer': '',
-                    'correct_answer': 1949,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'China',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer30,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'China',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'China was affected by imperialist aggression.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-          await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 2,
-                      'question_text':
-                          'What was the capital of China during the Tang dynasty?',
-                      'answer': answer31,
-                      'correct_answer': 3,
-                      'type': 1
-                    });
-          await db.insert('question', {
-                    'country': 'China',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'In what year did the imperial system fall?',
-                    'answer': '',
-                    'correct_answer': 1911,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'China',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer32,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'China',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'The Yuan dynasty was founded by the Chinese.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'Which dynasty began the process of unifying China under a central authority?',
+          'answer': answer29,
+          'correct_answer': 3,
+          'type': 1
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In what year was the People Republic of China founded?',
+          'answer': '',
+          'correct_answer': 1949,
+          'type': 2
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer30,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'China was affected by imperialist aggression.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'What was the capital of China during the Tang dynasty?',
+          'answer': answer31,
+          'correct_answer': 3,
+          'type': 1
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'In what year did the imperial system fall?',
+          'answer': '',
+          'correct_answer': 1911,
+          'type': 2
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer32,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'China',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'The Yuan dynasty was founded by the Chinese.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
         await db.insert('question', {
           'country': 'United States',
           'subject': 1,
@@ -1414,71 +1410,71 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'correct_answer': 2,
           'type': 1
         });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer34,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'San Francisco is a port city.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'The panda bear can be found in Yellowstone National Park.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text':
-                        'What are two of the US territories mentioned in the lesson besides Hawaii and Puerto Rico?',
-                    'answer': answer35,
-                    'correct_answer': 3,
-                    'type': 1
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer36,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text':
-                        'Name two states that have desert lands in the USA.',
-                    'answer': answer38,
-                    'correct_answer': 2,
-                    'type': 1
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': 'The Gobi Desert is found in the USA.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer34,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'San Francisco is a port city.',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text':
+              'The panda bear can be found in Yellowstone National Park.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text':
+              'What are two of the US territories mentioned in the lesson besides Hawaii and Puerto Rico?',
+          'answer': answer35,
+          'correct_answer': 3,
+          'type': 1
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer36,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Name two states that have desert lands in the USA.',
+          'answer': answer38,
+          'correct_answer': 2,
+          'type': 1
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'The Gobi Desert is found in the USA.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
         await db.insert('question', {
           'country': 'United States',
           'subject': 2,
@@ -1489,483 +1485,488 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           'correct_answer': 1,
           'type': 1
         });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'In what year was the Declaration of Independence adopted',
-                    'answer': '',
-                    'correct_answer': 1776,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer40,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'The American Civil War ended in 1970.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text':
-                        'What was the impact of the arrival of European explorers in the 16th century on North America?',
-                    'answer': answer41,
-                    'correct_answer': 4,
-                    'type': 1
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'in what year was the Volstead Act implemented.',
-                    'answer': '',
-                    'correct_answer': 1919,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer42,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'in the 19th century the USA became one of the most powerful nations in the world',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-       
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In what year was the Declaration of Independence adopted',
+          'answer': '',
+          'correct_answer': 1776,
+          'type': 2
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer40,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'The American Civil War ended in 1970.',
+          'answer': '',
+          'correct_answer': 2,
+          'type': 4
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'What was the impact of the arrival of European explorers in the 16th century on North America?',
+          'answer': answer41,
+          'correct_answer': 4,
+          'type': 1
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'in what year was the Volstead Act implemented.',
+          'answer': '',
+          'correct_answer': 1919,
+          'type': 2
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer42,
+          'correct_answer': 1,
+          'type': 3
+        });
+        await db.insert('question', {
+          'country': 'United States',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'in the 19th century the USA became one of the most powerful nations in the world',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
-                      await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer174,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer174,
+          'correct_answer': 1,
+          'type': 3
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the capital of Romania?',
-                  'answer': answer175,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the capital of Romania?',
+          'answer': answer175,
+          'correct_answer': 3,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the population of Romania?',
-                  'answer': '',
-                  'correct_answer': 19,
-                  'type': 2
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the population of Romania?',
+          'answer': '',
+          'correct_answer': 19,
+          'type': 2
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Which river flows through Romania?',
-                  'answer': answer177,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Which river flows through Romania?',
+          'answer': answer177,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Which city is not located in Romania?',
-                  'answer': answer178,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Which city is not located in Romania?',
+          'answer': answer178,
+          'correct_answer': 3,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the highest peak in Romania?',
-                  'answer': answer179,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the highest peak in Romania?',
+          'answer': answer179,
+          'correct_answer': 1,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the climate of Romania?',
-                  'answer': answer180,
-                  'correct_answer': 4,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'What is the climate of Romania?',
+          'answer': answer180,
+          'correct_answer': 4,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Romania is one of the most populated countries in',
-                  'answer': answer182,
-                  'correct_answer': 4,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Romania is one of the most populated countries in',
+          'answer': answer182,
+          'correct_answer': 4,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Which region is not in Romania?',
-                  'answer': answer183,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Which region is not in Romania?',
+          'answer': answer183,
+          'correct_answer': 3,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Ukraine is a neighbor of Romania',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 1,
+          'question_text': 'Ukraine is a neighbor of Romania',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which country is not a neighbor of Romania?',
-                  'answer': answer184,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Which country is not a neighbor of Romania?',
+          'answer': answer184,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which ports provide access to the Black Sea?',
-                  'answer': answer186,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Which ports provide access to the Black Sea?',
+          'answer': answer186,
+          'correct_answer': 1,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which mountain divides the territory of Romania?',
-                  'answer': answer185,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Which mountain divides the territory of Romania?',
+          'answer': answer185,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'In which mountain is Moldoveanu Peak located?',
-                  'answer': answer188,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'In which mountain is Moldoveanu Peak located?',
+          'answer': answer188,
+          'correct_answer': 3,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is Transylvania known for?',
-                  'answer': answer189,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'What is Transylvania known for?',
+          'answer': answer189,
+          'correct_answer': 1,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What influences Romania\'s climate?',
-                  'answer': answer190,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'What influences Romania\'s climate?',
+          'answer': answer190,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which location is more popular in summer?',
-                  'answer': answer191,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Which location is more popular in summer?',
+          'answer': answer191,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which location is more popular in winter?',
-                  'answer': answer192,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Which location is more popular in winter?',
+          'answer': answer192,
+          'correct_answer': 3,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Romania is a NATO member',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Romania is a NATO member',
+          'answer': '',
+          'correct_answer': 1,
+          'type': 4
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Romania\'s population in millions is',
-                  'answer': '',
-                  'correct_answer': 19,
-                  'type': 2
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': 'Romania\'s population in millions is',
+          'answer': '',
+          'correct_answer': 19,
+          'type': 2
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In ancient times, which people lived on the territory of Romania?',
-                  'answer': answer194,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In ancient times, which people lived on the territory of Romania?',
+          'answer': answer194,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'Which empire conquered Dacia?',
-                  'answer': answer195,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Which empire conquered Dacia?',
+          'answer': answer195,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'Which principality belonged to the Romanian territory?',
-                  'answer': answer196,
-                  'correct_answer': 3,
-                  'type': 2
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'Which principality belonged to the Romanian territory?',
+          'answer': answer196,
+          'correct_answer': 3,
+          'type': 2
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year was the Union of the Romanian Principalities?',
-                  'answer': '',
-                  'correct_answer': 1859,
-                  'type': 2
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In what year was the Union of the Romanian Principalities?',
+          'answer': '',
+          'correct_answer': 1859,
+          'type': 2
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'What regime did Romania adopt in 1947?',
-                  'answer': answer198,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'What regime did Romania adopt in 1947?',
+          'answer': answer198,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer197,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': '',
+          'answer': answer197,
+          'correct_answer': 1,
+          'type': 3
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'The Great Union took place in 1925',
-                  'answer': "",
-                  'correct_answer': 2,
-                  'type': 4
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'The Great Union took place in 1925',
+          'answer': "",
+          'correct_answer': 2,
+          'type': 4
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did Romania declare independence from the Ottoman Empire?',
-                  'answer': '',
-                  'correct_answer': 1877,
-                  'type': 2
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text':
+              'In what year did Romania declare independence from the Ottoman Empire?',
+          'answer': '',
+          'correct_answer': 1877,
+          'type': 2
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did communism fall in Romania?',
-                  'answer': '',
-                  'correct_answer': 1989,
-                  'type': 2
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'In what year did communism fall in Romania?',
+          'answer': '',
+          'correct_answer': 1989,
+          'type': 2
+        });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did Romania become an EU member?',
-                  'answer': answer199,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'In what year did Romania become an EU member?',
+          'answer': answer199,
+          'correct_answer': 2,
+          'type': 1
+        });
 
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 1,
+          'question_text': 'Who is the current President of Romania?',
+          'answer': answer200,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 1,
-                'question_text': 'Who is the current President of Romania?',
-                'answer': answer200,
-                'correct_answer': 2,
-                'type': 1
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Who ruled Moldova in the medieval period?',
+          'answer': answer201,
+          'correct_answer': 3,
+          'type': 1
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'Who ruled Moldova in the medieval period?',
-                'answer': answer201,
-                'correct_answer': 3,
-                'type': 1
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'During World War II, which power occupied Romania?',
+          'answer': answer202,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'During World War II, which power occupied Romania?',
-                'answer': answer202,
-                'correct_answer': 2,
-                'type': 1
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'In what year was Dacia conquered?',
+          'answer': '',
+          'correct_answer': 106,
+          'type': 2
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'In what year was Dacia conquered?',
-                'answer': '',
-                'correct_answer': 106,
-                'type': 2
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'In which century did the national movement grow?',
+          'answer': '',
+          'correct_answer': 19,
+          'type': 2
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'In which century did the national movement grow?',
-                'answer': '',
-                'correct_answer': 19,
-                'type': 2
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Who was the first leader of Communist Romania?',
+          'answer': answer203,
+          'correct_answer': 4,
+          'type': 1
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'Who was the first leader of Communist Romania?',
-                'answer': answer203,
-                'correct_answer': 4,
-                'type': 1
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'In which war did the Romanian Principalities participate to consolidate their status as a sovereign nation?',
+          'answer': answer204,
+          'correct_answer': 2,
+          'type': 1
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'In which war did the Romanian Principalities participate to consolidate their status as a sovereign nation?',
-                'answer': answer204,
-                'correct_answer': 2,
-                'type': 1
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text':
+              'What is the name of the process through which the Romans influenced the culture of the Dacians?',
+          'answer': answer205,
+          'correct_answer': 1,
+          'type': 1
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'What is the name of the process through which the Romans influenced the culture of the Dacians?',
-                'answer': answer205,
-                'correct_answer': 1,
-                'type': 1
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': 'Vlad Tepes ruled in Wallachia',
+          'answer': "",
+          'correct_answer': 1,
+          'type': 4
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'Vlad Țepeș ruled in Wallachia',
-                'answer': "",
-                'correct_answer': 1,
-                'type': 4
-              });
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 2,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer206,
+          'correct_answer': 1,
+          'type': 3
+        });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': '',
-                'answer': answer206,
-                'correct_answer': 1,
-                'type': 3
-              });
-
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 1,
-                'difficulty': 2,
-                'question_text': '',
-                'answer': answer207,
-                'correct_answer': 1,
-                'type': 3
-              });
-
+        await db.insert('question', {
+          'country': 'Romania',
+          'subject': 1,
+          'difficulty': 2,
+          'question_text': '',
+          'answer': answer207,
+          'correct_answer': 1,
+          'type': 3
+        });
       },
       onUpgrade: (Database db, int oldVersion, int newVersion) async {
         if (newVersion > oldVersion) {
@@ -1994,7 +1995,8 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             coins INTEGER,
             streak_count INTEGER DEFAULT 0,
             last_activity_date TEXT,
-            faces TEXT
+            faces TEXT,
+            double_iq
           )''');
           db.insert('profile', {
             'username': 'username',
@@ -2009,7 +2011,8 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             'coins': 0,
             'streak_count': 0,
             'last_activity_date': "${DateTime.now().toIso8601String()}",
-            'faces': facesList
+            'faces': facesList,
+            'double_iq': 0,
           });
 
           await db.execute('''
@@ -2021,35 +2024,17 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             color INTEGER
           )''');
 
-          await db.insert('faces', {
-            'face': 1,
-            'bought': 1,
-            'price': 50,
-            'color': 0
-          });
+          await db.insert(
+              'faces', {'face': 1, 'bought': 1, 'price': 50, 'color': 0});
 
-        await db.insert('faces', {
-            'face': 2,
-            'bought': 0,
-            'price': 50,
-            'color': 1
-          });
+          await db.insert(
+              'faces', {'face': 2, 'bought': 0, 'price': 50, 'color': 1});
 
-          await db.insert('faces', {
-            'face': 3,
-            'bought': 0,
-            'price': 50,
-            'color': 2
-          });
+          await db.insert(
+              'faces', {'face': 3, 'bought': 0, 'price': 50, 'color': 2});
 
-          await db.insert('faces', {
-            'face': 4,
-            'bought': 0,
-            'price': 50,
-            'color': 3
-          });
-
-          
+          await db.insert(
+              'faces', {'face': 4, 'bought': 0, 'price': 50, 'color': 3});
 
           await db.execute('''
           CREATE TABLE country (
@@ -2074,9 +2059,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           await db.insert('country', {
             'name': 'Romania',
             'geographyLesson':
-                'România este situată în partea de sud-est a Europei, având granițe cu Bulgaria, Serbia, Ungaria, Ucraina și Republica Moldova. Capitala sa, București, este cel mai mare oraș și principal centru cultural, economic și politic al țării. Cu o populație de aproximativ 19 milioane de locuitori, România este una dintre cele mai populate țări din Europa de Est. Teritoriul său este împărțit de Munții Carpați, care formează o barieră naturală ce separă țara în trei regiuni geografice distincte: Transilvania, Moldova și Maramureșul. Acești munți sunt adesea descrisi ca fiind inima României, oferind nu doar peisaje pitorești, ci și o sursă importantă de resurse naturale și biodiversitate. Dunărea, un fluviu navigabil vital, curge prin sudul țării, marcând granița naturală cu Bulgaria și oferind acces la Marea Neagră prin porturile Constanța și Mangalia. Acest aspect geografic a facilitat comerțul și interacțiunile culturale cu alte regiuni din Europa și din întreaga lume. În afară de București, alte orașe importante din România includ Cluj-Napoca, Timișoara, Iași și Constanța, fiecare cu propriile sale bogății culturale și economice. România este o țară în curs de dezvoltare, membră a Uniunii Europene și a NATO, cu o economie mixtă în care industria, agricultura și serviciile joacă roluri importante în creșterea sa economică. Cel mai înalt punct al României este vârful Moldoveanu din Munții Făgăraș, având o altitudine impresionantă de 2.544 de metri. Această înălțime oferă panorame spectaculoase și oportunități pentru alpinism și turism montan. Regiunile istorice ale României, cum ar fi Transilvania, cunoscută pentru peisajele sale montane și orașele istorice, Moldova, renumită pentru siturile sale istorice și moștenirea culturală bogată, și Maramureșul, cu peisajele sale rurale și tradițiile autentice, adaugă unicitate și diversitate acestei țări. Clima României este temperată continentală, cu veri călduroase și ierni reci, fiind influențată de Munții Carpați și de Marea Neagră. Această varietate climatică oferă condiții favorabile pentru o gamă diversă de activități, de la sporturile de iarnă în Carpați până la relaxare la malul Mării Negre în timpul verii.',
+                'Romania is located in the southeastern part of Europe, bordered by Bulgaria, Serbia, Hungary, Ukraine, and the Republic of Moldova. Its capital, Bucharest, is the largest city and the main cultural, economic, and political center of the country. With a population of approximately 19 million people, Romania is one of the most populous countries in Eastern Europe. Its territory is divided by the Carpathian Mountains, which form a natural barrier that separates the country into three distinct geographical regions: Transylvania, Moldova, and Maramureș. These mountains are often described as the heart of Romania, offering not only picturesque landscapes but also an important source of natural resources and biodiversity. The Danube, a vital navigable river, flows through the south of the country, marking the natural border with Bulgaria and providing access to the Black Sea through the ports of Constanța and Mangalia. This geographic feature has facilitated trade and cultural interactions with other regions of Europe and the world. Besides Bucharest, other important cities in Romania include Cluj-Napoca, Timișoara, Iași, and Constanța, each with its own cultural and economic wealth. Romania is a developing country, a member of the European Union and NATO, with a mixed economy in which industry, agriculture, and services play significant roles in its economic growth. The highest point in Romania is Moldoveanu Peak in the Făgăraș Mountains, with an impressive altitude of 2,544 meters. This height offers spectacular panoramas and opportunities for mountaineering and mountain tourism. The historical regions of Romania, such as Transylvania, known for its mountainous landscapes and historical towns; Moldova, renowned for its historical sites and rich cultural heritage; and Maramureș, with its rural landscapes and authentic traditions, add uniqueness and diversity to this country. Romania’s climate is temperate-continental, with hot summers and cold winters, influenced by the Carpathian Mountains and the Black Sea. This climatic variety offers favorable conditions for a diverse range of activities, from winter sports in the Carpathians to relaxation by the Black Sea during summer.',
             'historyLesson':
-                'Într-un colț al Europei, se întinde o țară plină de istorie și tradiție numită România. În vremurile străvechi, teritoriul României era locuit de daci, un popor mândru și cu o cultură bogată. În anul 106 d.Hr., Imperiul Roman a cucerit acest teritoriu, începând procesul de romanizare. Această interacțiune între daci și romani a lăsat o amprentă puternică în identitatea românească, reflectată în limba, obiceiurile și tradițiile poporului. În perioada medievală, teritoriul românesc era împărțit în principate autonome, Moldova și Țara Românească. Sub conducerea domnitorilor lor, cum ar fi Ștefan cel Mare și Vlad Țepeș, aceste principate au luptat pentru independență și au rezistat presiunilor străine, stabilind bazele statelor românești. În secolul al XIX-lea, mișcarea națională a crescut semnificativ și a avut loc Unirea Principatelor Române în 1859, sub domnia lui Alexandru Ioan Cuza. Acest pas important a deschis calea pentru formarea României moderne. În 1877, România și-a proclamat independența față de Imperiul Otoman și a participat la Războiul de Independență, consolidându-și statutul de națiune suverană. Între cele două războaie mondiale, România a experimentat perioade de instabilitate politică și progres economic. În 1918, a avut loc Marea Unire între Transilvania, Moldova și Țara Românească. Totuși, în timpul celui de-al Doilea Război Mondial, țara a fost ocupată de trupele Axei, iar după război, a devenit un stat satelit al Uniunii Sovietice. În 1947, România a devenit o republică comunistă sub conducerea lui Gheorghe Gheorghiu-Dej și apoi a lui Nicolae Ceaușescu. Regimul comunist a fost caracterizat de opresiune politică și o stagnare economică. Totuși, în decembrie 1989, Revoluția Română a dus la căderea regimului comunist și la instaurarea democrației în țară. După Revoluție, România a trecut printr-o perioadă de tranziție dificilă către economia de piață și democrație. În 2007, România a devenit membru al Uniunii Europene, consolidându-și angajamentul față de valorile democratice și integrarea europeană.',
+                'In a corner of Europe lies a country rich in history and tradition called Romania. In ancient times, the territory of Romania was inhabited by the Dacians, a proud people with a rich culture. In 106 AD, the Roman Empire conquered this territory, beginning the process of Romanization. This interaction between the Dacians and the Romans left a strong imprint on Romanian identity, reflected in the language, customs, and traditions of the people. During the medieval period, the Romanian territory was divided into autonomous principalities, Moldavia and Wallachia. Under the leadership of their rulers, such as Stephen the Great and Vlad the Impaler, these principalities fought for independence and resisted foreign pressures, laying the foundations for the Romanian states. In the 19th century, the national movement grew significantly, and the Union of the Romanian Principalities took place in 1859 under the reign of Alexandru Ioan Cuza. This important step paved the way for the formation of modern Romania. In 1877, Romania proclaimed its independence from the Ottoman Empire and participated in the War of Independence, solidifying its status as a sovereign nation. Between the two world wars, Romania experienced periods of political instability and economic progress. In 1918, the Great Union between Transylvania, Moldavia, and Wallachia occurred. However, during World War II, the country was occupied by Axis forces, and after the war, it became a satellite state of the Soviet Union. In 1947, Romania became a communist republic under the leadership of Gheorghe Gheorghiu-Dej and later Nicolae Ceaușescu. The communist regime was characterized by political oppression and economic stagnation. However, in December 1989, the Romanian Revolution led to the fall of the communist regime and the establishment of democracy in the country. After the Revolution, Romania went through a difficult transition period towards a market economy and democracy. In 2007, Romania became a member of the European Union, solidifying its commitment to democratic values and European integration.',
             'geography_completed': 0,
             'history_completed': 0,
             'doesExist': 1
@@ -2085,9 +2070,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           await db.insert('country', {
             'name': 'Spain',
             'geographyLesson':
-                'Spania este situată în partea de sud-vest a Europei, având granițe cu Franța la nord și nord-est, Portugalia la vest și Andorra și Gibraltar la sud. Capitala sa, Madrid, este cel mai mare oraș și centrul cultural, economic și politic al țării. Cu o populație de aproximativ 47 de milioane de locuitori, Spania este una dintre cele mai populate țări din Europa. Teritoriul său este caracterizat de o mare varietate geografică, cuprinzând zone montane, câmpii, și țărmuri maritime. Munții Pirinei formează granița nordică a țării, oferind peisaje montane spectaculoase și oportunități pentru sporturi de iarnă. În centrul și sudul Spaniei se află o serie de lanțuri muntoase, cum ar fi Munții Cantabrici, Munții Centrali și Munții Betici, care influențează climatul și geografia regiunilor respective. De asemenea, Spania are o rețea vastă de râuri, precum Ebro, Tagus și Guadalquivir, care contribuie la fertilitatea câmpiilor și la dezvoltarea agriculturii. Un aspect geografic semnificativ al Spaniei este Peninsula Iberică, care include și Portugal, și este înconjurată de Oceanul Atlantic și Marea Mediterană. Această poziție strategică a facilitat comerțul maritim și a adus influențe culturale diverse de-a lungul istoriei. În plus față de Madrid, alte orașe importante din Spania includ Barcelona, Valencia, Sevilla și Bilbao, fiecare având caracteristici geografice și culturale distincte. Spania este o destinație turistică populară datorită plajelor sale mediteraneene, orașelor istorice și peisajelor naturale variate. Cel mai înalt vârf din Spania este vârful Teide din Insulele Canare, având o altitudine de 3.718 metri. Acest vârf vulcanic oferă oportunități pentru explorare și turism ecologic într-un mediu unic. Clima Spaniei variază de la mediteraneană în sud la temperată în nord, iar influențele oceanice și continentale se resimt în diferite regiuni ale țării. Această diversitate climatică oferă condiții favorabile pentru o gamă largă de activități în aer liber și agricultură. Spania include mai multe arhipelaguri importante, cum ar fi Insulele Baleare în Marea Mediterană și Insulele Canare în Oceanul Atlantic. Insulele Baleare, printre care se numără Mallorca, Menorca, Ibiza și Formentera, sunt cunoscute pentru plajele lor frumoase, apele cristaline și viața de noapte vibrantă. Aceste insule sunt o destinație populară pentru turiști din întreaga lume, oferind o varietate de activități recreative și culturale. Insulele Canare, situate în largul coastelor africane, sunt formate din țapuscă vulcanică și oferă un peisaj spectaculos și diversitate ecologică. Insula Tenerife este cunoscută pentru vârful său vulcanic Teide, iar Gran Canaria pentru dunele sale de nisip și pentru viața sa maritimă bogată.',
+                'Spain is located in the southwestern part of Europe, bordered by France to the north and northeast, Portugal to the west, and Andorra and Gibraltar to the south. Its capital, Madrid, is the largest city and the cultural, economic, and political center of the country. With a population of approximately 47 million people, Spain is one of the most populous countries in Europe. Its territory is characterized by a great geographical variety, including mountainous areas, plains, and coastal shores. The Pyrenees form the northern border of the country, offering spectacular mountain landscapes and opportunities for winter sports. In central and southern Spain, there are several mountain ranges such as the Cantabrian Mountains, the Central Mountains, and the Betic Mountains, which influence the climate and geography of the respective regions. Additionally, Spain has a vast network of rivers, such as the Ebro, Tagus, and Guadalquivir, which contribute to the fertility of the plains and the development of agriculture. A significant geographical feature of Spain is the Iberian Peninsula, which also includes Portugal, and is surrounded by the Atlantic Ocean and the Mediterranean Sea. This strategic position has facilitated maritime trade and brought diverse cultural influences throughout history. In addition to Madrid, other important cities in Spain include Barcelona, Valencia, Seville, and Bilbao, each with its own distinct geographical and cultural characteristics. Spain is a popular tourist destination due to its Mediterranean beaches, historical cities, and varied natural landscapes. The highest peak in Spain is Mount Teide in the Canary Islands, with an altitude of 3,718 meters. This volcanic peak offers opportunities for exploration and ecological tourism in a unique environment. The climate of Spain ranges from Mediterranean in the south to temperate in the north, with oceanic and continental influences felt in different regions of the country. This climatic diversity provides favorable conditions for a wide range of outdoor activities and agriculture. Spain includes several important archipelagos, such as the Balearic Islands in the Mediterranean Sea and the Canary Islands in the Atlantic Ocean. The Balearic Islands, including Mallorca, Menorca, Ibiza, and Formentera, are known for their beautiful beaches, crystal-clear waters, and vibrant nightlife. These islands are a popular destination for tourists from around the world, offering a variety of recreational and cultural activities. The Canary Islands, located off the African coast, are formed from volcanic rock and offer a spectacular landscape and ecological diversity. Tenerife is known for its volcanic peak Teide, while Gran Canaria is famous for its sand dunes and rich marine life.',
             'historyLesson':
-                'În sud-vestul Europei, se află o țară cu o moștenire istorică bogată numită Spania. În antichitate, teritoriul spaniol era locuit de popoare precum ibero-geții și celtiberii, care au fost ulterior colonizați de romani, contribuind la formarea provinciei romane Hispania. În Evul Mediu, Spania a fost împărțită în numeroase regate și taifas, fiecare cu propria lor cultură și identitate. Printre cele mai importante regate se numărau Regatul Castiliei, Regatul Aragonului și Regatul Navarrei. În această perioadă, au existat și perioade de coabitare și conflicte între creștini, musulmani și evrei, evidențiind diversitatea religioasă și culturală a peninsulei iberice. În secolul al XV-lea, prin căsătoria regilor Ferdinand al II-lea al Aragonului și Isabela I a Castiliei, a fost creată o uniune între cele două regate, marcând începutul formării Spaniei moderne. Sub conducerea lor, a fost finalizată Reconquista, recucerirea teritoriilor musulmane din Spania, iar în 1492 a fost semnat decretul de expulzare a evreilor și a maurilor, consolidând controlul catolic asupra regatului. Perioada cuceririi și colonizării Americii de către spanioli a adus Spaniei o mare bogăție și putere în secolele XVI-XVII. Această epocă a fost marcată de mari exploratori și cuceritori precum Cristofor Columb, Hernán Cortés și Francisco Pizarro, care au extins influența spaniolă în întreaga lume. În secolul al XIX-lea, Spania a fost implicată în numeroase conflicte interne și externe, inclusiv Războiul Peninsular împotriva armatelor lui Napoleon și pierderea majorității coloniilor sale americane în urma războaielor de independență din America Latină. În secolul al XX-lea, Spania a fost martoră a unor perioade de instabilitate politică, inclusiv dictatura lui Francisco Franco între 1939 și 1975. După moartea sa, Spania a trecut printr-o tranziție către democrație, culminând cu adoptarea unei constituții democratice în 1978. În prezent, Spania este o monarhie parlamentară și membru al Uniunii Europene, având o economie diversificată și o moștenire culturală și istorică impresionantă.',
+                'In southwestern Europe lies a country with a rich historical heritage called Spain. In ancient times, the Spanish territory was inhabited by peoples such as the Iberians and Celtiberians, who were later colonized by the Romans, contributing to the formation of the Roman province of Hispania. During the Middle Ages, Spain was divided into numerous kingdoms and taifas, each with its own culture and identity. Among the most important kingdoms were the Kingdom of Castile, the Kingdom of Aragon, and the Kingdom of Navarre. During this period, there were also times of coexistence and conflict among Christians, Muslims, and Jews, highlighting the religious and cultural diversity of the Iberian Peninsula. In the 15th century, through the marriage of King Ferdinand II of Aragon and Queen Isabella I of Castile, a union between the two kingdoms was created, marking the beginning of the formation of modern Spain. Under their rule, the Reconquista was completed, the reconquest of Muslim territories in Spain, and in 1492, the decree for the expulsion of Jews and Moors was signed, consolidating Catholic control over the kingdom. The period of conquest and colonization of the Americas by the Spaniards brought great wealth and power to Spain in the 16th and 17th centuries. This era was marked by great explorers and conquerors such as Christopher Columbus, Hernán Cortés, and Francisco Pizarro, who expanded Spanish influence worldwide. In the 19th century, Spain was involved in numerous internal and external conflicts, including the Peninsular War against Napoleon armies and the loss of most of its American colonies following the Latin American wars of independence. In the 20th century, Spain witnessed periods of political instability, including the dictatorship of Francisco Franco from 1939 to 1975. After his death, Spain underwent a transition to democracy, culminating in the adoption of a democratic constitution in 1978. Today, Spain is a parliamentary monarchy and a member of the European Union, with a diversified economy and an impressive cultural and historical heritage.',
             'geography_completed': 0,
             'history_completed': 0,
             'doesExist': 1
@@ -2096,9 +2081,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           await db.insert('country', {
             'name': 'France',
             'geographyLesson':
-                'Geografia Franței oferă o diversitate remarcabilă, cuprinzând regiuni montane, câmpii fertile și litorale spectaculoase. Situată în partea de vest a Europei, Franța se învecinează cu Spania la sud-vest, Belgia și Luxemburg la nord-est, Germania și Elveția la est, Italia la sud-est și Marea Mediterană la sud. Capitala Franței, Parisul, este unul dintre cele mai mari centre culturale și economice ale lumii, cunoscut pentru atracțiile sale turistice remarcabile, precum Turnul Eiffel, Catedrala Notre-Dame și Muzeul Luvru. Cu o populație de aproximativ 67 de milioane de locuitori, Franța este una dintre cele mai populate țări din Europa. Relieful Franței este variat și spectaculos. Munții Alpi se întind în partea de sud-est a țării, marcând granița cu Italia, și includ cel mai înalt vârf al Franței, Mont Blanc, cu o altitudine de 4.810 metri. În partea sud-vestică, Munții Pirinei formează o graniță naturală cu Spania, oferind peisaje montane impresionante și facilitând activități sportive precum schiul și alpinismul. În nordul Franței se găsesc Câmpiile Nordului și Câmpiile Loarei, regiuni fertile care susțin o agricultură bogată și diverse industrii. De asemenea, Franța este traversată de numeroase râuri importante, cum ar fi Sena, Loara și Rhone, care au avut un impact semnificativ asupra dezvoltării sale economice și culturale. Franța este recunoscută și pentru coasta sa pitorească, care se întinde de-a lungul Mării Mediterane și a Oceanului Atlantic. Riviera Franceză, situată în sud-estul țării, este cunoscută pentru stațiunile sale de lux și plajele frumoase, în timp ce Bretania, în nord-vest, este faimoasă pentru peisajele sale sălbatice și stâncile impresionante. În afară de Paris, alte orașe importante din Franța includ Lyon, Marsilia, Bordeaux și Strasbourg, fiecare având propria sa identitate culturală și atracții distincte. Franța este, de asemenea, renumită pentru vinurile sale fine, gastronomia rafinată și cultura bogată. Clima Franței variază de la mediteraneană în sud la temperată în nord, cu influențe oceanice și continentale. Această diversitate climatică permite dezvoltarea unei game variate de culturi agricole și susține turismul pe tot parcursul anului.',
+                'France\'s geography offers remarkable diversity, encompassing mountainous regions, fertile plains, and spectacular coastlines. Located in western Europe, France borders Spain to the southwest, Belgium and Luxembourg to the northeast, Germany and Switzerland to the east, Italy to the southeast, and the Mediterranean Sea to the south. The capital of France, Paris, is one of the worlds largest cultural and economic centers, known for its remarkable tourist attractions such as the Eiffel Tower, Notre-Dame Cathedral, and the Louvre Museum. With a population of approximately 67 million people, France is one of the most populous countries in Europe. The terrain of France is varied and spectacular. The Alps extend in the southeastern part of the country, marking the border with Italy, and include France\'s highest peak, Mont Blanc, with an altitude of 4,810 meters. In the southwestern part, the Pyrenees form a natural border with Spain, offering impressive mountainous landscapes and facilitating sports activities such as skiing and mountaineering. In northern France, the Northern Plains and the Loire Plains are fertile regions that support rich agriculture and diverse industries. France is also traversed by numerous important rivers, such as the Seine, Loire, and Rhone, which have had a significant impact on its economic and cultural development. France is recognized for its picturesque coastline, which stretches along the Mediterranean Sea and the Atlantic Ocean. The French Riviera, located in the southeast of the country, is known for its luxury resorts and beautiful beaches, while Brittany, in the northwest, is famous for its wild landscapes and impressive cliffs. Besides Paris, other important cities in France include Lyon, Marseille, Bordeaux, and Strasbourg, each with its own cultural identity and distinct attractions. France is also renowned for its fine wines, refined gastronomy, and rich culture. The climate of France varies from Mediterranean in the south to temperate in the north, with oceanic and continental influences. This climatic diversity allows for the development of a wide range of agricultural crops and supports tourism throughout the year.',
             'historyLesson':
-                'Istoria Franței este una dintre cele mai fascinante din Europa, începând cu antichitatea și ajungând până în prezent. În acele vremuri îndepărtate, teritoriul francez era populat de triburi celtice și galice, iar apoi a fost colonizat de romani, formând provincia romană Gallia. Evul Mediu a adus feudalismul și fragmentarea țării în regate și principate, precum Regatul Franciei și Ducatul Normandiei. În secolul al XV-lea, Franța a început să se consolideze sub conducerea lui Ludovic al XI-lea, marcând începutul formării Franței moderne. Revolutia Franceză din 1789 a pus capăt monarhiei și a instaurat o republică, urmată de perioada Napoleonică care a adus expansiune teritorială și influență sub conducerea lui Napoleon Bonaparte. Secolul al XIX-lea a fost plin de schimbări și conflicte majore, inclusiv Războiul Franco-Prusac și instaurarea celei de-a Treia Republici în 1870. Secolul al XX-lea a fost marcat de cele două războaie mondiale și ocupația nazistă între 1940 și 1944. După Al Doilea Război Mondial, Franța a fost una dintre puterile fondatoare ale Uniunii Europene și a cunoscut procesul de decolonizare, pierzând majoritatea coloniilor sale în Africa și Asia. Astăzi, Franța rămâne una dintre cele mai importante și influente țări din lume, cu o economie diversificată, un sistem politic stabil și o moștenire culturală și artistică bogată. Gastronomia franceză este renumită la nivel mondial, iar arta și arhitectura sa impresionantă atrag milioane de turiști în fiecare an. Contribuțiile sale în domenii precum știința, tehnologia și literatura continuă să influențeze lumea modernă, consolidând statutul Franței ca una dintre marile puteri ale secolului XXI.',
+                'The history of France is one of the most fascinating in Europe, beginning in antiquity and continuing to the present day. In those distant times, the French territory was populated by Celtic and Gallic tribes and was later colonized by the Romans, forming the Roman province of Gallia. The Middle Ages brought feudalism and the fragmentation of the country into kingdoms and principalities, such as the Kingdom of France and the Duchy of Normandy. In the 15th century, France began to consolidate under the leadership of Louis XI, marking the beginning of the formation of modern France. The French Revolution of 1789 ended the monarchy and established a republic, followed by the Napoleonic era, which brought territorial expansion and influence under the leadership of Napoleon Bonaparte. The 19th century was full of major changes and conflicts, including the Franco-Prussian War and the establishment of the Third Republic in 1870. The 20th century was marked by the two World Wars and the Nazi occupation between 1940 and 1944. After World War II, France was one of the founding powers of the European Union and underwent the process of decolonization, losing most of its colonies in Africa and Asia. Today, France remains one of the most important and influential countries in the world, with a diversified economy, a stable political system, and a rich cultural and artistic heritage. French gastronomy is renowned worldwide, and its impressive art and architecture attract millions of tourists each year. Its contributions in fields such as science, technology, and literature continue to influence the modern world, consolidating France\'s status as one of the great powers of the 21st century.',
             'geography_completed': 0,
             'history_completed': 0,
             'doesExist': 1
@@ -2107,9 +2092,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           await db.insert('country', {
             'name': 'United States',
             'geographyLesson':
-                'Statele Unite ale Americii (SUA), una dintre cele mai mari și influente țări din lume, se află în America de Nord, având granițe cu Canada la nord și Mexic la sud. Capitala sa este Washington, D.C., iar New York City este un important centru cultural, economic și financiar. Teritoriul SUA este extrem de divers, cuprinzând munți, câmpii, deșerturi și regiuni de coastă. La vest se găsesc Munții Stâncoși, iar la est se întinde Marea de Est. La sud se află Deșertul Sonora, iar la nord-vest se întinde Podișul Columbia. Aceste caracteristici geografice influențează clima și economia țării. Râurile majore, cum ar fi Mississippi și Missouri, traversează SUA, furnizând resurse naturale și fiind vitale pentru transportul intern. Mississippi este unul dintre cele mai lungi râuri din lume și a avut o mare importanță în dezvoltarea istorică și economică a țării. O caracteristică geografică iconică a SUA o reprezintă Parcul Național Yellowstone, situat în statul Wyoming, care găzduiește gheizere, izvoare termale și o varietate de faună sălbatică. Printre speciile de animale emblemă din Parcul Național Yellowstone se numără ursul grizzly, care este considerat un simbol al sălbăticiei și al puterii naturii. Ursul grizzly poate fi întâlnit în diferite părți ale parcului, căutând hrană în zonele împădurite sau de-a lungul cursurilor de apă. SUA are și o coastă extinsă, cu orașe maritime importante precum Los Angeles, San Francisco și Miami. Aceste orașe portuare au jucat un rol crucial în dezvoltarea comerțului maritim și a economiei americane. În plus față de Washington, D.C. și New York City, alte orașe importante din SUA includ Los Angeles, Chicago și Houston, fiecare având caracteristici geografice și culturale distincte. SUA este o destinație turistică populară datorită diversității sale culturale, a parcurilor naționale și a orașelor vibrante. Clima SUA variază considerabil de la nord la sud și de la est la vest, cu regiuni temperate, deșertice și subtropicale. În nord-est, iernile sunt reci și zăpădite, în timp ce în sud-vest verile sunt fierbinți și uscate. SUA include și mai multe teritorii în afara continentului principal, cum ar fi Hawaii și Puerto Rico, care oferă peisaje spectaculoase și culturi diverse. SUA este cunoscută pentru diversitatea sa culinară, cu influențe din întreaga lume, inclusiv mâncăruri tradiționale precum burgeri, pizza și friptură, dar și specialități regionale cum ar fi gumbo din Louisiana și sushi din California',
+                'The United States of America (USA), one of the largest and most influential countries in the world, is located in North America, bordering Canada to the north and Mexico to the south. Its capital is Washington, D.C., and New York City is a major cultural, economic, and financial center. The US territory is extremely diverse, including mountains, plains, deserts, and coastal regions. In the west, the Rocky Mountains are found, and to the east stretches the Atlantic Seaboard. In the south is the Sonoran Desert, and in the northwest is the Columbia Plateau. These geographic features influence the country’s climate and economy. Major rivers, such as the Mississippi and Missouri, traverse the USA, providing natural resources and being vital for internal transportation. The Mississippi River is one of the longest rivers in the world and has been crucial in the historical and economic development of the country. An iconic geographical feature of the USA is Yellowstone National Park, located in Wyoming, which hosts geysers, hot springs, and a variety of wildlife. Among the emblematic animal species in Yellowstone National Park is the grizzly bear, which is considered a symbol of wilderness and the power of nature. The grizzly bear can be found in various parts of the park, searching for food in the forested areas or along the watercourses. The USA also has an extensive coastline, with major maritime cities such as Los Angeles, San Francisco, and Miami. These port cities have played a crucial role in the development of maritime trade and the American economy. In addition to Washington, D.C. and New York City, other important cities in the USA include Los Angeles, Chicago, and Houston, each with distinct geographic and cultural features. The USA is a popular tourist destination due to its cultural diversity, national parks, and vibrant cities. The climate of the USA varies considerably from north to south and east to west, with temperate, desert, and subtropical regions. In the northeast, winters are cold and snowy, while in the southwest, summers are hot and dry. The USA also includes several territories outside the main continent, such as Hawaii and Puerto Rico, which offer spectacular landscapes and diverse cultures. The USA is known for its culinary diversity, with influences from around the world, including traditional dishes like burgers, pizza, and steak, as well as regional specialties such as gumbo from Louisiana and sushi from California',
             'historyLesson':
-                'Înaintea colonizării europene, teritoriul actual al Statelor Unite era locuit de populații amerindiene diverse, care aveau culturi și societăți variate. Cu sosirea exploratorilor europeni în secolul al XVI-lea, începe procesul de colonizare a Americii de Nord. În secolul al XVIII-lea, coloniile britanice din America de Nord au luptat pentru independență împotriva coroanei britanice. Declarația de Independență a fost adoptată în 1776, marcând începutul Statelor Unite ale Americii ca națiune independentă. În secolul al XIX-lea, Statele Unite au experimentat o extindere teritorială masivă spre vest, într-un proces cunoscut sub numele de "Manifest Destiny". Însă, această expansiune a alimentat tensiuni între statele slave și cele non-slave, culminând în Războiul Civil American (1861-1865), care a fost luptat între statele care susțineau sclavia și cele care se opuneau ei. După Războiul Civil, Statele Unite au cunoscut o perioadă de industrializare rapidă și dezvoltare economică. În secolul al XX-lea, ele au devenit una dintre cele mai puternice și influente națiuni din lume, jucând un rol major în ambele războaie mondiale și devenind un pilon al economiei globale. Prohibiția a fost perioada în care producția, distribuția și consumul de alcool au fost interzise prin lege în întreaga țară, între anii 1920 și 1933. Această politică a fost implementată prin adoptarea celui de-al 18-lea amendament la Constituția SUA în 1919 și prin Legea Volstead. În prezent, Statele Unite rămân o putere economică și militară dominantă, dar se confruntă cu o serie de provocări interne și internaționale, inclusiv inegalitatea economică, schimbările climatice și tensiunile geopolitice. Cu toate acestea, diversitatea sa culturală, inovația și angajamentul față de valorile democratice continuă să definească națiunea și să inspire lumea.',
+                'Before European colonization, the current territory of the United States was inhabited by diverse Native American populations, who had varied cultures and societies. With the arrival of European explorers in the 16th century, the process of colonizing North America began. In the 18th century, the British colonies in North America fought for independence against the British crown. The Declaration of Independence was adopted in 1776, marking the beginning of the United States of America as an independent nation. In the 19th century, the United States experienced massive territorial expansion westward, in a process known as "Manifest Destiny". However, this expansion fueled tensions between slave and non-slave states, culminating in the American Civil War (1861-1865), which was fought between states that supported slavery and those that opposed it. After the Civil War, the United States experienced a period of rapid industrialization and economic development. In the 20th century, it became one of the most powerful and influential nations in the world, playing a major role in both world wars and becoming a pillar of the global economy. Prohibition was the period during which the production, distribution, and consumption of alcohol were banned by law across the country, from 1920 to 1933. This policy was implemented through the adoption of the 18th Amendment to the US Constitution in 1919 and the Volstead Act. Today, the United States remains a dominant economic and military power, but it faces a series of internal and international challenges, including economic inequality, climate change, and geopolitical tensions. Nevertheless, its cultural diversity, innovation, and commitment to democratic values continue to define the nation and inspire the world.',
             'geography_completed': 0,
             'history_completed': 0,
             'doesExist': 1
@@ -2118,9 +2103,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           await db.insert('country', {
             'name': 'Italy',
             'geographyLesson':
-                'Italia este situată în partea de sud a Europei, având granițe cu Franța la nord-vest, Elveția și Austria la nord și nord-est, Slovenia la nord-est și Croația la est. Capitala sa, Roma, este cel mai mare oraș și centrul cultural, istoric și politic al țării. Cu o populație de aproximativ 60 de milioane de locuitori, Italia este una dintre cele mai populate țări din Europa. Teritoriul său este caracterizat de o varietate geografică remarcabilă, cuprinzând munți, câmpii și țărmuri maritime. Munții Alpi formează granița nordică a țării, oferind peisaje alpine spectaculoase și oportunități pentru sporturi de iarnă. În centrul Italiei se află o serie de lanțuri muntoase, cum ar fi Apeninii, care se întind pe aproape toată lungimea peninsulei italiene și influențează climatul și geografia regiunilor respective. De asemenea, Italia are o rețea extinsă de râuri, precum Po, Tevere și Arno, care contribuie la fertilitatea câmpiilor și la dezvoltarea agriculturii. Un aspect geografic semnificativ al Italiei este Peninsula Italică, care se întinde în Marea Mediterană și este înconjurată de mai multe insule, cum ar fi Sicilia și Sardinia. Această poziție strategică a favorizat comerțul maritim și a adus influențe culturale diverse de-a lungul istoriei. Vezuviul este un vulcan activ situat în apropierea orașului Napoli din regiunea Campania din sudul Italiei. Este cunoscut în special pentru erupția sa devastatoare din anul 79 d.Hr., care a dus la distrugerea orașelor Pompei și Herculaneum. Acest vulcan este considerat unul dintre cei mai periculoși din lume din cauza populației dense și a impactului potențial asupra orașelor înconjurătoare în cazul unei noi erupții majore. În plus față de Roma, alte orașe importante din Italia includ Milano, Napoli, Florența și Veneția, fiecare având caracteristici geografice și culturale distincte. Italia este o destinație turistică populară datorită orașelor istorice, artei și arhitecturii sale bogate și peisajelor naturale variate. Cel mai înalt vârf din Italia este vârful Mont Blanc din Alpii Graiei, având o altitudine de 4.808 metri. Acest vârf glaciar oferă oportunități pentru alpinism și turism ecologic într-un mediu spectaculos. Italia este cunoscută în întreaga lume pentru producția sa bogată și variată de vinuri. Regiunea Toscana, în special, este renumită pentru vinul Chianti, un vin roșu sec. Clima Italiei variază de la mediteraneană în sud la temperată în nord, iar influențele oceanice și continentale se resimt în diferite regiuni ale țării. Această diversitate climatică oferă condiții favorabile pentru o gamă largă de activități în aer liber și agricultură. Italia include și mai multe insule importante, cum ar fi Sicilia și Sardinia, care au peisaje spectaculoase și o istorie bogată.',
+                'Italy is located in southern Europe, bordered by France to the northwest, Switzerland and Austria to the north and northeast, Slovenia to the northeast, and Croatia to the east. Its capital, Rome, is the largest city and the cultural, historical, and political center of the country. With a population of approximately 60 million inhabitants, Italy is one of the most populous countries in Europe. Its territory is characterized by remarkable geographical diversity, including mountains, plains, and coastal shores. The Alps form the northern border of the country, offering spectacular alpine landscapes and opportunities for winter sports. In central Italy, there are a series of mountain ranges such as the Apennines, which stretch almost the entire length of the Italian peninsula and influence the climate and geography of the respective regions. Italy also has an extensive network of rivers, such as the Po, Tiber, and Arno, which contribute to the fertility of the plains and the development of agriculture. A significant geographical aspect of Italy is the Italian Peninsula, which extends into the Mediterranean Sea and is surrounded by several islands, such as Sicily and Sardinia. This strategic position has favored maritime trade and brought diverse cultural influences throughout history. Mount Vesuvius is an active volcano located near the city of Naples in the Campania region of southern Italy. It is especially known for its devastating eruption in 79 AD, which led to the destruction of the cities of Pompeii and Herculaneum. This volcano is considered one of the most dangerous in the world due to the dense population and the potential impact on surrounding cities in the event of a major eruption. In addition to Rome, other important cities in Italy include Milan, Naples, Florence, and Venice, each with distinct geographical and cultural characteristics. Italy is a popular tourist destination due to its historic cities, rich art and architecture, and varied natural landscapes. The highest peak in Italy is Mont Blanc in the Graian Alps, with an altitude of 4,808 meters. This glacial peak offers opportunities for mountaineering and ecotourism in a spectacular environment. Italy is known worldwide for its rich and varied wine production. The Tuscany region, in particular, is renowned for Chianti, a dry red wine. Italy\'s climate varies from Mediterranean in the south to temperate in the north, with oceanic and continental influences felt in different regions of the country. This climatic diversity provides favorable conditions for a wide range of outdoor activities and agriculture. Italy also includes several important islands, such as Sicily and Sardinia, which have spectacular landscapes and a rich history.',
             'historyLesson':
-                'În sudul Europei, se găsește o țară cu o istorie bogată și variată - Italia. În antichitate, peninsula italiană era locuită de diverse popoare precum etruscii, grecii și samniții, dar a devenit cunoscută mai ales prin cucerirea romană, care a dus la formarea Republicii Romane și apoi a Imperiului Roman. În Evul Mediu, Italia a fost divizată în numeroase state și republici independente, precum Republica Venețiană, Ducatul Milano, Republica Florentină și Statul Papal. Această perioadă a fost marcată de competiția între aceste entități pentru putere și control.În timpul Renașterii, Italia a fost epicentrul unui puternic mișcări culturale și artistice, marcând o perioadă de înflorire în domenii precum arta, arhitectura și literatura. Personalități precum Leonardo da Vinci, Michelangelo și Dante Alighieri au contribuit la reputația de centru cultural al Europei al Italiei. În secolele XVIII și XIX, Italia a fost scena unor conflicte și transformări politice importante, incluzând războaiele napoleoniene și procesul de unificare a Italiei sub conducerea lui Giuseppe Garibaldi și a lui Camillo Benso, conte de Cavour. Acest proces a dus la formarea statului italian modern, care a fost completat în 1871, când Roma a devenit capitala Italiei. În secolul al XX-lea, Italia a fost implicată în ambele războaie mondiale. În Primul Război Mondial, Italia s-a alăturat Puterilor Aliate în 1915, în speranța că ar obține teritorii promițătoare de la Puterile Centrale. Luptele au fost concentrate în principal pe frontul italian în Alpii Orientali și au implicat confruntări dure cu trupele austro-ungare. După război, Italia a fost dezamăgită de rezultatele Conferinței de Pace de la Paris, care nu a satisfăcut așteptările sale teritoriale. Această perioadă a generat nemulțumiri și instabilitate politică în Italia, pregătind terenul pentru ascensiunea fascismului. În 1957, Italia a fost una dintre țările fondatoare ale Comunității Economice Europene (CEE), precursorul Uniunii Europene, semnând Tratatul de la Roma. Astfel, Italia a fost implicată încă de la început în procesul de integrare europeană. Italia este cunoscută pentru peisajele sale pitorești, patrimoniul său istoric și cultural bogat, bucătăria sa renumită și contribuțiile sale la domenii precum moda și designul.',
+                'In southern Europe lies a country with a rich and varied history - Italy. In ancient times, the Italian peninsula was inhabited by diverse peoples such as the Etruscans, Greeks, and Samnites, but it became best known through Roman conquest, which led to the formation of the Roman Republic and later the Roman Empire. In the Middle Ages, Italy was divided into numerous independent states and republics, such as the Venetian Republic, the Duchy of Milan, the Florentine Republic, and the Papal States. This period was marked by competition between these entities for power and control. During the Renaissance, Italy was the epicenter of a powerful cultural and artistic movement, marking a period of flourishing in fields such as art, architecture, and literature. Figures such as Leonardo da Vinci, Michelangelo, and Dante Alighieri contributed to Italy’s reputation as the cultural center of Europe. In the 18th and 19th centuries, Italy was the scene of significant political conflicts and transformations, including the Napoleonic wars and the process of Italian unification under the leadership of Giuseppe Garibaldi and Camillo Benso, Count of Cavour. This process led to the formation of the modern Italian state, which was completed in 1871 when Rome became the capital of Italy. In the 20th century, Italy was involved in both world wars. In World War I, Italy joined the Allied Powers in 1915, hoping to gain promising territories from the Central Powers. The battles were mainly concentrated on the Italian front in the Eastern Alps and involved tough confrontations with Austro-Hungarian troops. After the war, Italy was disappointed by the results of the Paris Peace Conference, which did not meet its territorial expectations. This period generated dissatisfaction and political instability in Italy, paving the way for the rise of fascism. In 1957, Italy was one of the founding countries of the European Economic Community (EEC), the precursor to the European Union, by signing the Treaty of Rome. Thus, Italy was involved from the beginning in the process of European integration. Italy is known for its picturesque landscapes, rich historical and cultural heritage, renowned cuisine, and contributions to fields such as fashion and design.',
             'geography_completed': 0,
             'history_completed': 0,
             'doesExist': 1
@@ -2129,9 +2114,9 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
           await db.insert('country', {
             'name': 'China',
             'geographyLesson':
-                'China, una dintre cele mai mari țări din lume ca suprafață și populație, este situată în Asia de Est, având granițe cu mai multe țări importante precum Rusia și Mongolia la nord, India, Nepal și Bhutan la sud, și Coreea de Nord, Vietnam și Laos la sud-est. Capitala sa, Beijing, este un centru cultural, economic și politic major, iar Shanghai este unul dintre cele mai mari orașe din lume, fiind un important centru financiar și comercial. Teritoriul Chinei este caracterizat de o varietate geografică impresionantă, cuprinzând munți, câmpii și regiuni de coastă. La vest, munții Himalaya formează o graniță naturală, iar la sud-vest se găsesc Munții Tian, care includ cel mai înalt vârf din China, vârful Everest. În partea de nord se află Munții Altai, iar la est se întind Munții Qinling. Aceste lanțuri muntoase influențează în mod semnificativ clima și geografia țării. Râurile majore, precum Yangtze și Fluviul Galben, traversează China, furnizând apă pentru irigații și transportul naval. Yangtze este al treilea cel mai lung râu din lume și are o importanță culturală și economică semnificativă, cu orașe importante precum Chongqing și Wuhan aflate pe malurile sale. O caracteristică geografică distinctivă a Chinei o reprezintă Marele Zid, o structură masivă de apărare construită de-a lungul secolelor pentru a proteja imperiul chinez împotriva invaziilor din nord. Acest monument istoric impresionant este o atracție turistică de prim rang și simbolizează bogata istorie și cultura a Chinei. China are și o coastă extinsă, cu orașe portuare importante precum Hong Kong, Guangzhou și Shenzhen. Aceste regiuni au jucat un rol crucial în dezvoltarea comerțului maritim și a economiei chineze moderne. În plus față de Beijing și Shanghai, alte orașe importante din China includ Guangzhou, Chengdu și Xi an, fiecare având caracteristici geografice și culturale distincte. China este o destinație turistică populară datorită patrimoniului său cultural bogat, precum și peisajelor naturale variate, cum ar fi Muntele Huangshan și Yangshuo Karst. Clima Chinei variază considerabil de la nord la sud și de la est la vest, cu regiuni temperate, subtropicale și tropicale. În nord, iernile sunt reci și uscate, în timp ce în sud verile sunt calde și umede. China include și mai multe regiuni autonome, cum ar fi Tibetul și Xinjiang, care au peisaje spectaculoase și o diversitate culturală remarcabilă. China este, de asemenea, renumită pentru bogata sa istorie culinară și diversitatea sa gastronomică, care variază de la mâncăruri picante din Sichuan la delicatese din Shanghai și fructe de mare din Canton.',
+                'China, one of the largest countries in the world by area and population, is located in East Asia, bordered by several major countries such as Russia and Mongolia to the north, India, Nepal, and Bhutan to the south, and North Korea, Vietnam, and Laos to the southeast. Its capital, Beijing, is a major cultural, economic, and political center, while Shanghai is one of the largest cities in the world, serving as an important financial and commercial hub. China\'s territory is characterized by impressive geographical diversity, including mountains, plains, and coastal regions. To the west, the Himalayas form a natural border, while the Tian Mountains, which include the highest peak in China, Mount Everest, are located to the southwest. In the north are the Altai Mountains, and to the east stretch the Qinling Mountains. These mountain ranges significantly influence the country\'s climate and geography. Major rivers, such as the Yangtze and the Yellow River, traverse China, providing water for irrigation and river transport. The Yangtze is the third longest river in the world and holds significant cultural and economic importance, with major cities such as Chongqing and Wuhan located along its banks. A distinctive geographical feature of China is the Great Wall, a massive defensive structure built over the centuries to protect the Chinese empire against invasions from the north. This impressive historical monument is a top tourist attraction and symbolizes China\'s rich history and culture. China also has an extensive coastline, with important port cities such as Hong Kong, Guangzhou, and Shenzhen. These regions have played a crucial role in the development of maritime trade and the modern Chinese economy. In addition to Beijing and Shanghai, other important cities in China include Guangzhou, Chengdu, and Xi\'an, each with distinct geographical and cultural characteristics. China is a popular tourist destination due to its rich cultural heritage and varied natural landscapes, such as Mount Huangshan and Yangshuo Karst. China\'s climate varies significantly from north to south and east to west, with temperate, subtropical, and tropical regions. In the north, winters are cold and dry, while in the south, summers are warm and humid. China also includes several autonomous regions, such as Tibet and Xinjiang, which have spectacular landscapes and remarkable cultural diversity. China is also renowned for its rich culinary history and gastronomic diversity, ranging from spicy Sichuan cuisine to Shanghai delicacies and Cantonese seafood.',
             'historyLesson':
-                'În Asia de Est, se află o țară cu o istorie străveche și fascinantă - China. De-a lungul mileniilor, China a fost locuită de diverse civilizații și culturi, iar evoluția sa istorică a fost marcată de momente semnificative și transformări profunde. În perioada antică, China a fost locuită de numeroase triburi și regate, dar unificarea sa sub o autoritate centrală a început sub Dinastia Qin, care a condus în secolul al III-lea î.Hr. Dinastia Qin a fost urmată de Dinastiile Han, Tang și Song, perioade de prosperitate și inovație în domenii precum știința, tehnologia și arta. În Evul Mediu, China a cunoscut o serie de dinastii și imperii, precum Yuan (fondată de mongoli), Ming și Qing. În timpul dinastiei Tang și Song, China a fost un centru comercial și cultural important, fiind cunoscută pentru invențiile sale tehnologice precum tiparul mobil și busola. În secolul al XIX-lea, China a fost afectată de agresiunea imperialistă și influența puterilor străine, ceea ce a dus la războaiele opiumului și la Tratatul de la Nanking, care a deschis porțile Chinei pentru comerțul străin și a impus concesiuni teritoriale. Această perioadă de slăbiciune a statului chinez a culminat cu Revolta boxerilor și căderea dinastiei Qing. În secolul XX, China a trecut printr-o serie de schimbări politice și sociale semnificative. Revoluția din 1911 a condus la căderea sistemului imperial și la fondarea Republicii Chineze sub conducerea lui Sun Yat-sen. În 1949, Partidul Comunist Chinez, condus de Mao Zedong, a proclamat înființarea Republicii Populare Chineze, punând capăt unui secol de dominație străină și instabilitate internă. De-a lungul deceniilor, China a traversat reforme economice și sociale masive sub conducerea lui Deng Xiaoping și a succesorilor săi, transformându-se dintr-o economie planificată într-una orientată către piață și devenind una dintre cele mai mari puteri economice din lume. Astăzi, China este cunoscută pentru tehnologia sa avansată, economia sa în creștere rapidă și influența sa globală în domenii precum comerțul internațional și politica mondială. Pe lângă aceste aspecte, China are o istorie culturală bogată, cu contribuții semnificative în domenii precum filosofia, literatura, arta și arhitectura.',
+                'In East Asia, there is a country with an ancient and fascinating history - China. Over the millennia, China has been inhabited by various civilizations and cultures, and its historical evolution has been marked by significant moments and profound transformations. In ancient times, China was inhabited by numerous tribes and kingdoms, but its unification under a central authority began under the Qin Dynasty, which ruled in the 3rd century BC. The Qin Dynasty was followed by the Han, Tang, and Song Dynasties, periods of prosperity and innovation in fields such as science, technology, and art. In the Middle Ages, China experienced a series of dynasties and empires, such as the Yuan (founded by the Mongols), Ming, and Qing. During the Tang and Song dynasties, China was an important commercial and cultural center, known for its technological inventions such as movable type printing and the compass. In the 19th century, China was affected by imperialist aggression and the influence of foreign powers, leading to the Opium Wars and the Treaty of Nanking, which opened China’s doors to foreign trade and imposed territorial concessions. This period of weakness in the Chinese state culminated in the Boxer Rebellion and the fall of the Qing Dynasty. In the 20th century, China underwent significant political and social changes. The 1911 Revolution led to the fall of the imperial system and the founding of the Republic of China under the leadership of Sun Yat-sen. In 1949, the Chinese Communist Party, led by Mao Zedong, proclaimed the establishment of the People’s Republic of China, ending a century of foreign domination and internal instability. Over the decades, China has undergone massive economic and social reforms under the leadership of Deng Xiaoping and his successors, transforming from a planned economy to a market-oriented one and becoming one of the world’s largest economic powers. Today, China is known for its advanced technology, rapidly growing economy, and global influence in areas such as international trade and world politics. In addition to these aspects, China has a rich cultural history, with significant contributions in fields such as philosophy, literature, art, and architecture.',
             'geography_completed': 0,
             'history_completed': 0,
             'doesExist': 1
@@ -2165,381 +2150,386 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
         });*/
 
           await db.insert('question', {
-          'country': 'Spain',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': '',
-          'answer': answer1,
-          'correct_answer': 1,
-          'type': 3
-        });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer1,
+            'correct_answer': 1,
+            'type': 3
+          });
           await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text':
-                        'What is the capital of Spain and the largest city in the country?',
-                    'answer': answer2,
-                    'correct_answer': 2,
-                    'type': 1
-                  });
-
-
-          await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'What is the population of Spain?',
-                    'answer': '',
-                    'correct_answer': 47,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'Spain and Portugal are neighboring countries.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-
-                    await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text':
-                        'Which of the following islands does not belong to Spain?',
-                    'answer': answer3,
-                    'correct_answer': 3,
-                    'type': 1
-                  });
-          await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer4,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': 'How many meters is the highest mountain peak?',
-                    'answer': '',
-                    'correct_answer': 3718,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': 'Formentera belongs to Spain.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text':
+                'What is the capital of Spain and the largest city in the country?',
+            'answer': answer2,
+            'correct_answer': 2,
+            'type': 1
+          });
 
           await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Who was one of the great Spanish explorers of the 16th-17th centuries who discovered America?',
-          'answer': answer5,
-          'correct_answer': 1,
-          'type': 1
-        });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the population of Spain?',
+            'answer': '',
+            'correct_answer': 47,
+            'type': 2
+          });
           await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'When was the decree for the expulsion of Jews and Moors signed?',
-                    'answer': '',
-                    'correct_answer': 1492,
-                    'type': 2
-                  });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Spain and Portugal are neighboring countries.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
 
           await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'In the 19th century, Spain managed to keep all its colonies in Latin America.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text':
+                'Which of the following islands does not belong to Spain?',
+            'answer': answer3,
+            'correct_answer': 3,
+            'type': 1
+          });
           await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text': '',
-          'answer': answer6,
-          'correct_answer': 1,
-          'type': 3
-        });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer4,
+            'correct_answer': 1,
+            'type': 3
+          });
           await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text':
-                        'What was the period of rule of dictator Francisco Franco in Spain?',
-                    'answer': answer7,
-                    'correct_answer': 2,
-                    'type': 1
-                  });
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'How many meters is the highest mountain peak?',
+            'answer': '',
+            'correct_answer': 3718,
+            'type': 2
+          });
           await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'In what year did Spain become a democracy?',
-                    'answer': '',
-                    'correct_answer': 1978,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'Spain',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'Ferdinand II and Isabella I were responsible for the completion of the Reconquista.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-          await db.insert('question', {
-          'country': 'Spain',
-          'subject': 2,
-          'difficulty': 2,
-          'question_text': '',
-          'answer': answer8,
-          'correct_answer': 1,
-          'type': 3
-        });
-          await db.insert('question', {
-          'country': 'France',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': 'What is the capital of France?',
-          'answer': answer9,
-          'correct_answer': 3,
-          'type': 1
-        });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'What is the population of France?',
-                    'answer': '',
-                    'correct_answer': 67,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'The Pyrenees Mountains form a natural border between France and Italy.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer10,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text':
-                        'What is the most important river in France, known for flowing through the capital?',
-                    'answer': answer11,
-                    'correct_answer': 2,
-                    'type': 1
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer12,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': 'How many meters is the highest peak in France?',
-                    'answer': '',
-                    'correct_answer': 4810,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': 'The Eiffel Tower is located in Paris.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-
-         await db.insert('question', {
-          'country': 'France',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Care a fost una dintre provinciile romane în care a fost încorporată Franța în antichitate?',
-          'answer': answer13,
-          'correct_answer': 3,
-          'type': 1
-        });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'In what year did the French Revolution take place?',
-                    'answer': '',
-                    'correct_answer': 1789,
-                    'type': 2
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer14,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
-          await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'France was one of the founding members of the EU.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-
+            'country': 'Spain',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Formentera belongs to Spain.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
 
           await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text':
-                        'Care a fost perioada de dominație a lui Napoleon Bonaparte în Franța?',
-                    'answer': answer15,
-                    'correct_answer': 3,
-                    'type': 1
-                  });
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'Who was one of the great Spanish explorers of the 16th-17th centuries who discovered America?',
+            'answer': answer5,
+            'correct_answer': 1,
+            'type': 1
+          });
           await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'In what year was the Third Republic established?',
-                    'answer': '',
-                    'correct_answer': 1870,
-                    'type': 2
-                  });
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'When was the decree for the expulsion of Jews and Moors signed?',
+            'answer': '',
+            'correct_answer': 1492,
+            'type': 2
+          });
+
           await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer16,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In the 19th century, Spain managed to keep all its colonies in Latin America.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
           await db.insert('question', {
-                    'country': 'France',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'The Nazi occupation was from 1920 to 1957.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer6,
+            'correct_answer': 1,
+            'type': 3
+          });
           await db.insert('question', {
-          'country': 'Italy',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': 'What is the capital of Italy?',
-          'answer': answer17,
-          'correct_answer': 1,
-          'type': 1
-        });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is the population of Italy?',
-                  'answer': '',
-                  'correct_answer': 60,
-                  'type': 2
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer18,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Venice is renowned for its Carnival festival.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is the largest island in Italy?',
-                  'answer': answer19,
-                  'correct_answer': 1,
-                  'type': 1
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the altitude of Mont Blanc peak in the Graian Alps?',
-                  'answer': '',
-                  'correct_answer': 4808,
-                  'type': 2
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer20,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Venice is renowned for its Carnival festival.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-          
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'What was the period of rule of dictator Francisco Franco in Spain?',
+            'answer': answer7,
+            'correct_answer': 2,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'In what year did Spain become a democracy?',
+            'answer': '',
+            'correct_answer': 1978,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'Ferdinand II and Isabella I were responsible for the completion of the Reconquista.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'Spain',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer8,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the capital of France?',
+            'answer': answer9,
+            'correct_answer': 3,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the population of France?',
+            'answer': '',
+            'correct_answer': 67,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text':
+                'The Pyrenees Mountains form a natural border between France and Italy.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer10,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text':
+                'What is the most important river in France, known for flowing through the capital?',
+            'answer': answer11,
+            'correct_answer': 2,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer12,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'How many meters is the highest peak in France?',
+            'answer': '',
+            'correct_answer': 4810,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'The Eiffel Tower is located in Paris.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'Which was one of the Roman provinces where France was incorporated in antiquity?',
+            'answer': answer13,
+            'correct_answer': 3,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In what year did the French Revolution take place?',
+            'answer': '',
+            'correct_answer': 1789,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer14,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'France was one of the founding members of the EU.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'What was the period of Napoleon Bonaparte\'s rule in France?',
+            'answer': answer15,
+            'correct_answer': 3,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'In what year was the Third Republic established?',
+            'answer': '',
+            'correct_answer': 1870,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer16,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'France',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'The Nazi occupation was from 1920 to 1957.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the capital of Italy?',
+            'answer': answer17,
+            'correct_answer': 1,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'What is the population of Italy?',
+            'answer': '',
+            'correct_answer': 60,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer18,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Venice is renowned for its Carnival festival.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'What is the largest island in Italy?',
+            'answer': answer19,
+            'correct_answer': 1,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text':
+                'What is the altitude of Mont Blanc peak in the Graian Alps?',
+            'answer': '',
+            'correct_answer': 4808,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer20,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Venice is renowned for its Carnival festival.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+
           await db.insert('question', {
             'country': 'Italy',
             'subject': 2,
@@ -2550,134 +2540,138 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             'correct_answer': 3,
             'type': 1
           });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year was the modern Italian state formed?',
-                  'answer': '',
-                  'correct_answer': 1871,
-                  'type': 2
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer22,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'Italy joined the Allied Powers in 1915.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-        await db.insert('question', {
-                    'country': 'Italy',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text':
-                        'Who was one of the personalities who contributed to the formation of the Roman Empire?',
-                    'answer': answer23,
-                    'correct_answer': 1,
-                    'type': 1
-                  });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'In which century did the two world wars take place?',
-                  'answer': '',
-                  'correct_answer': 20,
-                  'type': 2
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer24,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'Italy',
-                  'subject': 2,
-                  'difficulty': 2,
-                  'question_text': 'The Napoleonic Wars took place in the 19th century.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-                  await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'The Yangtze is the third longest river in the world.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-        await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer26,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Singapore is part of China.',
-                  'answer': '',
-                  'correct_answer': 2,
-                  'type': 4
-                });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In what year was the modern Italian state formed?',
+            'answer': '',
+            'correct_answer': 1871,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer22,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Italy joined the Allied Powers in 1915.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'Who was one of the personalities who contributed to the formation of the Roman Empire?',
+            'answer': answer23,
+            'correct_answer': 1,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'In which century did the two world wars take place?',
+            'answer': '',
+            'correct_answer': 20,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer24,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'Italy',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'The Napoleonic Wars took place in the 19th century.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text':
+                'The Yangtze is the third longest river in the world.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer26,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Singapore is part of China.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
 
-        await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is the highest peak in China?',
-                  'answer': answer27,
-                  'correct_answer': 1,
-                  'type': 1
-                });
-        await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': '',
-                  'answer': answer28,
-                  'correct_answer': 1,
-                  'type': 3
-                });
-        await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Chongqing is an important city.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
-        await db.insert('question', {
-                  'country': 'China',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Xinjiang is an autonomous region.',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'What is the highest peak in China?',
+            'answer': answer27,
+            'correct_answer': 1,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer28,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Chongqing is an important city.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'China',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Xinjiang is an autonomous region.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
           await db.insert('question', {
             'country': 'China',
             'subject': 2,
@@ -2688,629 +2682,640 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
             'correct_answer': 3,
             'type': 1
           });
-            await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 1,
-                      'question_text': 'In what year was the People Republic of China founded?',
-                      'answer': '',
-                      'correct_answer': 1949,
-                      'type': 2
-                    });
-            await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 1,
-                      'question_text': '',
-                      'answer': answer30,
-                      'correct_answer': 1,
-                      'type': 3
-                    });
-            await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 1,
-                      'question_text': 'China was affected by imperialist aggression.',
-                      'answer': '',
-                      'correct_answer': 1,
-                      'type': 4
-                    });
-            await db.insert('question', {
-                        'country': 'China',
-                        'subject': 2,
-                        'difficulty': 2,
-                        'question_text':
-                            'What was the capital of China during the Tang dynasty?',
-                        'answer': answer31,
-                        'correct_answer': 3,
-                        'type': 1
-                      });
-            await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 2,
-                      'question_text': 'In what year did the imperial system fall?',
-                      'answer': '',
-                      'correct_answer': 1911,
-                      'type': 2
-                    });
-            await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 2,
-                      'question_text': '',
-                      'answer': answer32,
-                      'correct_answer': 1,
-                      'type': 3
-                    });
-            await db.insert('question', {
-                      'country': 'China',
-                      'subject': 2,
-                      'difficulty': 2,
-                      'question_text': 'The Yuan dynasty was founded by the Chinese.',
-                      'answer': '',
-                      'correct_answer': 2,
-                      'type': 4
-                    });
-                     await db.insert('question', {
-          'country': 'United States',
-          'subject': 1,
-          'difficulty': 1,
-          'question_text': 'What is the capital of the USA?',
-          'answer': answer33,
-          'correct_answer': 2,
-          'type': 1
-        });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer34,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In what year was the People Republic of China founded?',
+            'answer': '',
+            'correct_answer': 1949,
+            'type': 2
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'San Francisco is a port city.',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer30,
+            'correct_answer': 1,
+            'type': 3
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 1,
-                    'question_text': 'The panda bear can be found in Yellowstone National Park.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'China was affected by imperialist aggression.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text':
-                        'What are two of the US territories mentioned in the lesson besides Hawaii and Puerto Rico?',
-                    'answer': answer35,
-                    'correct_answer': 3,
-                    'type': 1
-                  });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'What was the capital of China during the Tang dynasty?',
+            'answer': answer31,
+            'correct_answer': 3,
+            'type': 1
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer36,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'In what year did the imperial system fall?',
+            'answer': '',
+            'correct_answer': 1911,
+            'type': 2
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text':
-                        'Name two states that have desert lands in the USA.',
-                    'answer': answer38,
-                    'correct_answer': 2,
-                    'type': 1
-                  });
-                  await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 1,
-                    'difficulty': 2,
-                    'question_text': 'The Gobi Desert is found in the USA.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
-                         await db.insert('question', {
-          'country': 'United States',
-          'subject': 2,
-          'difficulty': 1,
-          'question_text':
-              'Who lived in what is now the United States before European colonization?',
-          'answer': answer39,
-          'correct_answer': 1,
-          'type': 1
-        });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer32,
+            'correct_answer': 1,
+            'type': 3
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'In what year was the Declaration of Independence adopted',
-                    'answer': '',
-                    'correct_answer': 1776,
-                    'type': 2
-                  });
+            'country': 'China',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'The Yuan dynasty was founded by the Chinese.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': '',
-                    'answer': answer40,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the capital of the USA?',
+            'answer': answer33,
+            'correct_answer': 2,
+            'type': 1
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 1,
-                    'question_text': 'The American Civil War ended in 1970.',
-                    'answer': '',
-                    'correct_answer': 2,
-                    'type': 4
-                  });
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer34,
+            'correct_answer': 1,
+            'type': 3
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text':
-                        'What was the impact of the arrival of European explorers in the 16th century on North America?',
-                    'answer': answer41,
-                    'correct_answer': 4,
-                    'type': 1
-                  });
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'San Francisco is a port city.',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'in what year was the Volstead Act implemented.',
-                    'answer': '',
-                    'correct_answer': 1919,
-                    'type': 2
-                  });
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text':
+                'The panda bear can be found in Yellowstone National Park.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': '',
-                    'answer': answer42,
-                    'correct_answer': 1,
-                    'type': 3
-                  });
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text':
+                'What are two of the US territories mentioned in the lesson besides Hawaii and Puerto Rico?',
+            'answer': answer35,
+            'correct_answer': 3,
+            'type': 1
+          });
           await db.insert('question', {
-                    'country': 'United States',
-                    'subject': 2,
-                    'difficulty': 2,
-                    'question_text': 'in the 19th century the USA became one of the most powerful nations in the world',
-                    'answer': '',
-                    'correct_answer': 1,
-                    'type': 4
-                  });
-         
-              await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer174,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer36,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text':
+                'Name two states that have desert lands in the USA.',
+            'answer': answer38,
+            'correct_answer': 2,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'The Gobi Desert is found in the USA.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'Who lived in what is now the United States before European colonization?',
+            'answer': answer39,
+            'correct_answer': 1,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In what year was the Declaration of Independence adopted',
+            'answer': '',
+            'correct_answer': 1776,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer40,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'The American Civil War ended in 1970.',
+            'answer': '',
+            'correct_answer': 2,
+            'type': 4
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'What was the impact of the arrival of European explorers in the 16th century on North America?',
+            'answer': answer41,
+            'correct_answer': 4,
+            'type': 1
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'in what year was the Volstead Act implemented.',
+            'answer': '',
+            'correct_answer': 1919,
+            'type': 2
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer42,
+            'correct_answer': 1,
+            'type': 3
+          });
+          await db.insert('question', {
+            'country': 'United States',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'in the 19th century the USA became one of the most powerful nations in the world',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the capital of Romania?',
-                  'answer': answer175,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer174,
+            'correct_answer': 1,
+            'type': 3
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the population of Romania?',
-                  'answer': '',
-                  'correct_answer': 19,
-                  'type': 2
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the capital of Romania?',
+            'answer': answer175,
+            'correct_answer': 3,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Which river flows through Romania?',
-                  'answer': answer177,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the population of Romania?',
+            'answer': '',
+            'correct_answer': 19,
+            'type': 2
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Which city is not located in Romania?',
-                  'answer': answer178,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Which river flows through Romania?',
+            'answer': answer177,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the highest peak in Romania?',
-                  'answer': answer179,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Which city is not located in Romania?',
+            'answer': answer178,
+            'correct_answer': 3,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'What is the climate of Romania?',
-                  'answer': answer180,
-                  'correct_answer': 4,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the highest peak in Romania?',
+            'answer': answer179,
+            'correct_answer': 1,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Romania is one of the most populated countries in',
-                  'answer': answer182,
-                  'correct_answer': 4,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'What is the climate of Romania?',
+            'answer': answer180,
+            'correct_answer': 4,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Which region is not in Romania?',
-                  'answer': answer183,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text':
+                'Romania is one of the most populated countries in',
+            'answer': answer182,
+            'correct_answer': 4,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 1,
-                  'question_text': 'Ukraine is a neighbor of Romania',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Which region is not in Romania?',
+            'answer': answer183,
+            'correct_answer': 3,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which country is not a neighbor of Romania?',
-                  'answer': answer184,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 1,
+            'question_text': 'Ukraine is a neighbor of Romania',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which ports provide access to the Black Sea?',
-                  'answer': answer186,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Which country is not a neighbor of Romania?',
+            'answer': answer184,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which mountain divides the territory of Romania?',
-                  'answer': answer185,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Which ports provide access to the Black Sea?',
+            'answer': answer186,
+            'correct_answer': 1,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'In which mountain is Moldoveanu Peak located?',
-                  'answer': answer188,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Which mountain divides the territory of Romania?',
+            'answer': answer185,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What is Transylvania known for?',
-                  'answer': answer189,
-                  'correct_answer': 1,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'In which mountain is Moldoveanu Peak located?',
+            'answer': answer188,
+            'correct_answer': 3,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'What influences Romania\'s climate?',
-                  'answer': answer190,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'What is Transylvania known for?',
+            'answer': answer189,
+            'correct_answer': 1,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which location is more popular in summer?',
-                  'answer': answer191,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'What influences Romania\'s climate?',
+            'answer': answer190,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Which location is more popular in winter?',
-                  'answer': answer192,
-                  'correct_answer': 3,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Which location is more popular in summer?',
+            'answer': answer191,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Romania is a NATO member',
-                  'answer': '',
-                  'correct_answer': 1,
-                  'type': 4
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Which location is more popular in winter?',
+            'answer': answer192,
+            'correct_answer': 3,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 1,
-                  'difficulty': 2,
-                  'question_text': 'Romania\'s population in millions is',
-                  'answer': '',
-                  'correct_answer': 19,
-                  'type': 2
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Romania is a NATO member',
+            'answer': '',
+            'correct_answer': 1,
+            'type': 4
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In ancient times, which people lived on the territory of Romania?',
-                  'answer': answer194,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': 'Romania\'s population in millions is',
+            'answer': '',
+            'correct_answer': 19,
+            'type': 2
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'Which empire conquered Dacia?',
-                  'answer': answer195,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In ancient times, which people lived on the territory of Romania?',
+            'answer': answer194,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'Which principality belonged to the Romanian territory?',
-                  'answer': answer196,
-                  'correct_answer': 3,
-                  'type': 2
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Which empire conquered Dacia?',
+            'answer': answer195,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year was the Union of the Romanian Principalities?',
-                  'answer': '',
-                  'correct_answer': 1859,
-                  'type': 2
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'Which principality belonged to the Romanian territory?',
+            'answer': answer196,
+            'correct_answer': 3,
+            'type': 2
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'What regime did Romania adopt in 1947?',
-                  'answer': answer198,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In what year was the Union of the Romanian Principalities?',
+            'answer': '',
+            'correct_answer': 1859,
+            'type': 2
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': '',
-                  'answer': answer197,
-                  'correct_answer': 1,
-                  'type': 3
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'What regime did Romania adopt in 1947?',
+            'answer': answer198,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'The Great Union took place in 1925',
-                  'answer': "",
-                  'correct_answer': 2,
-                  'type': 4
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': '',
+            'answer': answer197,
+            'correct_answer': 1,
+            'type': 3
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did Romania declare independence from the Ottoman Empire?',
-                  'answer': '',
-                  'correct_answer': 1877,
-                  'type': 2
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'The Great Union took place in 1925',
+            'answer': "",
+            'correct_answer': 2,
+            'type': 4
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did communism fall in Romania?',
-                  'answer': '',
-                  'correct_answer': 1989,
-                  'type': 2
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text':
+                'In what year did Romania declare independence from the Ottoman Empire?',
+            'answer': '',
+            'correct_answer': 1877,
+            'type': 2
+          });
 
-                await db.insert('question', {
-                  'country': 'Romania',
-                  'subject': 2,
-                  'difficulty': 1,
-                  'question_text': 'In what year did Romania become an EU member?',
-                  'answer': answer199,
-                  'correct_answer': 2,
-                  'type': 1
-                });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'In what year did communism fall in Romania?',
+            'answer': '',
+            'correct_answer': 1989,
+            'type': 2
+          });
 
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'In what year did Romania become an EU member?',
+            'answer': answer199,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 1,
-                'question_text': 'Who is the current President of Romania?',
-                'answer': answer200,
-                'correct_answer': 2,
-                'type': 1
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 1,
+            'question_text': 'Who is the current President of Romania?',
+            'answer': answer200,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'Who ruled Moldova in the medieval period?',
-                'answer': answer201,
-                'correct_answer': 3,
-                'type': 1
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'Who ruled Moldova in the medieval period?',
+            'answer': answer201,
+            'correct_answer': 3,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'During World War II, which power occupied Romania?',
-                'answer': answer202,
-                'correct_answer': 2,
-                'type': 1
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'During World War II, which power occupied Romania?',
+            'answer': answer202,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'In what year was Dacia conquered?',
-                'answer': '',
-                'correct_answer': 106,
-                'type': 2
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'In what year was Dacia conquered?',
+            'answer': '',
+            'correct_answer': 106,
+            'type': 2
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'In which century did the national movement grow?',
-                'answer': '',
-                'correct_answer': 19,
-                'type': 2
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'In which century did the national movement grow?',
+            'answer': '',
+            'correct_answer': 19,
+            'type': 2
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'Who was the first leader of Communist Romania?',
-                'answer': answer203,
-                'correct_answer': 4,
-                'type': 1
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'Who was the first leader of Communist Romania?',
+            'answer': answer203,
+            'correct_answer': 4,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'In which war did the Romanian Principalities participate to consolidate their status as a sovereign nation?',
-                'answer': answer204,
-                'correct_answer': 2,
-                'type': 1
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'In which war did the Romanian Principalities participate to consolidate their status as a sovereign nation?',
+            'answer': answer204,
+            'correct_answer': 2,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'What is the name of the process through which the Romans influenced the culture of the Dacians?',
-                'answer': answer205,
-                'correct_answer': 1,
-                'type': 1
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text':
+                'What is the name of the process through which the Romans influenced the culture of the Dacians?',
+            'answer': answer205,
+            'correct_answer': 1,
+            'type': 1
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': 'Vlad Țepeș ruled in Wallachia',
-                'answer': "",
-                'correct_answer': 1,
-                'type': 4
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': 'Vlad Tepes ruled in Wallachia',
+            'answer': "",
+            'correct_answer': 1,
+            'type': 4
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 2,
-                'difficulty': 2,
-                'question_text': '',
-                'answer': answer206,
-                'correct_answer': 1,
-                'type': 3
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 2,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer206,
+            'correct_answer': 1,
+            'type': 3
+          });
 
-              await db.insert('question', {
-                'country': 'Romania',
-                'subject': 1,
-                'difficulty': 2,
-                'question_text': '',
-                'answer': answer207,
-                'correct_answer': 1,
-                'type': 3
-              });
+          await db.insert('question', {
+            'country': 'Romania',
+            'subject': 1,
+            'difficulty': 2,
+            'question_text': '',
+            'answer': answer207,
+            'correct_answer': 1,
+            'type': 3
+          });
 
           // Copy the data from the old table to the new one
 
@@ -3377,7 +3382,7 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
 
     return result.first['streak_count'];
   }
-   
+
   Future<void> incrementStreak() async {
     Database db = await this.database;
     DateTime lastActivityDate = await getLastActivityDate(db);
@@ -3420,10 +3425,10 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
       'type': type,
     });
   }
-  
+
   Future<int> setFaces(String faceList) async {
     Database db = await database;
-    int id=1;
+    int id = 1;
     return await db.update(
       'profile',
       {
@@ -3436,7 +3441,7 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
 
   Future<Map<String, dynamic>> queryFaces() async {
     Database db = await database;
-    int id=1;
+    int id = 1;
     List<Map<String, dynamic>> result = await db.query(
       'profile',
       columns: ['faces'],
@@ -3477,22 +3482,21 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
   }
 
   Future<List<String>> queryExistingCountries() async {
-  Database db = await database;
-  int exist = 1;
-  List<Map<String, dynamic>> result = await db.query(
-    'country',
-    columns: ['name'],
-    where: 'doesExist = ?',
-    whereArgs: [exist],
-  );
+    Database db = await database;
+    int exist = 1;
+    List<Map<String, dynamic>> result = await db.query(
+      'country',
+      columns: ['name'],
+      where: 'doesExist = ?',
+      whereArgs: [exist],
+    );
 
-  if (result.isNotEmpty) {
-    return result.map((country) => country['name'] as String).toList();
-  } else {
-    throw Exception('Countries not found');
+    if (result.isNotEmpty) {
+      return result.map((country) => country['name'] as String).toList();
+    } else {
+      throw Exception('Countries not found');
+    }
   }
-}
-
 
   Future<int> setLesson(String countryName, String lesson, int subject) async {
     Database db = await database;
@@ -3547,7 +3551,7 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
       return [];
     }
   }
-  
+
   Future<int> setBought(int face) async {
     Database db = await database;
     return await db.update(
@@ -3801,29 +3805,14 @@ String answer205 = jsonEncode(['Romanization', 'Leveling', 'Dacianization', 'Glo
     return await db.query('faces', orderBy: 'faceID ASC');
   }
 
-  // Future<void> clearTableAndResetId(String tableName) async {
-  //   final db = _databaseName;
-  //   if (db != null) {
-  //     /*await db.transaction((txn) async {
-  //       // Delete ALL
-  //       await txn.rawDelete('DELETE FROM $tableName');
-  //       // Reset  :)
-  //       await txn.rawUpdate(
-  //           'DELETE FROM sqlite_sequence WHERE name = ?', [tableName]);
-  //     });*/
-  //   }
-  // }
-
-  // Future<void> decreaseMaxId(String tableName) async {
-  //   final db = _databaseName;
-  //   if (db != null) {
-  //     /*// Get the maximum ID
-  //     final maxIdResult =
-  //         await db.rawQuery('SELECT MAX(id) as max_id FROM $tableName');
-  //     final maxId = maxIdResult.first['max_id'] as int? ?? 1;
-  //     // Set the ID to maxId - 1
-  //     await db.rawUpdate('UPDATE sqlite_sequence SET seq = ? WHERE name = ?',
-  //         [maxId - 1, tableName]);*/
-  //   }
-  // }
+  Future<int> updateDoubleIQ(int value) async {
+    Database db = await database;
+    int profileID = 1;
+    return await db.update(
+      'profile',
+      {'double_iq': value},
+      where: 'profileID = ?',
+      whereArgs: [profileID],
+    );
+  }
 }

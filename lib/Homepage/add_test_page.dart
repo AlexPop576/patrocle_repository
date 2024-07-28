@@ -6,7 +6,7 @@ import 'package:page_transition/page_transition.dart';
 
 import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
-
+// StatefulWidget for adding a test page
 class AddTestPage extends StatefulWidget {
   AddTestPage({super.key, this.language});
   int? language;
@@ -14,15 +14,16 @@ class AddTestPage extends StatefulWidget {
   @override
   State<AddTestPage> createState() => _AddTestPageState(language: language);
 }
-
+// State class for AddTestPage
 class _AddTestPageState extends State<AddTestPage> {
   _AddTestPageState({this.language});
   int? language;
-  int pageIndex = 0;
+  int pageIndex = 0; // Initial page index
   Map<int?, Map<String?, String?>> translation = Translations().translation;
 
   @override
   Widget build(BuildContext context) {
+    // Build method to create the UI
     return Scaffold(
         appBar: PreferredSize(
           preferredSize: Size(MediaQuery.of(context).size.width, 60),

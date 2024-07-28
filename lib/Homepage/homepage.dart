@@ -6,14 +6,15 @@ import 'package:patrocle/Homepage/inventory.dart';
 import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
 
+// StatefulWidget for the homepage
 class Homepage extends StatefulWidget {
   Homepage({super.key, required this.selectedIndex});
-  int? selectedIndex = 1;
+  int? selectedIndex = 1; // Default selected index
 
   @override
   State<Homepage> createState() => _HomepageState(selectedIndex: selectedIndex);
 }
-
+// State class for Homepage
 class _HomepageState extends State<Homepage> {
   _HomepageState({required this.selectedIndex});
   Map<int?, Map<String?, String?>> translation = Translations().translation;
@@ -26,14 +27,15 @@ class _HomepageState extends State<Homepage> {
     fetchData();
     fetchStreak();
   }
-
+ 
+ // Method to fetch data from the database
   Future<void> fetchData() async {
     final results = await _dbHelper.queryProfile();
     if (results.isNotEmpty) {
       setState(() {
-        language = results.first['language'];
-        coin = results.first['coins'];
-        profileId = results.first['profileID'];
+        language = results.first['language']; // Setting language
+        coin = results.first['coins']; // Setting coin count
+        profileId = results.first['profileID']; // Setting profile ID
       });
     }
   }
@@ -45,12 +47,13 @@ class _HomepageState extends State<Homepage> {
     });
   }
 
+  // Method to set the language
   setLanguage(int newLanguage) {
     setState(() {
       language = newLanguage;
     });
   }
-
+   // Method to refresh the app bar
   refreshAppbar() async {
     await fetchStreak();
     final results = await _dbHelper.queryProfile();
@@ -66,7 +69,7 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
-        elevation: 10,
+        elevation: 10, // Setting app bar elevation
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

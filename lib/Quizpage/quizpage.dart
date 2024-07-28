@@ -32,6 +32,7 @@ class QuizPage extends StatefulWidget {
 
   @override
   // ignore: no_logic_in_create_state
+  // Create state for QuizPage
   State<QuizPage> createState() => _QuizPageState(
       country: country,
       difficulty: difficulty,
@@ -39,7 +40,7 @@ class QuizPage extends StatefulWidget {
       mode: mode,
       language: language);
 }
-
+  // State class for QuizPage
 class _QuizPageState extends State<QuizPage> {
   _QuizPageState(
       {required this.country,
@@ -72,44 +73,26 @@ class _QuizPageState extends State<QuizPage> {
   int? bonusIQ = 0;
   Timer? timer;
   Timer? correctAnswerTimer;
-  int secondsCorrectAnswer = 2;
+  int secondsCorrectAnswer = 2, double_iq = 0;
 
   @override
+  
   void initState() {
     super.initState();
     fetchData(country.toString(), subject.toString());
   }
-
-  void startTimer() {
+   // Start the timer for the quiz
+  void startTimer(){
     timer = Timer.periodic(Duration(milliseconds: 500), (_) {
       setState(() {
         seconds--;
-        if (seconds == 0) {
-          pageIndex = pageMax + 1;
+        if(seconds==0){
+          pageIndex = pageMax+1;
         }
       });
     });
   }
-
-  void startCorrectAnswerTimer() {
-    secondsCorrectAnswer = 5;
-    correctAnswerTimer = Timer.periodic(Duration(milliseconds: 500), (_) {
-      setState(() {
-        secondsCorrectAnswer--;
-        if (secondsCorrectAnswer == 0) {
-          Navigator.pop(context);
-          setState(() {
-            if (pageIndex < pageMax + 1) {
-              pageIndex++;
-              givenAnswer = 0;
-              bonus = 0;
-            }
-          });
-        }
-      });
-    });
-  }
-
+// Fetch data from the database based on country and subject
   void fetchData(String country, String subject) async {
     if (difficulty == 1) {
       questions = await _dbHelper.queryQuestions(country, subject, 1);
@@ -119,6 +102,13 @@ class _QuizPageState extends State<QuizPage> {
       questions = await _dbHelper.queryQuestions(country, subject, 1) +
           await _dbHelper.queryQuestions(country, subject, 2);
     }
+    _dbHelper.queryProfile().then((results) {
+      if (results.isNotEmpty) {
+        setState(() {
+          double_iq = results.first['double_iq'];
+        });
+      }
+    });
     setState(() {
       pageMax = questions.length;
       if (pageMax > 10) {
@@ -134,6 +124,7 @@ class _QuizPageState extends State<QuizPage> {
     print('questions: $questions');
   }
 
+  // Mark the answer as correct
   void correct() {
     setState(() {
       // Use the correctColor from the ThemeData extension
@@ -141,6 +132,7 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  // Mark the answer as wrong
   void wrong() {
     setState(() {
       // Use the wrongColor from the ThemeData extension
@@ -148,6 +140,7 @@ class _QuizPageState extends State<QuizPage> {
     });
   }
 
+  // Update the lesson status in the database
   void updateLessonStatus() async {
     await _dbHelper.updateLessonDone(subject!, country!);
     await _dbHelper.updateProfileLesson(subject!);
@@ -158,12 +151,15 @@ class _QuizPageState extends State<QuizPage> {
     await _dbHelper.incrementStreak();
     //_homepage.fetchStreak();
   }
-
+  
+  // Update the IQ in the database
   void updateIQ() async {
     await _dbHelper
-        .updateProfileIQ(correctAnswersEasy * 5 + correctAnswersHard * 10);
+        .updateProfileIQ((double_iq + 1) *(correctAnswersEasy * 5 + correctAnswersHard * 10));
+    await _dbHelper.updateDoubleIQ(0);
   }
-
+  
+  // Update the trophies in the database
   void updateTrophies() async {
     int iq = 0, geography_lessons = 0, history_lessons = 0;
     _dbHelper.queryProfile().then((results) {
@@ -279,7 +275,7 @@ class _QuizPageState extends State<QuizPage> {
             );
           }
           if (iq < 500 &&
-              iq + correctAnswersEasy * 5 + correctAnswersHard * 10 >= 500) {
+              iq + (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10) >= 500) {
             _dbHelper.insertTrophy(4);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -300,7 +296,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
             );
           } else if (iq < 5000 &&
-              iq + correctAnswersEasy * 5 + correctAnswersHard * 10 >= 5000) {
+              iq + (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10) >= 5000) {
             _dbHelper.insertTrophy(7);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -321,7 +317,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
             );
           } else if (iq < 10000 &&
-              iq + correctAnswersEasy * 5 + correctAnswersHard * 10 >= 10000) {
+              iq + (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10) >= 10000) {
             _dbHelper.insertTrophy(8);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -717,7 +713,6 @@ class _QuizPageState extends State<QuizPage> {
                                             1
                                     ? correctAnswersEasy++
                                     : correctAnswersHard++;
-                            startCorrectAnswerTimer();
                             showModalBottomSheet(
                               backgroundColor: Colors.transparent,
                               context: context,
@@ -764,6 +759,44 @@ class _QuizPageState extends State<QuizPage> {
                                               ],
                                             ),
                                             const SizedBox(height: 20),
+                                            SizedBox(
+                                              height: 58,
+                                              width: double.infinity,
+                                              child: ElevatedButton(
+                                                onPressed: () {
+                                                  Navigator.pop(context);
+                                                  setState(() {
+                                                    if (pageIndex <
+                                                        pageMax + 1) {
+                                                      pageIndex++;
+                                                      givenAnswer = 0;
+                                                      bonus = 0;
+                                                    }
+                                                  });
+                                                },
+                                                style: ElevatedButton.styleFrom(
+                                                  backgroundColor: Colors.green,
+                                                  shape:
+                                                      const RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                      Radius.circular(15),
+                                                    ),
+                                                  ),
+                                                ),
+                                                child: Center(
+                                                  child: Text(
+                                                    "${translation[language]!["Continue"]}",
+                                                    style: const TextStyle(
+                                                      color: Colors.white,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      fontSize: 30,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ],
                                         ),
                                       ),
@@ -1012,6 +1045,7 @@ class _QuizPageState extends State<QuizPage> {
         correctAnswers: correctAnswersEasy + correctAnswersHard,
         pageMax: pageMax,
         bonusIQ: bonusIQ,
+        double_iq: double_iq,
         language: language,
       );
     }
@@ -1049,11 +1083,12 @@ class FinishPage extends StatelessWidget {
     required this.correctAnswers,
     required this.pageMax,
     required this.bonusIQ,
+    required this.double_iq,
     this.language,
   });
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final int correctAnswersEasy, correctAnswersHard, correctAnswers;
-  int? language = 2, pageMax, bonusIQ = 0;
+  int? language = 2, pageMax, bonusIQ = 0, double_iq = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -1187,7 +1222,7 @@ class FinishPage extends StatelessWidget {
                                 ),
                                 child: Center(
                                     child: Text(
-                                  "+${correctAnswersEasy * 5 + correctAnswersHard * 10 + bonusIQ!} IQ",
+                                  "+${(double_iq! + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10 + bonusIQ!)} IQ",
                                   style: const TextStyle(
                                       color: Color.fromARGB(255, 102, 102, 255),
                                       fontWeight: FontWeight.bold,

@@ -7,6 +7,7 @@ import 'package:patrocle/Homepage/add_test_page.dart';
 import '../Components/level_tile.dart';
 import '../Theme/translations.dart';
 
+// StatefulWidget for the Levels page
 class Levels extends StatefulWidget {
   const Levels({super.key, required this.refreshAppbar});
   final Function refreshAppbar;
@@ -15,6 +16,7 @@ class Levels extends StatefulWidget {
   State<Levels> createState() => _LevelsState(refreshAppbar: refreshAppbar);
 }
 
+// State class for Levels
 class _LevelsState extends State<Levels> {
   _LevelsState({required this.refreshAppbar});
   final Function refreshAppbar;
@@ -39,7 +41,7 @@ class _LevelsState extends State<Levels> {
       }
     });
   }
-  
+  // Refresh the state
   refresh() {
     setState(() {
       a++;

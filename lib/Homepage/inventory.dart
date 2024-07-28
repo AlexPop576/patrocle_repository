@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:patrocle/Components/shop_tile.dart';
 import 'package:patrocle/Components/trophy_tile.dart';
+import 'package:patrocle/Homepage/homepage.dart';
 
 import '../Database/database_helper.dart';
 import '../Theme/translations.dart';
 
+// Inventory widget which is a StatefulWidget
 class Inventory extends StatefulWidget {
   const Inventory({super.key});
 
@@ -14,9 +16,12 @@ class Inventory extends StatefulWidget {
 }
 
 class _InventoryState extends State<Inventory> {
+  // Database helper instance
   final _dbHelper = DatabaseHelper.instance;
+  // Translation map
   Map<int?, Map<String?, String?>> translation = Translations().translation;
-  int? language = 2;
+  // Language setting
+  int? language = 2, coins = 0, double_iq = 0;
 
   @override
   void initState() {
@@ -29,6 +34,8 @@ class _InventoryState extends State<Inventory> {
       if (results.isNotEmpty) {
         setState(() {
           language = results.first['language'];
+          coins = results.first['coins'];
+          double_iq = results.first['double_iq'];
         });
       }
     });
@@ -176,7 +183,7 @@ class _InventoryState extends State<Inventory> {
                     const EdgeInsets.symmetric(vertical: 9, horizontal: 18),
                 child: Container(
                   height: 200,
-                  width: MediaQuery.of(context).size.width ,
+                  width: MediaQuery.of(context).size.width,
                   decoration: BoxDecoration(
                     color: Colors.purple, // Background color from color list.
                     borderRadius: const BorderRadius.all(Radius.circular(15)),
@@ -189,10 +196,8 @@ class _InventoryState extends State<Inventory> {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(10.0),
-                                child: Image.asset(
-                                    'assets/icons/spell.png',
-                                    height: 175,
-                                    fit: BoxFit.contain),
+                                child: Image.asset('assets/icons/spell.png',
+                                    height: 175, fit: BoxFit.contain),
                               ), // Displaying face icon.
                             ]),
                       ),
@@ -207,7 +212,7 @@ class _InventoryState extends State<Inventory> {
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(15)),
                             ),
-                            child: 0 == 0
+                            child: double_iq == 0
                                 ? Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -216,8 +221,101 @@ class _InventoryState extends State<Inventory> {
                                             horizontal: 5),
                                         child: ElevatedButton(
                                           onPressed: () {
-                                            //_dbHelper.setBought(widget.id!);
-                                            setState(() {});
+                                            showDialog(
+                                              context: context,
+                                              builder: (_) => AlertDialog(
+                                                title: Center(
+                                                    child: Text(
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        "Are you sure you want to buy?",
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 25))),
+                                                content: Container(
+                                                  child: Column(children: [
+                                                    SizedBox(
+                                                      height: 10,
+                                                    ),
+                                                    Image.asset(
+                                                      'assets/icons/spell.png',
+                                                      height: 200,
+                                                    )
+                                                  ]),
+                                                  height: 210,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                    color: Colors.purple,
+                                                  ),
+                                                ),
+                                                elevation: 24,
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: (() async {
+                                                      Navigator.pop(context);
+                                                      if (coins! >= 25) {
+                                                        Navigator.pop(context);
+                                                        Navigator.push(context,
+                                                            MaterialPageRoute(
+                                                                builder:
+                                                                    (context) {
+                                                          return Homepage(
+                                                              selectedIndex: 0);
+                                                        }));
+                                                        setState(() {
+                                                          _dbHelper
+                                                              .incrementCoins(
+                                                                  -25);
+                                                          _dbHelper
+                                                              .updateDoubleIQ(
+                                                                  1);
+                                                        });
+                                                      } else {
+                                                        showDialog(
+                                                          context: context,
+                                                          builder: (_) =>
+                                                              AlertDialog(
+                                                            title: Center(
+                                                                child: Text(
+                                                                    textAlign:
+                                                                        TextAlign
+                                                                            .center,
+                                                                    "Not enough money!",
+                                                                    style: const TextStyle(
+                                                                        fontWeight:
+                                                                            FontWeight
+                                                                                .bold,
+                                                                        fontSize:
+                                                                            25))),
+                                                          ),
+                                                        );
+                                                      }
+                                                      ;
+                                                    }),
+                                                    child: Text("Buy",
+                                                        style: const TextStyle(
+                                                            color: Colors.green,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                  ),
+                                                  TextButton(
+                                                    onPressed: (() {
+                                                      Navigator.pop(context);
+                                                    }),
+                                                    child: Text("Cancel",
+                                                        style: const TextStyle(
+                                                            color: Colors.red,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 20)),
+                                                  ),
+                                                ],
+                                              ),
+                                            );
                                           },
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -253,7 +351,7 @@ class _InventoryState extends State<Inventory> {
                                             MainAxisAlignment.center,
                                         children: [
                                           Text(
-                                            "100",
+                                            "25",
                                             style: TextStyle(
                                                 color: Colors.grey[700],
                                                 fontWeight: FontWeight.bold,
@@ -289,6 +387,11 @@ class _InventoryState extends State<Inventory> {
                   ),
                 ),
               ),
+              TextButton(
+                  onPressed: () {
+                    _dbHelper.incrementCoins(50);
+                  },
+                  child: Text("money")),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),
                 child: Column(children: [

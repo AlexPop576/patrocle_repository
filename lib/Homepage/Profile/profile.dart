@@ -30,6 +30,7 @@ class _ProfileState extends State<Profile> {
       admin = 0,
       streakCount = 0,
       coins = 0;
+      
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   final Function setLanguageFunction;
 

@@ -9,18 +9,20 @@ import '../Theme/translations.dart';
 class Lesson extends StatefulWidget {
   String? country;
   int? subject = 0, language;
-  Lesson(
-      {super.key, required this.country, this.subject, required this.language});
+   // Constructor for Lesson widget
+  Lesson({super.key, required this.country, this.subject, required this.language});
 
   @override
   State<Lesson> createState() =>
       _LessonState(country: country, subject: subject, language: language);
 }
-
+// Define the state for the Lesson widget
 class _LessonState extends State<Lesson> {
   String? lesson, country;
   int? language = 2, subject = 0;
+  // Constructor for _LessonState
   _LessonState({required this.country, this.subject, required this.language});
+  // Translation and information maps
   Map<int?, Map<String?, String?>> translation = Translations().translation;
   Map<String?, Map<int?, String?>> info = Info().info;
   final _dbHelper = DatabaseHelper.instance;
@@ -37,10 +39,11 @@ class _LessonState extends State<Lesson> {
 
   @override
   void dispose() {
+    // Stop TTS when disposing
     flutterTts.stop();
     super.dispose();
   }
-
+  // Method to handle text-to-speech
   Future<void> speak(String text) async {
     String languageCode = getLanguageCode(language);
     await flutterTts.setLanguage(languageCode);
@@ -51,7 +54,8 @@ class _LessonState extends State<Lesson> {
     }
     _isSpeaking = !_isSpeaking;
   }
-
+  
+  // Method to get language code based on language ID
   String getLanguageCode(int? language) {
     Map<int, String> languageCodes = {
       1: "en-US",
@@ -61,7 +65,7 @@ class _LessonState extends State<Lesson> {
     };
     return languageCodes[language] ?? "en-US";
   }
-
+  // Method to fetch data from the database
   void fetchData() async {
     Map<String, dynamic> lessons =
         await _dbHelper.queryLesson(country.toString());
@@ -71,7 +75,7 @@ class _LessonState extends State<Lesson> {
       translate(lesson!);
     });
   }
-
+  // Method to translate text
   void translate(String text) {
     String toLanguage;
     if (language == 4) {

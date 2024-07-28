@@ -1,6 +1,16 @@
 
 class Info {
   Map<String?, Map<int?, String?>> info = {
+  // A map containing information about various countries.
+  // The key is the country name (String?).
+  // The value is another map where:
+  // - The key is an integer representing different attributes:
+  //   1: Capital city
+  //   2: Area
+  //   3: Population
+  //   4: Year of independence
+  //   5: Number of official languages
+  // - The value is a string representing the attribute value.
     "Afghanistan": { 1: "Kabul", 2: "652,230 km2", 3: "38,928,346", 4: "1919", 5: "8" },
     "Albania": { 1: "Tirana", 2: "28,748 km2", 3: "2,877,797", 4: "1912", 5: "2" },
     "Algeria": { 1: "Algiers", 2: "2,381,741 km2", 3: "43,851,043", 4: "1962", 5: "2" },

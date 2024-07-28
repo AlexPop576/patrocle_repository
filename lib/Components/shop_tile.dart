@@ -2,6 +2,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:patrocle/Database/database_helper.dart';
+import 'package:patrocle/Homepage/homepage.dart';
 
 // Defining a StatefulWidget, ShopTile, to represent an item in a shop.
 class ShopTile extends StatefulWidget {
@@ -138,11 +139,18 @@ class _ShopTileState extends State<ShopTile> {
                                           onPressed: (() async {
                                             Navigator.pop(context);
                                             if (coins! >= price!) {
+                                              Navigator.pop(context);
+                                              Navigator.push(context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) {
+                                                return Homepage(
+                                                    selectedIndex: 0);
+                                              }));
                                               _dbHelper.setBought(widget.id!);
                                               await _dbHelper
                                                   .incrementCoins(-price!);
                                               setState(() {
-                                                bought = 1;
+                                                
                                               });
                                               String? faces;
                                               List<int> facesListInt = [];

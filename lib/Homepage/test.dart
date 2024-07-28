@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../Database/database_helper.dart';
 
+// Main Test widget which is a stateful widget
 class Test extends StatefulWidget {
   const Test({super.key});
 
@@ -8,6 +9,7 @@ class Test extends StatefulWidget {
   State<Test> createState() => _TestState();
 }
 
+// State class for the Test widget
 class _TestState extends State<Test> {
   final _dbHelper = DatabaseHelper.instance;
   final _controller = TextEditingController();
@@ -23,14 +25,17 @@ class _TestState extends State<Test> {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                // Text field for country name
                 TextField(
                   controller: _controller,
                   decoration: InputDecoration(hintText: 'Enter country name'),
                 ),
+                // Text field for lesson geography
                 TextField(
                   controller: _controllerLessonGeography,
                   decoration: InputDecoration(hintText: 'Lesson Geography'),
                 ),
+                // Text field for lesson history
                 TextField(
                   controller: _controllerLessonHistory,
                   decoration: InputDecoration(hintText: 'Lesson History'),
@@ -38,6 +43,7 @@ class _TestState extends State<Test> {
               ],
             ),
           ),
+          // Button to insert data into the database
           ElevatedButton(
             child: Text('Insert'),
             onPressed: () async {
