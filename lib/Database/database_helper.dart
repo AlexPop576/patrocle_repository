@@ -576,7 +576,7 @@ class DatabaseHelper {
   ]);
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 120;
+  static final _databaseVersion = 121;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -625,6 +625,15 @@ class DatabaseHelper {
             doesExist INTEGER
           )''');
 
+          await db.execute('''
+          CREATE TABLE faces (
+            faceID INTEGER PRIMARY KEY AUTOINCREMENT,
+            face INTEGER,
+            bought INTEGER,
+            price INTEGER,
+            color INTEGER
+          )''');
+
         await db.execute('''
           CREATE TABLE question (
             questionID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -658,15 +667,6 @@ class DatabaseHelper {
             last_activity_date TEXT,
             faces TEXT,
             double_iq INTEGER
-          )''');
-
-        await db.execute('''
-          CREATE TABLE faces (
-            faceID INTEGER PRIMARY KEY AUTOINCREMENT,
-            face INTEGER,
-            bought INTEGER,
-            price INTEGER,
-            color INTEGER
           )''');
 
         await db

@@ -229,7 +229,7 @@ class _InventoryState extends State<Inventory> {
                                                     child: Text(
                                                         textAlign:
                                                             TextAlign.center,
-                                                        "Are you sure you want to buy?",
+                                                        "${translation[language]!["Are you sure you want to buy?"]}",
                                                         style: const TextStyle(
                                                             fontWeight:
                                                                 FontWeight.bold,
@@ -284,7 +284,7 @@ class _InventoryState extends State<Inventory> {
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,
-                                                                    "Not enough money!",
+                                                                    "${translation[language]!["Not enough money!"]}",
                                                                     style: const TextStyle(
                                                                         fontWeight:
                                                                             FontWeight
@@ -296,7 +296,7 @@ class _InventoryState extends State<Inventory> {
                                                       }
                                                       ;
                                                     }),
-                                                    child: Text("Buy",
+                                                    child: Text("${translation[language]!["Buy"]}",
                                                         style: const TextStyle(
                                                             color: Colors.green,
                                                             fontWeight:
@@ -307,7 +307,7 @@ class _InventoryState extends State<Inventory> {
                                                     onPressed: (() {
                                                       Navigator.pop(context);
                                                     }),
-                                                    child: Text("Cancel",
+                                                    child: Text("${translation[language]!["Cancel"]}",
                                                         style: const TextStyle(
                                                             color: Colors.red,
                                                             fontWeight:
@@ -325,14 +325,7 @@ class _InventoryState extends State<Inventory> {
                                                   const EdgeInsets.symmetric(
                                                       horizontal: 8,
                                                       vertical: 5),
-                                              child: Text(
-                                                "BUY",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 30,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              ),
+                                              child: Icon(Icons.shopping_bag_outlined, color: Colors.white, size: 40,)
                                             ),
                                           ),
                                           style: ElevatedButton.styleFrom(
@@ -372,7 +365,7 @@ class _InventoryState extends State<Inventory> {
                                           'assets/icons/true.png'), // Displaying 'already bought' icon.
                                       SizedBox(height: 6),
                                       Text(
-                                        "Already bought",
+                                        "${translation[language]!["Already bought"]}",
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Colors.grey[700],

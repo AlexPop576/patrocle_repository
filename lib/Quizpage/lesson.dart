@@ -124,7 +124,7 @@ class _LessonState extends State<Lesson> {
                         fontWeight: FontWeight.bold,
                         fontSize: 40),
                   ),
-                  language == 1 || language == 4
+                  /*language == 1 || language == 4
                       ? Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 14),
                         child: ElevatedButton(
@@ -150,7 +150,7 @@ class _LessonState extends State<Lesson> {
                               ),
                             )),
                       )
-                      : SizedBox(),
+                      : SizedBox(),*/
                 ]),
                 const SizedBox(
                   height: 12,

@@ -218,14 +218,7 @@ class _ShopTileState extends State<ShopTile> {
                                   child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 8, vertical: 5),
-                                    child: Text(
-                                      textAlign: TextAlign.center,
-                                      "${translation[language]!["BUY"]}",
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold),
-                                    ),
+                                    child: Icon(Icons.shopping_bag_outlined, color: Colors.white, size: 40,)
                                   ),
                                 ),
                                 style: ElevatedButton.styleFrom(
