@@ -294,6 +294,13 @@ class Translations {
       "Special challenge": "Special challenge",
       "Countries": "Countries",
       "Weekly top": "Weekly top",
+      "Your streak": "Your streak",
+      "Already bought": "Already bought",
+      "BUY": "BUY",
+      "Cancel": "Cancel",
+      "Not enough coins!": "Not enough coins!",
+      "Are you sure you want to buy?" : "Are you sure you want to buy?",
+
     },
     2: {
       "Profile": "Profil",
@@ -587,6 +594,13 @@ class Translations {
       "Special challenge": "Provocare specială", 
       "Countries": "Țări",
       "Weekly top": "Top săptămânal",
+      "Your streak": "Seria ta",
+      "Already bought": "Deja cumpărat",
+      "BUY": "CUMPĂRĂ",
+      "Cancel": "Anulează",
+      "Not enough coins!": "Nu ai suficienți bani!",
+      "Are you sure you want to buy?" : "Ești sigur că vrei să cumperi?",
+
     },
     3: {
       "Profile": "Profil",
@@ -880,6 +894,13 @@ class Translations {
       "Special challenge": "Különleges kihívás",
       "Countries": "Országok",
       "Weekly top": "Heti top",
+      "Your streak": "Sorozatod",
+      "Already bought": "Már megvásárolt",
+      "BUY": "VÁSÁRLÁS",
+      "Cancel": "Mégse",
+      "Not enough coins!": "Nincs elég érme!",
+      "Are you sure you want to buy?" : "Biztosan meg akarod vásárolni?",
+
     },
     4: {
       "Profile": "Perfil",
@@ -1173,6 +1194,13 @@ class Translations {
       "Special challenge": "Desafío especial",
       "Countries": "Países",
       "Weekly top": "Top semanal",
+      "Your streak": "Tu racha",
+      "Already bought": "Ya comprado",
+      "BUY": "COMPRAR",
+      "Cancel": "Cancelar",
+      "Not enough coins!": "¡No tienes suficientes monedas!",
+      "Are you sure you want to buy?" : "¿Estás seguro de que quieres comprar?",
+  
     }
   };
 }

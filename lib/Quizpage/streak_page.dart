@@ -46,7 +46,7 @@ class _StreakPageState extends State<StreakPage> {
               Lottie.asset('assets/flame.json',
                   frameRate: FrameRate.max, fit: BoxFit.contain),
               Text(
-                'Your streak: $streak',
+                '${translation[language]!["Your streak"]}: $streak',
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,

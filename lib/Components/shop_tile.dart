@@ -176,7 +176,7 @@ class _ShopTileState extends State<ShopTile> {
                                                       child: Text(
                                                           textAlign:
                                                               TextAlign.center,
-                                                          "Not enough money!",
+                                                          "Not enough coins!",
                                                           style:
                                                               const TextStyle(
                                                                   fontWeight:
