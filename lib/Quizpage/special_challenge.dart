@@ -188,7 +188,21 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
                           color: Colors.red,
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-              SizedBox(height: 100),
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar: SizedBox(
+        height: 100,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 17),
+          child: Column(
+            children: [
+              Divider(
+                color: Theme.of(context).colorScheme.primary,
+                thickness: 3,
+              ),
+              const SizedBox(height: 10),
               SizedBox(
                 height: 58,
                 width: double.infinity,
@@ -228,10 +242,10 @@ class _SpecialChallengeState extends State<SpecialChallenge> {
                   ),
                 ),
               ),
+              const SizedBox(height: 10),
             ],
           ),
-        ),
-      ),
+        ),),
     );
   }
 }

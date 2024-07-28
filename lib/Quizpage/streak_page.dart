@@ -38,47 +38,69 @@ class _StreakPageState extends State<StreakPage> {
     return Scaffold(
       body: Center(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 17),
-            child: SingleChildScrollView(
-              child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+        padding: const EdgeInsets.symmetric(horizontal: 17),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
               Lottie.asset('assets/flame.json',
                   frameRate: FrameRate.max, fit: BoxFit.contain),
               Text(
                 'Your streak: $streak',
                 style: TextStyle(
-                    color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold),
               ),
-              SizedBox(height: 40),
+            ],
+          ),
+        ),
+      )),
+      bottomNavigationBar: SizedBox(
+        height: 100,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 17),
+          child: Column(
+            children: [
+              Divider(
+                color: Theme.of(context).colorScheme.primary,
+                thickness: 3,
+              ),
+              const SizedBox(height: 10),
               SizedBox(
                 height: 58,
                 width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) {
-                      return Homepage(selectedIndex: 1);
-                    }));
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromARGB(255, 102, 102, 255),
-                    shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(15)),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                        return Homepage(selectedIndex: 1);
+                      }));
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 102, 102, 255),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
                       ),
                     ),
+                    child: Text("${translation[language]!["Continue"]}",
+                        style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 35)),
                   ),
-                  child: Text("${translation[language]!["Continue"]}",
-                      style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 35)),
                 ),
-              )
-                      ],
-                    ),
-            ),
-          )),
+              ),
+              const SizedBox(height: 10),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

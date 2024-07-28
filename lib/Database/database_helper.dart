@@ -339,7 +339,7 @@ class DatabaseHelper {
     'Unification of Italy'
   ]);
   String answer23 = jsonEncode(
-      ['Julius Caesar', 'Attila the Hun', 'Cleopatra', 'Alexander the Great']);
+      ['Julius Caesar', 'Attila', 'Cleopatra', 'Alexander the Great']);
   String answer24 = jsonEncode([
     'Historical Period',
     'Personality',
@@ -576,7 +576,7 @@ class DatabaseHelper {
   ]);
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 118;
+  static final _databaseVersion = 119;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';

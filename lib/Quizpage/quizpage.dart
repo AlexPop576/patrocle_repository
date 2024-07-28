@@ -713,7 +713,6 @@ class _QuizPageState extends State<QuizPage> {
                           if(pageIndex==pageMax){
                             updateLessonStatus();
                             updateIQ();
-                            updateTrophies();
                           }
                           setState(() {
                             bonus = 1;
@@ -958,6 +957,7 @@ class _QuizPageState extends State<QuizPage> {
                           }
                         });
                       } else if (pageIndex == pageMax + 1) {
+                        updateTrophies();
                         Navigator.pop(context);
                         Navigator.pop(context);
                         mode == 2 ? Navigator.pop(context) : null;
