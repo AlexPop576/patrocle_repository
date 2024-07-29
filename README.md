@@ -1,16 +1,11 @@
-# patrocle
+# Patrocle
 
-A new Flutter project.
+Patrocle este o aplicație educațională inovatoare, concepută pentru a facilita învățarea istoriei și geografiei la nivel global. Cu un design intuitiv și funcționalități interactive, aplicația este destinată atât elevilor și studenților, cât și tuturor celor pasionați de cunoaștere. Patrocle oferă lecții generale despre istoria fiecărei țări, incluzând evenimente majore, figuri istorice importante și evoluția culturală și politică de-a lungul timpului. În domeniul geografiei, acoperă aspecte esențiale ale fiecărei națiuni, de la caracteristici fizice ,precum munți, râuri și climate, la aspecte umane, precum populație, capitale și economie.
 
-## Getting Started
+## Documentație
 
-This project is a starting point for a Flutter application.
+Documentația oficială a proiectului:
 
-A few resources to get you started if this is your first Flutter project:
+- [Documentație](https://1drv.ms/w/s!AiNyAisH-8qegYs5wAh-N1LEEYw8EQ?e=kPnjP0)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
