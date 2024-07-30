@@ -387,11 +387,6 @@ class _InventoryState extends State<Inventory> {
                   ),
                 ),
               ),
-              TextButton(
-                  onPressed: () {
-                    _dbHelper.incrementCoins(50);
-                  },
-                  child: Text("money")),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 17),
                 child: Column(children: [

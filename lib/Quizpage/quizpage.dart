@@ -8,6 +8,7 @@ import 'package:patrocle/Database/database_helper.dart';
 import 'package:patrocle/Homepage/homepage.dart';
 import 'package:patrocle/Homepage/levels.dart';
 import 'package:patrocle/Quizpage/lesson.dart';
+import 'package:patrocle/Quizpage/streak_page.dart';
 import 'package:patrocle/Quizpage/testpage2.dart';
 import 'dart:math';
 import '../Theme/general_info.dart';
@@ -40,7 +41,8 @@ class QuizPage extends StatefulWidget {
       mode: mode,
       language: language);
 }
-  // State class for QuizPage
+
+// State class for QuizPage
 class _QuizPageState extends State<QuizPage> {
   _QuizPageState(
       {required this.country,
@@ -74,24 +76,26 @@ class _QuizPageState extends State<QuizPage> {
   Timer? timer;
   Timer? correctAnswerTimer;
   int secondsCorrectAnswer = 2, double_iq = 0;
+  DateTime? last_activity = DateTime.now(), today = DateTime.now();
 
   @override
-  
   void initState() {
     super.initState();
     fetchData(country.toString(), subject.toString());
   }
-   // Start the timer for the quiz
-  void startTimer(){
+
+  // Start the timer for the quiz
+  void startTimer() {
     timer = Timer.periodic(Duration(milliseconds: 500), (_) {
       setState(() {
         seconds--;
-        if(seconds==0){
-          pageIndex = pageMax+1;
+        if (seconds == 0) {
+          pageIndex = pageMax + 1;
         }
       });
     });
   }
+
 // Fetch data from the database based on country and subject
   void fetchData(String country, String subject) async {
     if (difficulty == 1) {
@@ -106,6 +110,7 @@ class _QuizPageState extends State<QuizPage> {
       if (results.isNotEmpty) {
         setState(() {
           double_iq = results.first['double_iq'];
+          last_activity = results.first['last_activity_date'];
         });
       }
     });
@@ -127,16 +132,14 @@ class _QuizPageState extends State<QuizPage> {
   // Mark the answer as correct
   void correct() {
     setState(() {
-      // Use the correctColor from the ThemeData extension
-      sections.add(section(Theme.of(context).correctColor));
+      sections.add(section(Colors.green));
     });
   }
 
   // Mark the answer as wrong
   void wrong() {
     setState(() {
-      // Use the wrongColor from the ThemeData extension
-      sections.add(section(Theme.of(context).wrongColor));
+      sections.add(section(Colors.red));
     });
   }
 
@@ -151,14 +154,14 @@ class _QuizPageState extends State<QuizPage> {
     await _dbHelper.incrementStreak();
     //_homepage.fetchStreak();
   }
-  
+
   // Update the IQ in the database
   void updateIQ() async {
-    await _dbHelper
-        .updateProfileIQ((double_iq + 1) *(correctAnswersEasy * 5 + correctAnswersHard * 10));
+    await _dbHelper.updateProfileIQ(
+        (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10));
     await _dbHelper.updateDoubleIQ(0);
   }
-  
+
   // Update the trophies in the database
   void updateTrophies() async {
     int iq = 0, geography_lessons = 0, history_lessons = 0;
@@ -275,7 +278,10 @@ class _QuizPageState extends State<QuizPage> {
             );
           }
           if (iq < 500 &&
-              iq + (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10) >= 500) {
+              iq +
+                      (double_iq + 1) *
+                          (correctAnswersEasy * 5 + correctAnswersHard * 10) >=
+                  500) {
             _dbHelper.insertTrophy(4);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -296,7 +302,10 @@ class _QuizPageState extends State<QuizPage> {
               ),
             );
           } else if (iq < 5000 &&
-              iq + (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10) >= 5000) {
+              iq +
+                      (double_iq + 1) *
+                          (correctAnswersEasy * 5 + correctAnswersHard * 10) >=
+                  5000) {
             _dbHelper.insertTrophy(7);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -317,7 +326,10 @@ class _QuizPageState extends State<QuizPage> {
               ),
             );
           } else if (iq < 10000 &&
-              iq + (double_iq + 1) * (correctAnswersEasy * 5 + correctAnswersHard * 10) >= 10000) {
+              iq +
+                      (double_iq + 1) *
+                          (correctAnswersEasy * 5 + correctAnswersHard * 10) >=
+                  10000) {
             _dbHelper.insertTrophy(8);
             _dbHelper.updateProfileTrophies();
             showDialog(
@@ -698,6 +710,11 @@ class _QuizPageState extends State<QuizPage> {
                         if (pageIndex == 0 && mode == 2) {
                           startTimer();
                         } else if (pageIndex > 0 && pageIndex < pageMax + 1) {
+                          if(pageIndex==pageMax){
+                            updateLessonStatus();
+                            updateIQ();
+                            updateTrophies();
+                          }
                           setState(() {
                             bonus = 1;
                           });
@@ -941,15 +958,12 @@ class _QuizPageState extends State<QuizPage> {
                           }
                         });
                       } else if (pageIndex == pageMax + 1) {
-                        updateLessonStatus();
-                        updateIQ();
-                        updateTrophies();
                         Navigator.pop(context);
                         Navigator.pop(context);
                         mode == 2 ? Navigator.pop(context) : null;
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
-                          return Homepage(selectedIndex: 1);
+                          return StreakPage(language: language);
                         }));
                       }
                     },
@@ -1118,56 +1132,56 @@ class FinishPage extends StatelessWidget {
                     color: Color.fromARGB(255, 219, 64, 64),
                   ),
                 )
-              : correctAnswers == (0.3 * pageMax!).round() ||
-                      correctAnswers == (0.4 * pageMax!).round()
+              : correctAnswers == pageMax
                   ? Text(
-                      "${translation[language]!["Almost there!"]}",
+                      "${translation[language]!["Perfect!"]}",
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 45,
                         fontWeight: FontWeight.w900,
-                        color: Color.fromARGB(255, 219, 121, 64),
+                        color: Color.fromARGB(255, 77, 219, 64),
                       ),
                     )
-                  : correctAnswers == (0.5 * pageMax!).round() ||
-                          correctAnswers == (0.6 * pageMax!).round()
+                  : correctAnswers == (0.3 * pageMax!).round() ||
+                          correctAnswers == (0.4 * pageMax!).round()
                       ? Text(
-                          "${translation[language]!["Good job!"]}",
+                          "${translation[language]!["Almost there!"]}",
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 45,
                             fontWeight: FontWeight.w900,
-                            color: Color.fromARGB(255, 216, 219, 64),
+                            color: Color.fromARGB(255, 219, 121, 64),
                           ),
                         )
-                      : correctAnswers == (0.7 * pageMax!).round() ||
-                              correctAnswers == (0.8 * pageMax!).round()
+                      : correctAnswers == (0.5 * pageMax!).round() ||
+                              correctAnswers == (0.6 * pageMax!).round()
                           ? Text(
-                              "${translation[language]!["Fantastic!"]}",
+                              "${translation[language]!["Good job!"]}",
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 45,
                                 fontWeight: FontWeight.w900,
-                                color: Color.fromARGB(255, 196, 219, 64),
+                                color: Color.fromARGB(255, 216, 219, 64),
                               ),
                             )
-                          : correctAnswers == (0.9 * pageMax!).round()
+                          : correctAnswers == (0.7 * pageMax!).round() ||
+                                  correctAnswers == (0.8 * pageMax!).round()
                               ? Text(
+                                  "${translation[language]!["Fantastic!"]}",
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 45,
+                                    fontWeight: FontWeight.w900,
+                                    color: Color.fromARGB(255, 196, 219, 64),
+                                  ),
+                                )
+                              : Text(
                                   "${translation[language]!["Almost perfect!"]}",
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
                                     fontSize: 45,
                                     fontWeight: FontWeight.w900,
                                     color: Color.fromARGB(255, 131, 219, 64),
-                                  ),
-                                )
-                              : Text(
-                                  "${translation[language]!["Perfect!"]}",
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontSize: 45,
-                                    fontWeight: FontWeight.w900,
-                                    color: Color.fromARGB(255, 77, 219, 64),
                                   ),
                                 ),
           const SizedBox(

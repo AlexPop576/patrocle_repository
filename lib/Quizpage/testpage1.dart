@@ -57,7 +57,7 @@ class _TestPage1State extends State<TestPage1> {
     print("Decoded answers: $answers");
     translate(questionText!, answers[0], answers[1], answers[2], answers[3]);
   }
-
+  
   void translate(String question, String answer1, String answer2, String answer3, String answer4) {
     String toLanguage;
     if (widget.language == 4) {

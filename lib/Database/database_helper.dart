@@ -576,7 +576,7 @@ class DatabaseHelper {
   ]);
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 113;
+  static final _databaseVersion = 115;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -821,7 +821,7 @@ class DatabaseHelper {
           'country': 'Spain',
           'subject': 1,
           'difficulty': 1,
-          'question_text': 'What is the population of Spain?',
+          'question_text': 'What is the population of Spain? (milions)',
           'answer': '',
           'correct_answer': 47,
           'type': 2
@@ -965,7 +965,7 @@ class DatabaseHelper {
           'country': 'France',
           'subject': 1,
           'difficulty': 1,
-          'question_text': 'What is the population of France?',
+          'question_text': 'What is the population of France? (milions)',
           'answer': '',
           'correct_answer': 67,
           'type': 2
@@ -1115,7 +1115,7 @@ class DatabaseHelper {
           'country': 'Italy',
           'subject': 1,
           'difficulty': 2,
-          'question_text': 'What is the population of Italy?',
+          'question_text': 'What is the population of Italy? (milions)',
           'answer': '',
           'correct_answer': 60,
           'type': 2
@@ -1576,7 +1576,7 @@ class DatabaseHelper {
           'country': 'Romania',
           'subject': 1,
           'difficulty': 1,
-          'question_text': 'What is the population of Romania?',
+          'question_text': 'What is the population of Romania? (milions)',
           'answer': '',
           'correct_answer': 19,
           'type': 2
@@ -2173,7 +2173,7 @@ class DatabaseHelper {
             'country': 'Spain',
             'subject': 1,
             'difficulty': 1,
-            'question_text': 'What is the population of Spain?',
+            'question_text': 'What is the population of Spain? (milions)',
             'answer': '',
             'correct_answer': 47,
             'type': 2
@@ -2317,7 +2317,7 @@ class DatabaseHelper {
             'country': 'France',
             'subject': 1,
             'difficulty': 1,
-            'question_text': 'What is the population of France?',
+            'question_text': 'What is the population of France? (milions)',
             'answer': '',
             'correct_answer': 67,
             'type': 2
@@ -2469,7 +2469,7 @@ class DatabaseHelper {
             'country': 'Italy',
             'subject': 1,
             'difficulty': 2,
-            'question_text': 'What is the population of Italy?',
+            'question_text': 'What is the population of Italy? (milions)',
             'answer': '',
             'correct_answer': 60,
             'type': 2
@@ -2923,7 +2923,7 @@ class DatabaseHelper {
             'country': 'Romania',
             'subject': 1,
             'difficulty': 1,
-            'question_text': 'What is the population of Romania?',
+            'question_text': 'What is the population of Romania? (milions)',
             'answer': '',
             'correct_answer': 19,
             'type': 2
