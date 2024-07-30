@@ -576,7 +576,7 @@ class DatabaseHelper {
   ]);
   String facesList = jsonEncode([1]);
   static final _databaseName = "MyDatabase.db";
-  static final _databaseVersion = 115;
+  static final _databaseVersion = 118;
 
   static final table = 'country';
   static final tableTrophy = 'trophies';
@@ -3356,11 +3356,10 @@ class DatabaseHelper {
   }
 
   Future<void> updateLastActivityDate(String newDate) async {
-    Database db = await this.database;
-
-    await db.rawUpdate("UPDATE profile SET last_activity_date = '$newDate'");
-    print('updated: new date = $newDate');
-  }
+  Database db = await this.database;
+  await db.rawUpdate("UPDATE profile SET last_activity_date = ?", [newDate]);
+  print('Updated last activity date to: $newDate');
+}
 
   Future<int> getStreakCount() async {
     Database db = await this.database;
@@ -3384,20 +3383,32 @@ class DatabaseHelper {
   }
 
   Future<void> incrementStreak() async {
-    Database db = await this.database;
-    DateTime lastActivityDate = await getLastActivityDate(db);
-    DateTime today = DateTime.now();
-    print('$lastActivityDate is last');
-    int differenceInDays = today.difference(lastActivityDate).inDays;
-    print('$differenceInDays is diff');
+  Database db = await this.database;
+  DateTime lastActivityDate = await getLastActivityDate(db);
+  DateTime today = DateTime.now();
+  
+  print('Last activity date: $lastActivityDate');
+  print('Today: $today');
+  
+  int differenceInDays = today.difference(lastActivityDate).inDays;
+  
+  print('Difference in days: $differenceInDays');
 
-    if (differenceInDays == 1) {
-      await db.rawUpdate('UPDATE profile SET streak_count = streak_count + 1');
-    } else if (differenceInDays != 1) {
-      await db.rawUpdate('UPDATE profile SET streak_count = 1');
-    }
-    await updateLastActivityDate(today.toIso8601String());
+  // Get the current streak count
+  List<Map> result = await db.query('profile', columns: ['streak_count']);
+  int currentStreak = result.isNotEmpty ? result.first['streak_count'] : 0;
+
+  if (differenceInDays == 1) {
+    await db.rawUpdate('UPDATE profile SET streak_count = streak_count + 1');
+  } else if (differenceInDays > 1) {
+    await db.rawUpdate('UPDATE profile SET streak_count = 1');
+  } else if (currentStreak == 0) {
+    // If the streak is 0, set it to 1 when a lesson is completed
+    await db.rawUpdate('UPDATE profile SET streak_count = 1');
   }
+  
+  await updateLastActivityDate(today.toIso8601String());
+}
 
   Future<void> incrementCoins(int coinsNumber) async {
     Database db = await this.database;
